@@ -1,0 +1,20 @@
+This is a Tapestry 5 web application intended to make it easier to find
+Tapestry-compatible components, mixins, pages and modules. Its database
+includes entries not only for the components that come with Tapestry, but also
+those components (and mixins, pages, etc) that are available in third-party
+modules, demo applications like JumpStart, blog posts and mailing lists.
+
+This app has the exact same look and feel as the current Tapestry documentation
+at https://tapestry.apache.org, and the hope is that it will eventually be
+running under that URL and be seamlessly integrated into the official Tapestry
+documentation.
+
+In addition to its basic goal of helping people find Tapestry components, we
+also have the following more ambitious goals:
+
+* Serve as an example of how a polished and complete Tapestry 5 application
+should be constructed. In that sense it is probably over-engineered, on purpose.
+
+* Serve as examples of how to integrate other Apache products with Tapestry,
+including Cayenne, Derby and Shiro.  
+
