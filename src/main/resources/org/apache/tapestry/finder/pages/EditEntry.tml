@@ -1,0 +1,81 @@
+<html t:type="layout" title="Edit Entry"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+
+<div class="itemheading">
+<h2>${pageHeading}</h2>
+<p class="greeting">${message:greeting}</p>
+</div>
+
+<t:form t:id="editForm">
+	<t:errors/>
+	<div class="status-message">${statusMessage}</div>
+
+	<table class="detail-table">
+		<tr>
+			<th><t:label for="entryTypeMenu"/>:</th>
+			<td>
+				<t:radioGroup t:id="entryTypeMenu" validate="required"
+						value="entry.entryType">
+					<t:loop source="entryTypes" value="entryType">
+						<t:radio t:id="entryType" value="entryType" />
+						<t:label for="entryType" style="margin-right: 1em"
+							title="${entryType.description}">
+							${entryType.name}
+						</t:label>
+					</t:loop>
+				</t:radioGroup>
+			</td>
+		</tr>
+		<tr>
+			<th><t:label for="name"/>:</th>
+			<td><t:textField t:id="name" validate="required,max=64" size="25"
+					value="entry.name"/>
+			</td>
+		</tr>
+		<tr>
+			<th><t:label for="description"/>:</th>
+			<td><t:textArea t:id="description" validate="required,max=4096"
+					rows="7" cols="70" value="entry.description"/></td>
+			<td class="instruction">${message:descriptionInstructions}</td>
+		</tr>
+		<tr>
+			<th><t:label for="documentationUrl"/>:</th>
+			<td><input t:type="textField" t:id="documentationUrl" size="91"
+					value="entry.documentationUrl"
+					validate="max=1024" /></td>
+		</tr>
+		<tr>
+			<th><t:label for="demonstrationUrl"/>:</th>
+			<td><t:textField t:id="demonstrationUrl" size="91" 
+					value="entry.demonstrationUrl"
+					validate="max=1024" /></td>
+		</tr>
+		<tr>
+			<th>Requires Tapestry version:</th>
+			<td>TODO: drop-down menu</td>
+		</tr>
+		<tr>
+			<th><t:label for="dateCreated"/>:</th>
+			<td><t:datefield t:id="dateCreated" value="entry.firstAvailable"/></td>
+		</tr>
+		<tr>
+			<th><t:label for="parentSelection"/>:</th>
+			<td><t:select t:id="parentSelection" value="entry.parent"
+						model="parentSelectModel" /></td>
+		</tr>
+		<tr>
+			<th>License:</th>
+			<td>TODO: drop-down menu</td>
+		</tr>
+		<tr><td></td>
+			<td class="controls">
+				<t:submit value="Save"/>
+				<t:pageLink page="index" xcontext="component.id"
+					class="cancel">Cancel</t:pageLink>
+			</td></tr>
+	</table>
+	TODO: for unauthenticated users, present a CAPTCHA and save with a status
+	of "disabled". Only authenticated users can mark "enabled".
+</t:form>
+
+</html>

@@ -1,0 +1,159 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.apache.tapestry</groupId>
+    <artifactId>finder</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>Component Finder</name>
+    <dependencies>
+        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the tests)
+will fail, preventing Maven from packaging the WAR. Tapestry includes a large number
+of testing facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>2.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- tapestry-test will conflict with RunJettyRun inside Eclipse. tapestry-test brings in Selenium, which
+             is based on Jetty 5.1; RunJettyRun uses Jetty 6.
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-test</artifactId>
+            <version>${tapestry-release-version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        -->
+
+        <!-- Provided by the servlet container, but sometimes referenced in the application
+       code. -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.apache.cayenne</groupId>
+        	<artifactId>cayenne-server</artifactId>
+        	<version>3.0.2</version>
+        	<type>jar</type>
+        	<scope>compile</scope>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derby</artifactId>
+        	<version>10.8.1.2</version>
+        	<type>jar</type>
+        	<scope>compile</scope>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.tapestry</groupId>
+        	<artifactId>tapestry-core</artifactId>
+        	<version>5.2.6</version>
+        	<type>jar</type>
+        	<scope>compile</scope>
+        </dependency>
+        <!--
+        <dependency>
+        	<groupId>com.googlecode.tapestry5-cayenne</groupId>
+        	<artifactId>tapestry5-cayenne-server</artifactId>
+        	<version>0.3</version>
+        	<type>jar</type>
+        	<scope>compile</scope>
+        </dependency>
+    	-->
+        <dependency>
+        	<groupId>commons-lang</groupId>
+        	<artifactId>commons-lang</artifactId>
+        	<version>2.6</version>
+        	<type>jar</type>
+        	<scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <description>A Java web application for helping users find Tapestry components.</description>
+    <url>http://localhost:8080/</url>
+    <inceptionYear>6/22/2011</inceptionYear>
+    <developers>
+    	<developer>
+		<name>Bob Harner</name>
+		<timezone>US-Eastern</timezone>
+    	</developer>
+    </developers>
+    <scm>
+        	<developerConnection>Apache Tapestry Developers</developerConnection>
+    </scm>
+    <organization>
+    	<name>Apache</name>
+    	<url>http://www.apache.org</url>
+    </organization>
+    <build>
+        <finalName>ComponentFinder</finalName>
+    	<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <optimize>true</optimize>
+                </configuration>
+            </plugin>
+
+            <!-- Run the application using "mvn jetty:run" -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.9</version>
+                <configuration>
+                    <!-- Log to the console. -->
+                    <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+                        <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug
+                             that prevents the requestLog from being set. -->
+                        <append>true</append>
+                    </requestLog>
+                </configuration>
+            </plugin>
+            
+	        <plugin>
+	            <groupId>org.apache.cayenne.plugins</groupId>
+	      	    <artifactId>maven-cayenne-modeler-plugin</artifactId>
+	      	    <version>3.0.2</version>
+	        </plugin> 
+           
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>codehaus.snapshots</id>
+            <url>http://snapshots.repository.codehaus.org</url>
+        </repository>
+        <repository>
+            <id>OpenQA_Release</id>
+            <name>OpenQA Release Repository</name>
+            <url>http://archiva.openqa.org/repository/releases/</url>
+        </repository>
+        <repository>
+        	<id>SaiWai</id>
+        	<name>SaiWai repo for Tapestry5-Cayenne module</name>
+        	<url>http://maven.saiwai-solutions.com/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+    </pluginRepositories>
+
+    <modules />
+</project>

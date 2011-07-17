@@ -1,0 +1,85 @@
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,HTML Checkbox,,1,,1,1,8,Checkbox,1,0,34
+,List of checkboxes,,1,,2,1,8,CheckList,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,Date selection via pop-up calendar,,1,,3,1,8,DateField,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,"Side-by-side Select elements that let you move elements from ""unselected"" list to ""selected"" list",,1,,4,1,8,Palette,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,HTML Input Type=Password,,1,,5,1,8,PasswordField,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,Group of radio buttons,,1,,6,1,8,RadioGroup,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,HTML Radio Button,,1,,7,1,8,Radio,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,HTML Label,,1,,8,1,8,Label,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,HTML Select menu,,1,,9,1,8,Select,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,HTML TextArea,,1,,10,1,8,TextArea,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,"HTML Input type=""Text""",,1,,11,1,8,TextField,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/component/coreinputcomponents,"HTML Input type=""Submit""",,1,,12,1,8,Submit,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/navigation/pagelinks1,HTML link to another page,,1,,13,1,8,PageLink,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/input/linksubmits1,"HTML Link to submit a form. For versions prior to Tapestry 5.2, see FormActionLink",http://tapestry.apache.org/current/tapestry-core/ref/org/apache/tapestry5/corelib/components/LinkSubmit.html,1,,14,1,8,LinkSubmit,1,0,34
+,HTML Button,,1,,15,1,8,Button,1,0,34
+,HTML Table,,1,,16,1,8,Grid,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/ajax/autocompletemixin,"Auto-completes text as you type in a TextField, using AJAX",,1,,17,1,8,AutoComplete Mixin,1,0,34
+,AJAX-enabled expanding/collapsing tree,,1,,18,1,8,Tree,1,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/input/ajaxvalidators1,Mixin to do server-side validation using AJAX,,1,,19,,,AjaxValidator Mixin,3,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/javascript/mixin,Display instructions inside a textbox until the user clicks,,1,,20,,,Textbox Hint Mixin,3,0,34
+http://jumpstart.doublenegative.com.au/jumpstart/examples/javascript/creatingmixins1,Prevent user from clicking a submit button more than once,,1,,21,,,ClickOnce Mixin,3,0,34
+JumpStart,Display formatted source code,,1,,22,,13,SourceCodeDisplay,3,0,34
+,Allow any component to submit a form,http://tinybits.blogspot.com/2010/05/mixin-to-allow-any-element-to-submit.html,1,,23,,,AnySubmit Mixin,4,0,34
+,Select all checkboxes in a list of checkboxes,http://tinybits.blogspot.com/2010/03/check-all-mixin.html,1,,24,,,CheckAll Mixin,4,0,34
+,Trigger an arbitrary event,http://tinybits.blogspot.com/2009/05/simple-onevent-mixin.html,1,,25,,,OnEvent Mixin,4,0,34
+,Open a link in a new browser window,http://tinybits.blogspot.com/2009/04/open-page-in-popup-window.html,1,,26,,,PopupPageLink Mixin,4,0,34
+,Update a zone on any client event,http://tinybits.blogspot.com/2010/03/new-and-better-zoneupdater.html,1,,27,,,ZoneUpdater Mixin,4,0,34
+,Enforce maximum length of textarea or textfield,http://tinybits.blogspot.com/2009/04/enforce-max-length-on-textareas-and_15.html,1,,28,,,MaxLength Mixin,4,0,34
+http://www.chenillekit.org/demo/tapcomp/accordiondemo,Expanding/collapsing region using JavaScript,http://www.chenillekit.org/chenillekit-tapestry/ref/org/chenillekit/tapestry/core/components/Accordion.html,1,,29,1,9,Accordion,2,0,34
+http://www.chenillekit.org/demo/tapcomp/ajaxcheckboxdemo,Ajax-enabled checkbox,,1,,30,1,9,AjaxCheckbox,2,0,34
+http://www.chenillekit.org/demo/tapcomp/autocompletedemo,Text completion as-you-type,,1,,31,1,9,AutoComplete,2,0,34
+,Select using an object,ChenilleKit,1,,32,1,9,BeanSelect,2,0,34
+,An HTML button,ChenilleKit,1,,33,1,9,Button,2,0,34
+,Color selection menu,http://www.chenillekit.org/chenillekit-tapestry/ref/org/chenillekit/tapestry/core/components/ColorPicker.html,1,,35,1,9,ColorPicker,2,0,34
+,Conditionally renders its body,ChenilleKit,1,,36,1,9,Contains,2,0,34
+,Date selection via pop-up calendar,http://www.chenillekit.org/chenillekit-tapestry/ref/org/chenillekit/tapestry/core/components/DateSelector.html,1,,37,1,9,DateSelector,2,0,34
+,A component used to collect a provided date/time from the user using a client-side JavaScript calendar. Non-JavaScript clients can simply type into a text field.,ChenilleKit,1,,38,1,9,DateTimeField,2,0,34
+,Rich text editor based on FCKeditor,ChenilleKit,1,,39,1,9,Editor,2,0,34
+,Closable HTML Fieldset (labeled border?),http://www.chenillekit.org/chenillekit-tapestry/ref/org/chenillekit/tapestry/core/components/FieldSet.html,1,,40,1,9,FieldSet,2,0,34
+,???,ChenilleKit,1,,41,1,9,Formatter,2,0,34
+,Google Map component,ChenilleKit,1,,42,1,9,GPlotter,2,0,34
+,Place a hidden field into a form,ChenilleKit,1,,43,1,9,Hidden,2,0,34
+,"An ""in-place"" edit component to edit any text",ChenilleKit,1,,44,1,9,InPlaceEditor,2,0,34
+,"An ""in-place"" checkbox component",ChenilleKit,1,,45,1,9,InPlaceCheckbox,2,0,34
+,MaskFormat is used to format strings. The behavior of a MaskFormat is controlled by a String mask that specifies the valid characters,ChenilleKit,1,,46,1,9,MaskFormat,2,0,34
+,???,ChenilleKit,1,,47,1,9,OnEvent,2,0,34
+,A copy of Tapestry's GridPager with modifications,ChenilleKit,1,,48,1,9,Pager,2,0,34
+,"Provides a paged list similar to the grid component, but uses a ul element instead of a table by default. The list and its items are configurable via parameters.",ChenilleKit,1,,49,1,9,PagedLoop,2,0,34
+,"Provides the ability to associate a RadioGroup and its subordinate Radio fields with a set of values displayed as a rating scale. This is typified by the ""star field"" where grayed stars represent the choices and highlighted stars represent the chosen value and all values up to the chosen value from left to right",ChenilleKit,1,,50,1,9,RatingField,2,0,34
+,Displays a colored container with rounded corners,ChenilleKit,1,,51,1,9,RoundCornerContainer,2,0,34
+,a expandable/pinable side panel,ChenilleKit,1,,52,1,9,SidePanel,2,0,34
+,Creates a slide show from a generic group of HTML elements on the client side,ChenilleKit,1,,53,1,9,SlideShow,2,0,34
+,Displays a panel that can open/close its content,ChenilleKit,1,,54,1,9,SlidingPanel,2,0,34
+,Simple tab-controlled panel component. This component looks in the container message resource for an entry like label-panelid for inserting as panel title. If key not found the panel id is inserted instead.,ChenilleKit,1,,55,1,9,TabSet,2,0,34
+,Converts a image asset into a thumbnail,ChenilleKit,1,,56,1,9,Thumbnail,2,0,34
+,Shows a tool tip if mouse hovers over the content,ChenilleKit,1,,57,1,9,Tooltip,2,0,34
+,"Shorten text, add suffix",ChenilleKit,1,,58,1,9,TrimmedString,2,0,34
+,A slider component that doesn't need to be emmbedded in a form,ChenilleKit,1,,59,1,9,Slider,2,0,34
+,Creates a window based on JavaScript window library,ChenilleKit,1,,60,1,9,Window,2,0,34
+,A CAPTCHA (challenge-response test used in computing to ensure that the response is not generated by a computer) based on Kaptcha. Requires the ChenilleKit Image Library in your CLASSPATH.,http://www.chenillekit.org/chenillekit-image/kaptcha.html,1,,61,1,9,Kaptcha,2,0,34
+,Add breadcrumb navigation using annotations on page classes,https://github.com/argoyle/tapestry-breadcrumbs,1,,62,,,Breadcrumbs,2,0,34
+,Expanding/collapsing accordion-style menu,http://equanda.org/equanda-tapestry5/accordion.html,1,,63,6,10,Accordion,2,0,34
+,"Tab menu, cookie-based persistence",http://equanda.org/equanda-tapestry5/tabs.html,1,,64,6,10,Tabs,2,0,34
+,"Tab menu, session-based persistence",http://equanda.org/equanda-tapestry5/tabs.html,1,,65,6,10,MemTabs,2,0,34
+,Support for keyboard navigation of forms,http://equanda.org/equanda-tapestry5/formtraversal.html,1,,66,6,10,FormTraversla,2,0,34
+,"Shorten text, add suffix",http://equanda.org/equanda-tapestry5/truncate.html,1,,67,6,10,Truncate,2,0,34
+,"Same as LinkSubmit, except works for versions before Tapestry 5.2",http://equanda.org/equanda-tapestry5/formactionlink.html,1,,68,6,10,FormActionLink,2,0,34
+,"Loops over an iterable list of values and allows you to immediately jump to a particular page within the overall data set without page submission.
+The component also allows you to add hidden items which can be displayed by clickin the ""Add"" link (again, without form submission).",http://equanda.org/equanda-tapestry5/jspagedloop.html,1,,69,6,10,JSPagedLoop,2,0,34
+,Increases height of Textarea as you type,http://equanda.org/equanda-tapestry5/textareaautoexpander.html,1,,70,6,10,TextAreaAutoExpander,2,0,34
+,AJAX-enabled TextField,http://equanda.org/equanda-tapestry5/textfield.html,1,,71,6,10,TextField,2,0,34
+,Expanding/collapsing tree in a table,http://equanda.org/equanda-tapestry5/treetable.html,1,,72,6,10,TreeTable,2,0,34
+,Rich text editor based on FCKeditor,http://t5-easy-fckeditor.kenai.com/,1,,73,4,,FCKeditor,2,0,34
+,Rich text editor based on CKEditor,,1,,74,4,,CKEditor,2,0,34
+,Pop-up div with shaded background,http://tapestry.ioko.com/tapestry-mixins/,1,,75,4,11,Overlay,2,0,34
+,Select all checkboxes in a list of checkboxes,http://tapestry.ioko.com/tapestry-mixins/,1,,76,4,11,BoundCheckbox,2,0,34
+,Disable all column sorting on a Grid,http://tapestry.ioko.com/tapestry-mixins/,1,,77,4,11,DisableSorting,2,0,34
+,Cache generated HTML for a portion of a page,http://tapestry.ioko.com/tapestry-caching/,1,,78,4,11,Cache,2,0,34
+,Embed a Flash content object in a Tapestry page,,1,,79,4,,swfObject,2,0,34
+http://lombok.demon.co.uk/tapestry5Demo/test/mixins/confirmdemo,"Javascript ""confirm"" pop-up prompt",http://wiki.apache.org/tapestry/Tapestry5AndJavaScriptExplained,1,,80,1,12,Confirm,3,0,34
+http://lombok.demon.co.uk/tapestry5Demo/test/mixins/gridrowhighlighterdemosource,Highlight rows of Grid on mouse-over,http://lombok.demon.co.uk/tapestry5Demo/test/mixins/gridrowhighlighterdemo,1,,81,1,12,GridRowHighlighter Mixin,3,0,34
+,Lightweight tab menu,http://lombok.demon.co.uk/tapestry5Demo/test/components/tabdemo,1,,82,1,12,Tab,3,0,34
+,Display instructions inside a textbox until the user clicks,http://lombok.demon.co.uk/tapestry5Demo/test/mixins/watermarkdemo,1,,83,1,12,Watermark Mixin,3,0,34
+,A Select menu allowing multiple itemst to be selected at once,,1,,84,1,,MultipleSelect,3,0,34
+http://tapestry.apache.org/forms-and-validation.html,An example of how to create a sign-in page,,1,,85,1,,Login Page,,0,34

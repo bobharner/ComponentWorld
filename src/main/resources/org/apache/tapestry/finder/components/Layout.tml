@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>${message:applicationName} - ${title}</title>
+    <style type="text/css">
+    #top { background: #ffffff url(${context:layout/images/bg.png}) repeat-x top right; }
+    .nav { background: #1B181C url(${context:layout/images/top-bg.png}) repeat-x top right; }
+    </style>
+
+</head>
+<body>
+  <div class="wrapper bs">
+
+<div class="nav"><ul class="alternate" type="square">
+	<li><A href="${message:TapestryDocUrl}" title="Index">Home</A></li>
+	<li><A href="${message:TapestryDocUrl}getting-started.html" title="Getting Started">Getting Started</A></li>
+	<li><A href="${message:TapestryDocUrl}documentation.html" title="Documentation">Documentation</A></li>
+	<li><A href="${message:TapestryDocUrl}download.html" title="Download">Download</A></li>
+	<li><A href="${message:TapestryDocUrl}about.html" title="About">About</A></li>
+
+	<li><A href="${message:TapestryDocUrl}community.html" title="Community">Community</A></li>
+	<li><A href="http://www.apache.org/" class="external-link">Apache</A></li>
+	<li><A href="http://www.apache.org/foundation/sponsorship.html" class="external-link">Sponsorship</A></li>
+	<li><A href="http://www.apache.org/foundation/thanks.html" class="external-link">Thanks</A></li>
+</ul>
+</div>
+
+<div id="top">
+<div style="float:left" class="emblem"><t:pagelink page="index" title="Return to Home page"><SPAN class="image-wrap" style=""><IMG src="${context:layout/images/tapestry_s.png}" width="250" height="105" style="border: 0px solid black" /></SPAN></t:pagelink></div>
+
+<div style="float:left; margin: 35px 0 0 3em" class="title"><H1><A name="SmallBanner-PageTitle"></A>${message:applicationShortName}</H1></div>
+<div class="clearer"></div>
+</div>
+
+<div class="clearer"></div>
+
+  <div id="breadcrumbs">
+  	<div class="links">
+	    <A href="${message:TapestryDocUrl}" title="Apache Tapestry">Apache Tapestry</A>
+	    &gt;
+	    <t:pagelink page="index">Component Finder</t:pagelink>
+	</div>
+	<div class="controls">
+		<t:actionLink t:id="newEntry" id="newEntry">Create a New Entry...</t:actionLink>
+	</div>
+  </div>
+
+<div id="content">
+<t:body/>
+</div>
+
+<div class="clearer"></div>
+<div id="footer">
+<p>Apache Tapestry, Tapestry, Apache, the Apache feather logo, and the
+Apache Tapestry project logo are trademarks of The Apache Software Foundation.
+</p>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-400821-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</div>
+</div>
+</body>
+</html>
+

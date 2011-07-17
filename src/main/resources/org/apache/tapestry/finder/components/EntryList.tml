@@ -1,0 +1,31 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	     xmlns:p="tapestry:parameter">
+
+<div class="left-side-list">
+	<t:form autofocus="false">
+		<div class="quick-filter" style="margin: .5em 0">
+			<t:textField t:id="filter" t:value="${filterText}" size="15"
+				t:mixin="inputPrompt" t:prompt="${message:inputPrompt}"
+				title="${message:inputPromptTitle}"/>
+		</div>
+	</t:form>
+
+	<ul class="component-list">
+		<t:loop value="entry" source="entryList">
+			<li><t:actionLink t:zone="details" t:id="entrySelection"
+					t:context="entry.id"
+					title="${entryTitle}">${entry.name}
+				</t:actionLink>
+			</li>
+		</t:loop>
+	</ul>
+
+</div>
+
+<div class="right-side-details">
+	<t:zone id="details" t:id="details">
+		<t:entryDetail t:id="entryDetail" t:entry="selectedEntry" />
+	</t:zone>
+</div>
+
+</t:container>

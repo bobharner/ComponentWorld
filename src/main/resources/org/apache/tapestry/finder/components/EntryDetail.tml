@@ -1,0 +1,53 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	     xmlns:p="tapestry:parameter">
+
+<t:if test="entry">
+	<div class="detail-box">
+		<h2>${entry.name}</h2>
+		<div class="entry-type">${entry.entryType?.name}
+			<t:actionLink t:id="editLink" id="editLink"
+				t:context="${entry.id}" class="controls"
+				style="margin-left: 2em">Edit...</t:actionLink>
+		</div>
+		<p>${entry.description}</p>
+	
+		<table class="detail-table">
+	
+			<tr><th>Docs:</th>
+				<td><a href="${entry.documentationUrl}" class="short-url external"
+						title="Go to ${entry.documentationUrl}">
+						${shortDocUrl}</a>
+				</td>
+			</tr>
+			<tr><th>Demo:</th>
+				<td><a href="${entry.demonstrationUrl}" class="short-url external"
+						title="Go to ${entry.demonstrationUrl}">
+						${shortDemoUrl}</a>
+				</td>
+			</tr>
+			<tr><th>Source:</th><td>
+					<a href="${entry.module?.url}"
+						title="${entry.module?.description}">
+							${entry.module?.name}
+					</a>
+					(${entry.sourceType?.name})
+				</td></tr>
+			<tr><th>For:</th>
+				<td>Tapestry ${entry.since?.name} +
+					<t:if test="entry.until">
+						(not ${entry.until?.name} +)
+					</t:if>
+				</td></tr>
+			<tr><th>Created:</th><td>${entry.firstAvailable}</td></tr>
+			<tr><th>License:</th><td class="license"
+						title="${entry.componentLicense?.description}">
+					<t:if test="entry.componentLicense">
+						${entry.componentLicense.name}
+						<p:else><em>unknown</em></p:else>
+					</t:if>
+				</td></tr>
+		</table>
+	</div>
+</t:if>
+
+</t:container>

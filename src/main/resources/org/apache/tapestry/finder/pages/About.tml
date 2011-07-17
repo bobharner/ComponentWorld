@@ -1,0 +1,18 @@
+<html t:type="layout" title="About This Application"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+<div class="itemheading">
+	<h2>About This Application</h2>
+	<p class="greeting">This is the ${message:applicationName},
+		a Java web application to help you search for Tapestry components.</p>
+</div>
+
+<table class="datatable">
+<tr><th>Web Framework:</th><td>Apache Tapestry</td></tr>
+<tr><th>Persistence Layer:</th><td>Apache Cayenne</td></tr>
+<tr><th>Database:</th><td>Apache Derby</td></tr>
+<tr><th>Build Tool:</th><td>Apache Maven</td></tr>
+</table>
+
+</html>
