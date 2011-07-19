@@ -19,7 +19,7 @@ import org.testng.Assert;
  * @param <T>
  * @param <ID>
  */
-public abstract class GenericServiceImpl<T, ID extends Serializable>
+public abstract class GenericServiceImpl<T extends CayenneDataObject, ID extends Serializable>
 		implements GenericService<T, ID>
 {
 
@@ -74,25 +74,39 @@ public abstract class GenericServiceImpl<T, ID extends Serializable>
 
 	/**
 	 * Performs a commit to the database of an instance of
-	 * {@link CayenneDataObject}
+	 * {@link CayenneDataObject}.
+	 * <p>
+	 * IMPORTANT NOTE: Cayenne commits all changes in the context, not just the
+	 * changes in this one entity. Most of the time this is what you want, but
+	 * if not, then you need to ensure that what you want to commit is in a
+	 * different context from what you don't.
 	 * 
-	 * @param instance
+	 * @param entity
 	 */
-	public CayenneDataObject save(CayenneDataObject instance)
+	public T save(T entity)
 	{
-		if (instance.getObjectContext() == null)
-		{
-			DataContext.createDataContext().registerNewObject(instance);
-		}
 
-		instance.getObjectContext().commitChanges();
-		return instance;
+		ObjectContext context;
+		if (entity.getObjectContext() == null)
+		{
+			System.out.println("In save(), new entity=" + entity + "\n");
+			context = DataContext.getThreadObjectContext();
+			context.registerNewObject(entity);
+		}
+		else
+		{
+			System.out.println("In save(), existing entity=" + entity + "\n");
+			context = entity.getObjectContext();
+		}
+		
+		context.commitChanges();
+		return entity;
 	}
 
 	/**
 	 * 
 	 */
-	public T save(T entity)
+	public T xsave(T entity)
 	{
 		Assert.assertNotNull(entity, "No Entity Specified");
 		T saved = null; // (T) session.merge(entity);

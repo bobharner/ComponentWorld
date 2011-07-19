@@ -188,15 +188,16 @@ table.t-data-grid thead tr th {	border: none; border-bottom: 1px solid silver; }
 div.t-beaneditor { background: white; border: 0; padding: 1em; }
 div.t-beaneditor-row label { width: 8em; text-align: left; }
 
-.left-side-list { float: left; }
+.left-side-list { float: left; width: 20%; }
 .left-side-list DIV.quick-filter { margin: .35em 0 .5em 0 !important; }
-.right-side-details { float: left; padding: .5em 1em 1em 1em; }
-ul.component-list {
+.right-side-details { float: left; padding: .5em 1em 1em 1em; width: 75%; }
+ul.entry-list {
 	list-style-type: none !important;
 	margin-left: .2em !important;
 	padding-left: .2em !important;
 }
-ul.component-list li { line-height: 1.5em; }
+ul.entry-list li { line-height: 1.5em; white-space: nowrap; }
+ul.entry-list li SPAN.from { color: #ccc; }
 
 .category-selection { margin: .7em 0 .4em; }
 .category-selection input[type=checkbox] { margin-left: .5em; } 
@@ -215,8 +216,9 @@ TABLE.detail-table .instruction {
 .itemheading .greeting { color: #666; }
 .detail-box { border: 1px solid #ccc; background: #f9f9f9; padding: 1em; }
 .detail-box H2 { padding: 0; margin: 0; float: left; }
-.detail-box DIV.entry-type { float: right; color: #666; }
-.detail-box P { clear: both; margin-top: 3em; }
+.detail-box DIV.entry-type { clear: both; color: #666; font-size: 90%}
+.detail-box DIV.controls { float: right	; }
+.detail-box P { clear: both; margin: 1em 0; font-size: 110%; }
 .detail-box A.short-url { }
 .detail-box A.external { color: blue; }
 DIV.controls DIV.popup { 
@@ -228,7 +230,15 @@ DIV.controls DIV.popup A { display: block; }
 .controls A.cancel { margin-left: .5em; }
 .detail-box A { text-decoration: none; }
 .detail-box A:hover { text-decoration: underline; }
-DIV.status-message { font-weight: bold; color: green; }
+DIV.messages { text-align: center; font-weight: bold;
+	position: absolute; left:40%; top:7em; xbackground #cfc; }
+DIV.messages DIV { text-align: center; padding: 1.3em; margin: 1em;  background: #dfc; }
+DIV.messages .success {
+	color: green; border: 1px solid #9f9;  display: inline-block;
+}
+DIV.messages .failure {
+	color: red; border: 1px solid #f99;  display: inline-block;
+}
 
 /* override Tapestry built-in CSS */
 x.datePicker { z-index: 1 !important; }

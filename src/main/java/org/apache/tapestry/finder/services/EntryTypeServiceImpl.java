@@ -44,8 +44,7 @@ public class EntryTypeServiceImpl extends
 	 */
 	public EntryType create()
 	{
-
-		ObjectContext context = DataContext.createDataContext();
+		ObjectContext context = DataContext.getThreadObjectContext();
 		return create(context);
 
 	}
@@ -100,6 +99,9 @@ public class EntryTypeServiceImpl extends
 		Ordering order = new Ordering(EntryType.SORT_BY_PROPERTY,
 					SortOrder.ASCENDING);
 		query.addOrdering(order);
+		
+		// TODO: change to use shared cache
+		// per http://cayenne.apache.org/doc30/caching-lookup-tables.html
 		return DataContext.getThreadObjectContext().performQuery(query);
 	}
 

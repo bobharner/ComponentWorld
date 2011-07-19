@@ -12,6 +12,12 @@
 
 	<table class="detail-table">
 		<tr>
+			<th><t:label for="name"/>:</th>
+			<td><t:textField t:id="name" validate="required,max=64" size="25"
+					value="entry.name"/>
+			</td>
+		</tr>
+		<tr>
 			<th><t:label for="entryTypeMenu"/>:</th>
 			<td>
 				<t:radioGroup t:id="entryTypeMenu" validate="required"
@@ -24,12 +30,6 @@
 						</t:label>
 					</t:loop>
 				</t:radioGroup>
-			</td>
-		</tr>
-		<tr>
-			<th><t:label for="name"/>:</th>
-			<td><t:textField t:id="name" validate="required,max=64" size="25"
-					value="entry.name"/>
 			</td>
 		</tr>
 		<tr>

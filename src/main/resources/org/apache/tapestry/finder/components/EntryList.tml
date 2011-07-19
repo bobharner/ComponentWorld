@@ -10,12 +10,14 @@
 		</div>
 	</t:form>
 
-	<ul class="component-list">
+	<ul class="entry-list">
 		<t:loop value="entry" source="entryList">
 			<li><t:actionLink t:zone="details" t:id="entrySelection"
 					t:context="entry.id"
 					title="${entryTitle}">${entry.name}
 				</t:actionLink>
+				<t:remove>TODO: get rid of entry.module part below</t:remove>
+				<span class="from">${entry.parent?.name} ${entry.module?.name}</span>
 			</li>
 		</t:loop>
 	</ul>

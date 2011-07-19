@@ -1,13 +1,20 @@
 <t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
-	     xmlns:p="tapestry:parameter">
+     xmlns:p="tapestry:parameter">
 
 <t:if test="entry">
 	<div class="detail-box">
 		<h2>${entry.name}</h2>
-		<div class="entry-type">${entry.entryType?.name}
+		<div class="controls">
 			<t:actionLink t:id="editLink" id="editLink"
 				t:context="${entry.id}" class="controls"
 				style="margin-left: 2em">Edit...</t:actionLink>
+		</div>
+		<div class="entry-type">A ${entry.entryType?.name.toLowerCase()} from 
+			<a href="${entry.module?.url}"
+					title="${entry.module?.description}">
+				${entry.module?.name}
+			</a>
+			(${entry.sourceType?.name})
 		</div>
 		<p>${entry.description}</p>
 	
@@ -25,13 +32,6 @@
 						${shortDemoUrl}</a>
 				</td>
 			</tr>
-			<tr><th>Source:</th><td>
-					<a href="${entry.module?.url}"
-						title="${entry.module?.description}">
-							${entry.module?.name}
-					</a>
-					(${entry.sourceType?.name})
-				</td></tr>
 			<tr><th>For:</th>
 				<td>Tapestry ${entry.since?.name} +
 					<t:if test="entry.until">

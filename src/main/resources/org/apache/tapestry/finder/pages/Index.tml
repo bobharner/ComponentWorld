@@ -16,7 +16,6 @@
 				<t:checklist t:id="sourceTypes"
 					model="sourceTypeSelectModel"
 					selected="selectedSourceTypes" encoder="sourceTypeEncoder"/>
-				...
 				<label for="rd2"><input type="checkbox" id="rd2" name="from"
 					value="rd2" checked="checked" />Tapestry Modules</label>
 				<label for="rd3"><input type="checkbox" id="rd3" name="from"
@@ -35,6 +34,15 @@
 			</noscript>
 		</t:form>
 
+	</div>
+	
+	<div class="messages">
+			<t:if test="successMessage">
+				<div class="success">${successMessage}</div>
+			</t:if>
+			<t:if test="failureMessage">
+				<div class="failure">${failureMessage}</div>
+			</t:if>
 	</div>
 
 	<t:zone id="listZone" class="list-zone">

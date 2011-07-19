@@ -16,6 +16,7 @@ package org.apache.tapestry.finder.services;
 
 import java.util.List;
 
+import org.apache.cayenne.CayenneDataObject;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.exp.Expression;
@@ -39,7 +40,7 @@ public class EntryServiceImpl extends
 	@Override
 	public ComponentEntry create()
 	{
-		ObjectContext context = DataContext.createDataContext();
+		ObjectContext context = DataContext.getThreadObjectContext();
 		return create(context);
 	}
 
@@ -97,5 +98,6 @@ public class EntryServiceImpl extends
 		return components.get(0);
 
 	}
+
 
 }
