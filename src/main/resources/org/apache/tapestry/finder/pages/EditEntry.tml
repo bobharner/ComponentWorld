@@ -14,19 +14,19 @@
 		<tr>
 			<th><t:label for="name"/>:</th>
 			<td><t:textField t:id="name" validate="required,max=64" size="25"
-					value="entry.name"/>
+					value="entry?.name"/>
 			</td>
 		</tr>
 		<tr>
 			<th><t:label for="entryTypeMenu"/>:</th>
 			<td>
 				<t:radioGroup t:id="entryTypeMenu" validate="required"
-						value="entry.entryType">
+						value="entry?.entryType">
 					<t:loop source="entryTypes" value="entryType">
 						<t:radio t:id="entryType" value="entryType" />
 						<t:label for="entryType" style="margin-right: 1em"
-							title="${entryType.description}">
-							${entryType.name}
+								title="${entryType?.description}">
+							${entryType?.name}
 						</t:label>
 					</t:loop>
 				</t:radioGroup>
@@ -35,19 +35,19 @@
 		<tr>
 			<th><t:label for="description"/>:</th>
 			<td><t:textArea t:id="description" validate="required,max=4096"
-					rows="7" cols="70" value="entry.description"/></td>
+					rows="7" cols="70" value="entry?.description"/></td>
 			<td class="instruction">${message:descriptionInstructions}</td>
 		</tr>
 		<tr>
 			<th><t:label for="documentationUrl"/>:</th>
 			<td><input t:type="textField" t:id="documentationUrl" size="91"
-					value="entry.documentationUrl"
+					value="entry?.documentationUrl"
 					validate="max=1024" /></td>
 		</tr>
 		<tr>
 			<th><t:label for="demonstrationUrl"/>:</th>
 			<td><t:textField t:id="demonstrationUrl" size="91" 
-					value="entry.demonstrationUrl"
+					value="entry?.demonstrationUrl"
 					validate="max=1024" /></td>
 		</tr>
 		<tr>
@@ -56,11 +56,11 @@
 		</tr>
 		<tr>
 			<th><t:label for="dateCreated"/>:</th>
-			<td><t:datefield t:id="dateCreated" value="entry.firstAvailable"/></td>
+			<td><t:datefield t:id="dateCreated" value="entry?.firstAvailable"/></td>
 		</tr>
 		<tr>
 			<th><t:label for="parentSelection"/>:</th>
-			<td><t:select t:id="parentSelection" value="entry.parent"
+			<td><t:select t:id="parentSelection" value="entry?.parent"
 						model="parentSelectModel" /></td>
 		</tr>
 		<tr>
@@ -70,7 +70,7 @@
 		<tr><td></td>
 			<td class="controls">
 				<t:submit value="Save"/>
-				<t:pageLink page="index" xcontext="component.id"
+				<t:pageLink page="index" context="entry"
 					class="cancel">Cancel</t:pageLink>
 			</td></tr>
 	</table>

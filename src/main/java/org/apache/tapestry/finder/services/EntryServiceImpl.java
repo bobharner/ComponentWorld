@@ -16,7 +16,6 @@ package org.apache.tapestry.finder.services;
 
 import java.util.List;
 
-import org.apache.cayenne.CayenneDataObject;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.exp.Expression;
@@ -67,9 +66,20 @@ public class EntryServiceImpl extends
 	@Override
 	public List<ComponentEntry> findParentCandidates(ComponentEntry entry)
 	{
-		// filter out entries of the same type as the given entry
-		Expression exp = ExpressionFactory.noMatchExp(
+		// TODO: need complex expression saying "all entries whose entrytype
+		// relationship refers to an entrytype with "isContainer" true
+		
+		Expression exp;
+		if (entry == null)
+		{
+			exp = null;
+		}
+		else
+		{
+			// filter out entries of the same type as the given entry
+			exp = ExpressionFactory.matchExp(
 				ComponentEntry.ENTRY_TYPE_PROPERTY, entry.getEntryType());
+		}
 
 		SelectQuery query = new SelectQuery(ComponentEntry.class, exp);
 		Ordering order = new Ordering(ComponentEntry.NAME_PROPERTY,

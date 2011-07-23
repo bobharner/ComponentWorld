@@ -23,11 +23,13 @@ import org.apache.tapestry.finder.services.EntryTypeService;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.InjectPage;
+import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.SelectModelFactory;
+import org.slf4j.Logger;
 
 /**
  * A Tapestry Page for editing an entry or creating a new one.  For editing an
@@ -57,11 +59,7 @@ public class EditEntry
 	@Persist(PersistenceConstants.FLASH)
 	private String statusMessage;
 
-	@Persist
-	// TODO: remove @Persist and use activation context instead
-	private Integer entryId;
-
-	@Persist
+	@PageActivationContext // tell Tapestry to generate onActivate() & onPassivate()
 	private ComponentEntry entry;
 
 	@SuppressWarnings("unused")
@@ -85,6 +83,9 @@ public class EditEntry
 
 	@Inject
 	private EntryService entryService;
+	
+	@Inject
+	private Logger logger;
 
 	@Inject
 	private EntryTypeService entryTypeService;
@@ -108,18 +109,6 @@ public class EditEntry
 	 */
 	void onPrepareForRender()
 	{
-		// create an empty ComponentEntry if needed
-		if (entryId == null || entry == null)
-		{
-			entry = entryService.create();
-			// TODO: set disabled if user not logged in or insufficient authority
-			entry.setEnabled(true);
-		}
-		else
-		{
-			entry = entryService.findById(entryId);
-		}
-
 		// populate the list of entry types for the radio button group
 		entryTypes = entryTypeService.findAll();
 
@@ -156,6 +145,7 @@ public class EditEntry
 	Object onSuccessFromEditForm()
 	{
 		entryService.save(entry);
+		logger.info("Saved " + entry.getName());
 
 		statusMessage = "Success";
 		indexPage.setSelectedEntry(entry);
@@ -166,11 +156,6 @@ public class EditEntry
 	public void setEntry(ComponentEntry entry)
 	{
 		this.entry = entry;
-	}
-
-	public void setEntryId(Integer entryId)
-	{
-		this.entryId = entryId;
 	}
 
 	public void setType(EntryType type)

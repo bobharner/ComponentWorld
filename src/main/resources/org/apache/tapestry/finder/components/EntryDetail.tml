@@ -5,9 +5,8 @@
 	<div class="detail-box">
 		<h2>${entry.name}</h2>
 		<div class="controls">
-			<t:actionLink t:id="editLink" id="editLink"
-				t:context="${entry.id}" class="controls"
-				style="margin-left: 2em">Edit...</t:actionLink>
+			<t:pageLink page="editentry" style="margin-left: 2em"
+				t:context="entry" class="controls">Edit...</t:pageLink>
 		</div>
 		<div class="entry-type">A ${entry.entryType?.name.toLowerCase()} from 
 			<a href="${entry.module?.url}"

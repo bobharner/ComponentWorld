@@ -76,7 +76,7 @@ public class Layout
 	 */
 	Object onActionFromNewEntry() {
 
-		//editEntry.setEntryId(null); // ensure a blank form
+		editEntry.setEntry(null); // ensure a blank form
 		return editEntry;
 	}
 }

@@ -16,10 +16,4 @@ public class ModuleEntry extends _ModuleEntry {
 
 	private static final long serialVersionUID = -4277745678424295852L;
 
-	/**
-	 * A no-op (Manually setting the ID is prohibited)
-	 */
-	@Override
-	public void setId(Long id) {
-	}
 }

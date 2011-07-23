@@ -59,8 +59,8 @@ public class EntryDetail
 	 * 
 	 * @return the current page (redraw self)
 	 */
-	Object onActionFromEditLink(String id) {
-		editEntry.setEntryId(Integer.parseInt(id));
+	Object onActionFromEditLink(ComponentEntry entry) {
+		editEntry.setEntry(entry);
 		return editEntry;
 	}
 }

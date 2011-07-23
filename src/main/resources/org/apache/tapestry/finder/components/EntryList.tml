@@ -13,7 +13,7 @@
 	<ul class="entry-list">
 		<t:loop value="entry" source="entryList">
 			<li><t:actionLink t:zone="details" t:id="entrySelection"
-					t:context="entry.id"
+					t:context="entry"
 					title="${entryTitle}">${entry.name}
 				</t:actionLink>
 				<t:remove>TODO: get rid of entry.module part below</t:remove>

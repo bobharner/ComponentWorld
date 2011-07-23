@@ -55,15 +55,12 @@ public abstract class _License extends CayenneDataObject {
     }
 
 
-    public void addToModules(ModuleEntry obj) {
-        addToManyTarget("modules", obj, true);
+    public void setModules(ModuleEntry modules) {
+        setToOneTarget("modules", modules, true);
     }
-    public void removeFromModules(ModuleEntry obj) {
-        removeToManyTarget("modules", obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<ModuleEntry> getModules() {
-        return (List<ModuleEntry>)readProperty("modules");
+
+    public ModuleEntry getModules() {
+        return (ModuleEntry)readProperty("modules");
     }
 
 

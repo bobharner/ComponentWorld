@@ -44,7 +44,7 @@
 	    <t:pagelink page="index">Component Finder</t:pagelink>
 	</div>
 	<div class="controls">
-		<t:actionLink t:id="newEntry" id="newEntry">Create a New Entry...</t:actionLink>
+		<t:pageLink page="editentry">Create a New Entry...</t:pageLink>
 	</div>
   </div>
 
