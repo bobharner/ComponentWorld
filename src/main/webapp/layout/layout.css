@@ -231,7 +231,7 @@ DIV.controls DIV.popup A { display: block; }
 .detail-box A { text-decoration: none; }
 .detail-box A:hover { text-decoration: underline; }
 DIV.messages { text-align: center; font-weight: bold;
-	position: absolute; left:40%; top:7em; xbackground #cfc; }
+	position: absolute; left:40%; top:17em; xbackground #cfc; }
 DIV.messages DIV { text-align: center; padding: 1.3em; margin: 1em;  background: #dfc; }
 DIV.messages .success {
 	color: green; border: 1px solid #9f9;  display: inline-block;

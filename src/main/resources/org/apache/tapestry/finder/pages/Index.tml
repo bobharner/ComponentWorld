@@ -36,7 +36,7 @@
 
 	</div>
 	
-	<div class="messages">
+	<div class="messages" id="messagebox">
 			<t:if test="successMessage">
 				<div class="success">${successMessage}</div>
 			</t:if>
@@ -48,5 +48,11 @@
 	<t:zone id="listZone" class="list-zone">
 		<t:entryList selected="selectedEntry" />
 	</t:zone>
+	
+<script type="text/javascript" language="javascript">
+  // <![CDATA[
+  $('messagebox').blindUp({ duration: 1.5, delay: 1 });
+  // ]]>
+</script>
 
 </html>
