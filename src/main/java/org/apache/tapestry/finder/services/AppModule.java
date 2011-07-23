@@ -26,7 +26,6 @@ import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
-import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
@@ -161,35 +160,14 @@ public class AppModule
 	/**
 	 * Contribute ValueEncoders for our most important entities so that Tapestry
 	 * will automatically use them every time a ValueEncoder is needed for items
-	 * of these types (e.g. for the Select component)
+	 * of these types (e.g. for the Select component and when using
+	 * @PageActivationContext)
 	 */
-
-    /**
-	 * ValueEncoder for ComponentEntry
-	 */
-
-	@Contribute(ValueEncoderSource.class)
-	public static void setupEntryEncoder(
-			MappedConfiguration<Class<ComponentEntry>, ValueEncoderFactory<ComponentEntry>> configuration)
+    @SuppressWarnings("unchecked")
+    public static void contributeValueEncoderSource(MappedConfiguration<Class, ValueEncoderFactory> configuration)
 	{
 		configuration.addInstance(ComponentEntry.class, ComponentEntryEncoder.class);
-	}
-	/**
-	 * ValueEncoder for EntryType
-	 */
-	@Contribute(ValueEncoderSource.class)
-	public static void setupEntryTypeEncoder(
-			MappedConfiguration<Class<EntryType>, ValueEncoderFactory<EntryType>> configuration)
-	{
 		configuration.addInstance(EntryType.class, EntryTypeEncoder.class);
-	}
-	/**
-	 * ValueEncoder for SourceType
-	 */
-	@Contribute(ValueEncoderSource.class)
-	public static void setupSourceTypeEncoder(
-			MappedConfiguration<Class<SourceType>, ValueEncoderFactory<SourceType>> configuration)
-	{
 		configuration.addInstance(SourceType.class, SourceTypeEncoder.class);
 	}
 
