@@ -81,6 +81,8 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         	<type>jar</type>
         	<scope>compile</scope>
         </dependency>
+                
+        
     </dependencies>
     <description>A Java web application for helping users find Tapestry components.</description>
     <url>http://localhost:8080/</url>
@@ -150,6 +152,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         	<name>SaiWai repo for Tapestry5-Cayenne module</name>
         	<url>http://maven.saiwai-solutions.com/</url>
         </repository>
+            
     </repositories>
 
     <pluginRepositories>
