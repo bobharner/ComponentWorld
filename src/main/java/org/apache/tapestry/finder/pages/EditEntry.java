@@ -14,6 +14,7 @@
  */
 package org.apache.tapestry.finder.pages;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.tapestry.finder.entities.ComponentEntry;
@@ -22,11 +23,14 @@ import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry.finder.services.EntryTypeService;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.SelectModelFactory;
 import org.slf4j.Logger;
@@ -53,7 +57,16 @@ public class EditEntry
 
 	@Property
 	private String demonstrationUrl;
-
+	
+	@Property
+	private Date firstAvailable;
+	
+	@Property
+	private ComponentEntry parent;
+	
+	@Property
+	private Boolean enabled;
+	
 	@SuppressWarnings("unused")
 	@Property
 	@Persist(PersistenceConstants.FLASH)
@@ -84,6 +97,12 @@ public class EditEntry
 	@Inject
 	private EntryService entryService;
 	
+	@Component
+	private Form editForm;
+	
+	@Inject
+	private Messages messages;
+	
 	@Inject
 	private Logger logger;
 
@@ -104,11 +123,25 @@ public class EditEntry
 	}
 
 	/**
-	 * As an event handler, respond to the form's PREPARE_FOR_RENDER event,
-	 * doing setup actions prior to rendering the form.
+	 * Handle the form's PREPARE_FOR_RENDER event: Do setup actions
+	 * prior to rendering the form.
 	 */
 	void onPrepareForRender()
 	{
+		if (entry != null)
+		{
+			// copy to temporary properties (so we don't pollute our context
+			// with potentially invalid/incomplete entities)
+			this.type = entry.getEntryType();
+			this.name = entry.getName();
+			this.description = entry.getDescription();
+			this.documentationUrl = entry.getDocumentationUrl();
+			this.demonstrationUrl = entry.getDemonstrationUrl();
+			this.firstAvailable = entry.getFirstAvailable();
+			this.parent = entry.getParent();
+			this.enabled = entry.getEnabled();
+		}
+		
 		// populate the list of entry types for the radio button group
 		entryTypes = entryTypeService.findAll();
 
@@ -121,30 +154,53 @@ public class EditEntry
 	}
 
 	/**
-	 * As an event handler, respond to the "Validate" event from the form (after
-	 * per-field validation succeeded) by doing any cross-field validation.
+	 * Handle the form's "Validate" event (after per-field
+	 * validation succeeded): Do the cross-field validation.
 	 */
 	void onValidateFromEditForm()
 	{
-		System.out.println("In onValidate, docurl=" + documentationUrl + ", demourl=" + demonstrationUrl + "\n");
-
 		// We must have at least one URL
-/*		if ((documentationUrl == null) && (demonstrationUrl == null))
+		if ((documentationUrl == null) && (demonstrationUrl == null))
 		{
 			// record an error, which also tells Tapestry to redisplay the form
 			editForm.recordError(messages.get("some-url-required"));
-		}*/
+		}
 	}
 
 	/**
-	 * As an event handler, respond to the "Success" event from the form
-	 * (after form validation succeeded) by saving changes to the database.
+	 * Handle the form's "Success" event (after form validation
+	 * succeeded): Save changes to the database.
 	 * 
 	 * @return the saved object
 	 */
 	Object onSuccessFromEditForm()
 	{
-		entryService.save(entry);
+		if (entry == null)
+		{
+			// create a new, empty entry object
+			entry = entryService.create();
+			enabled = true; // TODO - set enabled based on whether user is privileged
+		}
+
+		// copy the submitted form values into the (new or existing) object.
+		// Inserting the values *after* validation ensures that we don't
+		// pollute our entities with invalid objects.
+		entry.setEntryType(this.type);
+		entry.setName(this.name);
+		entry.setDescription(this.description);
+		entry.setDocumentationUrl(this.documentationUrl);
+		entry.setDemonstrationUrl(this.demonstrationUrl);
+		entry.setFirstAvailable(this.firstAvailable);
+		entry.setParent(this.parent);
+		entry.setEnabled(enabled);
+		entry.setEnabled(true);
+
+		// save to the database
+		entry = entryService.save(entry);
+		
+		// TODO: if user was unprivileged, send e-mail notifications about
+		// entry needing to be approved/enabled
+
 		logger.info("Saved " + entry.getName());
 
 		statusMessage = "Success";
@@ -168,7 +224,7 @@ public class EditEntry
 	 * page renders
 	 */
 	@SetupRender
-	void setupRender()
+	void initPage()
 	{
 		if ((entry == null) || (entry.getId() == null))
 		{
