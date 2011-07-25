@@ -46,6 +46,10 @@ public class SourceTypeEncoder implements ValueEncoder<SourceType>,
 
     @Override
     public SourceType toValue(String id) { 
+    	if (id == null)
+    	{
+    		return null;
+    	}
         // find the componentEntry object of the given ID in the database
         try {
 			return sourceTypeService.findById(Integer.parseInt(id));

@@ -46,6 +46,10 @@ public class EntryTypeEncoder implements ValueEncoder<EntryType>,
 
     @Override
     public EntryType toValue(String id) { 
+    	if (id == null)
+    	{
+    		return null;
+    	}
         // find the componentEntry object of the given ID in the database
         try {
 			return entryTypeService.findById(Integer.parseInt(id));
