@@ -1,10 +1,10 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.tapestry</groupId>
-    <artifactId>finder</artifactId>
+    <artifactId>componentSearch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Component Finder</name>
+    <name>Tapestry Component Search</name>
     <dependencies>
         <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the tests)
 will fail, preventing Maven from packaging the WAR. Tapestry includes a large number
@@ -84,7 +84,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                 
         
     </dependencies>
-    <description>A Java web application for helping users find Tapestry components.</description>
+    <description>A Java web application for helping Tapestry users find Tapestry components.</description>
     <url>http://localhost:8080/</url>
     <inceptionYear>6/22/2011</inceptionYear>
     <developers>

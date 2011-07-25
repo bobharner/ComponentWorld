@@ -41,7 +41,7 @@
   	<div class="links">
 	    <A href="${message:TapestryDocUrl}" title="Apache Tapestry">Apache Tapestry</A>
 	    &gt;
-	    <t:pagelink page="index">Component Finder</t:pagelink>
+	    <t:pagelink page="index">${message:applicationShortName}</t:pagelink>
 	</div>
 	<div class="controls">
 		<t:pageLink page="editentry">Create a New Entry...</t:pageLink>
