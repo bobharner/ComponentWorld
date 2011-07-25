@@ -23,7 +23,6 @@ import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.services.EntryTypeService;
 import org.apache.tapestry.finder.services.SourceTypeService;
-import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.CleanupRender;
@@ -86,7 +85,7 @@ public class Index
 		return selectedEntry;
 	}
 	
-	public ValueEncoder getSourceTypeEncoder()
+	public ValueEncoder<SourceType> getSourceTypeEncoder()
     {
         return new SourceTypeEncoder();
     }
