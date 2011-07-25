@@ -14,7 +14,7 @@ org.eclipse.jetty.servlet.WebApplicationContext object
 		<Arg>jdbc/ComponentFinderDB</Arg>
 		<Arg>
 			<New class="org.apache.commons.dbcp.BasicDataSource">
-				<Set name="Url">jdbc:derby:/derby/databases/componentFinder;create=true</Set>
+				<Set name="Url">jdbc:derby:database/componentSearchDB</Set>
 				<Set name="DriverClassName">org.apache.derby.jdbc.EmbeddedDriver</Set>
 				<Set name="Username">user</Set>
 				<Set name="Password">user</Set>

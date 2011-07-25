@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <domains project-version="3.0.0.1">
-<domain name="ComponentFinderDomain">
-	<map name="ComponentFinderMap" location="ComponentFinderMap.map.xml"/>
+<domain name="ComponentSearchDomain">
+	<map name="ComponentSearchMap" location="ComponentSearchMap.map.xml"/>
 
-	<node name="ComponentFinderNode"
-		 datasource="ComponentFinderNode.driver.xml"
+	<node name="ComponentSearchNode"
+		 datasource="ComponentSearchNode.driver.xml"
 		 factory="org.apache.cayenne.conf.DriverDataSourceFactory"
 		 schema-update-strategy="org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy">
-			<map-ref name="ComponentFinderMap"/>
+			<map-ref name="ComponentSearchMap"/>
 	 </node>
 </domain>
 </domains>
