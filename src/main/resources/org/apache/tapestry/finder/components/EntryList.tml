@@ -16,8 +16,7 @@
 					t:context="entry"
 					title="${entryTitle}">${entry.name}
 				</t:actionLink>
-				<t:remove>TODO: get rid of entry.module part below</t:remove>
-				<span class="from">${entry.parent?.name} ${entry.module?.name}</span>
+				<span class="from">${entry.parent?.name}</span>
 			</li>
 		</t:loop>
 	</ul>
