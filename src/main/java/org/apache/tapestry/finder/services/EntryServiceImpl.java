@@ -77,7 +77,7 @@ public class EntryServiceImpl extends
 		else
 		{
 			// filter out entries of the same type as the given entry
-			exp = ExpressionFactory.matchExp(
+			exp = ExpressionFactory.noMatchExp(
 				ComponentEntry.ENTRY_TYPE_PROPERTY, entry.getEntryType());
 		}
 
