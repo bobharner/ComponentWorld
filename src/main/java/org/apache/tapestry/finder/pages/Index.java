@@ -27,6 +27,7 @@ import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.CleanupRender;
+import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -49,6 +50,7 @@ public class Index
 	@Property
 	private List<SourceType> selectedSourceTypes;
 	
+	@PageActivationContext
 	private ComponentEntry selectedEntry;
 
 	@SuppressWarnings("unused")
