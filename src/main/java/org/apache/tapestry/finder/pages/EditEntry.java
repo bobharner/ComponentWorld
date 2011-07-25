@@ -14,13 +14,14 @@
  */
 package org.apache.tapestry.finder.pages;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.tapestry.finder.entities.ComponentEntry;
 import org.apache.tapestry.finder.entities.EntryType;
+import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry.finder.services.EntryTypeService;
+import org.apache.tapestry.finder.services.SourceTypeService;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.Component;
@@ -42,13 +43,14 @@ import org.slf4j.Logger;
  */
 public class EditEntry
 {
-	private EntryType type;
+	private EntryType type;	// selected entry type
 
-	@SuppressWarnings("unused")
+	@Property
+	private SourceType source; // selected source type
+
 	@Property
 	private String name;
 
-	@SuppressWarnings("unused")
 	@Property
 	private String description;
 
@@ -57,9 +59,6 @@ public class EditEntry
 
 	@Property
 	private String demonstrationUrl;
-	
-	@Property
-	private Date firstAvailable;
 	
 	@Property
 	private ComponentEntry parent;
@@ -89,7 +88,15 @@ public class EditEntry
 
 	@SuppressWarnings("unused")
 	@Property
+	private List<SourceType> sourceTypes;
+
+	@SuppressWarnings("unused")
+	@Property
 	private EntryType entryType; // used in a loop
+
+	@SuppressWarnings("unused")
+	@Property
+	private SourceType sourceType; // used in a loop
 
 	@Inject
 	private SelectModelFactory selectModelFactory;
@@ -108,6 +115,9 @@ public class EditEntry
 
 	@Inject
 	private EntryTypeService entryTypeService;
+
+	@Inject
+	private SourceTypeService sourceTypeService;
 
 	@InjectPage
 	private Index indexPage;
@@ -133,17 +143,18 @@ public class EditEntry
 			// copy to temporary properties (so we don't pollute our context
 			// with potentially invalid/incomplete entities)
 			this.type = entry.getEntryType();
+			this.source = entry.getSourceType();
 			this.name = entry.getName();
 			this.description = entry.getDescription();
 			this.documentationUrl = entry.getDocumentationUrl();
 			this.demonstrationUrl = entry.getDemonstrationUrl();
-			this.firstAvailable = entry.getFirstAvailable();
 			this.parent = entry.getParent();
 			this.enabled = entry.getEnabled();
 		}
 		
-		// populate the list of entry types for the radio button group
+		// populate lists of entry types & source types for radio button groups
 		entryTypes = entryTypeService.findAll();
+		sourceTypes = sourceTypeService.findAll();
 
 		// populate the list of components for the "parent" select menu
 		List<ComponentEntry> parents = entryService.findParentCandidates(entry);
@@ -158,7 +169,7 @@ public class EditEntry
 	 * validation succeeded): Do the cross-field validation.
 	 */
 	void onValidateFromEditForm()
-	{
+	{		
 		// We must have at least one URL
 		if ((documentationUrl == null) && (demonstrationUrl == null))
 		{
@@ -179,21 +190,22 @@ public class EditEntry
 		{
 			// create a new, empty entry object
 			entry = entryService.create();
-			enabled = true; // TODO - set enabled based on whether user is privileged
 		}
+		enabled = true; // TODO - set enabled based on whether user is privileged
 
 		// copy the submitted form values into the (new or existing) object.
 		// Inserting the values *after* validation ensures that we don't
 		// pollute our entities with invalid objects.
 		entry.setEntryType(this.type);
+		entry.setSourceType(this.source);
 		entry.setName(this.name);
 		entry.setDescription(this.description);
 		entry.setDocumentationUrl(this.documentationUrl);
 		entry.setDemonstrationUrl(this.demonstrationUrl);
-		entry.setFirstAvailable(this.firstAvailable);
 		entry.setParent(this.parent);
 		entry.setEnabled(enabled);
-		entry.setEnabled(true);
+
+		logger.info("entry " + entry.getName() + " enabled: " + entry.getEnabled());
 
 		// save to the database
 		entry = entryService.save(entry);
@@ -201,7 +213,8 @@ public class EditEntry
 		// TODO: if user was unprivileged, send e-mail notifications about
 		// entry needing to be approved/enabled
 
-		logger.info("Saved " + entry.getName());
+		logger.info("Saved " + entry.getName() +
+					(entry.getEnabled() ? " (enabled)" : " (disabled)"));
 
 		statusMessage = "Success";
 		indexPage.setSelectedEntry(entry);

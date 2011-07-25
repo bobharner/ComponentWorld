@@ -42,6 +42,8 @@
 			<th><t:label for="documentationUrl"/>:</th>
 			<td><input t:type="textField" t:id="documentationUrl" size="91"
 					value="documentationUrl" validate="max=1024" /></td>
+			<td class="instruction" rowspan="2" style="vertical-align: middle">
+				${message:urlInstructions}</td>
 		</tr>
 		<tr>
 			<th><t:label for="demonstrationUrl"/>:</th>
@@ -53,13 +55,24 @@
 			<td>TODO: drop-down menu</td>
 		</tr>
 		<tr>
-			<th><t:label for="dateCreated"/>:</th>
-			<td><t:datefield t:id="dateCreated" value="firstAvailable"/></td>
-		</tr>
-		<tr>
 			<th><t:label for="parentSelection"/>:</th>
 			<td><t:select t:id="parentSelection" value="parent"
 						model="parentSelectModel" /></td>
+		</tr>
+				<tr>
+			<th><t:label for="sourceTypeMenu"/>:</th>
+			<td colspan="2">
+				<t:radioGroup t:id="sourceTypeMenu" validate="required"
+						value="source">
+					<t:loop source="sourceTypes" value="sourceType">
+						<t:radio t:id="sourceType" value="sourceType" />
+						<t:label for="sourceType" style="margin-right: 1em"
+								title="${sourceType?.description}">
+							${sourceType?.name}
+						</t:label>
+					</t:loop>
+				</t:radioGroup>
+			</td>
 		</tr>
 		<tr>
 			<th>License:</th>
