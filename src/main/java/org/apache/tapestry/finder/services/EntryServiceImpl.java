@@ -66,8 +66,8 @@ public class EntryServiceImpl extends
 	@Override
 	public List<ComponentEntry> findParentCandidates(ComponentEntry entry)
 	{
-		// TODO: need complex expression saying "all entries whose entrytype
-		// relationship refers to an entrytype with "isContainer" true
+		// TODO: need complex expression saying "all entries whose EntryType
+		// relationship refers to an EntryType with "isContainer" true
 		
 		Expression exp;
 		if (entry == null)
