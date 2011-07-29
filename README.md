@@ -11,6 +11,8 @@ at https://tapestry.apache.org, and the hope is that it will eventually
 be running under that URL and be seamlessly integrated into the official
 Tapestry documentation.
 
+See the screenshots in the [wiki] (https://github.com/bobharner/Tapestry-finder/wiki)
+
 Goals
 =====
 
