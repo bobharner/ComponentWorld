@@ -215,7 +215,15 @@ TABLE.detail-table .instruction {
 	padding-left: .7em;
 }
 .itemheading .greeting { color: #666; }
-.detail-box { border: 1px solid #ccc; background: #f9f9f9; padding: 1em; }
+DIV.detail-box {
+	border: 1px solid #ccc;
+	background: #f9f9f9;
+	padding: 1em;
+	-moz-box-shadow: 0 0 28px #539126;
+	-webkit-box-shadow: 0 0 28px #539126;
+	box-shadow: 0 0 28px #539126;
+	border-radius: 15px;
+}
 .detail-box H2 { padding: 0; margin: 0; float: left; }
 .detail-box DIV.entry-type { clear: both; color: #666; font-size: 90%}
 .detail-box DIV.controls { float: right	; }
