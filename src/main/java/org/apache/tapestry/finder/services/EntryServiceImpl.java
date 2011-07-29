@@ -24,6 +24,8 @@ import org.apache.cayenne.query.Ordering;
 import org.apache.cayenne.query.SelectQuery;
 import org.apache.cayenne.query.SortOrder;
 import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.EntryType;
+import org.apache.tapestry.finder.entities.SourceType;
 
 /**
  * Service for all {@link ComponentEntry} related functionality.
@@ -43,10 +45,15 @@ public class EntryServiceImpl extends
 		return create(context);
 	}
 
-	@Override
-	public ComponentEntry create(ObjectContext context)
+	/**
+	 * Create a new {@link ComponentEntry} object, attached to the given
+	 * Cayenne ObjectContext but not yet persisted to the database
+	 * 
+	 * @param context
+	 * @return the new object
+	 */
+	private ComponentEntry create(ObjectContext context)
 	{
-
 		ComponentEntry componentEntry = context.newObject(ComponentEntry.class);
 		return componentEntry;
 	}
@@ -64,11 +71,36 @@ public class EntryServiceImpl extends
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<ComponentEntry> findByType(EntryType entryType,
+			List<SourceType> sourceTypes)
+	{
+		Expression exp;
+		if (entryType == null)
+		{
+			exp = null;
+		}
+		else
+		{
+			// filter out entries of the same type as the given entry
+			exp = ExpressionFactory.matchExp(
+				ComponentEntry.ENTRY_TYPE_PROPERTY, entryType);
+		}
+		// TODO: add expression for matching any of the sourceType values
+
+		SelectQuery query = new SelectQuery(ComponentEntry.class, exp);
+		Ordering order = new Ordering(ComponentEntry.NAME_PROPERTY,
+					SortOrder.ASCENDING_INSENSITIVE);
+		query.addOrdering(order);
+		return DataContext.getThreadObjectContext().performQuery(query);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<ComponentEntry> findParentCandidates(ComponentEntry entry)
 	{
 		// TODO: need complex expression saying "all entries whose EntryType
 		// relationship refers to an EntryType with "isContainer" true
-		
+
 		Expression exp;
 		if (entry == null)
 		{

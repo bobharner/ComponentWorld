@@ -16,12 +16,16 @@ package org.apache.tapestry.finder.services;
 
 import java.io.IOException;
 
-import org.apache.tapestry.finder.encoders.ComponentEntryEncoder;
+import org.apache.tapestry.finder.encoders.EntryEncoder;
 import org.apache.tapestry.finder.encoders.EntryTypeEncoder;
+import org.apache.tapestry.finder.encoders.LicenseEncoder;
 import org.apache.tapestry.finder.encoders.SourceTypeEncoder;
+import org.apache.tapestry.finder.encoders.TapestryVersionEncoder;
 import org.apache.tapestry.finder.entities.ComponentEntry;
 import org.apache.tapestry.finder.entities.EntryType;
+import org.apache.tapestry.finder.entities.License;
 import org.apache.tapestry.finder.entities.SourceType;
+import org.apache.tapestry.finder.entities.TapestryVersion;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
@@ -48,14 +52,14 @@ public class AppModule
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
 
+    	binder.bind(TapestryVersionService.class, TapestryVersionServiceImpl.class);
     	binder.bind(EntryService.class, EntryServiceImpl.class);
-    	binder.bind(ModuleEntryService.class, ModuleEntryServiceImpl.class);
 		binder.bind(UserService.class, UserServiceImpl.class);
 		binder.bind(RoleService.class, RoleServiceImpl.class);
 		binder.bind(EntryTypeService.class, EntryTypeServiceImpl.class);
 		binder.bind(SourceTypeService.class, SourceTypeServiceImpl.class);
+		binder.bind(LicenseService.class, LicenseServiceImpl.class);
     }
-    
     
     /**
      * Contribute to ApplicationDefaults
@@ -165,9 +169,11 @@ public class AppModule
     @SuppressWarnings("unchecked")
     public static void contributeValueEncoderSource(MappedConfiguration<Class, ValueEncoderFactory> configuration)
 	{
-		configuration.addInstance(ComponentEntry.class, ComponentEntryEncoder.class);
+		configuration.addInstance(ComponentEntry.class, EntryEncoder.class);
 		configuration.addInstance(EntryType.class, EntryTypeEncoder.class);
 		configuration.addInstance(SourceType.class, SourceTypeEncoder.class);
+		configuration.addInstance(TapestryVersion.class, TapestryVersionEncoder.class);
+		configuration.addInstance(License.class, LicenseEncoder.class);
 	}
 
 }

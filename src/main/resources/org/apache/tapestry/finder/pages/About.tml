@@ -4,14 +4,16 @@
 
 <div class="itemheading">
 	<h2>About This Application</h2>
-	<p class="greeting">This is the ${message:applicationName},
+	<p class="greeting">This is ${message:applicationName},
 		a Java web application to help you search for Tapestry components.</p>
 </div>
 
 <table class="datatable">
 <tr><th>Web Framework:</th><td>Apache Tapestry</td></tr>
-<tr><th>Persistence Layer:</th><td>Apache Cayenne</td></tr>
+<tr><th>IoC Container:</th><td>Apache Tapestry IoC</td></tr>
+<tr><th>O-R Mapping:</th><td>Apache Cayenne</td></tr>
 <tr><th>Database:</th><td>Apache Derby</td></tr>
+<tr><th>Security:</th><td>Apache Shiro</td></tr>
 <tr><th>Build Tool:</th><td>Apache Maven</td></tr>
 </table>
 

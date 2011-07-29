@@ -16,25 +16,16 @@ package org.apache.tapestry.finder.services;
 
 import java.util.List;
 
-import org.apache.cayenne.ObjectContext;
 import org.apache.tapestry.finder.entities.ComponentEntry;
-
+import org.apache.tapestry.finder.entities.EntryType;
+import org.apache.tapestry.finder.entities.SourceType;
 
 /**
- * Service for all {@link ComponentEntry} related functionality.
- * See also {@link GenericService}
+ * Service for creating, managing and searching for {@link ComponentEntry}
+ * entities. See also {@link GenericService}
  * 
  */
 public interface EntryService extends GenericService<ComponentEntry, Integer> {
-
-	/**
-	 * Create a new {@link ComponentEntry} object, attached to the given
-	 * Cayenne ObjectContext but not yet persisted to the database\
-	 * 
-	 * @param context
-	 * @return the new object
-	 */
-	public ComponentEntry create(ObjectContext context);
 	
 	/**
 	 * Create a new {@link ComponentEntry} object, not yet persisted to the
@@ -51,6 +42,18 @@ public interface EntryService extends GenericService<ComponentEntry, Integer> {
 	 * @return the list of components
 	 */
 	public List<ComponentEntry> findAll();
+
+	/**
+	 * Find all {@link ComponentEntry}s that match the given {@link EntryType}
+	 * and at least one of the given {@link SourceType}s.
+	 *  
+	 * @param entryType the EntryType to match, or null to match all
+	 * @param sourceTypes list of source types to match on, or null to match all
+	 * @return a list of matching ComponentEntry objects, in alphabetical order
+	 * by name
+	 */
+	public List<ComponentEntry> findByType(EntryType entryType,
+			List<SourceType> sourceTypes);
 
 	/**
 	 * Find all {@link ComponentEntry}s that are eligible to be parents of the

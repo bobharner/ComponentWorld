@@ -17,6 +17,8 @@ package org.apache.tapestry.finder.components;
 import java.util.List;
 
 import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.EntryType;
+import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Parameter;
@@ -42,6 +44,14 @@ public class EntryList
 	@Parameter
 	private ComponentEntry selectedEntry;
 
+	@SuppressWarnings("unused")
+	@Parameter
+	private EntryType entryType;
+
+	@SuppressWarnings("unused")
+	@Parameter
+	private List<SourceType> sourceTypes;
+
 	@Property
 	private ComponentEntry entry; // used in a loop
 
@@ -57,6 +67,18 @@ public class EntryList
 
 	@InjectComponent
 	private Object entryDetail;
+	
+	/**
+	 * @return the CSS class of current entry (depends on whether it is enabled)
+	 */
+	public String getEntryCssClass()
+	{
+		if(entry.getEnabled())
+		{
+			return "";
+		}
+		return "disabled";
+	}
 
 	/**
 	 * @return a descriptive title for the current entry, suitable for a
@@ -73,7 +95,7 @@ public class EntryList
 	}
 
 	/**
-	 * Initializations needed when this component is loaded the first time
+	 * Initializations needed each time this component is about to be rendered
 	 */
 	@SuppressWarnings("unused")
 	@SetupRender
@@ -81,6 +103,7 @@ public class EntryList
 	{
 		filterText = "";
 		entryList = entryService.findAll();
+		//entryList = entryService.findByType(entryType, sourceTypes);
 	}
 
 	/**

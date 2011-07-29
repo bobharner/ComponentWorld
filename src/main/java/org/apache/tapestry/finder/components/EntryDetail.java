@@ -15,9 +15,7 @@
 package org.apache.tapestry.finder.components;
 
 import org.apache.tapestry.finder.entities.ComponentEntry;
-import org.apache.tapestry.finder.pages.EditEntry;
 import org.apache.tapestry.finder.utils.UrlUtils;
-import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
@@ -43,9 +41,6 @@ public class EntryDetail
 	@Property
 	private String shortDemoUrl; // shortened version of entry's demo URL
 	
-	@InjectPage
-	private EditEntry editEntry;
-
 	@SetupRender
 	public void init() {
 		if (entry != null) {
@@ -53,14 +48,13 @@ public class EntryDetail
 			shortDemoUrl = UrlUtils.shorten(entry.getDemonstrationUrl(), 50);
 		}
 	}
-
-	/**
-	 * Handle the click from the "Edit" link
-	 * 
-	 * @return the current page (redraw self)
-	 */
-	Object onActionFromEditLink(ComponentEntry entry) {
-		editEntry.setEntry(entry);
-		return editEntry;
+	
+	public Boolean getHasVersions()
+	{
+		if ((entry.getSince() != null) || (entry.getUntil() != null))
+		{
+			return true;
+		}
+		return false;
 	}
 }

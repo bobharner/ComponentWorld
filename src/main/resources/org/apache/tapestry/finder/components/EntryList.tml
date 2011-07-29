@@ -4,17 +4,23 @@
 <div class="left-side-list">
 	<t:form autofocus="false">
 		<div class="quick-filter" style="margin: .5em 0">
-			<t:textField t:id="filter" t:value="${filterText}" size="15"
-				t:mixin="inputPrompt" t:prompt="${message:inputPrompt}"
-				title="${message:inputPromptTitle}"/>
+			<t:listFilter listSelector="ul.entry-list li" counterId="counter"
+					title="${message:inputPromptTitle}" />
+			<span class="counter"></span>
+			<t:remove>
+				TODO: remove item below, but put inputPrompt on listFilter
+				<t:textField t:id="filter" t:value="${filterText}" size="15"
+					t:mixin="inputPrompt" t:prompt="${message:inputPrompt}"
+					/>
+			</t:remove>
 		</div>
 	</t:form>
 
 	<ul class="entry-list">
 		<t:loop value="entry" source="entryList">
 			<li><t:actionLink t:zone="details" t:id="entrySelection"
-					t:context="entry"
-					title="${entryTitle}">${entry.name}
+					t:context="entry" title="${entryTitle}"
+					class="${entryCssClass}">${entry.name}
 				</t:actionLink>
 				<span class="from">${entry.parent?.name}</span>
 			</li>

@@ -36,12 +36,7 @@ public class SourceTypeServiceImpl extends
 
 	private static final long serialVersionUID = -657199702704315580L;
 
-	/**
-	 * Create a new {@link SourceType} instance.
-	 * 
-	 * @return Instance of SourceType with only ID populated and attached to
-	 *         a valid {@link ObjectContext}
-	 */
+	@Override
 	public SourceType create()
 	{
 		ObjectContext context = DataContext.getThreadObjectContext();
@@ -57,19 +52,13 @@ public class SourceTypeServiceImpl extends
 	 * @return Instance of SourceType attached to a valid
 	 *         {@link ObjectContext}
 	 */
-	public SourceType create(ObjectContext context)
+	private SourceType create(ObjectContext context)
 	{
 
 		SourceType sourceType = context.newObject(SourceType.class);
 		return sourceType;
 	}
-	
-	/**
-	 * Returns a {@link SourceType} with the specified ID or it returns null.
-	 *
-	 * @param id
-	 * @return
-	 */
+
 	@Override
 	public SourceType findById(Integer id) {
 
@@ -96,9 +85,9 @@ public class SourceTypeServiceImpl extends
 	public List<SourceType> findAll() {
 		
 		SelectQuery query = new SelectQuery(SourceType.class);
-/*		Ordering order = new Ordering(SourceType.SORT_BY_PROPERTY,
+		Ordering order = new Ordering(SourceType.SORT_BY_PROPERTY,
 					SortOrder.ASCENDING);
-		query.addOrdering(order);*/
+		query.addOrdering(order);
 
 		// TODO: change to use shared cache
 		// per http://cayenne.apache.org/doc30/caching-lookup-tables.html

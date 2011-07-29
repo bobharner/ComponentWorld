@@ -8,7 +8,6 @@
 
 <t:form t:id="editForm" context="entry">
 	<t:errors/>
-	<div class="status-message">${statusMessage}</div>
 
 	<table class="detail-table">
 		<tr>
@@ -51,15 +50,19 @@
 					value="demonstrationUrl" validate="max=1024" /></td>
 		</tr>
 		<tr>
-			<th>Requires Tapestry version:</th>
-			<td>TODO: drop-down menu</td>
+			<th><t:label for="sinceSelection"/>:</th>
+			<td>Tapestry <t:select t:id="sinceSelection" value="since"
+						model="versionSelectModel" /> ${message:andLater}
+			</td>
 		</tr>
 		<tr>
-			<th><t:label for="parentSelection"/>:</th>
-			<td><t:select t:id="parentSelection" value="parent"
-						model="parentSelectModel" /></td>
+			<th><t:label for="untilSelection"/>:</th>
+			<td>
+				Tapestry <t:select t:id="untilSelection" value="until"
+						model="versionSelectModel" /> ${message:andLater}
+			</td>
 		</tr>
-				<tr>
+		<tr>
 			<th><t:label for="sourceTypeMenu"/>:</th>
 			<td colspan="2">
 				<t:radioGroup t:id="sourceTypeMenu" validate="required"
@@ -75,17 +78,25 @@
 			</td>
 		</tr>
 		<tr>
-			<th>License:</th>
-			<td>TODO: drop-down menu</td>
+			<th><t:label for="parentSelection"/>:</th>
+			<td><t:select t:id="parentSelection" value="parent"
+						model="parentSelectModel" /></td>
 		</tr>
-		<tr><td></td>
+		<tr>
+			<th><t:label for="licenseSelection"/>:</th>
+			<td><t:select t:id="licenseSelection" value="license"
+						model="licenseSelectModel" /></td>
+		</tr>
+		<tr><th><t:label for="enabled" />:
+				<t:checkbox t:id="enabled" style="margin-left: 1em" />
+			</th>
 			<td class="controls">
 				<t:submit value="Save"/>
 				<t:pageLink page="index" context="entry"
 					class="cancel">Cancel</t:pageLink>
 			</td></tr>
 	</table>
-	TODO: for unauthenticated users, present a CAPTCHA and save with a status
+	TODO: for under-privileged users, present a CAPTCHA and save with a status
 	of "disabled". Only authenticated users can mark "enabled".
 </t:form>
 

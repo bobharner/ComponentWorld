@@ -18,16 +18,20 @@ import java.util.List;
 
 import org.apache.tapestry.finder.entities.ComponentEntry;
 import org.apache.tapestry.finder.entities.EntryType;
+import org.apache.tapestry.finder.entities.License;
 import org.apache.tapestry.finder.entities.SourceType;
+import org.apache.tapestry.finder.entities.TapestryVersion;
 import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry.finder.services.EntryTypeService;
+import org.apache.tapestry.finder.services.LicenseService;
 import org.apache.tapestry.finder.services.SourceTypeService;
-import org.apache.tapestry5.PersistenceConstants;
+import org.apache.tapestry.finder.services.TapestryVersionService;
+import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
-import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Form;
@@ -37,13 +41,13 @@ import org.apache.tapestry5.services.SelectModelFactory;
 import org.slf4j.Logger;
 
 /**
- * A Tapestry Page for editing an entry or creating a new one.  For editing an
+ * A Tapestry Page for editing an entry or creating a new one. For editing an
  * existing entry, first call setEntry() to set the entry to be edited.
- *  
+ * 
  */
 public class EditEntry
 {
-	private EntryType type;	// selected entry type
+	private EntryType type; // selected entry type
 
 	@Property
 	private SourceType source; // selected source type
@@ -59,19 +63,24 @@ public class EditEntry
 
 	@Property
 	private String demonstrationUrl;
-	
+
 	@Property
 	private ComponentEntry parent;
-	
+
+	@Property
+	private License license;
+
+	@Property
+	private TapestryVersion since;
+
+	@Property
+	private TapestryVersion until;
+
 	@Property
 	private Boolean enabled;
-	
-	@SuppressWarnings("unused")
-	@Property
-	@Persist(PersistenceConstants.FLASH)
-	private String statusMessage;
 
-	@PageActivationContext // tell Tapestry to generate onActivate() & onPassivate()
+	@PageActivationContext
+	// tell Tapestry to generate onActivate() & onPassivate()
 	private ComponentEntry entry;
 
 	@SuppressWarnings("unused")
@@ -81,6 +90,14 @@ public class EditEntry
 	@SuppressWarnings("unused")
 	@Property
 	private SelectModel parentSelectModel;
+
+	@SuppressWarnings("unused")
+	@Property
+	private SelectModel versionSelectModel;
+
+	@SuppressWarnings("unused")
+	@Property
+	private SelectModel licenseSelectModel;
 
 	@SuppressWarnings("unused")
 	@Property
@@ -103,21 +120,27 @@ public class EditEntry
 
 	@Inject
 	private EntryService entryService;
-	
-	@Component
-	private Form editForm;
-	
-	@Inject
-	private Messages messages;
-	
-	@Inject
-	private Logger logger;
 
 	@Inject
 	private EntryTypeService entryTypeService;
 
 	@Inject
 	private SourceTypeService sourceTypeService;
+
+	@Inject
+	private TapestryVersionService tapestryVersionService;
+
+	@Inject
+	private LicenseService licenseService;
+
+	@Component
+	private Form editForm;
+
+	@Inject
+	private Messages messages;
+
+	@Inject
+	private Logger logger;
 
 	@InjectPage
 	private Index indexPage;
@@ -133,15 +156,20 @@ public class EditEntry
 	}
 
 	/**
-	 * Handle the form's PREPARE_FOR_RENDER event: Do setup actions
-	 * prior to rendering the form.
+	 * Do setup actions prior to the form being rendered.
 	 */
-	void onPrepareForRender()
+	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "editForm")
+	void setupFormData()
 	{
-		if (entry != null)
+		if (entry == null)
 		{
-			// copy to temporary properties (so we don't pollute our context
-			// with potentially invalid/incomplete entities)
+			this.enabled = true; // TODO: set to false for under-privileged
+									// users
+		}
+		else
+		{
+			// copy to temporary properties (so we don't pollute our entities
+			// with potentially invalid/incomplete data)
 			this.type = entry.getEntryType();
 			this.source = entry.getSourceType();
 			this.name = entry.getName();
@@ -149,53 +177,69 @@ public class EditEntry
 			this.documentationUrl = entry.getDocumentationUrl();
 			this.demonstrationUrl = entry.getDemonstrationUrl();
 			this.parent = entry.getParent();
+			this.since = entry.getSince();
+			this.until = entry.getUntil();
+			this.license = entry.getComponentLicense();
 			this.enabled = entry.getEnabled();
 		}
-		
+
 		// populate lists of entry types & source types for radio button groups
 		entryTypes = entryTypeService.findAll();
 		sourceTypes = sourceTypeService.findAll();
 
-		// populate the list of components for the "parent" select menu
+		// populate the lists for select menus:
 		List<ComponentEntry> parents = entryService.findParentCandidates(entry);
+		List<TapestryVersion> versions = tapestryVersionService.findAll();
+		List<License> licenses = licenseService.findAll();
 
-		// create a SelectModel from the list of available parents
+		// create SelectModels for the select menus:
 		parentSelectModel = selectModelFactory.create(parents,
 				ComponentEntry.NAME_PROPERTY);
+		versionSelectModel = selectModelFactory.create(versions,
+				TapestryVersion.NAME_PROPERTY);
+		licenseSelectModel = selectModelFactory.create(licenses,
+				License.NAME_PROPERTY);
 	}
 
 	/**
-	 * Handle the form's "Validate" event (after per-field
-	 * validation succeeded): Do the cross-field validation.
+	 * Do the cross-field validation on the submitted form data. (This only runs
+	 * after individual fields have been validated.)
 	 */
-	void onValidateFromEditForm()
-	{		
+	@OnEvent(value = EventConstants.VALIDATE, component = "editForm")
+	void validateAcrossMultipleFields()
+	{
 		// We must have at least one URL
 		if ((documentationUrl == null) && (demonstrationUrl == null))
 		{
 			// record an error, which also tells Tapestry to redisplay the form
 			editForm.recordError(messages.get("some-url-required"));
 		}
+		
+		if ((since != null) && (until != null) && (since.getSortBy() >= until.getSortBy()))
+		{
+			// record an error, which also tells Tapestry to redisplay the form
+			editForm.recordError(messages.get("since-after-until"));			
+		}
 	}
 
 	/**
-	 * Handle the form's "Success" event (after form validation
-	 * succeeded): Save changes to the database.
+	 * Save the submitted changes to the database.
 	 * 
 	 * @return the saved object
 	 */
-	Object onSuccessFromEditForm()
+	@OnEvent(value = EventConstants.SUCCESS, component = "editForm")
+	Object saveSubmittedEntry()
 	{
 		if (entry == null)
 		{
 			// create a new, empty entry object
 			entry = entryService.create();
 		}
-		enabled = true; // TODO - set enabled based on whether user is privileged
+		// TODO - set enabled to false if user is under-privileged
 
-		// copy the submitted form values into the (new or existing) object.
-		// Inserting the values *after* validation ensures that we don't
-		// pollute our entities with invalid objects.
+		// Copy the submitted form values into the (new or existing) object.
+		// (Inserting the values *after* validation ensures that we don't
+		// pollute our entity set with invalid or abandoned objects.)
 		entry.setEntryType(this.type);
 		entry.setSourceType(this.source);
 		entry.setName(this.name);
@@ -203,21 +247,20 @@ public class EditEntry
 		entry.setDocumentationUrl(this.documentationUrl);
 		entry.setDemonstrationUrl(this.demonstrationUrl);
 		entry.setParent(this.parent);
+		entry.setSince(this.since);
+		entry.setUntil(this.until);
+		entry.setComponentLicense(this.license);
 		entry.setEnabled(enabled);
-
-		logger.info("entry " + entry.getName() + " enabled: " + entry.getEnabled());
 
 		// save to the database
 		entry = entryService.save(entry);
-		
-		// TODO: if user was unprivileged, send e-mail notifications about
+
+		// TODO: if user is under-privileged, send e-mail notifications about
 		// entry needing to be approved/enabled
 
-		logger.info("Saved " + entry.getName() +
-					(entry.getEnabled() ? " (enabled)" : " (disabled)"));
+		logger.info("Saved " + entry.getName()
+				+ (entry.getEnabled() ? " (enabled)" : " (disabled)"));
 
-		statusMessage = "Success";
-		indexPage.setSelectedEntry(entry);
 		indexPage.setSuccessMessage(entry.getName() + " entry saved");
 		return indexPage;
 	}

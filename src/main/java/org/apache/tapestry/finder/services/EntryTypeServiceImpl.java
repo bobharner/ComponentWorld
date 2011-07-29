@@ -42,6 +42,7 @@ public class EntryTypeServiceImpl extends
 	 * @return Instance of EntryType with only ID populated and attached to
 	 *         a valid {@link ObjectContext}
 	 */
+	@Override
 	public EntryType create()
 	{
 		ObjectContext context = DataContext.getThreadObjectContext();
@@ -57,19 +58,14 @@ public class EntryTypeServiceImpl extends
 	 * @return Instance of EntryType attached to a valid
 	 *         {@link ObjectContext}
 	 */
-	public EntryType create(ObjectContext context)
+	private EntryType create(ObjectContext context)
 	{
 
 		EntryType entryType = context.newObject(EntryType.class);
 		return entryType;
 	}
 	
-	/**
-	 * Returns a {@link EntryType} with the specified ID or it returns null.
-	 *
-	 * @param id
-	 * @return
-	 */
+
 	@Override
 	public EntryType findById(Integer id) {
 

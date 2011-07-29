@@ -17,6 +17,7 @@ package org.apache.tapestry.finder.pages;
 
 import java.util.List;
 
+import org.apache.tapestry.finder.components.EntryList;
 import org.apache.tapestry.finder.encoders.SourceTypeEncoder;
 import org.apache.tapestry.finder.entities.ComponentEntry;
 import org.apache.tapestry.finder.entities.EntryType;
@@ -26,20 +27,22 @@ import org.apache.tapestry.finder.services.SourceTypeService;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.CleanupRender;
+import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.SelectModelFactory;
 
-
 /**
- * Start page of web application.
+ * Start page of web application. Here we display and manage the high-level
+ * selection menus, along with the initial list of entries (the latter appearing
+ * within a zone)
  */
 public class Index
-{
-	
+{	
 	@SuppressWarnings("unused")
 	@Parameter
 	@Property
@@ -68,12 +71,18 @@ public class Index
 	
 	@Inject
 	private SelectModelFactory selectModelFactory;
+	
+	@Inject
+	private Request request;
 
 	@Persist
 	private String successMessage;
 
 	@Persist
 	private String failureMessage;
+
+	@InjectComponent
+	private EntryList entryList;
 
 	public String getFailureMessage()
 	{
@@ -114,6 +123,27 @@ public class Index
 		// create a SelectModel from the list of available source types
 		sourceTypeSelectModel = selectModelFactory.create(sourceTypes,
 				SourceType.NAME_PLURAL_PROPERTY);
+	}
+	
+	/**
+	 * As an event lister, respond to a selection from the "entryType"
+	 * Select menu. Return the "entryList" component (to be put into a
+	 * zone). If the event is not part of an AJAX zone update (i.e. the browser
+	 * has JavaScript off) we return the whole page to be redrawn.
+	 * 
+	 * @return
+	 */
+	Object onValueChangedFromEntryType(EntryType entryType)
+	{
+		if (request.isXHR()) // an AJAX request?
+		{
+			selectedEntryType = entryType;
+			return entryList; // return the entryList component
+		}
+		else
+		{
+			return null; // redraw the whole current page
+		}
 	}
 
 	/**

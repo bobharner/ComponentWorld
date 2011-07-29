@@ -6,13 +6,15 @@
 		<h2>${entry.name}</h2>
 		<div class="controls">
 			<t:pageLink page="editentry" style="margin-left: 2em"
-				t:context="entry" class="controls">Edit...</t:pageLink>
+				t:context="entry" class="controls"
+				title="Edit this entry">Edit...</t:pageLink>
 		</div>
-		<div class="entry-type">A ${entry.entryType?.name.toLowerCase()} from 
-			<a href="${entry.module?.url}"
-					title="${entry.module?.description}">
-				${entry.module?.name}
-			</a>
+		<div class="entry-type">A ${entry.entryType?.name.toLowerCase()}
+			<t:if test="entry.parent">from </t:if> 
+			<t:pageLink page="index" context="entry?.parent"
+						title="${entry?.parent?.description}">
+				${entry.parent?.name}
+			</t:pageLink>
 			(${entry.sourceType?.name})
 		</div>
 		<p>${entry.description}</p>
@@ -31,13 +33,13 @@
 						${shortDemoUrl}</a>
 				</td>
 			</tr>
-			<tr><th>For:</th>
-				<td>Tapestry ${entry.since?.name} +
-					<t:if test="entry.until">
-						(not ${entry.until?.name} +)
-					</t:if>
-				</td></tr>
-			<tr><th>Created:</th><td>${entry.firstAvailable}</td></tr>
+			<t:if test="hasVersions">
+				<tr><th>For:</th>
+					<td>Tapestry <t:if test="entry.since">${entry.since?.name} +</t:if>
+						<t:if test="entry.until">(before ${entry.until?.name} +)</t:if>
+					</td>
+				</tr>
+			</t:if>
 			<tr><th>License:</th><td class="license"
 						title="${entry.componentLicense?.description}">
 					<t:if test="entry.componentLicense">

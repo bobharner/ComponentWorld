@@ -29,7 +29,7 @@ import org.apache.tapestry5.services.ValueEncoderFactory;
  * @author bharner
  *
  */
-public class ComponentEntryEncoder implements ValueEncoder<ComponentEntry>,
+public class EntryEncoder implements ValueEncoder<ComponentEntry>,
 		ValueEncoderFactory<ComponentEntry> {
 
     @Inject

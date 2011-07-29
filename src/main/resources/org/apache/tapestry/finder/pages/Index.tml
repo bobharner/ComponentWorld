@@ -1,6 +1,6 @@
 <html t:type="layout" title="Component Finder"
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
-	<!-- Most of the peripheral page content comes from Layout.tml -->
+	<t:remove>Most of the peripheral page content comes from Layout.tml</t:remove>
 
 	<div class="category-selection">
 		<t:form autofocus="false" zone="listZone" t:id="categorySelection">
@@ -13,9 +13,9 @@
 
 			<div class="from">
 				<t:label for="sourceTypes"></t:label>
-				<t:checklist t:id="sourceTypes"
-					model="sourceTypeSelectModel"
+				<t:checklist t:id="sourceTypes" model="sourceTypeSelectModel"
 					selected="selectedSourceTypes" encoder="sourceTypeEncoder"/>
+
 				<label for="rd2"><input type="checkbox" id="rd2" name="from"
 					value="rd2" checked="checked" />Tapestry Modules</label>
 				<label for="rd3"><input type="checkbox" id="rd3" name="from"
@@ -46,7 +46,8 @@
 	</div>
 
 	<t:zone id="listZone" class="list-zone">
-		<t:entryList selected="selectedEntry" />
+		<t:entryList entryType="selectedEntryType"
+			sourceTypes="selectedSourceTypes" selected="selectedEntry" />
 	</t:zone>
 	
 <script type="text/javascript" language="javascript">

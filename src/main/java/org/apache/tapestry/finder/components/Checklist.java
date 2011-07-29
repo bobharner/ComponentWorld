@@ -64,7 +64,6 @@ public class Checklist extends AbstractField
      * this object in a declarative fashion.
      */
     @Parameter(defaultPrefix = BindingConstants.VALIDATE)
-    @SuppressWarnings("unchecked")
     private FieldValidator<Object> validate;
 
     @Inject

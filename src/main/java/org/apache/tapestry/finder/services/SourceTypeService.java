@@ -26,12 +26,25 @@ import org.apache.tapestry.finder.entities.SourceType;
  */
 public interface SourceTypeService extends GenericService<SourceType, Integer> {
 
-	public SourceType create(ObjectContext context);
+	/**
+	 * Create a new {@link SourceType} instance.
+	 * 
+	 * @return Instance of SourceType with only ID populated and attached to
+	 *         a valid {@link ObjectContext}
+	 */
 	public SourceType create();
+	
+	/**
+	 * Returns a {@link SourceType} with the specified ID or it returns null.
+	 *
+	 * @param id
+	 * @return
+	 */
+	public SourceType findById(Integer id);
 	/**
 	 * Get a list of all entry types, sorted by name ascending.
 	 *
-	 * @return List of all {@link User}s in the system.
+	 * @return List of all {@link SourceType}s in the system.
 	 */
 	public List<SourceType> findAll();
 }

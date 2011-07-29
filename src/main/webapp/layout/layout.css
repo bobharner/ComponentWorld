@@ -198,6 +198,7 @@ ul.entry-list {
 }
 ul.entry-list li { line-height: 1.5em; white-space: nowrap; }
 ul.entry-list li SPAN.from { color: #ccc; }
+ul.entry-list li A.disabled { text-decoration: line-through; }
 
 .category-selection { margin: .7em 0 .4em; }
 .category-selection input[type=checkbox] { margin-left: .5em; } 

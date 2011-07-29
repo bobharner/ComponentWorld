@@ -16,23 +16,29 @@ package org.apache.tapestry.finder.services;
 
 import java.util.List;
 
-import org.apache.cayenne.ObjectContext;
 import org.apache.tapestry.finder.entities.EntryType;
-import org.apache.tapestry.finder.entities.User;
 
 /**
- * Service for all {@link ComponentEntry} related functionality.
+ * Service for all {@link EntryType} related functionality.
  * See also {@link GenericService}
  * 
  */
 public interface EntryTypeService extends GenericService<EntryType, Integer> {
 
-	public EntryType create(ObjectContext context);
 	public EntryType create();
+	
+	/**
+	 * Returns an {@link EntryType} with the specified ID, or returns null.
+	 *
+	 * @param id
+	 * @return
+	 */
+	public EntryType findById(Integer id);
+	
 	/**
 	 * Get a list of all entry types, sorted by name ascending.
 	 *
-	 * @return List of all {@link User}s in the system.
+	 * @return List of all {@link EntryType}s in the system.
 	 */
 	public List<EntryType> findAll();
 }

@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Thu Jul 28 21:38:03 EDT 2011:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0131-738a-85fe-0000025be258 
+on database directory C:\Users\bharner\workspace\ComponentFinder\database\componentSearchDB  with class loader org.apache.cayenne.modeler.FileClassLoadingService$FileClassLoader@25dd9891 
+Loaded from file:/C:/derby/lib/derby.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_20-b02
+user.dir=C:\Users\bharner\workspace\ComponentFinder
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
