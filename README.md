@@ -1,5 +1,3 @@
-Description
-===========
 
 This is a Tapestry 5 web application intended to make it easier to find
 Tapestry-compatible components, mixins, pages and modules. Its database
@@ -29,7 +27,7 @@ clustering with session replication.
 including Cayenne, Derby and Shiro.
 
 * Allow the owners of the components listed to also be owners of the entries
-in this application, changing their contents at will. 
+in this application, able to change those entries' contents at will. 
 
 Contributions
 =============
@@ -37,5 +35,5 @@ Contributions
 Contributions and suggestions are welcome. You can join the project too, but
 because of the hope that this app will one day be an integrated part of the
 Tapestry web site, project members will need to have submitted a signed Apache
-[Contributor License Agreements|http://www.apache.org/licenses/#clas] before
+[Contributor License Agreements] (http://www.apache.org/licenses/#clas) before
 joining.
