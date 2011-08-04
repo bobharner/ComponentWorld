@@ -34,7 +34,7 @@
 		<tr>
 			<th><t:label for="description"/>:</th>
 			<td><t:textArea t:id="description" validate="required,max=4096"
-					rows="7" cols="70" value="description"/></td>
+					rows="5" cols="70" value="description"/></td>
 			<td class="instruction">${message:descriptionInstructions}</td>
 		</tr>
 		<tr>

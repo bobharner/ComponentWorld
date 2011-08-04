@@ -32,6 +32,9 @@
 <div style="float:left" class="emblem"><t:pagelink page="index" title="Return to Home page"><SPAN class="image-wrap" style=""><IMG src="${context:layout/images/tapestry_s.png}" width="250" height="105" style="border: 0px solid black" /></SPAN></t:pagelink></div>
 
 <div style="float:left; margin: 35px 0 0 3em" class="title"><H1><A name="SmallBanner-PageTitle"></A>${message:applicationShortName}</H1></div>
+		<div class="admin" style="float:right">
+			<t:pagelink page="admin/index">Administration</t:pagelink>
+		</div>
 <div class="clearer"></div>
 </div>
 
@@ -44,7 +47,7 @@
 	    <t:pagelink page="index">${message:applicationShortName}</t:pagelink>
 	</div>
 	<div class="controls">
-		<t:pageLink page="editentry">Create a New Entry...</t:pageLink>
+		<t:pageLink page="entry/editentry">Create a New Entry...</t:pageLink>
 	</div>
   </div>
 

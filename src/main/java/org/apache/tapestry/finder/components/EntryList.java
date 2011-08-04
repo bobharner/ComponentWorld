@@ -44,11 +44,19 @@ public class EntryList
 	@Parameter
 	private ComponentEntry selectedEntry;
 
-	@SuppressWarnings("unused")
 	@Parameter
 	private EntryType entryType;
 
-	@SuppressWarnings("unused")
+	public EntryType getEntryType()
+	{
+		return entryType;
+	}
+
+	public void setEntryType(EntryType entryType)
+	{
+		this.entryType = entryType;
+	}
+
 	@Parameter
 	private List<SourceType> sourceTypes;
 
@@ -102,8 +110,7 @@ public class EntryList
 	private void init()
 	{
 		filterText = "";
-		entryList = entryService.findAll();
-		//entryList = entryService.findByType(entryType, sourceTypes);
+		entryList = entryService.findByType(entryType, sourceTypes);
 	}
 
 	/**

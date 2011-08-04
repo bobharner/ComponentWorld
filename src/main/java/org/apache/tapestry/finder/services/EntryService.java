@@ -65,4 +65,13 @@ public interface EntryService extends GenericService<ComponentEntry, Integer> {
 	 */
 	public List<ComponentEntry> findParentCandidates(ComponentEntry entry);
 
+	/**
+	 * Find all {@link ComponentEntry}s that are children of the given entry.
+	 * Typically these are the components & mixins included within a module,
+	 * or the modules included in a framework.
+	 * 
+	 * @return
+	 */
+	public List<ComponentEntry> findChildren(ComponentEntry entry);
+
 }

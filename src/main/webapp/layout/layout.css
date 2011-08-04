@@ -80,6 +80,10 @@ a img { text-decoration: none;}
     float: left;
     width: 650px;
 }
+#top .admin {
+	float: right;
+	padding-right: 30px;
+}
 
 #banner {
     height: 148px;
@@ -219,12 +223,10 @@ DIV.detail-box {
 	border: 1px solid #ccc;
 	background: #f9f9f9;
 	padding: 1em;
-	-moz-box-shadow: 0 0 28px #539126;
-	-webkit-box-shadow: 0 0 28px #539126;
-	box-shadow: 0 0 28px #539126;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 	border-radius: 15px;
 }
-.detail-box H2 { padding: 0; margin: 0; float: left; }
+.detail-box H2 { padding: 0; margin: 0; }
 .detail-box DIV.entry-type { clear: both; color: #666; font-size: 90%}
 .detail-box DIV.controls { float: right	; }
 .detail-box P { clear: both; margin: 1em 0; font-size: 110%; }
@@ -252,3 +254,11 @@ DIV.messages .failure {
 /* override Tapestry built-in CSS */
 x.datePicker { z-index: 1 !important; }
 x.datePicker .todayButton, .datePicker .noneButton { width: auto !important; }
+div.multicolumn3 {
+	-moz-column-count: 3;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 3;
+	-webkit-column-gap: 20px;
+	column-count: 3;
+	column-gap: 20px;
+}

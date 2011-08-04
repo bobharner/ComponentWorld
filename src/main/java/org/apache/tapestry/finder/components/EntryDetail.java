@@ -14,11 +14,15 @@
  */
 package org.apache.tapestry.finder.components;
 
+import java.util.List;
+
 import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry.finder.utils.UrlUtils;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  * Tapestry component to display detailed information about a particular
@@ -41,11 +45,23 @@ public class EntryDetail
 	@Property
 	private String shortDemoUrl; // shortened version of entry's demo URL
 	
+	@SuppressWarnings("unused")
+	@Property
+	private ComponentEntry child; // used in a loop
+	
+	@SuppressWarnings("unused")
+	@Property
+	private List<ComponentEntry> children;
+	
+	@Inject
+	private EntryService entryService;
+	
 	@SetupRender
 	public void init() {
 		if (entry != null) {
 			shortDocUrl = UrlUtils.shorten(entry.getDocumentationUrl(), 50);
 			shortDemoUrl = UrlUtils.shorten(entry.getDemonstrationUrl(), 50);
+			children = entryService.findChildren(entry);
 		}
 	}
 	

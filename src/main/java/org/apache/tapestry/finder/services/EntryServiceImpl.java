@@ -68,7 +68,23 @@ public class EntryServiceImpl extends
 		query.addOrdering(order);
 		return DataContext.getThreadObjectContext().performQuery(query);
 	}
-	
+		
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ComponentEntry> findChildren(ComponentEntry entry)
+	{
+		// where parent matches the id of this component
+		Expression exp = ExpressionFactory.inExp(
+				ComponentEntry.PARENT_PROPERTY, entry.getId());
+
+		SelectQuery query = new SelectQuery(ComponentEntry.class, exp);
+
+		Ordering order = new Ordering(ComponentEntry.NAME_PROPERTY,
+					SortOrder.ASCENDING_INSENSITIVE);
+		query.addOrdering(order);
+		return DataContext.getThreadObjectContext().performQuery(query);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ComponentEntry> findByType(EntryType entryType,
@@ -99,7 +115,7 @@ public class EntryServiceImpl extends
 	public List<ComponentEntry> findParentCandidates(ComponentEntry entry)
 	{
 		// TODO: need complex expression saying "all entries whose EntryType
-		// relationship refers to an EntryType with "isContainer" true
+		// has "isContainer" true
 
 		Expression exp;
 		if (entry == null)

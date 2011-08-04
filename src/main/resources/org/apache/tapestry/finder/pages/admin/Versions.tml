@@ -1,0 +1,21 @@
+<html t:type="layout" title="About This Application"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+<div class="itemheading">
+	<h2>Tapestry Versions</h2>
+</div>
+
+<table>
+<tr><th>Name</th><th>Description</th></tr>
+<t:loop source="versions" value="version">
+<tr>
+	<td>
+		${version.name}
+	</td>
+	<td>${version.description}</td>
+</tr>
+</t:loop>
+</table>
+
+</html>

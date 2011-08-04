@@ -113,14 +113,14 @@ public class Index
 		// populate the list of entry types for the entry type drop-down menu
 		List<EntryType> entryTypes = entryTypeService.findAll();
 
-		// create a SelectModel from the list of available entry types
+		// create a SelectModel from the list of entry types
 		entryTypeSelectModel = selectModelFactory.create(entryTypes,
 				EntryType.NAME_PLURAL_PROPERTY);
 
 		// populate the list of entry types for the entry type drop-down menu
 		List<SourceType> sourceTypes = sourceTypeService.findAll();
 
-		// create a SelectModel from the list of available source types
+		// create a SelectModel from the list of source types
 		sourceTypeSelectModel = selectModelFactory.create(sourceTypes,
 				SourceType.NAME_PLURAL_PROPERTY);
 	}
@@ -138,6 +138,7 @@ public class Index
 		if (request.isXHR()) // an AJAX request?
 		{
 			selectedEntryType = entryType;
+			entryList.setEntryType(entryType);
 			return entryList; // return the entryList component
 		}
 		else

@@ -38,7 +38,11 @@
 	
 	<div class="messages" id="messagebox">
 			<t:if test="successMessage">
-				<div class="success">${successMessage}</div>
+				<div class="success">
+					<img src="${context:layout/images/accepted.png}" width="32" height="32"
+					style="border: none; float: left; margin: 0 .5em .5em 0" />
+					<p style="float: left">${successMessage}</p>
+				</div>
 			</t:if>
 			<t:if test="failureMessage">
 				<div class="failure">${failureMessage}</div>

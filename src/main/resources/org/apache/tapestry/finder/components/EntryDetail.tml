@@ -3,20 +3,26 @@
 
 <t:if test="entry">
 	<div class="detail-box">
-		<h2>${entry.name}</h2>
+		<img src="${context:layout/images/plugin.png}" width="32" height="32"
+				style="border: none; float: left; margin: 0 .5em .5em 0" />
+		<div style="float:left; margin-bottom: .8em">
+			<h2>${entry.name}</h2>
+			<div class="entry-type">A ${entry.entryType?.name.toLowerCase()}
+				<t:if test="entry.parent">from </t:if> 
+				<t:pageLink page="index" context="entry?.parent"
+							title="${entry?.parent?.description}">
+					${entry.parent?.name}
+				</t:pageLink>
+				(${entry.sourceType?.name})
+			</div>
+		</div>
+
 		<div class="controls">
-			<t:pageLink page="editentry" style="margin-left: 2em"
+			<t:pageLink page="entry/editentry" style="margin-left: 2em"
 				t:context="entry" class="controls"
 				title="Edit this entry">Edit...</t:pageLink>
 		</div>
-		<div class="entry-type">A ${entry.entryType?.name.toLowerCase()}
-			<t:if test="entry.parent">from </t:if> 
-			<t:pageLink page="index" context="entry?.parent"
-						title="${entry?.parent?.description}">
-				${entry.parent?.name}
-			</t:pageLink>
-			(${entry.sourceType?.name})
-		</div>
+
 		<p>${entry.description}</p>
 	
 		<table class="detail-table">
@@ -46,7 +52,21 @@
 						${entry.componentLicense.name}
 						<p:else><em>unknown</em></p:else>
 					</t:if>
-				</td></tr>
+				</td>
+			</tr>
+			<t:if test="children">
+				<tr><th style="vertical-align: top">Contains:</th>
+					<td>
+						<div class="multicolumn3">
+							<t:loop source="children" value="child">
+								<t:pageLink page="index" context="child"
+									title="${child.description}">${child.name}
+								</t:pageLink><br />
+							</t:loop>
+						</div>
+					</td>
+				</tr>
+			</t:if>
 		</table>
 	</div>
 </t:if>

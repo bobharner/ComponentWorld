@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.tapestry.finder.pages;
+package org.apache.tapestry.finder.pages.entry;
 
 import java.util.List;
 
@@ -21,6 +21,7 @@ import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.License;
 import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.entities.TapestryVersion;
+import org.apache.tapestry.finder.pages.Index;
 import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry.finder.services.EntryTypeService;
 import org.apache.tapestry.finder.services.LicenseService;
