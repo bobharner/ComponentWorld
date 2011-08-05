@@ -6,7 +6,6 @@
 		<div class="quick-filter" style="margin: .5em 0">
 			<t:listFilter listSelector="ul.entry-list li" counterId="counter"
 					title="${message:inputPromptTitle}" />
-			<span class="counter"></span>
 			<t:remove>
 				TODO: remove item below, but put inputPrompt on listFilter
 				<t:textField t:id="filter" t:value="${filterText}" size="15"
@@ -26,6 +25,9 @@
 			</li>
 		</t:loop>
 	</ul>
+	<div class="matching-counter">
+		<span id="counter">${entryList.size()}</span> matching entries
+	</div>
 
 </div>
 

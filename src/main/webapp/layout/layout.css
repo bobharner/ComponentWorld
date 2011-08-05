@@ -218,6 +218,9 @@ TABLE.detail-table .instruction {
 	border-left: 1px solid #9f9;
 	padding-left: .7em;
 }
+TABLE.detail-table TH {
+	padding-right: .5em;
+}
 .itemheading .greeting { color: #666; }
 DIV.detail-box {
 	border: 1px solid #ccc;
@@ -261,4 +264,10 @@ div.multicolumn3 {
 	-webkit-column-gap: 20px;
 	column-count: 3;
 	column-gap: 20px;
+}
+DIV.matching-counter {
+	margin-top: 1em;
+	border-top: 1px solid #ccc;
+	color: #999;
+	font-style: italic;
 }

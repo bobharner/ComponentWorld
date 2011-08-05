@@ -24,8 +24,7 @@ public class UrlUtils
 	/**
 	 * The start of the URL of all core library components (without protocol)
 	 */
-    public static final String CORE_DOCUMENTATION_URL_PREFIX =
-    	"tapestry.apache.org/current/tapestry-core/ref/org/apache/tapestry5/";
+	public static final String CORE_DOCUMENTATION_URL_PREFIX = "tapestry.apache.org/current/tapestry-core/ref/org/apache/tapestry5/";
 
 	/**
 	 * Shorten the given Url string
@@ -33,16 +32,27 @@ public class UrlUtils
 	 * @param url
 	 * @return
 	 */
-	public static String shorten(String url, int length) {
+	public static String shorten(String url, int length)
+	{
 
-		if (url == null) {
+		if (url == null)
+		{
 			return "";
 		}
 
-	    String newUrl = removeProtocol(url);
+		// remove leading http:// or https://
+		String newUrl = removeProtocol(url);
 
-		if (newUrl.startsWith(CORE_DOCUMENTATION_URL_PREFIX)) {
-			return "..." + newUrl.substring(CORE_DOCUMENTATION_URL_PREFIX.length());
+		// remove trailing slash, if any
+		if (newUrl.endsWith("/"))
+		{
+			newUrl = newUrl.substring(0, newUrl.length() - 1);
+		}
+
+		if (newUrl.startsWith(CORE_DOCUMENTATION_URL_PREFIX))
+		{
+			return "..."
+					+ newUrl.substring(CORE_DOCUMENTATION_URL_PREFIX.length());
 		}
 		return StringUtils.abbreviateMiddle(newUrl, "...", length);
 	}
@@ -53,14 +63,17 @@ public class UrlUtils
 	 * @param url
 	 * @return the shortened URL
 	 */
-	private static String removeProtocol(String url) {
+	private static String removeProtocol(String url)
+	{
 
-	    if (url.startsWith("http://")) {
-	    	return url.substring("http://".length());
-	    }
-	    if (url.startsWith("https://")) {
-	    	return url.substring("https://".length());
-	    }
-	    return url;
+		if (url.startsWith("http://"))
+		{
+			return url.substring("http://".length());
+		}
+		if (url.startsWith("https://"))
+		{
+			return url.substring("https://".length());
+		}
+		return url;
 	}
 }

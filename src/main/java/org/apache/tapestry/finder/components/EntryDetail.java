@@ -25,14 +25,13 @@ import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
- * Tapestry component to display detailed information about a particular
- * entry
- *
+ * Tapestry component to display detailed information about a particular entry
+ * 
  * @author bharner
- *
+ * 
  */
 public class EntryDetail
-{	
+{
 	@Parameter
 	@Property
 	private ComponentEntry entry; // the selected entry
@@ -40,31 +39,33 @@ public class EntryDetail
 	@SuppressWarnings("unused")
 	@Property
 	private String shortDocUrl; // shortened version of entry's doc URL
-	
+
 	@SuppressWarnings("unused")
 	@Property
 	private String shortDemoUrl; // shortened version of entry's demo URL
-	
+
 	@SuppressWarnings("unused")
 	@Property
 	private ComponentEntry child; // used in a loop
-	
+
 	@SuppressWarnings("unused")
 	@Property
 	private List<ComponentEntry> children;
-	
+
 	@Inject
 	private EntryService entryService;
-	
+
 	@SetupRender
-	public void init() {
-		if (entry != null) {
+	public void init()
+	{
+		if (entry != null)
+		{
 			shortDocUrl = UrlUtils.shorten(entry.getDocumentationUrl(), 50);
 			shortDemoUrl = UrlUtils.shorten(entry.getDemonstrationUrl(), 50);
 			children = entryService.findChildren(entry);
 		}
 	}
-	
+
 	public Boolean getHasVersions()
 	{
 		if ((entry.getSince() != null) || (entry.getUntil() != null))
@@ -72,5 +73,14 @@ public class EntryDetail
 			return true;
 		}
 		return false;
+	}
+
+	public String getMulticolumnClass()
+	{
+		if (children.size() > 5)
+		{
+			return "multicolumn3";
+		}
+		return "";
 	}
 }

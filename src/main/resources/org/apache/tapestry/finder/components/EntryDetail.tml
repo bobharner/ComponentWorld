@@ -57,7 +57,7 @@
 			<t:if test="children">
 				<tr><th style="vertical-align: top">Contains:</th>
 					<td>
-						<div class="multicolumn3">
+						<div class="${multicolumnClass}">
 							<t:loop source="children" value="child">
 								<t:pageLink page="index" context="child"
 									title="${child.description}">${child.name}
