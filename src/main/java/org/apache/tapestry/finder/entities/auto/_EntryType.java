@@ -15,12 +15,13 @@ public abstract class _EntryType extends CayenneDataObject {
 
     public static final String DESCRIPTION_PROPERTY = "description";
     public static final String ID_PROPERTY = "id";
+    public static final String IS_CONTAINER_PROPERTY = "isContainer";
     public static final String NAME_PROPERTY = "name";
     public static final String NAME_PLURAL_PROPERTY = "namePlural";
     public static final String SORT_BY_PROPERTY = "sortBy";
     public static final String ENTRIES_PROPERTY = "entries";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setDescription(String description) {
         writeProperty("description", description);
@@ -34,6 +35,13 @@ public abstract class _EntryType extends CayenneDataObject {
     }
     public Integer getId() {
         return (Integer)readProperty("id");
+    }
+
+    public void setIsContainer(Boolean isContainer) {
+        writeProperty("isContainer", isContainer);
+    }
+    public Boolean getIsContainer() {
+        return (Boolean)readProperty("isContainer");
     }
 
     public void setName(String name) {

@@ -10,6 +10,7 @@ org.eclipse.jetty.servlet.WebApplicationContext object
 
 <Configure class="org.mortbay.jetty.webapp.WebAppContext">
   <Set name="contextPath">/</Set>
+  <!--
   <New id="COMPSEARCH-DS" class="org.mortbay.jetty.plus.naming.Resource">
 		<Arg>jdbc/ComponentFinderDB</Arg>
 		<Arg>
@@ -27,4 +28,5 @@ org.eclipse.jetty.servlet.WebApplicationContext object
 			</New>
 		</Arg>
 	</New>
+	-->
 </Configure>

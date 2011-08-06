@@ -180,7 +180,7 @@ public class EditEntry
 			this.parent = entry.getParent();
 			this.since = entry.getSince();
 			this.until = entry.getUntil();
-			this.license = entry.getComponentLicense();
+			this.license = entry.getLicense();
 			this.enabled = entry.getEnabled();
 		}
 
@@ -250,7 +250,7 @@ public class EditEntry
 		entry.setParent(this.parent);
 		entry.setSince(this.since);
 		entry.setUntil(this.until);
-		entry.setComponentLicense(this.license);
+		entry.setLicense(this.license);
 		entry.setEnabled(enabled);
 
 		// save to the database

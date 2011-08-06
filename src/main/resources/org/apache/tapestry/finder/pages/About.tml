@@ -10,10 +10,10 @@
 
 <table class="datatable">
 <tr><th>Web Framework:</th><td>Apache Tapestry</td></tr>
-<tr><th>IoC Container:</th><td>Apache Tapestry IoC</td></tr>
+<tr><th>IoC Framework:</th><td>Apache Tapestry IoC</td></tr>
 <tr><th>O-R Mapping:</th><td>Apache Cayenne</td></tr>
-<tr><th>Database:</th><td>Apache Derby</td></tr>
 <tr><th>Security:</th><td>Apache Shiro</td></tr>
+<tr><th>Database:</th><td>Apache Derby</td></tr>
 <tr><th>Build Tool:</th><td>Apache Maven</td></tr>
 </table>
 

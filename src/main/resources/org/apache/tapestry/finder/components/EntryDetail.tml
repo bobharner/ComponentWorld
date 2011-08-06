@@ -47,9 +47,9 @@
 				</tr>
 			</t:if>
 			<tr><th>License:</th><td class="license"
-						title="${entry.componentLicense?.description}">
-					<t:if test="entry.componentLicense">
-						${entry.componentLicense.name}
+						title="${entry.license?.description}">
+					<t:if test="entry.license">
+						${entry.license.name}
 						<p:else><em>unknown</em></p:else>
 					</t:if>
 				</td>

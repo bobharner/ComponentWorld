@@ -19,7 +19,7 @@ public abstract class _Role extends CayenneDataObject {
     public static final String NAME_PROPERTY = "name";
     public static final String USERS_PROPERTY = "users";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setDescription(String description) {
         writeProperty("description", description);

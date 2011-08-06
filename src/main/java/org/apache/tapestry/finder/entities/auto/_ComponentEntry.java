@@ -7,7 +7,6 @@ import org.apache.cayenne.CayenneDataObject;
 import org.apache.tapestry.finder.entities.ComponentEntry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.License;
-import org.apache.tapestry.finder.entities.ModuleEntry;
 import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.entities.TapestryVersion;
 
@@ -27,15 +26,14 @@ public abstract class _ComponentEntry extends CayenneDataObject {
     public static final String ID_PROPERTY = "id";
     public static final String NAME_PROPERTY = "name";
     public static final String CHILDREN_PROPERTY = "children";
-    public static final String COMPONENT_LICENSE_PROPERTY = "componentLicense";
     public static final String ENTRY_TYPE_PROPERTY = "entryType";
-    public static final String MODULE_PROPERTY = "module";
+    public static final String LICENSE_PROPERTY = "license";
     public static final String PARENT_PROPERTY = "parent";
     public static final String SINCE_PROPERTY = "since";
     public static final String SOURCE_TYPE_PROPERTY = "sourceType";
     public static final String UNTIL_PROPERTY = "until";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setDemonstrationUrl(String demonstrationUrl) {
         writeProperty("demonstrationUrl", demonstrationUrl);
@@ -98,15 +96,6 @@ public abstract class _ComponentEntry extends CayenneDataObject {
     }
 
 
-    public void setComponentLicense(License componentLicense) {
-        setToOneTarget("componentLicense", componentLicense, true);
-    }
-
-    public License getComponentLicense() {
-        return (License)readProperty("componentLicense");
-    }
-
-
     public void setEntryType(EntryType entryType) {
         setToOneTarget("entryType", entryType, true);
     }
@@ -116,12 +105,12 @@ public abstract class _ComponentEntry extends CayenneDataObject {
     }
 
 
-    public void setModule(ModuleEntry module) {
-        setToOneTarget("module", module, true);
+    public void setLicense(License license) {
+        setToOneTarget("license", license, true);
     }
 
-    public ModuleEntry getModule() {
-        return (ModuleEntry)readProperty("module");
+    public License getLicense() {
+        return (License)readProperty("license");
     }
 
 

@@ -17,7 +17,7 @@ public abstract class _User extends CayenneDataObject {
     public static final String USER_ID_PROPERTY = "userId";
     public static final String ROLE_PROPERTY = "role";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setEnabled(Boolean enabled) {
         writeProperty("enabled", enabled);

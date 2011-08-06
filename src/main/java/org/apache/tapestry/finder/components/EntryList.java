@@ -94,11 +94,11 @@ public class EntryList
 	 */
 	public String getEntryTitle()
 	{
-		if (entry.getModule() == null)
+		if (entry.getParent() == null)
 		{
 			return entry.getDescription();
 		}
-		return entry.getModule().getName() + ": "
+		return entry.getParent().getName() + ": "
 				+ entry.getDescription();
 	}
 

@@ -17,10 +17,10 @@ public abstract class _TapestryVersion extends CayenneDataObject {
     public static final String ID_PROPERTY = "id";
     public static final String NAME_PROPERTY = "name";
     public static final String SORT_BY_PROPERTY = "sortBy";
-    public static final String COMPONENTS_SINCE_PROPERTY = "componentsSince";
-    public static final String COMPONENTS_UNTIL_PROPERTY = "componentsUntil";
+    public static final String ENTRIES_SINCE_PROPERTY = "entriesSince";
+    public static final String ENTRIES_UNTIL_PROPERTY = "entriesUntil";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setDescription(String description) {
         writeProperty("description", description);
@@ -50,27 +50,27 @@ public abstract class _TapestryVersion extends CayenneDataObject {
         return (Integer)readProperty("sortBy");
     }
 
-    public void addToComponentsSince(ComponentEntry obj) {
-        addToManyTarget("componentsSince", obj, true);
+    public void addToEntriesSince(ComponentEntry obj) {
+        addToManyTarget("entriesSince", obj, true);
     }
-    public void removeFromComponentsSince(ComponentEntry obj) {
-        removeToManyTarget("componentsSince", obj, true);
+    public void removeFromEntriesSince(ComponentEntry obj) {
+        removeToManyTarget("entriesSince", obj, true);
     }
     @SuppressWarnings("unchecked")
-    public List<ComponentEntry> getComponentsSince() {
-        return (List<ComponentEntry>)readProperty("componentsSince");
+    public List<ComponentEntry> getEntriesSince() {
+        return (List<ComponentEntry>)readProperty("entriesSince");
     }
 
 
-    public void addToComponentsUntil(ComponentEntry obj) {
-        addToManyTarget("componentsUntil", obj, true);
+    public void addToEntriesUntil(ComponentEntry obj) {
+        addToManyTarget("entriesUntil", obj, true);
     }
-    public void removeFromComponentsUntil(ComponentEntry obj) {
-        removeToManyTarget("componentsUntil", obj, true);
+    public void removeFromEntriesUntil(ComponentEntry obj) {
+        removeToManyTarget("entriesUntil", obj, true);
     }
     @SuppressWarnings("unchecked")
-    public List<ComponentEntry> getComponentsUntil() {
-        return (List<ComponentEntry>)readProperty("componentsUntil");
+    public List<ComponentEntry> getEntriesUntil() {
+        return (List<ComponentEntry>)readProperty("entriesUntil");
     }
 
 
