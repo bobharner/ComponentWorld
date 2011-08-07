@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<th><t:label for="entryTypeMenu"/>:</th>
-			<td>
+			<td colspan="2">
 				<t:radioGroup t:id="entryTypeMenu" validate="required"
 						value="type">
 					<t:loop source="entryTypes" value="entryType">
