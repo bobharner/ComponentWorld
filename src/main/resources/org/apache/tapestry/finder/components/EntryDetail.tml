@@ -27,18 +27,22 @@
 	
 		<table class="detail-table">
 	
+			<t:if test="entry.documentationUrl">
 			<tr><th>Docs:</th>
 				<td><a href="${entry.documentationUrl}" class="short-url external"
 						title="Go to ${entry.documentationUrl}">
 						${shortDocUrl}</a>
 				</td>
 			</tr>
+			</t:if>
+			<t:if test="entry.demonstrationUrl">
 			<tr><th>Demo:</th>
 				<td><a href="${entry.demonstrationUrl}" class="short-url external"
 						title="Go to ${entry.demonstrationUrl}">
 						${shortDemoUrl}</a>
 				</td>
 			</tr>
+			</t:if>
 			<t:if test="hasVersions">
 				<tr><th>For:</th>
 					<td>Tapestry <t:if test="entry.since">${entry.since?.name} +</t:if>
@@ -58,11 +62,15 @@
 				<tr><th style="vertical-align: top">Contains:</th>
 					<td>
 						<div class="${multicolumnClass}">
+							<ul class="entry-list">
 							<t:loop source="children" value="child">
-								<t:pageLink page="index" context="child"
+								<li class="${child.entryType.cssClass}">
+									<t:pageLink page="index" context="child"
 									title="${child.description}">${child.name}
-								</t:pageLink><br />
+									</t:pageLink>
+								</li>
 							</t:loop>
+							</ul>
 						</div>
 					</td>
 				</tr>
