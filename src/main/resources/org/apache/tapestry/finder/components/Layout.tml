@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>${message:applicationName} - ${title}</title>
+<t:remove>
+	Note: The CSS entries below must be here rather than in layout.css
+	because they contain properties that Tapestry must resolve dynamically.
+</t:remove>
 <style type="text/css">
     #top { background: #ffffff url(${context:layout/images/bg.png}) repeat-x top right; }
     .nav { background: #1B181C url(${context:layout/images/top-bg.png}) repeat-x top right; }
