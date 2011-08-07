@@ -125,7 +125,7 @@ public class EntryList
 	 *         JavaScript off) we return the whole page to be redrawn.
 	 */
 	@OnEvent(value = EventConstants.ACTION, component = "entrySellection")
-	public Object onActionFromEntrySellection(Integer id)
+	public Object viewEntryDetails(Integer id)
 	{
 		setSelectedEntry(entryService.findById(id));
 		if (request.isXHR()) // an AJAX request?

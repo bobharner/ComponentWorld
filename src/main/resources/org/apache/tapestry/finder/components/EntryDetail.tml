@@ -7,13 +7,18 @@
 		
 		<div style="float:left; margin-bottom: .8em">
 			<h2>${entry.name}</h2>
-			<div class="entry-type">A ${entry.entryType?.name.toLowerCase()}
-				<t:if test="entry.parent">from </t:if> 
-				<t:pageLink page="index" context="entry?.parent"
-							title="${entry?.parent?.description}">
-					${entry.parent?.name}
-				</t:pageLink>
-				(${entry.sourceType?.name})
+			<div class="entry-type">${article}
+				${entry.entryType?.name.toLowerCase()}
+				<t:if test="entry.parent">
+					from
+					<t:eventLink zone="^" event="viewEntry" context="entry?.parent"
+							title="${entry.parent?.description}">
+						${entry.parent?.name}
+					</t:eventLink>
+				</t:if>
+				<t:if test="entry.sourceType">
+					(${entry.sourceType.name})
+				</t:if>
 			</div>
 		</div>
 
@@ -65,9 +70,10 @@
 							<ul class="entry-list">
 							<t:loop source="children" value="child">
 								<li class="${child.entryType.cssClass}">
-									<t:pageLink page="index" context="child"
+									<t:eventLink zone="^" event="viewEntry"
+									context="child"
 									title="${child.description}">${child.name}
-									</t:pageLink>
+									</t:eventLink>
 								</li>
 							</t:loop>
 							</ul>

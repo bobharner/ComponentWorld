@@ -15,7 +15,7 @@
 				<t:label for="sourceTypes"></t:label>
 				<t:checklist t:id="sourceTypes" model="sourceTypeSelectModel"
 					selected="selectedSourceTypes" encoder="sourceTypeEncoder"/>
-
+xxx
 				<label for="rd2"><input type="checkbox" id="rd2" name="from"
 					value="rd2" checked="checked" />Tapestry Modules</label>
 				<label for="rd3"><input type="checkbox" id="rd3" name="from"

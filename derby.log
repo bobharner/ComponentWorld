@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sat Aug 06 22:29:50 EDT 2011:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0131-a212-d002-000003f140a8 
+Sun Aug 07 14:48:31 EDT 2011:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0131-a593-0879-000003f1fc50 
 on database directory C:\Users\bharner\workspace\ComponentFinder\database\componentSearchDB  with class loader ContextLoader@Tapestry Component Finder 
 Loaded from file:/C:/Users/bharner/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
 java.vendor=Sun Microsystems Inc.

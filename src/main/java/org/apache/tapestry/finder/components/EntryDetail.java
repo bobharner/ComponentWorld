@@ -19,10 +19,12 @@ import java.util.List;
 import org.apache.tapestry.finder.entities.ComponentEntry;
 import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry.finder.utils.UrlUtils;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.Request;
 
 /**
  * Tapestry component to display detailed information about a particular entry
@@ -44,17 +46,21 @@ public class EntryDetail
 	@Property
 	private String shortDemoUrl; // shortened version of entry's demo URL
 
-	@SuppressWarnings("unused")
 	@Property
 	private ComponentEntry child; // used in a loop
 
-	@SuppressWarnings("unused")
 	@Property
 	private List<ComponentEntry> children;
 
 	@Inject
+	private Request request;
+
+	@Inject
 	private EntryService entryService;
 
+	/**
+	 * Perform page initializations
+	 */
 	@SetupRender
 	public void init()
 	{
@@ -65,7 +71,33 @@ public class EntryDetail
 			children = entryService.findChildren(entry);
 		}
 	}
+	
+	/**
+	 * Return an English article based on whether the current entry's entry type
+	 * starts with a vowel.
+	 * 
+	 * @return "A" or "An", or an empty string
+	 */
+	public String getArticle()
+	{
+		if (entry.getEntryType() == null)
+		{
+			return "";
+		}
+		char c = entry.getEntryType().getName().toLowerCase().charAt(0);
+        if (c=='a' || c=='e' || c=='i' || c=='o' || c=='u') // vowels
+        {
+        	return "An ";
+        }
+    	return "A ";
+	}
 
+	/**
+	 * Determine whether the current entry has any "since" or "until" version
+	 * restrictions.
+	 * 
+	 * @return true or false
+	 */
 	public Boolean getHasVersions()
 	{
 		if ((entry.getSince() != null) || (entry.getUntil() != null))
@@ -75,6 +107,13 @@ public class EntryDetail
 		return false;
 	}
 
+	/**
+	 * Set the CSS class for the list of children based on how many children
+	 * there are. (Multiple columns only look good when you have a larger number
+	 * of items.)
+	 * 
+	 * @return the CSS class name to use, or an empty string
+	 */
 	public String getMulticolumnClass()
 	{
 		if (children.size() > 5)
@@ -82,5 +121,26 @@ public class EntryDetail
 			return "multicolumn3";
 		}
 		return "";
+	}
+	
+	/**
+	 * As an event handler, respond to a click on a link whose event is named
+	 * "viewEntry".
+	 * 
+	 * @return this component (for display within the current zone)
+	 */
+	@OnEvent (value="viewEntry")
+	public Object viewChildDetails(ComponentEntry entry)
+	{
+		this.entry = entry;
+		//setSelectedEntry(entryService.findById(id));
+		if (request.isXHR()) // an AJAX request?
+		{
+			return this; // return the entryDetail component
+		}
+		else
+		{
+			return null; // redraw the whole current page
+		}
 	}
 }
