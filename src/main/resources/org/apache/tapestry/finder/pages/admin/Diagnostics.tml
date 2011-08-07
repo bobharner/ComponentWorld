@@ -1,0 +1,62 @@
+<html t:type="layout" title="Administration Pages"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+	<h1>Diagnostics</h1>
+	
+		<fieldset><legend><h3>JVM Memory Statistics</h3></legend>
+	
+			<table class="datatable">
+				<tr><th>Memory Used:</th>
+					<td class="num">${memoryUsed} MB</td>
+				</tr>
+				<tr><th>Memory Free:</th>
+					<td class="num">${memoryFree} MB</td>
+				</tr>
+				<tr><th>Memory Total:</th>
+					<td class="num">${memoryTotal} MB</td>
+				</tr>
+				<tr><th>Memory Max:</th>
+					<td class="num">${memoryMax} MB</td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		
+		<fieldset><legend><h3>Memory Pool MX Beans</h3></legend>
+			<table class="datatable">
+				<thead>
+						<tr><th>Name</th><th>Type</th>
+							<th class="num">Initial</th><th class="num">Max</th>
+							<th class="num">Used</th><th class="num">Committed</th>
+						</tr>
+				</thead>
+				<t:loop source="memoryPoolMXBeans" value="memoryPoolMXBean">
+					<tr><th>${memoryPoolMXBean.name}:</th>
+						<td>${memoryPoolMXBean.type}</td>
+						<td class="num">${memoryPoolMXBean.usage.init}</td>
+						<td class="num">${memoryPoolMXBean.usage.max}</td>
+						<td class="num">${memoryPoolMXBean.usage.used}</td>
+						<td class="num">${memoryPoolMXBean.usage.committed}</td>
+					</tr>
+				</t:loop>
+			</table>
+		</fieldset>
+
+		<fieldset><legend><h3>Current Session Contents</h3></legend>
+			<t:if test="hasSession">
+				<table class="datatable">
+					<thead><tr><th>Name</th><th>Value</th></tr></thead>
+					<t:loop source="session.attributeNames" value="attributeName">
+						<tr><th>${attributeName}:</th>
+							<td><t:renderobject object="attributeValue"/></td>
+						</tr>
+					</t:loop>
+				</table>
+				<p>Session Max Inactive Interval: ${maxInactiveInterval} minutes</p>
+				<p:else>
+					There is no Session.
+				</p:else>
+			</t:if>
+		</fieldset>
+</html>

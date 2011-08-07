@@ -20,7 +20,9 @@ import org.apache.tapestry.finder.entities.ComponentEntry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.services.EntryService;
+import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
@@ -77,15 +79,16 @@ public class EntryList
 	private Object entryDetail;
 	
 	/**
-	 * @return the CSS class of current entry (depends on whether it is enabled)
+	 * @return the CSS class of current entry (depends on the entry type and
+	 * whether it is enabled)
 	 */
 	public String getEntryCssClass()
 	{
 		if(entry.getEnabled())
 		{
-			return "";
+			return entry.getEntryType().getCssClass();
 		}
-		return "disabled";
+		return entry.getEntryType().getCssClass() + " disabled";
 	}
 
 	/**
@@ -98,8 +101,7 @@ public class EntryList
 		{
 			return entry.getDescription();
 		}
-		return entry.getParent().getName() + ": "
-				+ entry.getDescription();
+		return entry.getDescription() + " (" + entry.getParent().getName() + ")";
 	}
 
 	/**
@@ -114,14 +116,16 @@ public class EntryList
 	}
 
 	/**
-	 * As an event lister, respond to a click on the "entrySelection"
-	 * ActionLink. Return the "entryDetail" component (to be put into a
-	 * zone). If the event is not part of an AJAX zone update (i.e. the browser
-	 * has JavaScript off) we return the whole page to be redrawn.
+	 * As an event lister, respond to a click on the "entrySellection"
+	 * ActionLink. (Note that "entrySellection is intentionally misspelled to
+	 * avoid matches with the javascript instant search).
 	 * 
-	 * @return
+	 * @return the "entryDetail" component (to be put into a zone). If the event
+	 *         is not part of an AJAX zone update (i.e. the browser has
+	 *         JavaScript off) we return the whole page to be redrawn.
 	 */
-	public Object onActionFromEntrySelection(Integer id)
+	@OnEvent(value = EventConstants.ACTION, component = "entrySellection")
+	public Object onActionFromEntrySellection(Integer id)
 	{
 		setSelectedEntry(entryService.findById(id));
 		if (request.isXHR()) // an AJAX request?

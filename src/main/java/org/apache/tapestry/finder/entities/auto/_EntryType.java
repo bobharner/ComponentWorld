@@ -13,6 +13,7 @@ import org.apache.tapestry.finder.entities.ComponentEntry;
  */
 public abstract class _EntryType extends CayenneDataObject {
 
+    public static final String CSS_CLASS_PROPERTY = "cssClass";
     public static final String DESCRIPTION_PROPERTY = "description";
     public static final String ID_PROPERTY = "id";
     public static final String IS_CONTAINER_PROPERTY = "isContainer";
@@ -22,6 +23,13 @@ public abstract class _EntryType extends CayenneDataObject {
     public static final String ENTRIES_PROPERTY = "entries";
 
     public static final String ID_PK_COLUMN = "ID";
+
+    public void setCssClass(String cssClass) {
+        writeProperty("cssClass", cssClass);
+    }
+    public String getCssClass() {
+        return (String)readProperty("cssClass");
+    }
 
     public void setDescription(String description) {
         writeProperty("description", description);

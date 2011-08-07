@@ -1,0 +1,16 @@
+
+================================ LICENSE NOTICE ================================
+
+The images in this folder were copied from Eclipse IDE (on 06 Aug 2011) and
+are therefore licensed under the Eclipse Public License - v 1.0 (EPL 1.0)
+
+The full terms of EPL 1.0 are described at:
+
+    http://www.eclipse.org/org/documents/epl-v10.php
+
+The Apache Software Foundation considers EPL-licensed media to be acceptable for
+inclusion in Apache-licensed software if appropriately labeled.  See:
+
+    http://www.apache.org/legal/resolved.html#category-b
+    
+================================ LICENSE NOTICE ================================

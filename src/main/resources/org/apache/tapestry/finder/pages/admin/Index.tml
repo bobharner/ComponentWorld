@@ -13,6 +13,7 @@
 	<li>Roles</li>
 	<li>Users</li>
 	<li>Other Settings</li>
+	<li><t:pagelink page="admin/diagnostics">Diagnostics</t:pagelink></li>
 </ul>
 
 </html>

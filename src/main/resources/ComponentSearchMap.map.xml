@@ -4,7 +4,6 @@
   xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
   project-version="3.0.0.1">
 	<property name="defaultPackage" value="org.apache.tapestry.finder.entities"/>
-	<property name="quoteSqlIdentifiers" value="false"/>
 	<db-entity name="ENTRIES">
 		<db-attribute name="DEMONSTRATIONURL" type="VARCHAR" length="1024"/>
 		<db-attribute name="DESCRIPTION" type="VARCHAR" isMandatory="true" length="4096"/>
@@ -21,6 +20,7 @@
 		<db-attribute name="UNTILID" type="INTEGER"/>
 	</db-entity>
 	<db-entity name="ENTRY_TYPES">
+		<db-attribute name="CSS_CLASS" type="VARCHAR" length="16"/>
 		<db-attribute name="DESCRIPTION" type="VARCHAR" isMandatory="true" length="256"/>
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
 		<db-attribute name="ISCONTAINER" type="BOOLEAN" isMandatory="true"/>
@@ -59,10 +59,10 @@
 		<db-attribute name="SORTBY" type="INTEGER" isMandatory="true"/>
 	</db-entity>
 	<db-entity name="USERS">
-		<db-attribute name="LASTNAME" type="VARCHAR" isMandatory="true" length="128"/>
 		<db-attribute name="ENABLED" type="BIT" isMandatory="true"/>
 		<db-attribute name="FIRSTNAME" type="VARCHAR" isMandatory="true" length="128"/>
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="LASTNAME" type="VARCHAR" isMandatory="true" length="128"/>
 		<db-attribute name="ROLEID" type="INTEGER"/>
 		<db-attribute name="USERID" type="VARCHAR" length="64"/>
 	</db-entity>
@@ -76,6 +76,7 @@
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
 	<obj-entity name="EntryType" className="org.apache.tapestry.finder.entities.EntryType" dbEntityName="ENTRY_TYPES">
+		<obj-attribute name="cssClass" type="java.lang.String" db-attribute-path="CSS_CLASS"/>
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="ID"/>
 		<obj-attribute name="isContainer" type="java.lang.Boolean" db-attribute-path="ISCONTAINER"/>
@@ -161,8 +162,8 @@
 		<db-attribute-pair source="ROLEID" target="ID"/>
 	</db-relationship>
 	<obj-relationship name="children" source="ComponentEntry" target="ComponentEntry" deleteRule="Deny" db-relationship-path="CHILDREN"/>
-	<obj-relationship name="license" source="ComponentEntry" target="License" deleteRule="Nullify" db-relationship-path="LICENSE"/>
 	<obj-relationship name="entryType" source="ComponentEntry" target="EntryType" deleteRule="Nullify" db-relationship-path="ENTRYTYPE"/>
+	<obj-relationship name="license" source="ComponentEntry" target="License" deleteRule="Nullify" db-relationship-path="LICENSE"/>
 	<obj-relationship name="parent" source="ComponentEntry" target="ComponentEntry" deleteRule="Nullify" db-relationship-path="PARENT"/>
 	<obj-relationship name="since" source="ComponentEntry" target="TapestryVersion" deleteRule="Nullify" db-relationship-path="SINCE"/>
 	<obj-relationship name="sourceType" source="ComponentEntry" target="SourceType" deleteRule="Nullify" db-relationship-path="SOURCETYPE"/>

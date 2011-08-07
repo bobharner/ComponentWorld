@@ -24,10 +24,12 @@ import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.services.EntryTypeService;
 import org.apache.tapestry.finder.services.SourceTypeService;
+import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.CleanupRender;
 import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Persist;
@@ -108,7 +110,8 @@ public class Index
 	 * As an event handler, respond to the form's PREPARE_FOR_RENDER event,
 	 * doing setup actions prior to rendering the form.
 	 */
-	void onPrepareForRender()
+	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "categorySelection")
+	void prepare()
 	{
 		// populate the list of entry types for the entry type drop-down menu
 		List<EntryType> entryTypes = entryTypeService.findAll();
@@ -133,7 +136,8 @@ public class Index
 	 * 
 	 * @return
 	 */
-	Object onValueChangedFromEntryType(EntryType entryType)
+	@OnEvent(value = EventConstants.VALUE_CHANGED, component = "entryType")
+	Object changeEntryType(EntryType entryType)
 	{
 		if (request.isXHR()) // an AJAX request?
 		{
@@ -163,7 +167,8 @@ public class Index
 	 * 
 	 * @return the current page (redraw self)
 	 */
-	Object onSuccessFromCategorySelection()
+	@OnEvent(value = EventConstants.SUCCESS, component = "categorySelection")
+	Object redrawPage()
 	{
 	    return this;
 	}
@@ -181,6 +186,5 @@ public class Index
 	{
 		successMessage = string;		
 	}
-
 
 }

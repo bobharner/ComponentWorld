@@ -3,8 +3,8 @@
 
 <t:if test="entry">
 	<div class="detail-box">
-		<img src="${context:layout/images/plugin.png}" width="32" height="32"
-				style="border: none; float: left; margin: 0 .5em .5em 0" />
+		<div class="icon ${entry.entryType.cssClass}"></div>
+		
 		<div style="float:left; margin-bottom: .8em">
 			<h2>${entry.name}</h2>
 			<div class="entry-type">A ${entry.entryType?.name.toLowerCase()}
