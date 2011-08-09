@@ -87,9 +87,9 @@ public class EntryDetail
 		char c = entry.getEntryType().getName().toLowerCase().charAt(0);
         if (c=='a' || c=='e' || c=='i' || c=='o' || c=='u') // vowels
         {
-        	return "An ";
+        	return "an ";
         }
-    	return "A ";
+    	return "a ";
 	}
 
 	/**

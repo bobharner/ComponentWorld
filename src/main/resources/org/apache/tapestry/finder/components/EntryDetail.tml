@@ -7,7 +7,7 @@
 		
 		<div style="float:left; margin-bottom: .8em">
 			<h2>${entry.name}</h2>
-			<div class="entry-type">${article}
+			<div class="entry-type">&#8230;${article}
 				${entry.entryType?.name.toLowerCase()}
 				<t:if test="entry.parent">
 					from
