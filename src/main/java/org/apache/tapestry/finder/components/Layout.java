@@ -33,18 +33,6 @@ public class Layout
 		{ "Index", "Index", "Contact" };
 	}
 
-	/**
-	 * Output the HTML5 doctype, as a work-around to
-	 * https://issues.apache.org/jira/browse/TAP5-1040
-	 * 
-	 * @param writer
-	 */
-	@SetupRender
-	final void renderDocType(final MarkupWriter writer)
-	{
-		writer.getDocument().raw("<!DOCTYPE html>");
-	}
-
 	public void setPageName(String pageName)
 	{
 		this.pageName = pageName;

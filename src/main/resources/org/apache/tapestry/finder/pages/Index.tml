@@ -15,7 +15,7 @@
 				<t:label for="sourceTypes"></t:label>
 				<t:checklist t:id="sourceTypes" model="sourceTypeSelectModel"
 					selected="selectedSourceTypes" encoder="sourceTypeEncoder"/>
-xxx
+
 				<label for="rd2"><input type="checkbox" id="rd2" name="from"
 					value="rd2" checked="checked" />Tapestry Modules</label>
 				<label for="rd3"><input type="checkbox" id="rd3" name="from"
@@ -36,7 +36,7 @@ xxx
 
 	</div>
 	
-	<div class="messages" id="messagebox">
+	<div class="message-box" id="messagebox">
 			<t:if test="successMessage">
 				<div class="success">
 					<img src="${context:layout/images/accepted.png}" width="32" height="32"
@@ -53,10 +53,10 @@ xxx
 		<t:entryList entryType="selectedEntryType"
 			sourceTypes="selectedSourceTypes" selected="selectedEntry" />
 	</t:zone>
-	
+
 <script type="text/javascript" language="javascript">
   // <![CDATA[
-  $('messagebox').blindUp({ duration: 1.5, delay: 1 });
+  $('messagebox').fade({ from: 1.0, to: 0, delay: 1.0, duration: 1.5 });
   // ]]>
 </script>
 

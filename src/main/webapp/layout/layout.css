@@ -368,6 +368,7 @@ DIV.detail-box {
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 	border-radius: 15px;
 }
+DIV.detail-box P { color: black; }
 
 .detail-box H2 {
 	padding: 0;
@@ -388,7 +389,7 @@ DIV.detail-box {
 	float: left;
 	width: 32px;
 	height: 32px;
-	margin: .5em;
+	margin: .2em .5em .5em .5em;
 }
 
 .detail-box P {
@@ -427,30 +428,29 @@ DIV.controls DIV.popup A {
 	text-decoration: underline;
 }
 
-DIV.messages {
+DIV.message-box {
 	text-align: center;
 	font-weight: bold;
 	position: absolute;
 	left: 40%;
 	top: 17em;
-	xbackground
-	#cfc;
 }
 
-DIV.messages DIV {
+DIV.message-box DIV {
 	text-align: center;
 	padding: 1.3em;
-	margin: 1em;
 	background: #dfc;
+	border-radius: 100%;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-DIV.messages .success {
+DIV.message-box .success {
 	color: green;
 	border: 1px solid #9f9;
 	display: inline-block;
 }
 
-DIV.messages .failure {
+DIV.message-box .failure {
 	color: red;
 	border: 1px solid #f99;
 	display: inline-block;
@@ -465,6 +465,12 @@ x.datePicker .todayButton,.datePicker .noneButton {
 	width: auto !important;
 }
 
+/* additional app-specific classes */
+
+div.subtitle {
+	margin-left: 1.4em;
+	color: #666;
+}
 div.multicolumn3 {
 	min-width: 45em;
 	-moz-column-count: 3;
