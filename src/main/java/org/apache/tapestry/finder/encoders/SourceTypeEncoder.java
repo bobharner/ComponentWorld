@@ -50,8 +50,9 @@ public class SourceTypeEncoder implements ValueEncoder<SourceType>,
     	{
     		return null;
     	}
-        // find the componentEntry object of the given ID in the database
+        // find the Entry object of the given ID in the database
         try {
+        	// FIXME: why is sourceTypeService sometimes null????
 			return sourceTypeService.findById(Integer.parseInt(id));
 		}
 		catch (NumberFormatException e) {

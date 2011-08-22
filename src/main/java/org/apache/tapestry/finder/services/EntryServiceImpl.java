@@ -23,47 +23,47 @@ import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.Ordering;
 import org.apache.cayenne.query.SelectQuery;
 import org.apache.cayenne.query.SortOrder;
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.SourceType;
 
 /**
- * Service for all {@link ComponentEntry} related functionality.
+ * Service for all {@link Entry} related functionality.
  */
 
 public class EntryServiceImpl extends
-		GenericServiceImpl<ComponentEntry, Integer> implements
+		GenericServiceImpl<Entry, Integer> implements
 		EntryService
 {
 
 	private static final long serialVersionUID = -657199702704315580L;
 
 	@Override
-	public ComponentEntry create()
+	public Entry create()
 	{
 		ObjectContext context = DataContext.getThreadObjectContext();
 		return create(context);
 	}
 
 	/**
-	 * Create a new {@link ComponentEntry} object, attached to the given
+	 * Create a new {@link Entry} object, attached to the given
 	 * Cayenne ObjectContext but not yet persisted to the database
 	 * 
 	 * @param context
 	 * @return the new object
 	 */
-	private ComponentEntry create(ObjectContext context)
+	private Entry create(ObjectContext context)
 	{
-		ComponentEntry componentEntry = context.newObject(ComponentEntry.class);
-		return componentEntry;
+		Entry entry = context.newObject(Entry.class);
+		return entry;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ComponentEntry> findAll()
+	public List<Entry> findAll()
 	{
-		SelectQuery query = new SelectQuery(ComponentEntry.class);
-		Ordering order = new Ordering(ComponentEntry.NAME_PROPERTY,
+		SelectQuery query = new SelectQuery(Entry.class);
+		Ordering order = new Ordering(Entry.NAME_PROPERTY,
 					SortOrder.ASCENDING_INSENSITIVE);
 		query.addOrdering(order);
 		return DataContext.getThreadObjectContext().performQuery(query);
@@ -71,15 +71,15 @@ public class EntryServiceImpl extends
 		
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ComponentEntry> findChildren(ComponentEntry entry)
+	public List<Entry> findChildren(Entry entry)
 	{
 		// where parent matches the id of this component
 		Expression exp = ExpressionFactory.inExp(
-				ComponentEntry.PARENT_PROPERTY, entry.getId());
+				Entry.PARENT_PROPERTY, entry.getId());
 
-		SelectQuery query = new SelectQuery(ComponentEntry.class, exp);
+		SelectQuery query = new SelectQuery(Entry.class, exp);
 
-		Ordering order = new Ordering(ComponentEntry.NAME_PROPERTY,
+		Ordering order = new Ordering(Entry.NAME_PROPERTY,
 					SortOrder.ASCENDING_INSENSITIVE);
 		query.addOrdering(order);
 		return DataContext.getThreadObjectContext().performQuery(query);
@@ -87,24 +87,37 @@ public class EntryServiceImpl extends
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ComponentEntry> findByType(EntryType entryType,
+	public List<Entry> findByType(EntryType entryType,
 			List<SourceType> sourceTypes)
 	{
-		Expression exp;
+		Expression expression;
 		if (entryType == null)
 		{
-			exp = null;
+			expression = null;
 		}
 		else
 		{
-			// filter out entries of the same type as the given entry
-			exp = ExpressionFactory.matchExp(
-				ComponentEntry.ENTRY_TYPE_PROPERTY, entryType);
+			// an expression for matching the given entry type
+			expression = ExpressionFactory.matchExp(
+				Entry.ENTRY_TYPE_PROPERTY, entryType);
 		}
-		// TODO: add expression for matching any of the sourceType values
 
-		SelectQuery query = new SelectQuery(ComponentEntry.class, exp);
-		Ordering order = new Ordering(ComponentEntry.NAME_PROPERTY,
+		// add an expression for matching any of the selected sourceType values
+		if ((sourceTypes != null) && (sourceTypes.size() != 0))
+		{
+			// FIXME: the following doesn't work			
+			Expression exp = ExpressionFactory.inDbExp(Entry.SOURCE_TYPE_PROPERTY, sourceTypes);
+			if (expression == null) {
+				expression = exp;
+			}
+			else
+			{
+				expression.andExp(exp);
+			}
+		}
+
+		SelectQuery query = new SelectQuery(Entry.class, expression);
+		Ordering order = new Ordering(Entry.NAME_PROPERTY,
 					SortOrder.ASCENDING_INSENSITIVE);
 		query.addOrdering(order);
 		return DataContext.getThreadObjectContext().performQuery(query);
@@ -112,7 +125,7 @@ public class EntryServiceImpl extends
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ComponentEntry> findParentCandidates(ComponentEntry entry)
+	public List<Entry> findParentCandidates(Entry entry)
 	{
 		// TODO: need complex expression saying "all entries whose EntryType
 		// has "isContainer" true
@@ -126,25 +139,25 @@ public class EntryServiceImpl extends
 		{
 			// filter out entries of the same type as the given entry
 			exp = ExpressionFactory.noMatchExp(
-				ComponentEntry.ENTRY_TYPE_PROPERTY, entry.getEntryType());
+				Entry.ENTRY_TYPE_PROPERTY, entry.getEntryType());
 		}
 
-		SelectQuery query = new SelectQuery(ComponentEntry.class, exp);
-		Ordering order = new Ordering(ComponentEntry.NAME_PROPERTY,
+		SelectQuery query = new SelectQuery(Entry.class, exp);
+		Ordering order = new Ordering(Entry.NAME_PROPERTY,
 					SortOrder.ASCENDING_INSENSITIVE);
 		query.addOrdering(order);
 		return DataContext.getThreadObjectContext().performQuery(query);
 	}
 
 	@Override
-	public ComponentEntry findById(Integer id) {
+	public Entry findById(Integer id) {
 
-		Expression exp = ExpressionFactory.inExp(ComponentEntry.ID_PROPERTY, id);
+		Expression exp = ExpressionFactory.inExp(Entry.ID_PROPERTY, id);
 
-		SelectQuery query = new SelectQuery(ComponentEntry.class, exp);
+		SelectQuery query = new SelectQuery(Entry.class, exp);
 
 		@SuppressWarnings("unchecked")
-		List<ComponentEntry> components = DataContext.getThreadObjectContext()
+		List<Entry> components = DataContext.getThreadObjectContext()
 				.performQuery(query);
 
 		if (components.size() == 0) {

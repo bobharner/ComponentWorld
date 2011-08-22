@@ -16,7 +16,7 @@ package org.apache.tapestry.finder.pages.entry;
 
 import java.util.List;
 
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.License;
 import org.apache.tapestry.finder.entities.SourceType;
@@ -66,7 +66,7 @@ public class EditEntry
 	private String demonstrationUrl;
 
 	@Property
-	private ComponentEntry parent;
+	private Entry parent;
 
 	@Property
 	private License license;
@@ -82,7 +82,7 @@ public class EditEntry
 
 	@PageActivationContext
 	// tell Tapestry to generate onActivate() & onPassivate()
-	private ComponentEntry entry;
+	private Entry entry;
 
 	@SuppressWarnings("unused")
 	@Property
@@ -146,7 +146,7 @@ public class EditEntry
 	@InjectPage
 	private Index indexPage;
 
-	public ComponentEntry getEntry()
+	public Entry getEntry()
 	{
 		return entry;
 	}
@@ -189,13 +189,13 @@ public class EditEntry
 		sourceTypes = sourceTypeService.findAll();
 
 		// populate the lists for select menus:
-		List<ComponentEntry> parents = entryService.findParentCandidates(entry);
+		List<Entry> parents = entryService.findParentCandidates(entry);
 		List<TapestryVersion> versions = tapestryVersionService.findAll();
 		List<License> licenses = licenseService.findAll();
 
 		// create SelectModels for the select menus:
 		parentSelectModel = selectModelFactory.create(parents,
-				ComponentEntry.NAME_PROPERTY);
+				Entry.NAME_PROPERTY);
 		versionSelectModel = selectModelFactory.create(versions,
 				TapestryVersion.NAME_PROPERTY);
 		licenseSelectModel = selectModelFactory.create(licenses,
@@ -236,7 +236,6 @@ public class EditEntry
 			// create a new, empty entry object
 			entry = entryService.create();
 		}
-		// TODO - set enabled to false if user is under-privileged
 
 		// Copy the submitted form values into the (new or existing) object.
 		// (Inserting the values *after* validation ensures that we don't
@@ -251,6 +250,7 @@ public class EditEntry
 		entry.setSince(this.since);
 		entry.setUntil(this.until);
 		entry.setLicense(this.license);
+		// TODO - set enabled to false if user is under-privileged
 		entry.setEnabled(enabled);
 
 		// save to the database
@@ -266,7 +266,7 @@ public class EditEntry
 		return indexPage;
 	}
 
-	public void setEntry(ComponentEntry entry)
+	public void setEntry(Entry entry)
 	{
 		this.entry = entry;
 	}

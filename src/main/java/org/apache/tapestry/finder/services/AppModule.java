@@ -21,7 +21,7 @@ import org.apache.tapestry.finder.encoders.EntryTypeEncoder;
 import org.apache.tapestry.finder.encoders.LicenseEncoder;
 import org.apache.tapestry.finder.encoders.SourceTypeEncoder;
 import org.apache.tapestry.finder.encoders.TapestryVersionEncoder;
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.License;
 import org.apache.tapestry.finder.entities.SourceType;
@@ -58,6 +58,7 @@ public class AppModule
 		binder.bind(RoleService.class, RoleServiceImpl.class);
 		binder.bind(EntryTypeService.class, EntryTypeServiceImpl.class);
 		binder.bind(SourceTypeService.class, SourceTypeServiceImpl.class);
+		binder.bind(DemoService.class, DemoServiceImpl.class);
 		binder.bind(LicenseService.class, LicenseServiceImpl.class);
     }
     
@@ -169,7 +170,7 @@ public class AppModule
     @SuppressWarnings("unchecked")
     public static void contributeValueEncoderSource(MappedConfiguration<Class, ValueEncoderFactory> configuration)
 	{
-		configuration.addInstance(ComponentEntry.class, EntryEncoder.class);
+		configuration.addInstance(Entry.class, EntryEncoder.class);
 		configuration.addInstance(EntryType.class, EntryTypeEncoder.class);
 		configuration.addInstance(SourceType.class, SourceTypeEncoder.class);
 		configuration.addInstance(TapestryVersion.class, TapestryVersionEncoder.class);

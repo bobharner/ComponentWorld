@@ -50,7 +50,7 @@ public class LicenseEncoder implements ValueEncoder<License>,
     	{
     		return null;
     	}
-        // find the componentEntry object of the given ID in the database
+        // find the Entry object of the given ID in the database
         try {
 			return LicenseService.findById(Integer.parseInt(id));
 		}

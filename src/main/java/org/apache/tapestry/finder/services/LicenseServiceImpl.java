@@ -47,8 +47,8 @@ public class LicenseServiceImpl extends
 	private License create(ObjectContext context)
 	{
 
-		License componentEntry = context.newObject(License.class);
-		return componentEntry;
+		License entry = context.newObject(License.class);
+		return entry;
 	}
 	
 	@SuppressWarnings("unchecked")

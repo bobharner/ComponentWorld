@@ -3,7 +3,7 @@
 	<t:remove>Most of the peripheral page content comes from Layout.tml</t:remove>
 
 	<div class="category-selection">
-		<t:form autofocus="false" zone="listZone" t:id="categorySelection">
+		<t:form autofocus="false" t:id="categorySelection" zone="listZone">
 			<div class="find">
 				<t:label for="entryType"></t:label>
 				<t:select t:id="entryType" value="selectedEntryType"
@@ -12,27 +12,30 @@
 			</div>
 
 			<div class="from">
+			
 				<t:label for="sourceTypes"></t:label>
+				<t:select t:id="sourceTypes" value="selectedSourceType"
+						model="sourceTypeSelectModel" blankLabel="All Sources"
+						zone="listZone" />
+						
+				<t:remove>
 				<t:checklist t:id="sourceTypes" model="sourceTypeSelectModel"
-					selected="selectedSourceTypes" encoder="sourceTypeEncoder"/>
+					selected="selectedSourceTypes" encoder="sourceTypeEncoder" />
 
-				<label for="rd2"><input type="checkbox" id="rd2" name="from"
-					value="rd2" checked="checked" />Tapestry Modules</label>
-				<label for="rd3"><input type="checkbox" id="rd3" name="from"
-					value="rd3" />3rd Party Modules</label>
-				<label for="rd4"><input type="checkbox" id="rd4" name="from"
-					value="rd4" />Tutorials &amp; Demos</label>
-				<label for="rd5"><input type="checkbox" id="rd5" name="from"
-					value="rd5" />Blog Posts</label>
-				<label for="rd6" ><input type="checkbox" id="rd6" name="from" 
-					value="rd0" />Forums</label>
 				<label for="rd0"><input type="checkbox" id="rd0" name="from" 
 					value="rd0" />All</label>
+				
+				<t:palette t:id="sourceTypes" model="sourceTypeSelectModel"
+					selected="selectedSourceTypes" encoder="sourceTypeEncoder"
+					size="5"/>
+				</t:remove>
+				
+				<noscript>
+					<t:submit value="Go" />
+				</noscript>
 			</div>
-			<noscript>
-				<t:submit value="Update" />
-			</noscript>
 		</t:form>
+	<div style="clear: both"></div>
 
 	</div>
 	
@@ -49,12 +52,15 @@
 			</t:if>
 	</div>
 
+	<t:remove>The "listZone" zone below is updated dynamically (via AJAX)
+		whenever the selected entry type or source type changes</t:remove>
 	<t:zone id="listZone" class="list-zone">
 		<t:entryList entryType="selectedEntryType"
 			sourceTypes="selectedSourceTypes" selected="selectedEntry" />
 	</t:zone>
 
 <script type="text/javascript" language="javascript">
+<!-- message box fades after display -->
   // <![CDATA[
   $('messagebox').fade({ from: 1.0, to: 0, delay: 1.0, duration: 1.5 });
   // ]]>

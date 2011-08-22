@@ -15,11 +15,12 @@
 
 package org.apache.tapestry.finder.pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tapestry.finder.components.EntryList;
 import org.apache.tapestry.finder.encoders.SourceTypeEncoder;
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.services.EntryTypeService;
@@ -37,6 +38,7 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.SelectModelFactory;
+import org.apache.tapestry5.services.ValueEncoderFactory;
 
 /**
  * Start page of web application. Here we display and manage the high-level
@@ -53,9 +55,15 @@ public class Index
 	@SuppressWarnings("unused")
 	@Property
 	private List<SourceType> selectedSourceTypes;
+
+	@Property
+	private SourceType selectedSourceType; // not needed if using checklist!!!
+	
+	@Property
+	private List<SourceType> sourceTypes; // not needed if using checklist!!!
 	
 	@PageActivationContext
-	private ComponentEntry selectedEntry;
+	private Entry selectedEntry;
 
 	@SuppressWarnings("unused")
 	@Property
@@ -85,22 +93,26 @@ public class Index
 
 	@InjectComponent
 	private EntryList entryList;
-
+	
 	public String getFailureMessage()
 	{
 		return failureMessage;
 	}
 
-	public ComponentEntry getSelectedEntry()
+	public Entry getSelectedEntry()
 	{
 		return selectedEntry;
 	}
-	
+
+	/**
+    * Get a ValueEncoder for the SourceType entity. This enables Tapestry to
+    * convert a SourceType ID to a fully-populated object, and vice-versa.
+    */
 	public ValueEncoder<SourceType> getSourceTypeEncoder()
     {
         return new SourceTypeEncoder();
     }
-	
+
 	public String getSuccessMessage()
 	{
 		return successMessage;
@@ -110,7 +122,7 @@ public class Index
 	 * As an event handler, respond to the form's PREPARE_FOR_RENDER event,
 	 * doing setup actions prior to rendering the form.
 	 */
-	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "categorySelection")
+	@OnEvent(value=EventConstants.PREPARE_FOR_RENDER, component="categorySelection")
 	void prepare()
 	{
 		// populate the list of entry types for the entry type drop-down menu
@@ -120,12 +132,15 @@ public class Index
 		entryTypeSelectModel = selectModelFactory.create(entryTypes,
 				EntryType.NAME_PLURAL_PROPERTY);
 
-		// populate the list of entry types for the entry type drop-down menu
-		List<SourceType> sourceTypes = sourceTypeService.findAll();
+		// populate the list of source types for the source type checklist menu
+		//List<SourceType> sourceTypes = sourceTypeService.findAll();
+		sourceTypes = sourceTypeService.findAll();
 
 		// create a SelectModel from the list of source types
 		sourceTypeSelectModel = selectModelFactory.create(sourceTypes,
 				SourceType.NAME_PLURAL_PROPERTY);
+		
+		selectedSourceTypes = new ArrayList<SourceType>();
 	}
 	
 	/**
@@ -150,6 +165,33 @@ public class Index
 			return null; // redraw the whole current page
 		}
 	}
+	
+	
+	/**
+	 * As an event lister, respond to a selection from the "sourceType"
+	 * Select menu. Return the "entryList" component (to be put into a
+	 * zone). If the event is not part of an AJAX zone update (i.e. the browser
+	 * has JavaScript off) we return the whole page to be redrawn.
+	 * 
+	 * @return
+	 */
+	@OnEvent(value = EventConstants.VALUE_CHANGED, component = "sourceTypes")
+	Object changeSourceType(SourceType sourceType)
+	{
+		if (request.isXHR()) // an AJAX request?
+		{
+			selectedSourceType = sourceType;
+			// FIXME: we only have one source type, turn it into a small list
+			ArrayList<SourceType> sources = new ArrayList<SourceType>();
+			sources.add(sourceType);
+			entryList.setSourceTypes(sources);
+			return entryList; // return the entryList component
+		}
+		else
+		{
+			return null; // redraw the whole current page
+		}
+	}
 
 	/**
 	 * Empty out the messages so they don't display after the first time.
@@ -167,17 +209,18 @@ public class Index
 	 * 
 	 * @return the current page (redraw self)
 	 */
-	@OnEvent(value = EventConstants.SUCCESS, component = "categorySelection")
-	Object redrawPage()
+	@OnEvent(value=EventConstants.SUCCESS, component="categorySelection")
+	Object redrawList()
 	{
-	    return this;
+		return changeEntryType(selectedEntryType);
 	}
+
 	public void setFailureMessage(String string)
 	{
 		failureMessage = string;		
 	}
 
-	public void setSelectedEntry(ComponentEntry selectedEntry)
+	public void setSelectedEntry(Entry selectedEntry)
 	{
 		this.selectedEntry = selectedEntry;
 	}

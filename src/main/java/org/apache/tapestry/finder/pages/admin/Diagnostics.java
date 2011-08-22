@@ -15,14 +15,14 @@ import org.apache.tapestry5.services.Session;
 
 public class Diagnostics
 {
-    private final int megaBytes = 1024*1024;  
+    private final static int megaBytes = 1024*1024;  
 
     @Property
 	private String attributeName;
     
     @Property
-    private MemoryPoolMXBean memoryPoolMXBean;
-
+    private MemoryPoolMXBean memoryPoolMXBean; // used in a loop
+    
 	@Inject
 	private Request request;
 
@@ -32,7 +32,7 @@ public class Diagnostics
 	
 	public int getMaxInactiveInterval() {
 		if (getHasSession()) {
-			return new Float(getSession().getMaxInactiveInterval() / 30).intValue();			
+			return getSession().getMaxInactiveInterval() / 60;			
 		}
 		return 0;
 	}

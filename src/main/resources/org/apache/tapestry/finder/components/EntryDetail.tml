@@ -28,7 +28,7 @@
 				title="Edit this entry">Edit...</t:pageLink>
 		</div>
 
-		<p>${entry.description}</p>
+		<p><t:textOutput value="entry.description" /></p>
 	
 		<table class="detail-table">
 	

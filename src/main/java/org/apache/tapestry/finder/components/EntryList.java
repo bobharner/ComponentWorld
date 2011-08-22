@@ -16,7 +16,7 @@ package org.apache.tapestry.finder.components;
 
 import java.util.List;
 
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.SourceType;
 import org.apache.tapestry.finder.services.EntryService;
@@ -44,30 +44,20 @@ public class EntryList
 	private String filterText;
 
 	@Parameter
-	private ComponentEntry selectedEntry;
+	private Entry selectedEntry;
 
 	@Parameter
 	private EntryType entryType;
-
-	public EntryType getEntryType()
-	{
-		return entryType;
-	}
-
-	public void setEntryType(EntryType entryType)
-	{
-		this.entryType = entryType;
-	}
 
 	@Parameter
 	private List<SourceType> sourceTypes;
 
 	@Property
-	private ComponentEntry entry; // used in a loop
+	private Entry entry; // used in a loop
 
 	@SuppressWarnings("unused")
 	@Property
-	private List<ComponentEntry> entryList;
+	private List<Entry> entryList;
 
 	@Inject
 	private EntryService entryService;
@@ -104,6 +94,16 @@ public class EntryList
 		return entry.getDescription() + " (" + entry.getParent().getName() + ")";
 	}
 
+	public EntryType getEntryType()
+	{
+		return entryType;
+	}
+
+	public List<SourceType> getSourceTypes()
+	{
+		return sourceTypes;
+	}
+
 	/**
 	 * Initializations needed each time this component is about to be rendered
 	 */
@@ -115,10 +115,15 @@ public class EntryList
 		entryList = entryService.findByType(entryType, sourceTypes);
 	}
 
+	public void setEntryType(EntryType entryType)
+	{
+		this.entryType = entryType;
+	}
+
 	/**
 	 * As an event lister, respond to a click on the "entrySellection"
 	 * ActionLink. (Note that "entrySellection is intentionally misspelled to
-	 * avoid matches with the javascript instant search).
+	 * avoid matches with the JavaScript instant search).
 	 * 
 	 * @return the "entryDetail" component (to be put into a zone). If the event
 	 *         is not part of an AJAX zone update (i.e. the browser has
@@ -138,13 +143,18 @@ public class EntryList
 		}
 	}
 
-	public void setSelectedEntry(ComponentEntry selectedEntry)
+	public void setSelectedEntry(Entry selectedEntry)
 	{
 		this.selectedEntry = selectedEntry;
 	}
 
-	public ComponentEntry getSelectedEntry()
+	public Entry getSelectedEntry()
 	{
 		return selectedEntry;
+	}
+
+	public void setSourceTypes(List<SourceType> sourceTypes)
+	{
+		this.sourceTypes = sourceTypes;
 	}
 }

@@ -66,7 +66,7 @@
 		<db-attribute name="ROLEID" type="INTEGER"/>
 		<db-attribute name="USERID" type="VARCHAR" length="64"/>
 	</db-entity>
-	<obj-entity name="ComponentEntry" className="org.apache.tapestry.finder.entities.ComponentEntry" dbEntityName="ENTRIES">
+	<obj-entity name="Entry" className="org.apache.tapestry.finder.entities.Entry" dbEntityName="ENTRIES">
 		<obj-attribute name="demonstrationUrl" type="java.lang.String" db-attribute-path="DEMONSTRATIONURL"/>
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="documentationUrl" type="java.lang.String" db-attribute-path="DOCUMENTATIONURL"/>
@@ -161,19 +161,19 @@
 	<db-relationship name="ROLE" source="USERS" target="ROLES" toMany="false">
 		<db-attribute-pair source="ROLEID" target="ID"/>
 	</db-relationship>
-	<obj-relationship name="children" source="ComponentEntry" target="ComponentEntry" deleteRule="Deny" db-relationship-path="CHILDREN"/>
-	<obj-relationship name="entryType" source="ComponentEntry" target="EntryType" deleteRule="Nullify" db-relationship-path="ENTRYTYPE"/>
-	<obj-relationship name="license" source="ComponentEntry" target="License" deleteRule="Nullify" db-relationship-path="LICENSE"/>
-	<obj-relationship name="parent" source="ComponentEntry" target="ComponentEntry" deleteRule="Nullify" db-relationship-path="PARENT"/>
-	<obj-relationship name="since" source="ComponentEntry" target="TapestryVersion" deleteRule="Nullify" db-relationship-path="SINCE"/>
-	<obj-relationship name="sourceType" source="ComponentEntry" target="SourceType" deleteRule="Nullify" db-relationship-path="SOURCETYPE"/>
-	<obj-relationship name="until" source="ComponentEntry" target="TapestryVersion" deleteRule="Nullify" db-relationship-path="UNTIL"/>
-	<obj-relationship name="entries" source="EntryType" target="ComponentEntry" deleteRule="Deny" db-relationship-path="ENTRIES"/>
-	<obj-relationship name="entries" source="License" target="ComponentEntry" deleteRule="Deny" db-relationship-path="ENTRIES"/>
+	<obj-relationship name="children" source="Entry" target="Entry" deleteRule="Deny" db-relationship-path="CHILDREN"/>
+	<obj-relationship name="entryType" source="Entry" target="EntryType" deleteRule="Nullify" db-relationship-path="ENTRYTYPE"/>
+	<obj-relationship name="license" source="Entry" target="License" deleteRule="Nullify" db-relationship-path="LICENSE"/>
+	<obj-relationship name="parent" source="Entry" target="Entry" deleteRule="Nullify" db-relationship-path="PARENT"/>
+	<obj-relationship name="since" source="Entry" target="TapestryVersion" deleteRule="Nullify" db-relationship-path="SINCE"/>
+	<obj-relationship name="sourceType" source="Entry" target="SourceType" deleteRule="Nullify" db-relationship-path="SOURCETYPE"/>
+	<obj-relationship name="until" source="Entry" target="TapestryVersion" deleteRule="Nullify" db-relationship-path="UNTIL"/>
+	<obj-relationship name="entries" source="EntryType" target="Entry" deleteRule="Deny" db-relationship-path="ENTRIES"/>
+	<obj-relationship name="entries" source="License" target="Entry" deleteRule="Deny" db-relationship-path="ENTRIES"/>
 	<obj-relationship name="users" source="Role" target="User" deleteRule="Deny" db-relationship-path="USERS"/>
-	<obj-relationship name="entries" source="SourceType" target="ComponentEntry" deleteRule="Deny" db-relationship-path="ENTRIES"/>
-	<obj-relationship name="entriesSince" source="TapestryVersion" target="ComponentEntry" deleteRule="Deny" db-relationship-path="ENTRIES_SINCE"/>
-	<obj-relationship name="entriesUntil" source="TapestryVersion" target="ComponentEntry" deleteRule="Deny" db-relationship-path="ENTRIES_UNTIL"/>
+	<obj-relationship name="entries" source="SourceType" target="Entry" deleteRule="Deny" db-relationship-path="ENTRIES"/>
+	<obj-relationship name="entriesSince" source="TapestryVersion" target="Entry" deleteRule="Deny" db-relationship-path="ENTRIES_SINCE"/>
+	<obj-relationship name="entriesUntil" source="TapestryVersion" target="Entry" deleteRule="Deny" db-relationship-path="ENTRIES_UNTIL"/>
 	<obj-relationship name="role" source="User" target="Role" deleteRule="Nullify" db-relationship-path="ROLE"/>
 	<query name="entryTypes" factory="org.apache.cayenne.map.SelectQueryBuilder" root="obj-entity" root-name="EntryType">
 		<property name="cayenne.GenericSelectQuery.cacheStrategy" value="SHARED_CACHE"/>

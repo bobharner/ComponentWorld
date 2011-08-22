@@ -16,62 +16,62 @@ package org.apache.tapestry.finder.services;
 
 import java.util.List;
 
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.entities.EntryType;
 import org.apache.tapestry.finder.entities.SourceType;
 
 /**
- * Service for creating, managing and searching for {@link ComponentEntry}
+ * Service for creating, managing and searching for {@link Entry}
  * entities. See also {@link GenericService}
  * 
  */
-public interface EntryService extends GenericService<ComponentEntry, Integer> {
+public interface EntryService extends GenericService<Entry, Integer> {
 	
 	/**
-	 * Create a new {@link ComponentEntry} object, not yet persisted to the
+	 * Create a new {@link Entry} object, not yet persisted to the
 	 * database
 	 * 
 	 * @return the new object
 	 */
-	public ComponentEntry create();
+	public Entry create();
 	
 	/**
-	 * Find all {@link ComponentEntry}s, and return in alphabetical order by
+	 * Find all {@link Entry}s, and return in alphabetical order by
 	 * name
 	 * 
 	 * @return the list of components
 	 */
-	public List<ComponentEntry> findAll();
+	public List<Entry> findAll();
 
 	/**
-	 * Find all {@link ComponentEntry}s that match the given {@link EntryType}
+	 * Find all {@link Entry}s that match the given {@link EntryType}
 	 * and at least one of the given {@link SourceType}s.
 	 *  
 	 * @param entryType the EntryType to match, or null to match all
 	 * @param sourceTypes list of source types to match on, or null to match all
-	 * @return a list of matching ComponentEntry objects, in alphabetical order
+	 * @return a list of matching Entry objects, in alphabetical order
 	 * by name
 	 */
-	public List<ComponentEntry> findByType(EntryType entryType,
+	public List<Entry> findByType(EntryType entryType,
 			List<SourceType> sourceTypes);
 
 	/**
-	 * Find all {@link ComponentEntry}s that are eligible to be parents of the
+	 * Find all {@link Entry}s that are eligible to be parents of the
 	 * given entry, and return in alphabetical order by name. An entry can't be
 	 * a parent of other entries of the same type.
 	 * 	 
 	 * @param entry
 	 * @return the list of components
 	 */
-	public List<ComponentEntry> findParentCandidates(ComponentEntry entry);
+	public List<Entry> findParentCandidates(Entry entry);
 
 	/**
-	 * Find all {@link ComponentEntry}s that are children of the given entry.
+	 * Find all {@link Entry}s that are children of the given entry.
 	 * Typically these are the components & mixins included within a module,
 	 * or the modules included in a framework.
 	 * 
 	 * @return
 	 */
-	public List<ComponentEntry> findChildren(ComponentEntry entry);
+	public List<Entry> findChildren(Entry entry);
 
 }

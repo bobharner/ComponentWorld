@@ -47,8 +47,8 @@ public class TapestryVersionServiceImpl extends
 	private TapestryVersion create(ObjectContext context)
 	{
 
-		TapestryVersion componentEntry = context.newObject(TapestryVersion.class);
-		return componentEntry;
+		TapestryVersion entry = context.newObject(TapestryVersion.class);
+		return entry;
 	}
 	
 	@SuppressWarnings("unchecked")

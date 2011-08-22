@@ -172,7 +172,7 @@ a img {
 }
 
 #content p {
-	text-align: justify;
+	/*text-align: justify;*/
 }
 
 #content ul {
@@ -245,33 +245,6 @@ DIV#breadcrumbs A:hover {
 	margin: 0;
 }
 
-/* override Tapestry default styles here */
-table.t-data-grid thead tr {
-	background: white;
-	color: black;
-}
-
-table.t-data-grid thead tr A {
-	color: blue;
-	text-decoration: none;
-}
-
-table.t-data-grid thead tr th {
-	border: none;
-	border-bottom: 1px solid silver;
-}
-
-div.t-beaneditor {
-	background: white;
-	border: 0;
-	padding: 1em;
-}
-
-div.t-beaneditor-row label {
-	width: 8em;
-	text-align: left;
-}
-
 .left-side-list {
 	float: left;
 	width: 20%;
@@ -281,22 +254,58 @@ div.t-beaneditor-row label {
 	margin: .35em 0 .5em 0 !important;
 }
 
+DIV.matching-counter {
+	margin-top: 1em;
+	border-top: 1px solid #ccc;
+	color: #999;
+	font-style: italic;
+}
+
 .right-side-details {
-	float: left;
 	padding: .5em 1em 1em 1em;
-	width: 75%;
+	/* the following makes the box stay in view when scrolling down
+	width: 750px;
+	position: fixed;
+	right: 130px;
+	*/
+	/* the following makes the box scroll out of view when scrolling down */
+	width: 700px;
+	position: relative;
+	right: 30px;
+	float: right;
+	/* the following also makes the box scroll out of view when scrolling down
+	width: 700px;
+	float: right;
+	*/	
 }
 
 ul.entry-list {
 	list-style-type: none !important;
 	margin-left: .2em !important;
 	padding-left: .2em !important;
+	/*min-width: 45em;*/
+/*
+	overflow: hidden;
+	-moz-column-count: 3;
+	-webkit-column-count: 3;
+	column-count: 3;
+	-moz-column-gap: 5em;
+	-webkit-column-gap: 5em;
+	column-gap: 5em;
+	-moz-column-rule: 1px solid #ddd;
+	-webkit-column-rule: 1px solid #ddd;
+	column-rule: 1px solid #ddd;
+*/
 }
 
 ul.entry-list li {
 	line-height: 1.5em;
 	white-space: nowrap;
-}
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding: 1px 0 1px 20px;
+	margin: 0;}
 
 ul.entry-list li SPAN.from {
 	color: #ccc;
@@ -304,14 +313,6 @@ ul.entry-list li SPAN.from {
 
 ul.entry-list li.disabled A {
 	text-decoration: line-through;
-}
-
-ul.entry-list li {
-	background-image: none;
-	background-repeat: no-repeat;
-	background-position: 0 50%;
-	padding: 1px 0 1px 20px;
-	margin: 0;
 }
 
 .category-selection {
@@ -327,18 +328,21 @@ ul.entry-list li {
 }
 
 .category-selection .from {
-	display: inline;
-	margin-left: 3em;
+	float: left;
+	margin-left: 2em;
 }
 
 .category-selection .find {
-	display: inline;
+	float: left;
 }
 
 .category-selection DIV.t-checklist-row {
+
 	display: inline;
 }
-
+.category-selection INPUT[type=submit] 	{
+	padding: 0;
+}
 TABLE TH {
 	text-align: left;
 }
@@ -456,17 +460,6 @@ DIV.message-box .failure {
 	display: inline-block;
 }
 
-/* override Tapestry built-in CSS */
-x.datePicker {
-	z-index: 1 !important;
-}
-
-x.datePicker .todayButton,.datePicker .noneButton {
-	width: auto !important;
-}
-
-/* additional app-specific classes */
-
 div.subtitle {
 	margin-left: 1.4em;
 	color: #666;
@@ -482,13 +475,6 @@ div.multicolumn3 {
 	column-count: 3;
 	column-gap: 20px;
 	column-rule: 1px solid #ddd;
-}
-
-DIV.matching-counter {
-	margin-top: 1em;
-	border-top: 1px solid #ccc;
-	color: #999;
-	font-style: italic;
 }
 
 TABLE.datatable {
@@ -507,4 +493,57 @@ TABLE.datatable TD.num,TABLE.datatable TH.num {
 	text-align: right;
 	padding-left: .3em;
 	padding-right: .3em;
+}
+
+/* ******** override Tapestry built-in CSS below ******** */
+
+table.t-data-grid thead tr {
+	background: white;
+	color: black;
+}
+
+table.t-data-grid thead tr A {
+	color: blue;
+	text-decoration: none;
+}
+
+table.t-data-grid thead tr th {
+	border: none;
+	border-bottom: 1px solid silver;
+}
+
+div.t-beaneditor {
+	background: white;
+	border: 0;
+	padding: 1em;
+}
+
+div.t-beaneditor-row label {
+	width: 8em;
+	text-align: left;
+}
+
+x.datePicker {
+	z-index: 1 !important;
+}
+
+x.datePicker .todayButton,.datePicker .noneButton {
+	width: auto !important;
+}
+
+/*
+DIV.t-checklist-row LABEL {
+    width: 150px;
+    display: block;
+    float: left;
+    text-align: right;
+    clear: left;
+    padding-right: 3px;
+    vertical-align: middle;
+}
+*/
+TABLE.frameworks TH {
+	border: 0;
+	background: #eee;
+	color: #539126;
 }

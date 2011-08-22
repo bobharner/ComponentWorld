@@ -50,7 +50,7 @@ public class EntryTypeEncoder implements ValueEncoder<EntryType>,
     	{
     		return null;
     	}
-        // find the componentEntry object of the given ID in the database
+        // find the Entry object of the given ID in the database
         try {
 			return entryTypeService.findById(Integer.parseInt(id));
 		}

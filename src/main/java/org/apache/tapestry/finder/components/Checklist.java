@@ -1,3 +1,17 @@
+// Copyright 2011 The Apache Software Foundation
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package org.apache.tapestry.finder.components;
 
 
@@ -32,6 +46,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Multiple selection component, used as an alternative to the {@link Palette} component. 
+ * Generates a UI consisting of a list of check boxes. 
+ * 
+ * @since 5.3
+ * 
+ * @see Form
+ * @see Palette
+ * @tapestrydoc
+ */
 public class Checklist extends AbstractField
 {
 
@@ -97,10 +121,6 @@ public class Checklist extends AbstractField
 
         public void render(MarkupWriter writer)
         {
-            writer.element("label");
-            writer.write(model.getLabel());
-            writer.end();
-
             final String clientValue = encoder.toClient(model.getValue());
 
             final Element checkbox = writer.element("input", "type", "checkbox", "name", getControlName(), "value", clientValue);
@@ -109,6 +129,10 @@ public class Checklist extends AbstractField
             {
                 checkbox.attribute("checked", "checked");
             }
+            writer.end();
+
+            writer.element("label");
+            writer.write(model.getLabel());
             writer.end();
         }
     }
@@ -189,6 +213,12 @@ public class Checklist extends AbstractField
         }
 
         return CollectionFactory.newSet(selected);
+    }
+
+    @SuppressWarnings("unchecked")
+    ValueEncoder defaultEncoder()
+    {
+        return defaultProvider.defaultValueEncoder("value", componentResources);
     }
 
     /**

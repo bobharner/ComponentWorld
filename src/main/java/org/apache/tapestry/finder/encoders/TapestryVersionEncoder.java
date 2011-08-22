@@ -50,7 +50,7 @@ public class TapestryVersionEncoder implements ValueEncoder<TapestryVersion>,
     	{
     		return null;
     	}
-        // find the componentEntry object of the given ID in the database
+        // find the Entry object of the given ID in the database
         try {
 			return tapestryVersionService.findById(Integer.parseInt(id));
 		}

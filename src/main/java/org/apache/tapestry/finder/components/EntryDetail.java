@@ -16,7 +16,7 @@ package org.apache.tapestry.finder.components;
 
 import java.util.List;
 
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry.finder.utils.UrlUtils;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -36,7 +36,7 @@ public class EntryDetail
 {
 	@Parameter
 	@Property
-	private ComponentEntry entry; // the selected entry
+	private Entry entry; // the selected entry
 
 	@SuppressWarnings("unused")
 	@Property
@@ -46,11 +46,12 @@ public class EntryDetail
 	@Property
 	private String shortDemoUrl; // shortened version of entry's demo URL
 
+	@SuppressWarnings("unused")
 	@Property
-	private ComponentEntry child; // used in a loop
+	private Entry child; // used in a loop
 
 	@Property
-	private List<ComponentEntry> children;
+	private List<Entry> children;
 
 	@Inject
 	private Request request;
@@ -130,7 +131,7 @@ public class EntryDetail
 	 * @return this component (for display within the current zone)
 	 */
 	@OnEvent (value="viewEntry")
-	public Object viewChildDetails(ComponentEntry entry)
+	public Object viewChildDetails(Entry entry)
 	{
 		this.entry = entry;
 		//setSelectedEntry(entryService.findById(id));

@@ -1,20 +1,82 @@
 <html t:type="layout" title="About This Application"
-	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
-	xmlns:p="tapestry:parameter">
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
 
-<div class="itemheading">
-	<h2>About This Application</h2>
-	<p class="greeting">This is ${message:applicationName},
-		a Java web application to help you search for Tapestry components.</p>
-</div>
+	<div class="itemheading">
+		<h2>About This Application</h2>
 
-<table class="datatable">
-<tr><th>Web Framework:</th><td>Apache Tapestry</td></tr>
-<tr><th>IoC Framework:</th><td>Apache Tapestry IoC</td></tr>
-<tr><th>O-R Mapping:</th><td>Apache Cayenne</td></tr>
-<tr><th>Security:</th><td>Apache Shiro</td></tr>
-<tr><th>Database:</th><td>Apache Derby</td></tr>
-<tr><th>Build Tool:</th><td>Apache Maven</td></tr>
-</table>
+		<p class="greeting">
+			In the past it was really hard to find good pre-built components for
+			your Tapestry apps. Oh sure, you knew they were out there, somewhere.
+			Internet searches always turned up a random smattering of
+			components&#8212;sometimes just what you were looking for,
+			but often not. And duplicates. Lots of duplicates. And how
+			could you tell the quality from the junk?</p>
+
+		<p>Because it's so easy to write custom components in
+			Tapestry, lots of people have published their first baby steps as
+			mini-tutorials. The Tapestry Wiki is full of them, and some are very
+			useful for cutting-and-pasting into your app. But how do you find
+			them?</p>
+
+		<p class="greeting">Some of the best sources for components are blogs.
+			But must you bookmark all of those blog entries just because they, for
+			example, show you how to write a certain mixin that you may need
+			<em>some day</em>? There's got to be a better way.</p>
+
+		<p>
+			Well, there is. Welcome to <b><em>${message:applicationName}</em></b>,
+			a Java web application to help you find pre-built components for your
+			Tapestry development projects.
+		</p>
+
+		<p class="greeting">The ${message:applicationName} database
+			includes all of the built-in Tapestry components, of course.
+			But it also lists every other known Tapestry 5-based
+			component, mixin, module and framework out there.
+			Even those recorded in wikis and blogs and tutorials.
+			All tagged and categorized to make it easy to find what
+			you're looking for.</p>
+	</div>
+	
+	<hr />
+	
+	<div style="float: left; width: 20em; margin-right: 2em">
+	<p>${message:applicationName} is a Tapestry web application based
+	on a stack of high-quality open source libraries, mostly from Apache.</p>
+	<p>The source code for this application is freely available under
+	the Apache 2.0 license and currently hosted at
+	<a href="https://github.com/bobharner/Tapestry-finder">GitHub</a>.</p>
+	</div>
+
+	<div style="float: left; margin-top: 1em">
+
+	<table class="frameworks">
+		<tr>
+			<th>Web Framework:</th>
+			<td>Apache Tapestry</td>
+		</tr>
+		<tr>
+			<th>IoC Framework:</th>
+			<td>Apache Tapestry IoC</td>
+		</tr>
+		<tr>
+			<th>O-R Mapping:</th>
+			<td>Apache Cayenne</td>
+		</tr>
+		<tr>
+			<th>Security:</th>
+			<td>(planned) Tynamo Tapestry-security &amp; Apache Shiro</td>
+		</tr>
+		<tr>
+			<th>Database:</th>
+			<td>Apache Derby</td>
+		</tr>
+		<tr>
+			<th>Build Tool:</th>
+			<td>Apache Maven</td>
+		</tr>
+	</table>
+	
+	</div>
 
 </html>

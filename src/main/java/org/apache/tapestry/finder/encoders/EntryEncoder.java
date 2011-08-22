@@ -14,7 +14,7 @@
  */
 package org.apache.tapestry.finder.encoders;
 
-import org.apache.tapestry.finder.entities.ComponentEntry;
+import org.apache.tapestry.finder.entities.Entry;
 import org.apache.tapestry.finder.services.EntryService;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.Log;
@@ -22,21 +22,21 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ValueEncoderFactory;
 
 /**
- * A ValueEncoder for the ComponentEntry entity. This makes it easy for Tapestry
- * to convert a ComponentEntry ID to a fully-populated object, and vice-versa.
+ * A ValueEncoder for the Entry entity. This makes it easy for Tapestry
+ * to convert a Entry ID to a fully-populated object, and vice-versa.
  * See http://tapestry.apache.org/using-select-with-a-list.html
  * 
  * @author bharner
  *
  */
-public class EntryEncoder implements ValueEncoder<ComponentEntry>,
-		ValueEncoderFactory<ComponentEntry> {
+public class EntryEncoder implements ValueEncoder<Entry>,
+		ValueEncoderFactory<Entry> {
 
     @Inject
     private EntryService entryService;
     
     @Override
-    public String toClient(ComponentEntry value) {
+    public String toClient(Entry value) {
         // return the given object's ID
     	String cval = String.valueOf(value.getId()); 
     	//logger.error("here i am with cval=" + cval);
@@ -45,8 +45,8 @@ public class EntryEncoder implements ValueEncoder<ComponentEntry>,
 
     @Log
     @Override
-    public ComponentEntry toValue(String id) { 
-        // find the componentEntry object of the given ID in the database
+    public Entry toValue(String id) { 
+        // find the Entry object of the given ID in the database
         try {
 			return entryService.findById(Integer.parseInt(id));
 		}
@@ -57,7 +57,7 @@ public class EntryEncoder implements ValueEncoder<ComponentEntry>,
 
     // let this ValueEncoder also serve as a ValueEncoderFactory
     @Override
-    public ValueEncoder<ComponentEntry> create(Class<ComponentEntry> type) {
+    public ValueEncoder<Entry> create(Class<Entry> type) {
         return this; 
     }
 } 

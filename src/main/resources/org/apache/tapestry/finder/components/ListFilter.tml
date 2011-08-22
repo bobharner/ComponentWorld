@@ -1,9 +1,0 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
-<body>
-<div class="filterPane">
-	<span class="filterLabel">Filter:</span>
-	<input class="filter" type="text" size="7"
-		onkeyup="filterListWithCounter('${listSelector}','${counterId}', this.value);"/>
-</div>
-</body>
-</html>

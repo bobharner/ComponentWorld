@@ -5,13 +5,9 @@
 	<t:form autofocus="false">
 		<div class="quick-filter" style="margin: .5em 0">
 			<t:listFilter listSelector="ul.entry-list li" counterId="counter"
-					title="${message:inputPromptTitle}" />
-			<t:remove>
-				TODO: remove item below, but put inputPrompt on listFilter
-				<t:textField t:id="filter" t:value="${filterText}" size="15"
-					t:mixin="inputPrompt" t:prompt="${message:inputPrompt}"
-					/>
-			</t:remove>
+					size="17" placeholder="${message:inputPrompt}"
+					title="${message:inputPromptTitle}"
+					t:value="${filterText}" />
 		</div>
 	</t:form>
 
@@ -26,6 +22,7 @@
 			</li>
 		</t:loop>
 	</ul>
+	
 	<div class="matching-counter">
 		<span id="counter">${entryList.size()}</span> matching entries
 	</div>
@@ -33,9 +30,11 @@
 </div>
 
 <div class="right-side-details">
-	<t:zone id="details" t:id="details">
-		<t:entryDetail t:id="entryDetail" t:entry="selectedEntry" />
-	</t:zone>
+	<t:keepInView>
+		<t:zone id="details" t:id="details">
+			<t:entryDetail t:id="entryDetail" t:entry="selectedEntry" />
+		</t:zone>
+	</t:keepInView>
 </div>
 
 </t:container>

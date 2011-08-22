@@ -21,9 +21,9 @@ we also have the following more ambitious goals:
 
 * Serve as an example of how a polished and complete Tapestry 5 application
 should be designed and constructed. In that sense it is probably
-over-engineered, on purpose. We go to some length to avoid creating an HTTP
-session, for example, despite the fact that the application is unlikely to need
-clustering with session replication.
+over-engineered, on purpose. We go to some length to minimize the use of the
+HTTP session, for example, despite the fact that the application is unlikely to
+need clustering with session replication.
 
 * Serve as examples of how to integrate other Apache products with Tapestry,
 including Cayenne, Derby and Shiro.

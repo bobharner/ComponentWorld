@@ -4,7 +4,7 @@
       xmlns:p="tapestry:parameter">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>${message:applicationName} - ${title}</title>
+<title>${title} - ${message:applicationName}</title>
 <style type="text/css">
 	<t:remove>These CSS rules are not in layout.css because they contain
 		properties that Tapestry resolves dynamically.
@@ -42,16 +42,19 @@
 </div>
 
 <div id="top">
-	<div style="float:left" class="emblem">
+	<div style="float:left;" class="emblem">
 		<t:pagelink page="index" title="Return to Home page">
 			<SPAN class="image-wrap" style="">
 				<IMG src="${context:layout/images/tapestry_s.png}" width="250" height="105" style="border: 0px solid black" />
 			</SPAN>
 		</t:pagelink></div>
 	
-	<div style="float:left; margin: 35px 0 0 3em" class="title">
-		<H1><A name="SmallBanner-PageTitle"></A>${message:applicationShortName}</H1>
-		<div class="subtitle">&#8230;${message:applicationSubtitle}</div>
+	<div style="float:left; margin: 35px 0 0 3em; width: 50%;" class="title">
+		<h1><A name="SmallBanner-PageTitle"></A>${message:applicationShortName}</h1>
+		<div class="subtitle">${message:applicationSubtitle}
+			&#8230;<t:pagelink page="about"
+				style="text-decoration: none; font-style: italic">${message:learnMore}</t:pagelink>
+		</div>
 	</div>
 		<div class="admin" style="float:right">
 			<t:pagelink page="admin/index">Administration</t:pagelink>
