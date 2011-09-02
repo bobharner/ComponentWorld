@@ -1,8 +1,6 @@
 /**
  * JavaScript support for ListFilter component
- */
-
-/**
+ * 
  * Filter a list. List items must match the given CSS selector (e.g. if
  * itemSelector is ".something" then items must have the CSS class of
  * "something". Any text which matches

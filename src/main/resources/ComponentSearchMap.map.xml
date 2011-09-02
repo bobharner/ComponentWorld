@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
   project-version="3.0.0.1">
-	<property name="defaultPackage" value="org.apache.tapestry.finder.entities"/>
+	<property name="defaultPackage" value="org.apache.tapestry.unicorn.entities"/>
 	<db-entity name="ENTRIES">
 		<db-attribute name="DEMONSTRATIONURL" type="VARCHAR" length="1024"/>
 		<db-attribute name="DESCRIPTION" type="VARCHAR" isMandatory="true" length="4096"/>
@@ -66,7 +66,7 @@
 		<db-attribute name="ROLEID" type="INTEGER"/>
 		<db-attribute name="USERID" type="VARCHAR" length="64"/>
 	</db-entity>
-	<obj-entity name="Entry" className="org.apache.tapestry.finder.entities.Entry" dbEntityName="ENTRIES">
+	<obj-entity name="Entry" className="org.apache.tapestry.unicorn.entities.Entry" dbEntityName="ENTRIES">
 		<obj-attribute name="demonstrationUrl" type="java.lang.String" db-attribute-path="DEMONSTRATIONURL"/>
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="documentationUrl" type="java.lang.String" db-attribute-path="DOCUMENTATIONURL"/>
@@ -75,7 +75,7 @@
 		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
-	<obj-entity name="EntryType" className="org.apache.tapestry.finder.entities.EntryType" dbEntityName="ENTRY_TYPES">
+	<obj-entity name="EntryType" className="org.apache.tapestry.unicorn.entities.EntryType" dbEntityName="ENTRY_TYPES">
 		<obj-attribute name="cssClass" type="java.lang.String" db-attribute-path="CSS_CLASS"/>
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="ID"/>
@@ -84,36 +84,36 @@
 		<obj-attribute name="namePlural" type="java.lang.String" db-attribute-path="NAMEPLURAL"/>
 		<obj-attribute name="sortBy" type="java.lang.Integer" db-attribute-path="SORTBY"/>
 	</obj-entity>
-	<obj-entity name="License" className="org.apache.tapestry.finder.entities.License" dbEntityName="LICENSES">
+	<obj-entity name="License" className="org.apache.tapestry.unicorn.entities.License" dbEntityName="LICENSES">
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
-	<obj-entity name="Role" className="org.apache.tapestry.finder.entities.Role" dbEntityName="ROLES">
+	<obj-entity name="Role" className="org.apache.tapestry.unicorn.entities.Role" dbEntityName="ROLES">
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="enabled" type="java.lang.Boolean" db-attribute-path="ENABLED"/>
 		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
-	<obj-entity name="Setting" className="org.apache.tapestry.finder.entities.Setting" dbEntityName="SETTINGS">
+	<obj-entity name="Setting" className="org.apache.tapestry.unicorn.entities.Setting" dbEntityName="SETTINGS">
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 		<obj-attribute name="value" type="java.lang.String" db-attribute-path="VALUE"/>
 	</obj-entity>
-	<obj-entity name="SourceType" className="org.apache.tapestry.finder.entities.SourceType" dbEntityName="SOURCE_TYPES">
+	<obj-entity name="SourceType" className="org.apache.tapestry.unicorn.entities.SourceType" dbEntityName="SOURCE_TYPES">
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 		<obj-attribute name="namePlural" type="java.lang.String" db-attribute-path="NAMEPLURAL"/>
 		<obj-attribute name="sortBy" type="java.lang.Integer" db-attribute-path="SORTBY"/>
 	</obj-entity>
-	<obj-entity name="TapestryVersion" className="org.apache.tapestry.finder.entities.TapestryVersion" dbEntityName="TAPESTRY_VERSIONS">
+	<obj-entity name="TapestryVersion" className="org.apache.tapestry.unicorn.entities.TapestryVersion" dbEntityName="TAPESTRY_VERSIONS">
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
 		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 		<obj-attribute name="sortBy" type="java.lang.Integer" db-attribute-path="SORTBY"/>
 	</obj-entity>
-	<obj-entity name="User" className="org.apache.tapestry.finder.entities.User" dbEntityName="USERS">
+	<obj-entity name="User" className="org.apache.tapestry.unicorn.entities.User" dbEntityName="USERS">
 		<obj-attribute name="enabled" type="java.lang.Boolean" db-attribute-path="ENABLED"/>
 		<obj-attribute name="firstName" type="java.lang.String" db-attribute-path="FIRSTNAME"/>
 		<obj-attribute name="lastName" type="java.lang.String" db-attribute-path="LASTNAME"/>

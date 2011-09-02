@@ -4,7 +4,7 @@
     <artifactId>componentSearch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Tapestry Component Search</name>
+    <name>Unicorn</name>
     <dependencies>
         <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the tests)
 will fail, preventing Maven from packaging the WAR. Tapestry includes a large number
@@ -101,7 +101,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     	<url>http://www.apache.org</url>
     </organization>
     <build>
-        <finalName>ComponentFinder</finalName>
+        <finalName>Unicorn</finalName>
     	<plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -7,7 +7,7 @@
     <context-param>
         <!-- tell Tapestry 5 where to look for pages, components and mixins. -->
         <param-name>tapestry.app-package</param-name>
-        <param-value>org.apache.tapestry.finder</param-value>
+        <param-value>org.apache.tapestry.unicorn</param-value>
     </context-param>
     <context-param>
         <!-- controls whether to omit the tapestry "generator" metatag -->

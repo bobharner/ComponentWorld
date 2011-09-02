@@ -2,7 +2,7 @@
 <suite name="Tapestry Component Finder Application Test Suite" annotations="1.5">
     <test name="Unit Tests">
         <packages>
-            <package name="org.apache.tapestry.finder"/>
+            <package name="org.apache.tapestry.unicorn"/>
         </packages>
     </test>
 </suite>

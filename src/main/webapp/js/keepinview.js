@@ -10,9 +10,9 @@
 ////////////////////////
   
   $(function() {
-/*	    var msie6 = Prototype.Browser.IE && $.browser.version < 7;
- 		// TODO: convert the following JQuery code to Prototype
-	    if (!msie6) {*/
+//	    var msie6 = Prototype.Browser.IE && $.browser.version < 7;
+// 		// TODO: convert the following JQuery code to Prototype
+//	    if (!msie6) {
 	        var top = $('#keepinview').offset().top
 	                - parseFloat($('#scroll_header').css('margin-top').replace(
 	                        /auto/, 0));
@@ -30,16 +30,16 @@
 	        } else {
 	            $('#scroll_header').removeClass('fixed');
 	        }
-/*	    } else {
-	        setInterval("checkScroll()", 100);
-	    }*/
+//	    } else {
+//	        setInterval("checkScroll()", 100);
+//	    }
 	});
-/*	function checkScroll() {
-	    ie6top = $('#scroll_header_wrapper').offset().top;
-	    if ($(document).scrollTop() > ie6top) {
-	        $('#scroll_header').css("top", $(document).scrollTop() - ie6top + "px");
-	        $('#scroll_header').css("visibility", "visible");
-	    } else {
-	        $('#scroll_header').css("visibility", "hidden");
-	}*/
+//	function checkScroll() {
+//	    ie6top = $('#scroll_header_wrapper').offset().top;
+//	    if ($(document).scrollTop() > ie6top) {
+//	        $('#scroll_header').css("top", $(document).scrollTop() - ie6top + "px");
+//	        $('#scroll_header').css("visibility", "visible");
+//	    } else {
+//	        $('#scroll_header').css("visibility", "hidden");
+//	}
 }
