@@ -58,7 +58,6 @@ public class AppModule
 		binder.bind(RoleService.class, RoleServiceImpl.class);
 		binder.bind(EntryTypeService.class, EntryTypeServiceImpl.class);
 		binder.bind(SourceTypeService.class, SourceTypeServiceImpl.class);
-		binder.bind(DemoService.class, DemoServiceImpl.class);
 		binder.bind(LicenseService.class, LicenseServiceImpl.class);
     }
     
