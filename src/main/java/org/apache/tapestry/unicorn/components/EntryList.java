@@ -121,7 +121,7 @@ public class EntryList
 	}
 
 	/**
-	 * As an event lister, respond to a click on the "entrySellection"
+	 * As an event listener, respond to a click on the "entrySellection"
 	 * ActionLink. (Note that "entrySellection is intentionally misspelled to
 	 * avoid matches with the JavaScript instant search).
 	 * 
@@ -139,7 +139,7 @@ public class EntryList
 		}
 		else
 		{
-			return null; // redraw the whole current page
+			return null; // graceful degradation: redraw the whole current page
 		}
 	}
 

@@ -18,7 +18,7 @@
 					t:context="entry" title="${entryTitle}"
 					class="${entryCssClass}">${entry.name}
 				</t:actionLink>
-				<span class="from">${entry.parent?.name}</span>
+				<span class="details">${entry.parent?.name}</span>
 			</li>
 		</t:loop>
 	</ul>

@@ -307,9 +307,7 @@ ul.entry-list li {
 	padding: 1px 0 1px 20px;
 	margin: 0;}
 
-ul.entry-list li SPAN.from {
-	color: #ccc;
-}
+ul.entry-list li SPAN.details { color: #ccc; }
 
 ul.entry-list li.disabled A {
 	text-decoration: line-through;

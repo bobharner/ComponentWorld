@@ -1,4 +1,4 @@
-<html t:type="layout" title="Component Search"
+<html t:type="layout" title="Tapestry Component Search"
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
 	<t:remove>Most of the peripheral page content comes from Layout.tml</t:remove>
 

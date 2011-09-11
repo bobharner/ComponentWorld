@@ -139,9 +139,6 @@ public class EntryDetail
 		{
 			return this; // return the entryDetail component
 		}
-		else
-		{
-			return null; // redraw the whole current page
-		}
+		return null; // redraw the whole current page
 	}
 }

@@ -22,11 +22,9 @@ import org.apache.tapestry5.services.ValueEncoderFactory;
 
 /**
  * A ValueEncoder for the SourceType entity. This makes it easy for Tapestry
- * to convert an SourceType ID to a fully-populated object, and vice-versa.
+ * to convert a SourceType ID to a fully-populated object, and vice-versa.
  * See http://tapestry.apache.org/using-select-with-a-list.html
  * 
- * @author bharner
- *
  */
 public class SourceTypeEncoder implements ValueEncoder<SourceType>,
 		ValueEncoderFactory<SourceType> {

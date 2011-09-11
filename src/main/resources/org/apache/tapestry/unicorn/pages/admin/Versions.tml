@@ -6,16 +6,32 @@
 	<h2>Tapestry Versions</h2>
 </div>
 
-<table>
-<tr><th>Name</th><th>Description</th></tr>
+<!-- right-size zone containing an editing form -->
+<t:zone t:id="editZone" id="editZone" update="show"
+	visible="false" style="position: absolute; left: 30em">
+	<t:keepInView class="detail-box">
+		<t:form t:id="editForm">
+			<table>
+			<tr><th><t:label for="name"/></th>
+				<td><t:textfield t:id="name" value="name" /></td>
+			</tr>
+			<tr><th><t:label for="description"/></th>
+				<td><t:textfield t:id="description" value="description" /></td>
+			</tr>
+			<tr><td></td><td><t:submit value="Save"/></td></tr>
+			</table>
+		</t:form>
+	</t:keepInView>
+</t:zone>
+
+<!-- left-side list if items to edit -->
+<ul class="entry-list">
 <t:loop source="versions" value="version">
-<tr>
-	<td>
-		${version.name}
-	</td>
-	<td>${version.description}</td>
-</tr>
+	<li><t:actionlink t:id="itemLink" context="version.id" zone="editZone">
+		${version.name}</t:actionlink>
+	<span class="details">${version.description}</span>
+	</li>
 </t:loop>
-</table>
+</ul>
 
 </html>

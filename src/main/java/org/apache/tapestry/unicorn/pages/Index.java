@@ -117,6 +117,11 @@ public class Index
 		return successMessage;
 	}
 	
+	void onActivate()
+	{
+		System.out.println("\n\nCalled Index.onActivate()\n\n");
+	}
+	
 	/**
 	 * As an event handler, respond to the form's PREPARE_FOR_RENDER event,
 	 * doing setup actions prior to rendering the form.
