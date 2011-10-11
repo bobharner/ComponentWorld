@@ -7,16 +7,17 @@
  * class of "something"). If isChecked is true, we unselect all checkboxes; if
  * false, we select them all.
  */
-function checkall(selector, isChecked) {
+function checkAll(selector, isChecked) {
 
-	// Get list of all selected items (we just assume they're checkboxes).
+	// Get list of all selected items (we assume they're checkboxes).
 	var listItems = $$(selector);
-	alert ("found " + listItems.length);
 
-	var setTo = ! isChecked;
+	var setTo = isChecked;
 	// loop over list items
 	var count = listItems.length;
 	for (i = 0; i < count; i++) {
-		listItems[i].checked = setTo;
+		if (listItems[i].type && listItems[i].type.toLowerCase() === 'checkbox') {
+			listItems[i].checked = setTo;
+		}
 	}
 }

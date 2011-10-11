@@ -5,7 +5,7 @@
 <div class="itemheading">
 	<h2>Tapestry Versions</h2>
 </div>
-
+${message}
 <!-- right-size zone containing an editing form -->
 <t:zone t:id="editZone" id="editZone" update="show"
 	visible="false" style="position: absolute; left: 30em">
@@ -13,10 +13,11 @@
 		<t:form t:id="editForm">
 			<table>
 			<tr><th><t:label for="name"/></th>
-				<td><t:textfield t:id="name" value="name" /></td>
+				<td><t:textfield t:id="name" value="name" size="15"/></td>
 			</tr>
 			<tr><th><t:label for="description"/></th>
-				<td><t:textfield t:id="description" value="description" /></td>
+				<td><t:textarea t:id="description" value="description"
+						rows="2" cols="30"/></td>
 			</tr>
 			<tr><td></td><td><t:submit value="Save"/></td></tr>
 			</table>

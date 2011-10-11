@@ -53,10 +53,24 @@
 						</tr>
 					</t:loop>
 				</table>
-				<p>Session Max Inactive Interval: ${maxInactiveInterval} minutes</p>
 				<p:else>
 					There is no Session.
 				</p:else>
 			</t:if>
 		</fieldset>
+		
+		<fieldset><legend><h3>Settings</h3></legend>
+			<table class="datatable">
+			<tr><th>Session Max Inactive Interval:</th>
+				<td>${maxInactiveInterval} minutes</td>
+			</tr>
+			<tr><th>Production Mode:</th>
+				<td>${symbol:tapestry.production-mode}</td>
+			</tr>
+			<tr><th>Application Version:</th>
+				<td>${symbol:tapestry.application-version}</td>
+			</tr>
+			</table>
+		</fieldset>
+		
 </html>

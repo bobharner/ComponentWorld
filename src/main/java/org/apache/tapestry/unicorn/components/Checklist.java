@@ -47,16 +47,15 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * A list of checkboxes, allowing selection of multiple items in a list. 
+ * A list of checkboxes, allowing selection of multiple items in a list.
  * <p/>
  * For an alternative component that can be used for similar purposes, see
  * {@link Palette}.
- * 
- * @since 5.3
- * 
+ *
+ * @tapestrydoc
  * @see Form
  * @see Palette
- * @tapestrydoc
+ * @since 5.3
  */
 public class Checklist extends AbstractField
 {
@@ -120,8 +119,6 @@ public class Checklist extends AbstractField
     @Property
     private List<Renderable> availableOptions;
 
-    private MarkupWriter markupWriter;
-
     private final class RenderRadio implements Renderable
     {
         private final OptionModel model;
@@ -155,8 +152,6 @@ public class Checklist extends AbstractField
 
     void setupRender(final MarkupWriter writer)
     {
-        markupWriter = writer;
-
         availableOptions = CollectionFactory.newList();
 
         final SelectModelVisitor visitor = new SelectModelVisitor()

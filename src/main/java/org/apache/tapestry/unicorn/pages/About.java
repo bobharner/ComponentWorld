@@ -14,9 +14,6 @@
  */
 package org.apache.tapestry.unicorn.pages;
 
-import org.apache.tapestry.unicorn.services.SourceTypeService;
-import org.apache.tapestry5.ioc.annotations.Inject;
-
 public class About
 {
 

@@ -29,12 +29,13 @@ import org.apache.tapestry5.services.Session;
 
 public class Diagnostics
 {
-    private final static int megaBytes = 1024*1024;  
+    private final static int MEGABYTES = 1024*1024;  
 
     @Property
 	private String attributeName;
     
-    @Property
+    @SuppressWarnings("unused")
+	@Property
     private MemoryPoolMXBean memoryPoolMXBean; // used in a loop
     
 	@Inject
@@ -61,18 +62,18 @@ public class Diagnostics
 
 	public Long getMemoryUsed() {
 		Runtime runtime = Runtime.getRuntime();
-		return (runtime.totalMemory() - runtime.freeMemory()) / megaBytes;
+		return (runtime.totalMemory() - runtime.freeMemory()) / MEGABYTES;
 	}
 	
 	public Long getMemoryFree() {
 		Runtime runtime = Runtime.getRuntime();
-		return runtime.freeMemory() / megaBytes;
+		return runtime.freeMemory() / MEGABYTES;
 	}
 	
 	public Long getMemoryTotal() {
 		Runtime runtime = Runtime.getRuntime();
 		
-		return runtime.totalMemory() / megaBytes;
+		return runtime.totalMemory() / MEGABYTES;
 	}
 	public List<MemoryPoolMXBean> getMemoryPoolMXBeans() {
 		return ManagementFactory.getMemoryPoolMXBeans();
@@ -80,6 +81,6 @@ public class Diagnostics
 
 	public Long getMemoryMax() {
 		Runtime runtime = Runtime.getRuntime();
-		return runtime.maxMemory() / megaBytes;
+		return runtime.maxMemory() / MEGABYTES;
 	}
 }

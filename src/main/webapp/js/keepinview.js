@@ -42,4 +42,3 @@
 //	    } else {
 //	        $('#scroll_header').css("visibility", "hidden");
 //	}
-}

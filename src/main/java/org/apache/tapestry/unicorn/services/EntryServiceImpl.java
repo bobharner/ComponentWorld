@@ -14,6 +14,7 @@
  */
 package org.apache.tapestry.unicorn.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
 
@@ -91,31 +92,28 @@ public class EntryServiceImpl extends
 	public List<Entry> findByType(EntryType entryType,
 			List<SourceType> sourceTypes)
 	{
-		Expression expression;
-		if (entryType == null)
+		Expression expression = null;
+		if (entryType != null)
 		{
-			expression = null;
-		}
-		else
-		{
-			// an expression for matching the given entry type
+			// an expression for matching the given EntryType
 			expression = ExpressionFactory.matchExp(
 				Entry.ENTRY_TYPE_PROPERTY, entryType);
 		}
 
-		// add an expression for matching any of the selected sourceType values
+		// add an expression for matching any of the selected SourceType values
 		if ((sourceTypes != null) && (sourceTypes.size() != 0))
 		{
-			// FIXME: the following doesn't work!!
-			Expression exp = ExpressionFactory.inDbExp(Entry.SOURCE_TYPE_PROPERTY, sourceTypes);
-			if (expression == null) {
-				expression = exp;
-				SortedSet x;
-			}
-			else
+			Expression exp = null;
+			ArrayList<Long> idList = new ArrayList<Long>();
+			// build a list of IDs of desired sourceTypes 
+			for (SourceType sourceType : sourceTypes)
 			{
-				expression.andExp(exp);
+				idList.add(sourceType.getId());
 			}
+
+			// add an "in" expression for the desired SourceTypes 
+			exp = ExpressionFactory.inExp(Entry.SOURCE_TYPE_PROPERTY, idList);
+			expression = (expression == null) ? exp : expression.andExp(exp);
 		}
 
 		SelectQuery query = new SelectQuery(Entry.class, expression);

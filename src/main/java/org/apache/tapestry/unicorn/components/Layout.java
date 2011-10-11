@@ -33,9 +33,17 @@ public class Layout
 	@Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
 	private String title;
 
+	/**
+	 * Optional CSS rules to place into the page head
+	 */
+	@SuppressWarnings("unused")
+	@Property
+	@Parameter(required = false, defaultPrefix = BindingConstants.LITERAL)
+	private Block style;
+
 	@Inject
 	private ComponentResources resources;
-	
+
 	private String pageName = resources.getPageName();
 
 	@Parameter(required = false, defaultPrefix = BindingConstants.LITERAL)
@@ -43,8 +51,7 @@ public class Layout
 
 	public String[] getPageNames()
 	{
-		return new String[]
-		{ "Index", "Index", "Contact" };
+		return new String[] { "Index", "Index", "Contact" };
 	}
 
 	public void setPageName(String pageName)

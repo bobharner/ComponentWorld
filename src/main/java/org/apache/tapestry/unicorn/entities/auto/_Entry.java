@@ -16,6 +16,7 @@ import org.apache.tapestry.unicorn.entities.TapestryVersion;
  * since it may be overwritten next time code is regenerated.
  * If you need to make any customizations, please use subclass.
  */
+@SuppressWarnings("serial")
 public abstract class _Entry extends CayenneDataObject {
 
     public static final String DEMONSTRATION_URL_PROPERTY = "demonstrationUrl";

@@ -9,22 +9,22 @@
 			your Tapestry apps. Oh sure, you knew they were out there, somewhere.
 			Internet searches always turned up a random smattering of
 			components&#8212;sometimes just what you were looking for,
-			but often not. And duplicates. Lots of duplicates. And how
-			could you tell the quality from the junk?</p>
+			but often not. And duplicates. Lots of duplicates. How
+			can you know which one is best?</p>
 
 		<p>Because it's so easy to write custom components in
 			Tapestry, lots of people have published their first baby steps as
 			mini-tutorials. The Tapestry Wiki is full of them, and some are very
-			useful for cutting-and-pasting into your app. But how do you find
-			them?</p>
+			useful as components to paste into your app. But some aren't. How do
+			you filter out the noise?</p>
 
 		<p class="greeting">Some of the best sources for components are blogs.
-			But must you bookmark all of those blog entries just because they, for
-			example, show you how to write a certain mixin that you may need
-			<em>some day</em>? There's got to be a better way.</p>
+			But you don't want to bookmark all of those blog entries just because
+			they, for example, show you how to write a certain mixin that you
+			may need <em>some day</em>. There's got to be a better way.</p>
 
 		<p>
-			Well, there is. Welcome to <b><em>${message:applicationName}</em></b>,
+			Welcome to <b><em>${message:applicationName}</em></b>,
 			a Java web application to help you find pre-built components for your
 			Tapestry development projects.
 		</p>

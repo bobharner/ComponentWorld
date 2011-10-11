@@ -42,13 +42,13 @@ public class CheckAll
 	@Parameter(required=true, defaultPrefix=BindingConstants.LITERAL)
 	private String selector;
 
-	@Inject
+	@Inject	
 	private ComponentResources resources;
 
 	@BeginRender
 	boolean renderCheckboxWithParameters(MarkupWriter writer)
 	{
-		String onclickjs = "checkall('" + selector + "', this.checked);";
+		String onclickjs = "checkAll('" + selector + "', this.checked);";
 		writer.element("input", "type", "checkbox", "onclick", onclickjs);
 
 		resources.renderInformalParameters(writer);

@@ -269,9 +269,9 @@ DIV.matching-counter {
 	right: 130px;
 	*/
 	/* the following makes the box scroll out of view when scrolling down */
-	width: 700px;
+	width: 725px;
 	position: relative;
-	right: 30px;
+	right: -25px;
 	float: right;
 	/* the following also makes the box scroll out of view when scrolling down
 	width: 700px;
@@ -318,11 +318,14 @@ ul.entry-list li.disabled A {
 }
 
 .category-selection input[type=checkbox] {
-	margin-left: .5em;
+    margin-left: 0.5em;
+    position: relative;
+    top: 2px;
 }
 
 .category-selection label {
 	margin-right: .5em; /*white-space: nowrap;*/
+	float: left;
 }
 
 .category-selection .from {
@@ -335,8 +338,18 @@ ul.entry-list li.disabled A {
 }
 
 .category-selection DIV.t-checklist-row {
-
 	display: inline;
+}
+.category-selection DIV.t-checklist-row LABEL {
+	clear: none;
+	display: inline;
+	width: inherit;
+	padding-right: 0;
+    position: relative;
+    top: -2px;
+}
+.category-selection DIV.t-checklist-row LABEL:hover {
+	background: #eee;
 }
 .category-selection INPUT[type=submit] 	{
 	padding: 0;
@@ -473,6 +486,7 @@ div.multicolumn3 {
 	column-count: 3;
 	column-gap: 20px;
 	column-rule: 1px solid #ddd;
+	overflow: hidden;
 }
 
 TABLE.datatable {
@@ -530,7 +544,7 @@ x.datePicker .todayButton,.datePicker .noneButton {
 }
 
 /*
-DIV.t-checklist-row LABEL {
+DIV.t-checklistX-row LABEL {
     width: 150px;
     display: block;
     float: left;

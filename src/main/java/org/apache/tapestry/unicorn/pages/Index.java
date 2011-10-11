@@ -38,7 +38,6 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.SelectModelFactory;
-import org.apache.tapestry5.services.ValueEncoderFactory;
 
 /**
  * Start page of web application. Here we display and manage the high-level
@@ -55,12 +54,6 @@ public class Index
 	@Property
 	private List<SourceType> selectedSourceTypes;
 
-	@Property
-	private SourceType selectedSourceType; // not needed if using checklist!!!
-	
-	@Property
-	private List<SourceType> sourceTypes; // not needed if using checklist!!!
-	
 	@PageActivationContext
 	private Entry selectedEntry;
 
@@ -107,9 +100,40 @@ public class Index
     * Get a ValueEncoder for the SourceType entity. This enables Tapestry to
     * convert a SourceType ID to a fully-populated object, and vice-versa.
     */
-	public ValueEncoder<SourceType> getSourceTypeEncoder()
+	public ValueEncoder<SourceType> xxxxgetSourceTypeEncoder()
     {
         return new SourceTypeEncoder();
+    }
+	public ValueEncoder<SourceType> getSourceTypeEncoder()
+    {
+        return new ValueEncoder<SourceType>() {
+            
+            @Override
+            public String toClient(SourceType value) {
+            	if (value == null) {
+            		return null;
+            	}
+                // return the given object's ID
+            	String cval = String.valueOf(value.getId()); 
+                return cval;
+            }
+
+            @Override
+            public SourceType toValue(String id) { 
+            	if (id == null)
+            	{
+            		return null;
+            	}
+                // find the Entry object of the given ID in the database
+                try {
+                	// FIXME: why is sourceTypeService sometimes null????
+        			return sourceTypeService.findById(Integer.parseInt(id));
+        		}
+        		catch (NumberFormatException e) {
+        			throw new RuntimeException("ID " + id + " is not a number", e);
+        		}
+            }
+        };
     }
 
 	public String getSuccessMessage()
@@ -119,7 +143,7 @@ public class Index
 	
 	void onActivate()
 	{
-		System.out.println("\n\nCalled Index.onActivate()\n\n");
+		System.out.println("\n\n======== harner called Index.onActivate()\n\n");
 	}
 	
 	/**
@@ -138,7 +162,7 @@ public class Index
 
 		// populate the list of source types for the source type checklist menu
 		//List<SourceType> sourceTypes = sourceTypeService.findAll();
-		sourceTypes = sourceTypeService.findAll();
+		List<SourceType> sourceTypes = sourceTypeService.findAll();
 
 		// create a SelectModel from the list of source types
 		sourceTypeSelectModel = selectModelFactory.create(sourceTypes,
@@ -184,8 +208,7 @@ public class Index
 	{
 		if (request.isXHR()) // an AJAX request?
 		{
-			selectedSourceType = sourceType;
-			// FIXME: we only have one source type, turn it into a small list
+			// FIXME: we only handle a single SourceType but may have more
 			ArrayList<SourceType> sources = new ArrayList<SourceType>();
 			sources.add(sourceType);
 			entryList.setSourceTypes(sources);
@@ -207,7 +230,7 @@ public class Index
 		setFailureMessage("");
 		setSuccessMessage("");
 	}
-	
+
 	/**
 	 * Handle the "Success" event from the CategorySelection form
 	 * 
@@ -216,7 +239,16 @@ public class Index
 	@OnEvent(value=EventConstants.SUCCESS, component="categorySelection")
 	Object redrawList()
 	{
-		return changeEntryType(selectedEntryType);
+		entryList.setEntryType(selectedEntryType);
+		entryList.setSourceTypes(selectedSourceTypes);
+		if (request.isXHR()) // an AJAX request?
+		{
+			return entryList; // return the entryList component
+		}
+		else
+		{
+			return null; // redraw the whole current page
+		}
 	}
 
 	public void setFailureMessage(String string)

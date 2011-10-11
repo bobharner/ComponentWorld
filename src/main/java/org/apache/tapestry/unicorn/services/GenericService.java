@@ -19,7 +19,6 @@ import java.io.Serializable;
 /**
  * The Generic interface for all Services
  * 
- * @author MMoran
  */
 public interface GenericService<T, ID extends Serializable> extends
 		Serializable

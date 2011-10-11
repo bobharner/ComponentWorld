@@ -46,12 +46,15 @@ public class Versions
 	@Property
 	private TapestryVersion version; // used in a list
 	
-	@SuppressWarnings("unused")
 	@Property
 	private TapestryVersion selected; // the selected version
 	
 	@Property
 	private String name;
+	
+	@SuppressWarnings("unused")
+	@Property
+	private String message;
 
 	@Property
 	private String description;
@@ -104,6 +107,7 @@ public class Versions
 
 		// Save all changes to the database
 		tapestryVersionService.save(version);
+		message = "Version " + version.getName() + " saved.";
 		return this; // redraw this page
 	}
 	

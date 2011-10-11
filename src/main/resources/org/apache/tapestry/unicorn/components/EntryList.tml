@@ -4,7 +4,7 @@
 <div class="left-side-list">
 	<t:form autofocus="false">
 		<div class="quick-filter" style="margin: .5em 0">
-			<t:listFilter selector=".left-side-list ul.entry-list li"
+			<t:listFilter selector="${selector}"
 					counterId="counter" title="${message:inputPromptTitle}"
 					size="17" placeholder="${message:inputPrompt}"
 					t:value="${filterText}" />

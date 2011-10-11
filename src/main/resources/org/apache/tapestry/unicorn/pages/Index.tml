@@ -1,41 +1,42 @@
 <html t:type="layout" title="Tapestry Component Search"
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+	<p:style>
+	blahblahblah
+	</p:style>
+	
 	<t:remove>Most of the peripheral page content comes from Layout.tml</t:remove>
 
 	<div class="category-selection">
 		<t:form autofocus="false" t:id="categorySelection" zone="listZone">
 			<div class="find">
 				<t:label for="entryType"></t:label>
+				<!-- select's encoder is bound implicitly in AppModule -->
 				<t:select t:id="entryType" value="selectedEntryType"
 						model="entryTypeSelectModel" blankLabel="All Entries"
-						zone="listZone" />
+						onchange="this.form.performSubmit()"/>
 			</div>
 
 			<div class="from">
 
 				<t:label for="sourceTypes"></t:label>
-				<t:checklist t:id="sourceTypes" model="sourceTypeSelectModel"
+				<t:checklist t:id="sourceTypes" id="sourceTypes"
+					model="sourceTypeSelectModel"
 					selected="selectedSourceTypes" encoder="sourceTypeEncoder"
-					onclick="this.form.submit()" />
-				<t:checkall id="checkall" selector=".from .t-checklist-row input" />
-				<label for="checkall">All</label>
+					onclick="this.form.performSubmit()" />
+				<script type="text/javascript">
+				// Event.observe("sourceTypes", 'click', function(event) {
+				//    event.findElement().form.submit();
+				// });
+				</script>
+				<div class="t-checklist-row">
+					<label>
+						<t:checkall id="checkall"
+							selector=".from .t-checklist-row input"/>All
+					</label>
+				</div>
 
-				<t:remove>
-
-				<t:select t:id="sourceTypes" value="selectedSourceType"
-						model="sourceTypeSelectModel" blankLabel="All Sources"
-						zone="listZone" />
-						
-				<label for="rd0"><input type="checkbox" id="rd0" name="from" 
-					value="rd0" />All</label>
-				
-				<t:palette t:id="sourceTypes" model="sourceTypeSelectModel"
-					selected="selectedSourceTypes" encoder="sourceTypeEncoder"
-					size="5"/>
-				</t:remove>
-				
-				<noscript>
 					<t:submit value="Go" />
+				<noscript>
 				</noscript>
 			</div>
 		</t:form>

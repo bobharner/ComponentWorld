@@ -68,6 +68,9 @@ public class EntryList
 	@InjectComponent
 	private Object entryDetail;
 	
+	public String getSelector() {
+		return ".left-side-list ul.entry-list li";
+	}
 	/**
 	 * @return the CSS class of current entry (depends on the entry type and
 	 * whether it is enabled)

@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.tapestry</groupId>
     <artifactId>componentSearch</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <name>Unicorn</name>
     <dependencies>
@@ -61,7 +61,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         <dependency>
         	<groupId>org.apache.tapestry</groupId>
         	<artifactId>tapestry-core</artifactId>
-        	<version>5.2.6</version>
+        	<version>5.3-beta-16</version>
         	<type>jar</type>
         	<scope>compile</scope>
         </dependency>
@@ -152,7 +152,10 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         	<name>SaiWai repo for Tapestry5-Cayenne module</name>
         	<url>http://maven.saiwai-solutions.com/</url>
         </repository>
-            
+        <repository>
+            <id>apache-staging</id>
+            <url>https://repository.apache.org/content/groups/staging/</url>
+        </repository>            
     </repositories>
 
     <pluginRepositories>

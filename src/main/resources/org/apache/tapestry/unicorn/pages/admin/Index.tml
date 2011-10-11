@@ -8,6 +8,7 @@
 
 <ul>
 	<li>Entry Types</li>
+	<li>Source Types</li>
 	<li>Licenses</li>
 	<li><t:pagelink page="admin/versions">Tapestry Versions</t:pagelink></li>
 	<li>Roles</li>
