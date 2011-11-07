@@ -50,7 +50,6 @@ public class Index
 	@Property
 	private EntryType selectedEntryType;
 	
-	@SuppressWarnings("unused")
 	@Property
 	private List<SourceType> selectedSourceTypes;
 
