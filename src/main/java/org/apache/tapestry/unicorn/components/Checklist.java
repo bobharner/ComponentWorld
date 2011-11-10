@@ -87,12 +87,12 @@ public class Checklist extends AbstractField
     private ValueEncoder<Object> encoder;
 
     /**
-     * Javascript code to add as a "onclick" attribute to all checkboxes. A
+     * Javascript code to add as a "onchange" attribute to all checkboxes. A
      * common value is "this.form.submit()" to submit the form as soon as any
      * of the checkboxes is selected or unselected.
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private String onclick;
+    private String onchange;
 
     /**
      * The object that will perform input validation. The validate binding prefix is generally used to provide
@@ -139,9 +139,9 @@ public class Checklist extends AbstractField
             {
                 checkbox.attribute("checked", "checked");
             }
-            if (onclick != null)
+            if (onchange != null)
             {
-            	checkbox.attribute("onclick", onclick);
+            	checkbox.attribute("onchange", onchange);
             }
             writer.end();
 

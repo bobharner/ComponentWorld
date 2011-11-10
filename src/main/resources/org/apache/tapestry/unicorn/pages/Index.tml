@@ -22,7 +22,7 @@
 				<t:checklist t:id="sourceTypes" id="sourceTypes"
 					model="sourceTypeSelectModel"
 					selected="selectedSourceTypes" encoder="sourceTypeEncoder"
-					onclick="this.form.fire(Tapestry.FORM_PROCESS_SUBMIT_EVENT)" />
+					onchange="this.form.fire(Tapestry.FORM_PROCESS_SUBMIT_EVENT)" />
 				<div class="t-checklist-row">
 					<label>
 						<t:checkall id="checkall"

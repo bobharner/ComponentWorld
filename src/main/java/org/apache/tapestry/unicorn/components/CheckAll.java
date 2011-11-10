@@ -18,11 +18,14 @@ import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.MarkupWriter;
 import org.apache.tapestry5.annotations.BeginRender;
+import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.json.JSONObject;
+import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
 /**
  * Tapestry component which renders as a checkbox that checks or unchecks all
@@ -45,16 +48,22 @@ public class CheckAll
 	@Inject	
 	private ComponentResources resources;
 
+	@Environmental
+	private JavaScriptSupport jss;
+	
 	@BeginRender
 	boolean renderCheckboxWithParameters(MarkupWriter writer)
 	{
-		String onclickjs = "checkAll('" + selector + "', this.checked);";
-		writer.element("input", "type", "checkbox", "onclick", onclickjs);
-
+	    // assign a unique id to the rendered checkbox
+	    final String uniqueId = jss.allocateClientId(resources);
+		writer.element("input", "type", "checkbox", "id", uniqueId);
+		
 		resources.renderInformalParameters(writer);
 
 		writer.end();
 
+		jss.addInitializerCall("checkAll", new JSONObject("id", uniqueId, "selector", selector));		
+		
 		return false; // false skips rendering of body & end (not needed)
   }
 }
