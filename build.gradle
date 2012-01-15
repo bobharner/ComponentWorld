@@ -10,7 +10,7 @@ applicationName = "app"
 sourceCompatibility = "1.5"
 targetCompatibility = "1.5"
 
-tapestryVersion = "5.3.1"
+tapestryVersion = "5.3"
 
 group = "org.apache.tapestry"
 version = "1.0"
@@ -61,7 +61,7 @@ dependencies {
 
     compile "org.apache.derby:derby:10.8.1.2"
 
-    compile "com.howardlewisship:tapx-heroku:1.2-ml-SNAPSHOT"
+    compile "com.howardlewisship:tapx-heroku:1.2-SNAPSHOT"
 
     compile "commons-lang:commons-lang:2.6"
 
