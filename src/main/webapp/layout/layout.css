@@ -382,6 +382,8 @@ DIV.detail-box {
 	padding: 1em;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 	border-radius: 15px;
+	position: fixed;
+	width: 650px;
 }
 DIV.detail-box P { color: black; }
 
