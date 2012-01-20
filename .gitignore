@@ -4,3 +4,5 @@
 /.classpath
 /derby.log
 /.svn
+build
+.gradle
