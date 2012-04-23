@@ -384,6 +384,7 @@ DIV.detail-box {
 	border-radius: 15px;
 	position: fixed;
 	width: 650px;
+	z-index: 1;
 }
 DIV.detail-box P { color: black; }
 
