@@ -14,7 +14,7 @@ function filterList(itemsSelector, filterText) {
 
 /**
  * Same as filterList() except also displays number of matching items
- * inside the container element with itemsCounter ID
+ * inside the container element whose ID matches itemsCounter
  */
 function filterListWithCounter(itemsSelector, itemsCounter, filterText) {
 
