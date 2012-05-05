@@ -24,7 +24,7 @@ public class UrlUtils
 	/**
 	 * The start of the URL of all core library components (without protocol)
 	 */
-	public static final String CORE_DOCUMENTATION_URL_PREFIX = "tapestry.apache.org/current/tapestry-core/ref/org/apache/tapestry5/";
+	public static final String CORE_DOCUMENTATION_URL_PREFIX = "tapestry.apache.org/current/apidocs/org/apache/tapestry5/";
 
 	/**
 	 * Shorten the given Url string
