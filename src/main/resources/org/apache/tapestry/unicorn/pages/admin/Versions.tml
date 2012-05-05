@@ -5,7 +5,9 @@
 <div class="itemheading">
 	<h2>Tapestry Versions</h2>
 </div>
-${message}
+
+<t:alerts />
+
 <!-- right-size zone containing an editing form -->
 <t:zone t:id="editZone" id="editZone" update="show"
 	visible="false" style="position: absolute; left: 30em">

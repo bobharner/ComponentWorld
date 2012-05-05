@@ -36,16 +36,7 @@
 	</div>
 	
 	<div class="message-box" id="messagebox">
-			<t:if test="successMessage">
-				<div class="success">
-					<img src="${context:layout/images/accepted.png}" width="32" height="32"
-					style="border: none; float: left; margin: 0 .5em .5em 0" />
-					<p style="float: left">${successMessage}</p>
-				</div>
-			</t:if>
-			<t:if test="failureMessage">
-				<div class="failure">${failureMessage}</div>
-			</t:if>
+		<t:alerts />
 	</div>
 
 	<t:remove>The "listZone" zone below is updated dynamically (via AJAX)
@@ -54,12 +45,5 @@
 		<t:entryList entryType="selectedEntryType"
 			sourceTypes="selectedSourceTypes" selected="selectedEntry" />
 	</t:zone>
-
-<script type="text/javascript" language="javascript">
-<!-- message box fades after display -->
-  // <![CDATA[
-  $('messagebox').fade({ from: 1.0, to: 0, delay: 1.0, duration: 1.5 });
-  // ]]>
-</script>
 
 </html>

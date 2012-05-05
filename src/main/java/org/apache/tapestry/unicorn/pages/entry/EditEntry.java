@@ -29,6 +29,7 @@ import org.apache.tapestry.unicorn.services.SourceTypeService;
 import org.apache.tapestry.unicorn.services.TapestryVersionService;
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -133,6 +134,9 @@ public class EditEntry
 
 	@Inject
 	private LicenseService licenseService;
+	
+	@Inject
+	private AlertManager alertManager;
 
 	@Component
 	private Form editForm;
@@ -262,7 +266,7 @@ public class EditEntry
 		logger.info("Saved " + entry.getName()
 				+ (entry.getEnabled() ? " (enabled)" : " (disabled)"));
 
-		indexPage.setSuccessMessage(entry.getName() + " entry saved");
+		alertManager.info(entry.getName() + " entry saved");
 		return indexPage;
 	}
 

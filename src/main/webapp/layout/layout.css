@@ -447,37 +447,19 @@ DIV.controls DIV.popup A {
 }
 
 DIV.message-box {
-	text-align: center;
 	font-weight: bold;
 	position: absolute;
-	left: 40%;
+	right: 15%;
 	top: 17em;
+	width: 50%;
 }
-
-DIV.message-box DIV {
-	text-align: center;
-	padding: 1.3em;
-	background: #dfc;
-	border-radius: 100%;
-	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-DIV.message-box .success {
-	color: green;
-	border: 1px solid #9f9;
-	display: inline-block;
-}
-
-DIV.message-box .failure {
-	color: red;
-	border: 1px solid #f99;
-	display: inline-block;
-}
+DIV.t-alert-controls { display: none !important }
 
 div.subtitle {
 	margin-left: 1.4em;
 	color: #666;
 }
+
 div.multicolumn3 {
 	min-width: 45em;
 	-moz-column-count: 3;

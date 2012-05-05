@@ -19,6 +19,7 @@ import java.util.List;
 import org.apache.tapestry.unicorn.entities.TapestryVersion;
 import org.apache.tapestry.unicorn.services.TapestryVersionService;
 import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
@@ -38,6 +39,9 @@ public class Versions
 
 	@Inject
 	private Request request;
+	
+	@Inject
+	private AlertManager alertManager;
 
 	@InjectComponent
 	private Zone editZone;
@@ -51,10 +55,6 @@ public class Versions
 	
 	@Property
 	private String name;
-	
-	@SuppressWarnings("unused")
-	@Property
-	private String message;
 
 	@Property
 	private String description;
@@ -107,7 +107,7 @@ public class Versions
 
 		// Save all changes to the database
 		tapestryVersionService.save(version);
-		message = "Version " + version.getName() + " saved.";
+		alertManager.info("Version " + version.getName() + " saved.");
 		return this; // redraw this page
 	}
 	

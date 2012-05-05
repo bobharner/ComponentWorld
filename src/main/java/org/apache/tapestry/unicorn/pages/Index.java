@@ -28,12 +28,10 @@ import org.apache.tapestry.unicorn.services.SourceTypeService;
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
-import org.apache.tapestry5.annotations.CleanupRender;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Parameter;
-import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
@@ -76,20 +74,9 @@ public class Index
 	@Inject
 	private Request request;
 
-	@Persist
-	private String successMessage;
-
-	@Persist
-	private String failureMessage;
-
 	@InjectComponent
 	private EntryList entryList;
 	
-	public String getFailureMessage()
-	{
-		return failureMessage;
-	}
-
 	public Entry getSelectedEntry()
 	{
 		return selectedEntry;
@@ -134,16 +121,6 @@ public class Index
             }
         };
     }
-
-	public String getSuccessMessage()
-	{
-		return successMessage;
-	}
-	
-	void onActivate()
-	{
-		System.out.println("\n\n======== harner called Index.onActivate()\n\n");
-	}
 	
 	/**
 	 * As an event handler, respond to the form's PREPARE_FOR_RENDER event,
@@ -198,7 +175,7 @@ public class Index
 	 * As an event lister, respond to a selection from the "sourceType"
 	 * Select menu. Return the "entryList" component (to be put into a
 	 * zone). If the event is not part of an AJAX zone update (i.e. the browser
-	 * has JavaScript off) we return the whole page to be redrawn.
+	 * has JavaScript off) we cause the whole page to be redrawn.
 	 * 
 	 * @return
 	 */
@@ -217,17 +194,6 @@ public class Index
 		{
 			return null; // redraw the whole current page
 		}
-	}
-
-	/**
-	 * Empty out the messages so they don't display after the first time.
-	 * Note: this is only required because I can't get
-	 * @Persist(PersistenceConstants.FLASH) to work like I think it should 
-	 */
-	@CleanupRender
-	void cleanup() {
-		setFailureMessage("");
-		setSuccessMessage("");
 	}
 
 	/**
@@ -250,19 +216,9 @@ public class Index
 		}
 	}
 
-	public void setFailureMessage(String string)
-	{
-		failureMessage = string;		
-	}
-
 	public void setSelectedEntry(Entry selectedEntry)
 	{
 		this.selectedEntry = selectedEntry;
-	}
-
-	public void setSuccessMessage(String string)
-	{
-		successMessage = string;		
 	}
 
 }
