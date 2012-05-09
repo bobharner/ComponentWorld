@@ -226,7 +226,6 @@ public class Checklist extends AbstractField
         return CollectionFactory.newSet(selected);
     }
 
-    @SuppressWarnings("unchecked")
     ValueEncoder defaultEncoder()
     {
         return defaultProvider.defaultValueEncoder("value", componentResources);
