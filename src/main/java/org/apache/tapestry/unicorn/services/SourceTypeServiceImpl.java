@@ -30,7 +30,7 @@ import org.apache.tapestry.unicorn.entities.SourceType;
  */
 
 public class SourceTypeServiceImpl extends
-		GenericServiceImpl<SourceType, Integer> implements
+		GenericDataServiceImpl<SourceType, Integer> implements
 		SourceTypeService
 {
 

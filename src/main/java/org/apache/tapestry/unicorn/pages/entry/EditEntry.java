@@ -155,6 +155,12 @@ public class EditEntry
 		return entry;
 	}
 
+	public String getDescriptionInstructions()
+	{
+		return messages.format("descriptionInstructions",
+				EntryService.MAXIMUM_FIRST_SENTENCE_SIZE);
+	}
+
 	public EntryType getType()
 	{
 		return type;

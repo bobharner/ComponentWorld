@@ -23,18 +23,16 @@ import org.apache.cayenne.access.DataContext;
 import org.testng.Assert;
 
 /**
- * Abstract class that implements the {@link GenericService} interface, using
+ * Abstract class that implements the {@link GenericDataService} interface, using
  * Apache Cayenne. Services can extend this class to get Cayenne-based
  * implementations of the most commonly-needed database access methods.
  * 
  * @param <T>
  * @param <ID>
  */
-public abstract class GenericServiceImpl<T extends CayenneDataObject, ID extends Serializable>
-		implements GenericService<T, ID>
+public abstract class GenericDataServiceImpl<T extends CayenneDataObject, ID extends Serializable>
+		implements GenericDataService<T, ID>
 {
-
-	// protected final Log log = LogFactory.getLog(getClass().getName());
 
 	private static final long serialVersionUID = 99136895883299725L;
 
@@ -47,7 +45,7 @@ public abstract class GenericServiceImpl<T extends CayenneDataObject, ID extends
 	private final Class<T> persistentClass;
 
 	@SuppressWarnings("unchecked")
-	public GenericServiceImpl()
+	public GenericDataServiceImpl()
 	{
 		this.persistentClass = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
@@ -61,16 +59,6 @@ public abstract class GenericServiceImpl<T extends CayenneDataObject, ID extends
 		ObjectContext context = DataContext.getThreadObjectContext();
 		context.deleteObject(entity);
 		context.commitChanges();
-	}
-
-	/**
-	 * Flush the hibernate session to the database.
-	 * 
-	 * @throws Exception
-	 */
-	public void flush()
-	{
-		// session.flush();
 	}
 
 	public Class<T> getPersistentClass()
@@ -100,29 +88,16 @@ public abstract class GenericServiceImpl<T extends CayenneDataObject, ID extends
 		ObjectContext context;
 		if (entity.getObjectContext() == null)
 		{
-			System.out.println("In save(), new entity=" + entity + "\n");
 			context = DataContext.getThreadObjectContext();
 			context.registerNewObject(entity);
 		}
 		else
 		{
-			System.out.println("In save(), existing entity=" + entity + "\n");
 			context = entity.getObjectContext();
 		}
 		
 		context.commitChanges();
 		return entity;
-	}
-
-	/**
-	 * 
-	 */
-	public T xsave(T entity)
-	{
-		Assert.assertNotNull(entity, "No Entity Specified");
-		T saved = null; // (T) session.merge(entity);
-		flush();
-		return saved;
 	}
 
 }

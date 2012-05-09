@@ -17,10 +17,10 @@ package org.apache.tapestry.unicorn.services;
 import java.io.Serializable;
 
 /**
- * The Generic interface for all Services
+ * A generic interface for all database services.
  * 
  */
-public interface GenericService<T, ID extends Serializable> extends
+public interface GenericDataService<T, ID extends Serializable> extends
 		Serializable
 {
 

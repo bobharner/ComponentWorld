@@ -27,11 +27,11 @@ import org.apache.tapestry.unicorn.entities.TapestryVersion;
 
 /**
  * Service for creating, managing and searching for {@link TapestryVersion}
- * entities. See also {@link GenericService}
+ * entities. See also {@link GenericDataService}
  */
 
 public class TapestryVersionServiceImpl extends
-		GenericServiceImpl<TapestryVersion, Integer> implements
+		GenericDataServiceImpl<TapestryVersion, Integer> implements
 		TapestryVersionService
 {
 

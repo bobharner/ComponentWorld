@@ -25,7 +25,7 @@ import org.apache.cayenne.query.SortOrder;
 
 /**
  * Service for all {@link Role} related functionality.
- * See also {@link GenericService}
+ * See also {@link GenericDataService}
  *
  */
 public class RoleServiceImpl implements RoleService {

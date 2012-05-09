@@ -20,10 +20,10 @@ import org.apache.tapestry.unicorn.entities.License;
 
 /**
  * Service for all {@link License} related functionality.
- * See also {@link GenericService}
+ * See also {@link GenericDataService}
  * 
  */
-public interface LicenseService extends GenericService<License, Integer> {
+public interface LicenseService extends GenericDataService<License, Integer> {
 
 	public License create();
 	/**

@@ -20,10 +20,10 @@ import org.apache.tapestry.unicorn.entities.EntryType;
 
 /**
  * Service for all {@link EntryType} related functionality.
- * See also {@link GenericService}
+ * See also {@link GenericDataService}
  * 
  */
-public interface EntryTypeService extends GenericService<EntryType, Integer> {
+public interface EntryTypeService extends GenericDataService<EntryType, Integer> {
 
 	public EntryType create();
 	

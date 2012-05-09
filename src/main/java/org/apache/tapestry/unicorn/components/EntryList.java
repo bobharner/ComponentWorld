@@ -38,7 +38,6 @@ import org.apache.tapestry5.services.Request;
  */
 public class EntryList
 {
-
 	@SuppressWarnings("unused")
 	@Property
 	private String filterText;
@@ -92,9 +91,10 @@ public class EntryList
 	{
 		if (entry.getParent() == null)
 		{
-			return entry.getDescription();
+			return entryService.abbreviateDescription(entry);
 		}
-		return entry.getDescription() + " (" + entry.getParent().getName() + ")";
+		return entryService.abbreviateDescription(entry) + " ["
+				+ entry.getParent().getName() + "]";
 	}
 
 	public EntryType getEntryType()

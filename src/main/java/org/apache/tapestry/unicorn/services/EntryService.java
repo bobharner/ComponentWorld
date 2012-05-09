@@ -22,11 +22,19 @@ import org.apache.tapestry.unicorn.entities.SourceType;
 
 /**
  * Service for creating, managing and searching for {@link Entry}
- * entities. See also {@link GenericService}
+ * entities. See also {@link GenericDataService}
  * 
  */
-public interface EntryService extends GenericService<Entry, Integer> {
-	
+public interface EntryService extends GenericDataService<Entry, Integer> {
+
+	/**
+	 * Minimum and maximum length of the first sentence of an entry's
+	 * description (or, at least, the boundaries that we use in sensibly
+	 * abbreviating that description).
+	 */
+	public static final int MINIMUM_FIRST_SENTENCE_SIZE = 20;
+	public static final int MAXIMUM_FIRST_SENTENCE_SIZE = 130;
+
 	/**
 	 * Create a new {@link Entry} object, not yet persisted to the
 	 * database
@@ -73,5 +81,16 @@ public interface EntryService extends GenericService<Entry, Integer> {
 	 * @return
 	 */
 	public List<Entry> findChildren(Entry entry);
+	
+
+	/**
+	 * Makes a sensible abbreviation of the given entry's description. We take
+	 * the first sentence if it's a reasonable length, otherwise we take either
+	 * everything (if it's small enough) or else a truncated substring with
+	 * "..." appended.
+	 * 
+	 * @return the abbreviated description
+	 */
+	public String abbreviateDescription(Entry entry);
 
 }

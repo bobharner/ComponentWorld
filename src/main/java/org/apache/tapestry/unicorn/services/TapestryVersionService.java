@@ -20,10 +20,10 @@ import org.apache.tapestry.unicorn.entities.TapestryVersion;
 
 /**
  * Service for all {@link TapestryVersion} related functionality.
- * See also {@link GenericService}
+ * See also {@link GenericDataService}
  * 
  */
-public interface TapestryVersionService extends GenericService<TapestryVersion, Integer> {
+public interface TapestryVersionService extends GenericDataService<TapestryVersion, Integer> {
 
 	public TapestryVersion create();
 	/**

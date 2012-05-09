@@ -1,4 +1,4 @@
-<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
 	     xmlns:p="tapestry:parameter">
 
 <div class="left-side-list">
@@ -16,8 +16,7 @@
 			<li class="${entry.entryType.cssClass}">
 				<t:actionLink t:zone="details" t:id="entrySellection"
 					t:context="entry" title="${entryTitle}"
-					class="${entryCssClass}">${entry.name}
-				</t:actionLink>
+					class="${entryCssClass}">${entry.name}</t:actionLink>
 				<span class="details">${entry.parent?.name}</span>
 			</li>
 		</t:loop>

@@ -27,11 +27,11 @@ import org.apache.tapestry.unicorn.entities.License;
 
 /**
  * Service for creating, managing and searching for {@link License}
- * entities. See also {@link GenericService}
+ * entities. See also {@link GenericDataService}
  */
 
 public class LicenseServiceImpl extends
-		GenericServiceImpl<License, Integer> implements
+		GenericDataServiceImpl<License, Integer> implements
 		LicenseService
 {
 

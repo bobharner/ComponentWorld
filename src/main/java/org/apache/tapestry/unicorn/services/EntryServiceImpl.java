@@ -16,7 +16,6 @@ package org.apache.tapestry.unicorn.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
 
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.access.DataContext;
@@ -34,7 +33,7 @@ import org.apache.tapestry.unicorn.entities.SourceType;
  */
 
 public class EntryServiceImpl extends
-		GenericServiceImpl<Entry, Integer> implements
+		GenericDataServiceImpl<Entry, Integer> implements
 		EntryService
 {
 
@@ -170,5 +169,34 @@ public class EntryServiceImpl extends
 
 	}
 
+	@Override
+	public String abbreviateDescription(Entry entry)
+	{
+		if (entry.getDescription() == null)
+		{
+			return "";
+		}
+		// look for period-space *after* the first few chars
+		int endOfSentence = entry.getDescription().indexOf(". ", MINIMUM_FIRST_SENTENCE_SIZE);
+		if (endOfSentence > MINIMUM_FIRST_SENTENCE_SIZE) // found?
+		{
+			return entry.getDescription().substring(0, endOfSentence);
+		}
+		if (entry.getDescription().length() < MAXIMUM_FIRST_SENTENCE_SIZE)
+		{
+			return entry.getDescription();
+		}
+		// find the last space in the first N chars
+		String truncatedAbbreviation = entry.getDescription().substring(0, MAXIMUM_FIRST_SENTENCE_SIZE);
+		int endOfWord = truncatedAbbreviation.lastIndexOf(" ");
+		if (endOfWord > MINIMUM_FIRST_SENTENCE_SIZE)
+		{
+			return entry.getDescription().substring(0, endOfWord) + "...";
+		}
+		else
+		{
+			return truncatedAbbreviation + "...";
+		}
+	}
 
 }

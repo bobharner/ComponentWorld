@@ -30,7 +30,7 @@ import org.apache.tapestry.unicorn.entities.EntryType;
  */
 
 public class EntryTypeServiceImpl extends
-		GenericServiceImpl<EntryType, Integer> implements
+		GenericDataServiceImpl<EntryType, Integer> implements
 		EntryTypeService
 {
 

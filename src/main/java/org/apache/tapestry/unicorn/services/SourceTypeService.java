@@ -21,10 +21,10 @@ import org.apache.tapestry.unicorn.entities.SourceType;
 
 /**
  * Service for all {@link SourceType} related functionality.
- * See also {@link GenericService}
+ * See also {@link GenericDataService}
  * 
  */
-public interface SourceTypeService extends GenericService<SourceType, Integer> {
+public interface SourceTypeService extends GenericDataService<SourceType, Integer> {
 
 	/**
 	 * Create a new {@link SourceType} instance.

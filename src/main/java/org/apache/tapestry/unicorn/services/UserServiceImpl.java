@@ -27,9 +27,9 @@ import org.apache.cayenne.query.SortOrder;
 
 /**
  * Service for all {@link User} related functionality.
- * See also {@link GenericService}
+ * See also {@link GenericDataService}
  */
-public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService {
+public class UserServiceImpl extends GenericDataServiceImpl<User, Integer> implements UserService {
 
 	private static final long serialVersionUID = -6305278621616029751L;
 	private static final String INVITE_STRING = "Invited";

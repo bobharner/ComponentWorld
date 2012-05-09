@@ -1,5 +1,5 @@
 <html t:type="layout" title="Edit Entry"
-	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 
 <div class="itemheading">
 <h2>${pageHeading}</h2>
@@ -35,7 +35,7 @@
 			<th><t:label for="description"/>:</th>
 			<td><t:textArea t:id="description" validate="required,max=4096"
 					rows="5" cols="70" value="description"/></td>
-			<td class="instruction">${message:descriptionInstructions}</td>
+			<td class="instruction">${descriptionInstructions}</td>
 		</tr>
 		<tr>
 			<th><t:label for="documentationUrl"/>:</th>

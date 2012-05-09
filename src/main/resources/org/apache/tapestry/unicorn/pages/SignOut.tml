@@ -1,5 +1,5 @@
 <html t:type="layout" title="Sign Out"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
     <p>TBD - this should sign the user out</p>
