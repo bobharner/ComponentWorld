@@ -4,7 +4,7 @@
     <artifactId>componentSearch</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>Unicorn</name>
+    <name>ComponentWorld</name>
     
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -106,7 +106,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     	<url>http://www.apache.org</url>
     </organization>
     <build>
-        <finalName>Unicorn</finalName>
+        <finalName>ComponentWorld</finalName>
     	<plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

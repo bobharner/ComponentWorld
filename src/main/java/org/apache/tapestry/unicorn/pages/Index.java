@@ -33,6 +33,7 @@ import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.SelectModelFactory;
@@ -51,6 +52,10 @@ public class Index
 	@Property
 	private List<SourceType> selectedSourceTypes;
 
+	@SuppressWarnings("unused")
+	@Property
+	private String filterText;
+
 	@PageActivationContext
 	private Entry selectedEntry;
 
@@ -61,6 +66,14 @@ public class Index
 	@SuppressWarnings("unused")
 	@Property
 	private SelectModel sourceTypeSelectModel;
+
+	@SuppressWarnings("unused")
+	@Property
+	private Character letter; // used in a loop
+
+	@SuppressWarnings("unused")
+	@Property (write=false)
+	private final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
 	@Inject
 	private EntryTypeService entryTypeService;
@@ -76,6 +89,17 @@ public class Index
 
 	@InjectComponent
 	private EntryList entryList;
+
+	private Character firstLetter;
+
+	/**
+	 * Perform page initializations
+	 */
+	@SetupRender
+	public void init()
+	{
+		filterText = "";
+	}
 	
 	public Entry getSelectedEntry()
 	{
@@ -86,17 +110,16 @@ public class Index
     * Get a ValueEncoder for the SourceType entity. This enables Tapestry to
     * convert a SourceType ID to a fully-populated object, and vice-versa.
     */
-	public ValueEncoder<SourceType> xxxxgetSourceTypeEncoder()
-    {
-        return new SourceTypeEncoder();
-    }
 	public ValueEncoder<SourceType> getSourceTypeEncoder()
     {
-        return new ValueEncoder<SourceType>() {
+        return new ValueEncoder<SourceType>()
+        {
             
             @Override
-            public String toClient(SourceType value) {
-            	if (value == null) {
+            public String toClient(SourceType value)
+            {
+            	if (value == null)
+            	{
             		return null;
             	}
                 // return the given object's ID
@@ -105,17 +128,20 @@ public class Index
             }
 
             @Override
-            public SourceType toValue(String id) { 
+            public SourceType toValue(String id)
+            { 
             	if (id == null)
             	{
             		return null;
             	}
                 // find the Entry object of the given ID in the database
-                try {
+                try
+                {
                 	// FIXME: why is sourceTypeService sometimes null????
         			return sourceTypeService.findById(Integer.parseInt(id));
         		}
-        		catch (NumberFormatException e) {
+        		catch (NumberFormatException e)
+        		{
         			throw new RuntimeException("ID " + id + " is not a number", e);
         		}
             }
@@ -145,6 +171,8 @@ public class Index
 				SourceType.NAME_PLURAL_PROPERTY);
 		
 		selectedSourceTypes = new ArrayList<SourceType>();
+
+		firstLetter = null; // entries must start with this letter
 	}
 	
 	/**
@@ -170,6 +198,16 @@ public class Index
 		}
 	}
 	
+	/**
+	 * As an event lister, respond to a click from an "alphabetLink"
+	 * SubmitLink component. The letter that was clicked is passed to this
+	 * method as the "context".
+	 */
+	@OnEvent(value="selected", component="letterLink")
+	void setFirstLetter(String letter)
+	{
+		firstLetter = letter.charAt(0);
+	}
 	
 	/**
 	 * As an event lister, respond to a selection from the "sourceType"
@@ -206,6 +244,7 @@ public class Index
 	{
 		entryList.setEntryType(selectedEntryType);
 		entryList.setSourceTypes(selectedSourceTypes);
+		entryList.setFirstLetter(firstLetter);
 		if (request.isXHR()) // an AJAX request?
 		{
 			return entryList; // return the entryList component

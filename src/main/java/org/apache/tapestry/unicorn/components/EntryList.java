@@ -38,10 +38,6 @@ import org.apache.tapestry5.services.Request;
  */
 public class EntryList
 {
-	@SuppressWarnings("unused")
-	@Property
-	private String filterText;
-
 	@Parameter
 	private Entry selectedEntry;
 
@@ -67,9 +63,8 @@ public class EntryList
 	@InjectComponent
 	private Object entryDetail;
 	
-	public String getSelector() {
-		return ".left-side-list ul.entry-list li";
-	}
+	private Character firstLetter;
+
 	/**
 	 * @return the CSS class of current entry (depends on the entry type and
 	 * whether it is enabled)
@@ -114,8 +109,7 @@ public class EntryList
 	@SetupRender
 	private void init()
 	{
-		filterText = "";
-		entryList = entryService.findByType(entryType, sourceTypes);
+		entryList = entryService.findByType(entryType, sourceTypes, firstLetter);
 	}
 
 	public void setEntryType(EntryType entryType)
@@ -144,6 +138,11 @@ public class EntryList
 		{
 			return null; // graceful degradation: redraw the whole current page
 		}
+	}
+
+	public void setFirstLetter(Character firstLetter)
+	{
+		this.firstLetter = firstLetter;
 	}
 
 	public void setSelectedEntry(Entry selectedEntry)

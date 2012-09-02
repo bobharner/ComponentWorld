@@ -2,7 +2,7 @@
      xmlns:p="tapestry:parameter">
 
 <t:if test="entry">
-	<div class="detail-box">
+	<div class="detail-box" id="detail-box">
 		<div class="icon ${entry.entryType.cssClass}"></div>
 		
 		<div style="float:left; margin-bottom: .8em">
@@ -23,11 +23,20 @@
 		</div>
 
 		<div class="controls">
-			<t:pageLink page="entry/editentry" style="margin-left: 2em"
-				t:context="entry" class="controls"
-				title="Edit this entry">Edit...</t:pageLink>
+			<a href="#" style="margin-left: 2em" class="controls"
+					onClick="getElementById('details').innerHTML=''; return false"
+					title="Close this detail box">
+				Close
+			</a>
 		</div>
 
+		<div class="controls">
+			<t:pageLink page="entry/editentry" style="margin-left: 2em"
+					t:context="entry" class="controls"
+					title="Edit this entry">
+				Edit...
+			</t:pageLink>
+		</div>
 		<p><t:textOutput value="entry.description" /></p>
 	
 		<table class="detail-table">

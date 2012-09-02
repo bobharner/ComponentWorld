@@ -57,11 +57,11 @@ public interface EntryService extends GenericDataService<Entry, Integer> {
 	 *  
 	 * @param entryType the EntryType to match, or null to match all
 	 * @param sourceTypes list of source types to match on, or null to match all
-	 * @return a list of matching Entry objects, in alphabetical order
-	 * by name
+	 * @param firstLetter the first letter of all matching entries, or null to match on all
+	 * @return a list of matching Entry objects, in alphabetical order by name
 	 */
 	public List<Entry> findByType(EntryType entryType,
-			List<SourceType> sourceTypes);
+			List<SourceType> sourceTypes, Character firstLetter);
 
 	/**
 	 * Find all {@link Entry}s that are eligible to be parents of the
@@ -84,10 +84,7 @@ public interface EntryService extends GenericDataService<Entry, Integer> {
 	
 
 	/**
-	 * Makes a sensible abbreviation of the given entry's description. We take
-	 * the first sentence if it's a reasonable length, otherwise we take either
-	 * everything (if it's small enough) or else a truncated substring with
-	 * "..." appended.
+	 * Makes a sensible abbreviation of the given entry's description.
 	 * 
 	 * @return the abbreviated description
 	 */

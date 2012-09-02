@@ -27,10 +27,13 @@ import org.apache.tapestry.unicorn.entities.License;
 import org.apache.tapestry.unicorn.entities.SourceType;
 import org.apache.tapestry.unicorn.entities.TapestryVersion;
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.services.Coercion;
+import org.apache.tapestry5.ioc.services.CoercionTuple;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
@@ -174,5 +177,25 @@ public class AppModule
 		configuration.addInstance(TapestryVersion.class, TapestryVersionEncoder.class);
 		configuration.addInstance(License.class, LicenseEncoder.class);
 	}
+
+    /**
+     * Add type coercions from Character to String and vice-versa. This is
+     * needed by the index page's A..Z links.
+     */
+    public static void contributeTypeCoercer(Configuration<CoercionTuple> configuration)
+    {
+		configuration.add(new CoercionTuple<Character, String>(Character.class,
+				String.class, new Coercion<Character, String>() {
+					public String coerce(Character input) {
+						return input.toString();
+					}
+				}));
+		configuration.add(new CoercionTuple<String, Character>(String.class,
+				Character.class, new Coercion<String, Character>() {
+					public Character coerce(String str) {
+						return Character.valueOf((str.charAt(0)));
+					}
+				}));
+    }
 
 }

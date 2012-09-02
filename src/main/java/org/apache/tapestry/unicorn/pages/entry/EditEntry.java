@@ -30,6 +30,8 @@ import org.apache.tapestry.unicorn.services.TapestryVersionService;
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -272,7 +274,7 @@ public class EditEntry
 		logger.info("Saved " + entry.getName()
 				+ (entry.getEnabled() ? " (enabled)" : " (disabled)"));
 
-		alertManager.info(entry.getName() + " entry saved");
+		alertManager.alert(Duration.TRANSIENT, Severity.INFO, entry.getName() + " entry saved");
 		return indexPage;
 	}
 

@@ -8,16 +8,18 @@
 
 	<div class="category-selection">
 		<t:form autofocus="false" t:id="categorySelection" zone="listZone">
-			<div class="find">
+		<table class="category-menu">
+		<tr>
+			<td class="find">
+				<t:remove>Entry Type Drop-down Menu</t:remove>
 				<t:label for="entryType"></t:label>
 				<!-- select's encoder is bound implicitly in AppModule -->
 				<t:select t:id="entryType" value="selectedEntryType"
 						model="entryTypeSelectModel" blankLabel="All Entries"
 						onchange="this.form.fire(Tapestry.FORM_PROCESS_SUBMIT_EVENT)"/>
-			</div>
-
-			<div class="from">
-
+			</td>
+			<td class="from">
+				<t:remove>Source Type Checkboxes</t:remove>
 				<t:label for="sourceTypes"></t:label>
 				<t:checklist t:id="sourceTypes" id="sourceTypes"
 					model="sourceTypeSelectModel"
@@ -29,14 +31,36 @@
 							selector=".from .t-checklist-row input"/>All
 					</label>
 				</div>
-			</div>
-		</t:form>
-	<div style="clear: both"></div>
+			</td>
+		</tr>
 
-	</div>
-	
-	<div class="message-box" id="messagebox">
-		<t:alerts />
+		<tr>
+			<td class="quick-filter">
+				<t:remove>Quick Filter keyin field</t:remove>
+				<t:listFilter selector=".left-side-list ul.entry-list li"
+						counterId="counter" title="${message:inputPromptTitle}"
+						size="17" placeholder="${message:inputPrompt}"
+						t:value="prop:filterText" />
+			</td>
+			<td class="alphabet">
+				<t:remove>A-Z Alphabet Links</t:remove>
+				<t:loop source="alphabet" value="letter">
+					<t:linkSubmit t:id="letterLink" context="letter"
+						defer="false"
+						title="Find entries starting with ${letter}">
+						${letter}
+					</t:linkSubmit> 
+				</t:loop>
+				<t:linkSubmit t:id="allLettersLink"
+					title="Find entries starting with any letter">
+					All
+				</t:linkSubmit> 			
+			</td>
+		</tr>
+		</table>
+				
+		</t:form>
+
 	</div>
 
 	<t:remove>The "listZone" zone below is updated dynamically (via AJAX)

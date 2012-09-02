@@ -89,7 +89,7 @@ public class EntryServiceImpl extends
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Entry> findByType(EntryType entryType,
-			List<SourceType> sourceTypes)
+			List<SourceType> sourceTypes, Character firstLetter)
 	{
 		Expression expression = null;
 		if (entryType != null)
@@ -114,6 +114,16 @@ public class EntryServiceImpl extends
 			exp = ExpressionFactory.inExp(Entry.SOURCE_TYPE_PROPERTY, idList);
 			expression = (expression == null) ? exp : expression.andExp(exp);
 		}
+		
+		// add an expression for matching on first char of entry's name
+		if (firstLetter != null)
+		{
+			Expression exp = null;
+			// add "Entry.ENTRY_NAME_PROPERTY like 'A%'
+			exp = ExpressionFactory.likeIgnoreCaseExp(Entry.NAME_PROPERTY, firstLetter.toString() + '%');
+			expression = (expression == null) ? exp : expression.andExp(exp);
+		}
+
 
 		SelectQuery query = new SelectQuery(Entry.class, expression);
 		Ordering order = new Ordering(Entry.NAME_PROPERTY,
@@ -169,6 +179,14 @@ public class EntryServiceImpl extends
 
 	}
 
+	/**
+	 * Returns an abbreviation of the given entry's description. We take
+	 * the first sentence if it's a reasonable length, otherwise we take either
+	 * everything (if it's small enough) or else a truncated substring with
+	 * "..." appended.
+	 * 
+	 * @return the abbreviated description
+	 */
 	@Override
 	public String abbreviateDescription(Entry entry)
 	{

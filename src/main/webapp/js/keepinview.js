@@ -22,14 +22,14 @@
 	                $('#scroll_header').addClass('fixed');
 	            } else {
 	                $('#scroll_header').removeClass('fixed');
-	            }
+	            };
 	        });
 	        var y = $(this).scrollTop();
 	        if (y >= top) {
 	            $('#scroll_header').addClass('fixed');
 	        } else {
 	            $('#scroll_header').removeClass('fixed');
-	        }
+	        };
 //	    } else {
 //	        setInterval("checkScroll()", 100);
 //	    }

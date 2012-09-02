@@ -250,17 +250,6 @@ DIV#breadcrumbs A:hover {
 	width: 20%;
 }
 
-.left-side-list DIV.quick-filter {
-	margin: .35em 0 .5em 0 !important;
-}
-
-DIV.matching-counter {
-	margin-top: 1em;
-	border-top: 1px solid #ccc;
-	color: #999;
-	font-style: italic;
-}
-
 .right-side-details {
 	padding: .5em 1em 1em 1em;
 	/* the following makes the box stay in view when scrolling down
@@ -307,7 +296,10 @@ ul.entry-list li {
 	padding: 1px 0 1px 20px;
 	margin: 0;}
 
-ul.entry-list li SPAN.details { color: #ccc; }
+ul.entry-list li SPAN.details {
+	color: #ccc;
+    margin-left: 0.3em;
+}
 
 ul.entry-list li.disabled A {
 	text-decoration: line-through;
@@ -329,8 +321,8 @@ ul.entry-list li.disabled A {
 }
 
 .category-selection .from {
-	float: left;
 	margin-left: 2em;
+	margin-bottom: .4em;
 }
 
 .category-selection .find {
@@ -354,6 +346,22 @@ ul.entry-list li.disabled A {
 .category-selection INPUT[type=submit] 	{
 	padding: 0;
 }
+.category-selection TD.quick-filter {
+}
+.category-selection TD.alphabet { text-align: center; }
+.category-selection TD.alphabet A { padding: .2em; text-decoration: none; }
+.category-selection TD.alphabet A:hover { text-decoration: underline; background: #eee; }
+.category-selection TABLE.category-menu {
+	border-collapse: collapse;
+	margin: 0;
+}
+DIV.matching-counter {
+	margin-top: 1em;
+	border-top: 1px solid #ccc;
+	color: #999;
+	font-style: italic;
+}
+
 TABLE TH {
 	text-align: left;
 }
@@ -382,7 +390,7 @@ DIV.detail-box {
 	padding: 1em;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 	border-radius: 15px;
-	position: fixed;
+	/*position: fixed;*/
 	width: 650px;
 	z-index: 1;
 }
@@ -447,11 +455,8 @@ DIV.controls DIV.popup A {
 }
 
 DIV.message-box {
-	font-weight: bold;
-	position: absolute;
-	right: 15%;
-	top: 17em;
-	width: 50%;
+	position: relative;
+	top: 0.2em;
 }
 DIV.t-alert-controls { display: none !important }
 
