@@ -67,8 +67,8 @@ public class EntryDetail
 	{
 		if (entry != null)
 		{
-			shortDocUrl = UrlUtils.shorten(entry.getDocumentationUrl(), 50);
-			shortDemoUrl = UrlUtils.shorten(entry.getDemonstrationUrl(), 50);
+			shortDocUrl = UrlUtils.shorten(entry.getDocumentationUrl(), 70);
+			shortDemoUrl = UrlUtils.shorten(entry.getDemonstrationUrl(), 70);
 			children = entryService.findChildren(entry);
 		}
 	}
