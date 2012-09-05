@@ -29,7 +29,6 @@ public class Index
 
 	Object onActionFromBackupLink()
 	{
-		System.out.println("harner here.....");
 		databaseAdminService.performBackup();
 		alertManager.info("Backup completed");
 		return null;
