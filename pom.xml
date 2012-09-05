@@ -59,7 +59,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         <dependency>
         	<groupId>org.apache.derby</groupId>
         	<artifactId>derby</artifactId>
-        	<version>10.8.1.2</version>
+        	<version>10.9.1.0</version>
         	<type>jar</type>
         	<scope>compile</scope>
         </dependency>
