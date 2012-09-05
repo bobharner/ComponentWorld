@@ -19,7 +19,7 @@ import org.apache.tapestry.unicorn.entities.auto._Entry;
 /**
  * An entity that stores all of the information about a Tapestry component,
  * mixin, page, module, etc., such as its name, description, documentation URL,
- * etc. Entries are hierarchical, which an optional parent entry and optional
+ * etc. Entries are hierarchical, with an optional parent entry and optional
  * children entries.
  * 
  * @author bharner
