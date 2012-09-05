@@ -62,6 +62,7 @@ public class AppModule
 		binder.bind(EntryTypeService.class, EntryTypeServiceImpl.class);
 		binder.bind(SourceTypeService.class, SourceTypeServiceImpl.class);
 		binder.bind(LicenseService.class, LicenseServiceImpl.class);
+		binder.bind(DatabaseAdminService.class, DatabaseAdminServiceImpl.class);
     }
     
     /**

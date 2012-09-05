@@ -14,7 +14,24 @@
  */
 package org.apache.tapestry.unicorn.pages.admin;
 
+import org.apache.tapestry.unicorn.services.DatabaseAdminService;
+import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.ioc.annotations.Inject;
+
 public class Index
 {
 
+	@Inject
+	AlertManager alertManager;
+	
+	@Inject
+	DatabaseAdminService databaseAdminService;
+
+	Object onActionFromBackupLink()
+	{
+		System.out.println("harner here.....");
+		databaseAdminService.performBackup();
+		alertManager.info("Backup completed");
+		return null;
+	}
 }
