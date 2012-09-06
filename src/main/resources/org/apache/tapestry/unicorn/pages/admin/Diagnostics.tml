@@ -3,7 +3,28 @@
 	xmlns:p="tapestry:parameter">
 
 	<h1>Diagnostics</h1>
-	
+
+		<fieldset><legend><h3>Basics</h3></legend>
+			<table class="datatable">
+				<tr><th>Java</th>
+					<td>${javaVersion} ${javaVendor}</td>
+				</tr>
+				<tr><th>OS</th>
+					<td>${osName} ver ${osVersion} (${osArch})</td>
+				</tr>
+		
+				<tr><th>Session Max Inactive Interval:</th>
+					<td>${maxInactiveInterval} minutes</td>
+				</tr>
+				<tr><th>Production Mode:</th>
+					<td>${symbol:tapestry.production-mode}</td>
+				</tr>
+				<tr><th>Application Version:</th>
+					<td>${symbol:tapestry.application-version}</td>
+				</tr>
+			</table>
+		</fieldset>
+		
 		<fieldset><legend><h3>JVM Memory Statistics</h3></legend>
 	
 			<table class="datatable">
@@ -21,7 +42,6 @@
 				</tr>
 			</table>
 		</fieldset>
-		
 		
 		<fieldset><legend><h3>Memory Pool MX Beans</h3></legend>
 			<table class="datatable">
@@ -58,19 +78,5 @@
 				</p:else>
 			</t:if>
 		</fieldset>
-		
-		<fieldset><legend><h3>Settings</h3></legend>
-			<table class="datatable">
-			<tr><th>Session Max Inactive Interval:</th>
-				<td>${maxInactiveInterval} minutes</td>
-			</tr>
-			<tr><th>Production Mode:</th>
-				<td>${symbol:tapestry.production-mode}</td>
-			</tr>
-			<tr><th>Application Version:</th>
-				<td>${symbol:tapestry.application-version}</td>
-			</tr>
-			</table>
-		</fieldset>
-		
+
 </html>

@@ -51,6 +51,26 @@ public class Diagnostics
 		}
 		return 0;
 	}
+	
+	public String getJavaVendor() {
+		return System.getProperty("java.vendor");
+	}	
+
+	public String getJavaVersion() {
+		return System.getProperty("java.version");
+	}
+	
+	public String getOsArch() {
+		return System.getProperty("os.arch");
+	}
+	
+	public String getOsName() {
+		return System.getProperty("os.name");
+	}
+	
+	public String getOsVersion() {
+		return System.getProperty("os.version");
+	}
 
 	public Session getSession() {
 		return request.getSession(false);
