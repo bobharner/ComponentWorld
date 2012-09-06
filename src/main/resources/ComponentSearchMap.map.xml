@@ -97,6 +97,7 @@
 	</obj-entity>
 	<obj-entity name="Setting" className="org.apache.tapestry.unicorn.entities.Setting" dbEntityName="SETTINGS">
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 		<obj-attribute name="value" type="java.lang.String" db-attribute-path="VALUE"/>
 	</obj-entity>

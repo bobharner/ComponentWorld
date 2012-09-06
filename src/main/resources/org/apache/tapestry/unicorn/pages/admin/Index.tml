@@ -13,7 +13,7 @@
 	<li><t:pagelink page="admin/versions">Tapestry Versions</t:pagelink></li>
 	<li>Roles</li>
 	<li>Users</li>
-	<li>Other Settings</li>
+	<li><t:pagelink page="admin/settings">Other Settings</t:pagelink></li>
 	<li><t:actionLink t:id="backupLink">Perform Database Backup</t:actionLink></li>
 	<li><t:pagelink page="admin/diagnostics">Diagnostics</t:pagelink></li>
 </ul>

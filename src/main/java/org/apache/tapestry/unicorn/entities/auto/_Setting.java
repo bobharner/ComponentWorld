@@ -11,6 +11,7 @@ import org.apache.cayenne.CayenneDataObject;
 public abstract class _Setting extends CayenneDataObject {
 
     public static final String DESCRIPTION_PROPERTY = "description";
+    public static final String ID_PROPERTY = "id";
     public static final String NAME_PROPERTY = "name";
     public static final String VALUE_PROPERTY = "value";
 
@@ -21,6 +22,13 @@ public abstract class _Setting extends CayenneDataObject {
     }
     public String getDescription() {
         return (String)readProperty("description");
+    }
+
+    public void setId(Long id) {
+        writeProperty("id", id);
+    }
+    public Long getId() {
+        return (Long)readProperty("id");
     }
 
     public void setName(String name) {

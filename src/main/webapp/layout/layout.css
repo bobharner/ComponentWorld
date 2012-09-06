@@ -384,6 +384,7 @@ TABLE.detail-table TH {
 	color: #666;
 }
 
+DIV#editZone { z-index: 1; }
 DIV.detail-box {
 	border: 1px solid #ccc;
 	background: #f9f9f9;

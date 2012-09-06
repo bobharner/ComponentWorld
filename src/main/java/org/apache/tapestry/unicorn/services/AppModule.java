@@ -56,6 +56,7 @@ public class AppModule
         // invoking the constructor.
 
     	binder.bind(TapestryVersionService.class, TapestryVersionServiceImpl.class);
+    	binder.bind(SettingsService.class, SettingsServiceImpl.class);
     	binder.bind(EntryService.class, EntryServiceImpl.class);
 		binder.bind(UserService.class, UserServiceImpl.class);
 		binder.bind(RoleService.class, RoleServiceImpl.class);

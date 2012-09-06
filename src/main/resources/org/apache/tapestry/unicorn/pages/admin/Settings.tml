@@ -1,0 +1,59 @@
+<html t:type="layout" title="Other Settings"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	xmlns:p="tapestry:parameter">
+
+<div class="itemheading">
+	<h2>Other Settings</h2>
+	<p class="greeting">These are the configurable settings for this application.
+	Only change these values if you know what you're doing!
+	</p>
+</div>
+
+<!-- right-size zone containing an editing form -->
+<t:zone t:id="editZone" id="editZone"
+	visible="false" style="position: absolute; left: 30em">
+	<t:keepInView class="detail-box">
+
+		<div class="controls">
+			<a href="#" style="margin-left: 2em" class="controls"
+					onClick="getElementById('editZone').innerHTML=''; return false"
+					title="Close this detail box">
+				Close
+			</a>
+		</div>
+
+		<t:form t:id="editForm">
+			<table>
+			<tr><th>Name</th>
+				<td>${name}</td>
+			</tr>
+			<tr><th><t:label for="value"/></th>
+				<td>
+					<t:textfield t:id="value" value="value" size="60"/></td>
+			</tr>
+			<tr><th>Description</th>
+				<td>${description}</td>
+			</tr>
+			<tr><td></td><td><t:submit value="Save"/></td></tr>
+			</table>
+		</t:form>
+		
+	</t:keepInView>
+</t:zone>
+
+<!-- left-side list if items to edit -->
+<table class="datatable">
+<thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead>
+<t:loop source="settings" value="setting">
+	<tr>
+		<td><t:actionlink t:id="itemLink" context="setting.id" zone="editZone"
+				title="Click to edit this item">
+			${setting.name}</t:actionlink>
+		</td>
+		<td>${setting.value}</td>
+		<td>${setting.description}</td>
+	</tr>
+</t:loop>
+</table>
+
+</html>
