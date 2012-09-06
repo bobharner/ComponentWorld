@@ -57,7 +57,7 @@ public class TapestryVersionServiceImpl extends
 	{
 		SelectQuery query = new SelectQuery(TapestryVersion.class);
 		Ordering order = new Ordering(TapestryVersion.SORT_BY_PROPERTY,
-					SortOrder.ASCENDING);
+					SortOrder.DESCENDING);
 		query.addOrdering(order);
 		return DataContext.getThreadObjectContext().performQuery(query);
 	}
