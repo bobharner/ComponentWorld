@@ -84,6 +84,13 @@ public class Versions
 		return this; // graceful degradation: redraw the whole current page
 	}
 	
+	@OnEvent(value = EventConstants.ACTION, component = "addLink")
+	public Object addItem()
+	{
+		return editSelectedItem(null);
+	}
+
+	
 	/**
 	 * As an event listener, respond to a successful form submission by
 	 * saving the submitted form data.

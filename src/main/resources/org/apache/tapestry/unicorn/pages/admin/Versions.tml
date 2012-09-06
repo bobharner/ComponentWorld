@@ -6,18 +6,34 @@
 	<h2>Tapestry Versions</h2>
 </div>
 
+<t:actionlink t:id="addLink" zone="editZone"
+	style="position: absolute; left: 35em">Add a New Version...</t:actionlink>
+
 <!-- right-size zone containing an editing form -->
 <t:zone t:id="editZone" id="editZone" update="show"
 	visible="false" style="position: absolute; left: 30em">
 	<t:keepInView class="detail-box">
-		<t:form t:id="editForm">
+
+		<div class="controls">
+			<a href="#" style="margin-left: 2em" class="controls"
+					onClick="getElementById('editZone').innerHTML=''; return false"
+					title="Close this detail box">
+				Close
+			</a>
+		</div>
+
+		<h2>Edit Version ${name}</h2>
+
+		<t:form t:id="editForm" autofocus="false">
 			<table>
 			<tr><th><t:label for="name"/></th>
-				<td><t:textfield t:id="name" value="name" size="15"/></td>
+				<td><t:textfield t:id="name" value="name" size="20"
+						placeholder="Enter version as N.N.N"/>
+				</td>
 			</tr>
 			<tr><th><t:label for="description"/></th>
 				<td><t:textarea t:id="description" value="description"
-						rows="2" cols="30"/></td>
+						rows="2" cols="40"/></td>
 			</tr>
 			<tr><td></td><td><t:submit value="Save"/></td></tr>
 			</table>
