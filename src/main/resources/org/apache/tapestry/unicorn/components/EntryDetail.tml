@@ -43,7 +43,7 @@
 	
 			<t:if test="entry.documentationUrl">
 			<tr><th>Docs:</th>
-				<td><a href="${entry.documentationUrl}" class="short-url external"
+				<td colspan="3"><a href="${entry.documentationUrl}" class="short-url external"
 						title="Go to ${entry.documentationUrl}">
 						${shortDocUrl}</a>
 				</td>
@@ -51,20 +51,29 @@
 			</t:if>
 			<t:if test="entry.demonstrationUrl">
 			<tr><th>Demo:</th>
-				<td><a href="${entry.demonstrationUrl}" class="short-url external"
+				<td colspan="3"><a href="${entry.demonstrationUrl}" class="short-url external"
 						title="Go to ${entry.demonstrationUrl}">
 						${shortDemoUrl}</a>
 				</td>
 			</tr>
 			</t:if>
-			<t:if test="hasVersions">
-				<tr><th>For:</th>
-					<td>Tapestry <t:if test="entry.since">${entry.since?.name} +</t:if>
-						<t:if test="entry.until">(before ${entry.until?.name} +)</t:if>
+			<t:if test="showVersionRow">
+				<tr><th><t:if test="hasVersions">For:</t:if></th>
+					<td><t:if test="hasVersions">
+							Tapestry
+								<t:if test="entry.since">${entry.since?.name} +</t:if>
+								<t:if test="entry.until">(before ${entry.until?.name})</t:if>
+						</t:if>
+					</td>
+					<th></th>
+					<td style="text-align: right">
+						<t:if test="firstAvailable">Since</t:if>
+						${firstAvailable}
 					</td>
 				</tr>
 			</t:if>
-			<tr><th>License:</th><td class="license"
+			<tr><th>License:</th>
+				<td colspan="3" class="license" 
 						title="${entry.license?.description}">
 					<t:if test="entry.license">
 						${entry.license.name}
@@ -74,7 +83,7 @@
 			</tr>
 			<t:if test="children">
 				<tr><th style="vertical-align: top">Contains:</th>
-					<td>
+					<td colspan="3">
 						<div class="${multicolumnClass}">
 							<ul class="entry-list">
 							<t:loop source="children" value="child">

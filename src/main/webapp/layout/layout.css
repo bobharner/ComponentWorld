@@ -258,6 +258,7 @@ DIV#breadcrumbs A:hover {
 	right: 130px;
 	*/
 	/* the following makes the box scroll out of view when scrolling down */
+	min-height: 5em;
 	width: 725px;
 	position: relative;
 	right: -25px;
@@ -321,7 +322,7 @@ ul.entry-list li.disabled A {
 }
 
 .category-selection .from {
-	margin-left: 2em;
+	padding-left: 2em;
 	margin-bottom: .4em;
 }
 
@@ -336,7 +337,7 @@ ul.entry-list li.disabled A {
 	clear: none;
 	display: inline;
 	width: inherit;
-	padding-right: 0;
+	padding: 0;
     position: relative;
     top: -2px;
 }
@@ -529,6 +530,9 @@ div.t-beaneditor-row label {
 x.datePicker {
 	z-index: 1 !important;
 }
+div.datePicker td .topLabel {
+	color: black;
+}
 
 x.datePicker .todayButton,.datePicker .noneButton {
 	width: auto !important;
@@ -549,4 +553,16 @@ TABLE.frameworks TH {
 	border: 0;
 	background: #eee;
 	color: #539126;
+}
+FIELDSET.admin-group {
+	width:27%;
+	min-height: 8em;
+	float: left;
+	border-radius: 10px;
+	margin: 1em;
+}
+FIELDSET.admin-group LEGEND {
+	font-weight: bold;
+	margin-left: 1em;
+	color: #539126;	
 }

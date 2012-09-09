@@ -31,6 +31,10 @@
 						placeholder="Enter version as N.N.N"/>
 				</td>
 			</tr>
+			<tr><th><t:label for="released"/></th>
+				<td><t:datefield t:id="released" value="released"/>
+				</td>
+			</tr>
 			<tr><th><t:label for="description"/></th>
 				<td><t:textarea t:id="description" value="description"
 						rows="2" cols="40"/></td>
@@ -42,13 +46,20 @@
 </t:zone>
 
 <!-- left-side list if items to edit -->
-<ul class="entry-list">
-<t:loop source="versions" value="version">
-	<li><t:actionlink t:id="itemLink" context="version.id" zone="editZone">
-		${version.name}</t:actionlink>
-	<span class="details">${version.description}</span>
-	</li>
-</t:loop>
-</ul>
+<table class="datatable">
+<thead>
+	<tr><th>Version</th><th>Released</th><th>Description</th></tr>
+</thead>
+<tbody>
+	<tr t:type="loop" source="versions" value="version">
+		<td><t:actionlink t:id="itemLink" context="version.id" zone="editZone">
+				${version.name}
+			</t:actionlink>
+		</td>
+		<td>${releasedDate}</td>
+		<td>${version.description}</td>
+	</tr>
+</tbody>
+</table>
 
 </html>

@@ -14,6 +14,8 @@
  */
 package org.apache.tapestry.unicorn.pages.admin;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.tapestry.unicorn.entities.TapestryVersion;
@@ -46,7 +48,6 @@ public class Versions
 	@InjectComponent
 	private Zone editZone;
 	
-	@SuppressWarnings("unused")
 	@Property
 	private TapestryVersion version; // used in a list
 	
@@ -59,7 +60,12 @@ public class Versions
 	@Property
 	private String description;
 	
+	@Property
+	private Date released;
+	
 	private List<TapestryVersion> versions;
+
+	private DateFormat dateFormatter;
 	
 	public List<TapestryVersion> getVersions()
 	{
@@ -110,6 +116,7 @@ public class Versions
 		// (Inserting the values *after* validation ensures that we don't
 		// pollute our entity set with invalid or abandoned objects.)
 		version.setName(this.name);
+		version.setReleased(this.released);
 		version.setDescription(this.description);
 
 		// Save all changes to the database
@@ -129,6 +136,7 @@ public class Versions
 			// copy to temporary properties (so we don't pollute our entities
 			// with potentially invalid/incomplete data)
 			this.name = selected.getName();
+			this.released = selected.getReleased();
 			this.description = selected.getDescription();
 		}
 	}
@@ -140,5 +148,15 @@ public class Versions
 	public void init()
 	{
 		versions = tapestryVersionService.findAll();
+		dateFormatter = DateFormat.getDateInstance();
+	}
+	
+	public String getReleasedDate()
+	{
+		if (version == null || version.getReleased() == null)
+		{
+			return "";
+		}
+		return dateFormatter.format(version.getReleased());
 	}
 }

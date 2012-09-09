@@ -14,6 +14,7 @@
  */
 package org.apache.tapestry.unicorn.components;
 
+import java.text.DateFormat;
 import java.util.List;
 
 import org.apache.tapestry.unicorn.entities.Entry;
@@ -52,12 +53,20 @@ public class EntryDetail
 
 	@Property
 	private List<Entry> children;
+	
+	@Property
+	private boolean hasVersions;
+
+	@Property
+	private boolean showVersionRow;
 
 	@Inject
 	private Request request;
 
 	@Inject
 	private EntryService entryService;
+
+	private String firstAvailable;
 
 	/**
 	 * Perform page initializations
@@ -70,6 +79,26 @@ public class EntryDetail
 			shortDocUrl = UrlUtils.shorten(entry.getDocumentationUrl(), 70);
 			shortDemoUrl = UrlUtils.shorten(entry.getDemonstrationUrl(), 70);
 			children = entryService.findChildren(entry);
+			if (entry.getFirstAvailable() == null)
+			{
+				firstAvailable = null;
+			}
+			else
+			{
+				firstAvailable = DateFormat.getDateInstance().format(entry.getFirstAvailable());
+			}			
+			showVersionRow = false;
+			hasVersions = false;
+			// Determine if entry has "since" or "until" version restrictions
+			if ((entry.getSince() != null) || (entry.getUntil() != null))
+			{
+				hasVersions = true;
+				showVersionRow = true;
+			}
+			else if (entry.getFirstAvailable() != null)
+			{
+				showVersionRow = true; // row is needed to show first avail date
+			}
 		}
 	}
 	
@@ -91,21 +120,6 @@ public class EntryDetail
         	return "an ";
         }
     	return "a ";
-	}
-
-	/**
-	 * Determine whether the current entry has any "since" or "until" version
-	 * restrictions.
-	 * 
-	 * @return true or false
-	 */
-	public Boolean getHasVersions()
-	{
-		if ((entry.getSince() != null) || (entry.getUntil() != null))
-		{
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -140,5 +154,14 @@ public class EntryDetail
 			return this; // return the entryDetail component
 		}
 		return null; // redraw the whole current page
+	}
+	
+	/**
+	 * Return the entry's First Available date, formatted as a string
+	 * @return
+	 */
+	public String getFirstAvailable()
+	{
+		return firstAvailable;
 	}
 }

@@ -1,5 +1,6 @@
 package org.apache.tapestry.unicorn.entities.auto;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.cayenne.CayenneDataObject;
@@ -16,7 +17,7 @@ public abstract class _TapestryVersion extends CayenneDataObject {
     public static final String DESCRIPTION_PROPERTY = "description";
     public static final String ID_PROPERTY = "id";
     public static final String NAME_PROPERTY = "name";
-    public static final String SORT_BY_PROPERTY = "sortBy";
+    public static final String RELEASED_PROPERTY = "released";
     public static final String ENTRIES_SINCE_PROPERTY = "entriesSince";
     public static final String ENTRIES_UNTIL_PROPERTY = "entriesUntil";
 
@@ -43,11 +44,11 @@ public abstract class _TapestryVersion extends CayenneDataObject {
         return (String)readProperty("name");
     }
 
-    public void setSortBy(Integer sortBy) {
-        writeProperty("sortBy", sortBy);
+    public void setReleased(Date released) {
+        writeProperty("released", released);
     }
-    public Integer getSortBy() {
-        return (Integer)readProperty("sortBy");
+    public Date getReleased() {
+        return (Date)readProperty("released");
     }
 
     public void addToEntriesSince(Entry obj) {

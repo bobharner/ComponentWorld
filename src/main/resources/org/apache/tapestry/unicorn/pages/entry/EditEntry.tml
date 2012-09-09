@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<th><t:label for="entryTypeMenu"/>:</th>
-			<td colspan="2">
+			<td colspan="4">
 				<t:radioGroup t:id="entryTypeMenu" validate="required"
 						value="type">
 					<t:loop source="entryTypes" value="entryType">
@@ -33,13 +33,16 @@
 		</tr>
 		<tr>
 			<th><t:label for="description"/>:</th>
-			<td><t:textArea t:id="description" validate="required,max=4096"
-					rows="5" cols="70" value="description"/></td>
+			<td colspan="3">
+				<t:textArea t:id="description" validate="required,max=4096"
+					rows="4" cols="70" value="description"/>
+			</td>
 			<td class="instruction">${descriptionInstructions}</td>
 		</tr>
 		<tr>
 			<th><t:label for="documentationUrl"/>:</th>
-			<td><input t:type="textField" t:id="documentationUrl" size="91"
+			<td colspan="3">
+				<input t:type="textField" t:id="documentationUrl" size="91"
 					placeholder="Enter a URL" validate="max=1024"
 					value="documentationUrl" /></td>
 			<td class="instruction" rowspan="2" style="vertical-align: middle">
@@ -47,7 +50,8 @@
 		</tr>
 		<tr>
 			<th><t:label for="demonstrationUrl"/>:</th>
-			<td><t:textField t:id="demonstrationUrl" size="91" 
+			<td colspan="3">
+				<t:textField t:id="demonstrationUrl" size="91" 
 					placeholder="Enter a URL" validate="max=1024"
 					value="demonstrationUrl" /></td>
 		</tr>
@@ -65,8 +69,14 @@
 			</td>
 		</tr>
 		<tr>
+			<th><t:label for="firstAvailable"/>:</th>
+			<td>
+				<t:datefield t:id="firstAvailable" value="firstAvailable"/>
+			</td>
+		</tr>
+		<tr>
 			<th><t:label for="sourceTypeMenu"/>:</th>
-			<td colspan="2">
+			<td colspan="4">
 				<t:radioGroup t:id="sourceTypeMenu" validate="required"
 						value="source">
 					<t:loop source="sourceTypes" value="sourceType">

@@ -14,6 +14,8 @@
  */
 package org.apache.tapestry.unicorn.entities;
 
+import java.text.DateFormat;
+
 import org.apache.tapestry.unicorn.entities.auto._TapestryVersion;
 
 /**
@@ -22,11 +24,20 @@ import org.apache.tapestry.unicorn.entities.auto._TapestryVersion;
 public class TapestryVersion extends _TapestryVersion {
 
 	private static final long serialVersionUID = -3226576049976116789L;
+    public static final String MENU_LABEL_PROPERTY = "menuLabel";
 
 	/**
 	 * A no-op (Manually setting the ID is prohibited)
 	 */
 	@Override
 	public void setId(Long id) {
+	}
+	
+	/**
+	 * For select menus we display as "name (releasedDate)"
+	 * @return
+	 */
+	public String getMenuLabel() {
+		return getName() + " - " + DateFormat.getDateInstance().format(getReleased());
 	}
 }

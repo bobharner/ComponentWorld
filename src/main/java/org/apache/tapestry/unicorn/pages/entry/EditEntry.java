@@ -14,6 +14,7 @@
  */
 package org.apache.tapestry.unicorn.pages.entry;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.tapestry.unicorn.entities.Entry;
@@ -79,6 +80,9 @@ public class EditEntry
 
 	@Property
 	private TapestryVersion until;
+
+	@Property
+	private Date firstAvailable;
 
 	@Property
 	private Boolean enabled;
@@ -176,8 +180,7 @@ public class EditEntry
 	{
 		if (entry == null)
 		{
-			this.enabled = true; // TODO: set to false for under-privileged
-									// users
+			this.enabled = true; // TODO: set to false for under-privileged users
 		}
 		else
 		{
@@ -192,6 +195,7 @@ public class EditEntry
 			this.parent = entry.getParent();
 			this.since = entry.getSince();
 			this.until = entry.getUntil();
+			this.firstAvailable = entry.getFirstAvailable();
 			this.license = entry.getLicense();
 			this.enabled = entry.getEnabled();
 		}
@@ -209,7 +213,7 @@ public class EditEntry
 		parentSelectModel = selectModelFactory.create(parents,
 				Entry.NAME_PROPERTY);
 		versionSelectModel = selectModelFactory.create(versions,
-				TapestryVersion.NAME_PROPERTY);
+				TapestryVersion.MENU_LABEL_PROPERTY);
 		licenseSelectModel = selectModelFactory.create(licenses,
 				License.NAME_PROPERTY);
 	}
@@ -228,7 +232,11 @@ public class EditEntry
 			editForm.recordError(messages.get("some-url-required"));
 		}
 		
-		if ((since != null) && (until != null) && (since.getSortBy() >= until.getSortBy()))
+		// if both since & until dates are given and point to versions that
+		// have dates, those dates must be in the correct order (since < until)
+		if ((since != null) && (until != null) &&
+				(since.getReleased() != null && until.getReleased() != null) &&
+				(! since.getReleased().before(until.getReleased())))
 		{
 			// record an error, which also tells Tapestry to redisplay the form
 			editForm.recordError(messages.get("since-after-until"));			
@@ -261,6 +269,7 @@ public class EditEntry
 		entry.setParent(this.parent);
 		entry.setSince(this.since);
 		entry.setUntil(this.until);
+		entry.setFirstAvailable(this.firstAvailable);
 		entry.setLicense(this.license);
 		// TODO - set enabled to false if user is under-privileged
 		entry.setEnabled(enabled);
