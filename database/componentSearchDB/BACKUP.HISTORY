@@ -1,0 +1,78 @@
+Tue Sep 04 21:09:12 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\dbbackups\componentSearchDB.
+Tue Sep 04 21:09:22 EDT 2012:Backup of data segment to C:\dbbackups\componentSearchDB\seg0 completed. 
+Tue Sep 04 21:09:22 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\dbbackups\componentSearchDB\log
+Tue Sep 04 21:09:22 EDT 2012:Backup completed, log instant at (12,998300) 
+
+Tue Sep 04 21:21:56 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\dbbackups\componentSearchDB.
+Tue Sep 04 21:22:03 EDT 2012:Backup of data segment to C:\dbbackups\componentSearchDB\seg0 completed. 
+Tue Sep 04 21:22:03 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\dbbackups\componentSearchDB\log
+Tue Sep 04 21:22:03 EDT 2012:Backup completed, log instant at (13,271370) 
+
+Tue Sep 04 21:25:28 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\dbbackups\componentSearchDB.
+Tue Sep 04 21:25:35 EDT 2012:Backup of data segment to C:\dbbackups\componentSearchDB\seg0 completed. 
+Tue Sep 04 21:25:35 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\dbbackups\componentSearchDB\log
+Tue Sep 04 21:25:35 EDT 2012:Backup completed, log instant at (13,432342) 
+
+Tue Sep 04 21:30:56 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\dbbackups\componentSearchDB.
+Tue Sep 04 21:30:56 EDT 2012:moved old backup copy from C:\dbbackups\componentSearchDB to C:\dbbackups\componentSearchDB.OLD
+Tue Sep 04 21:31:03 EDT 2012:Backup of data segment to C:\dbbackups\componentSearchDB\seg0 completed. 
+Tue Sep 04 21:31:03 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\dbbackups\componentSearchDB\log
+Tue Sep 04 21:31:03 EDT 2012:removed old backup copy at C:\dbbackups\componentSearchDB.OLD
+Tue Sep 04 21:31:03 EDT 2012:Backup completed, log instant at (13,446293) 
+
+Tue Sep 04 21:31:26 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\dbbackups\componentSearchDB.
+Tue Sep 04 21:31:26 EDT 2012:moved old backup copy from C:\dbbackups\componentSearchDB to C:\dbbackups\componentSearchDB.OLD
+Tue Sep 04 21:31:32 EDT 2012:Backup of data segment to C:\dbbackups\componentSearchDB\seg0 completed. 
+Tue Sep 04 21:31:33 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\dbbackups\componentSearchDB\log
+Tue Sep 04 21:31:33 EDT 2012:removed old backup copy at C:\dbbackups\componentSearchDB.OLD
+Tue Sep 04 21:31:33 EDT 2012:Backup completed, log instant at (13,582004) 
+
+Tue Sep 04 21:42:07 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Tue Sep 04 21:42:13 EDT 2012:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Tue Sep 04 21:42:14 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Tue Sep 04 21:42:14 EDT 2012:Backup completed, log instant at (13,731442) 
+
+Wed Sep 05 06:28:52 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Wed Sep 05 06:28:52 EDT 2012:moved old backup copy from C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Wed Sep 05 06:28:59 EDT 2012:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Wed Sep 05 06:29:00 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Wed Sep 05 06:29:00 EDT 2012:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Wed Sep 05 06:29:00 EDT 2012:Backup completed, log instant at (13,880880) 
+
+Wed Sep 05 06:30:54 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Wed Sep 05 06:30:54 EDT 2012:Backup aborted due to error
+Wed Sep 05 18:25:55 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Wed Sep 05 18:25:55 EDT 2012:moved old backup copy from C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Wed Sep 05 18:26:00 EDT 2012:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Wed Sep 05 18:26:01 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Wed Sep 05 18:26:01 EDT 2012:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Wed Sep 05 18:26:01 EDT 2012:Backup completed, log instant at (13,894831) 
+
+Wed Sep 05 19:03:45 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Wed Sep 05 19:03:45 EDT 2012:moved old backup copy from C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Wed Sep 05 19:03:54 EDT 2012:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Wed Sep 05 19:03:54 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Wed Sep 05 19:03:55 EDT 2012:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Wed Sep 05 19:03:55 EDT 2012:Backup completed, log instant at (13,895055) 
+
+Sat Sep 08 17:14:18 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Sat Sep 08 17:14:18 EDT 2012:moved old backup copy from C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sat Sep 08 17:14:25 EDT 2012:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Sat Sep 08 17:14:25 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Sat Sep 08 17:14:26 EDT 2012:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sat Sep 08 17:14:26 EDT 2012:Backup completed, log instant at (15,1172) 
+
+Sat Sep 08 20:18:17 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Sat Sep 08 20:18:17 EDT 2012:moved old backup copy from C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sat Sep 08 20:18:24 EDT 2012:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Sat Sep 08 20:18:24 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Sat Sep 08 20:18:24 EDT 2012:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sat Sep 08 20:18:24 EDT 2012:Backup completed, log instant at (16,586321) 
+
+Sat Sep 08 20:32:00 EDT 2012:Backup started for database located at C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Sat Sep 08 20:32:00 EDT 2012:moved old backup copy from C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sat Sep 08 20:32:06 EDT 2012:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Sat Sep 08 20:32:06 EDT 2012:copied log directory from C:\Users\bharner\projects\Tapestry-finder\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Sat Sep 08 20:32:06 EDT 2012:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sat Sep 08 20:32:06 EDT 2012:Backup completed, log instant at (16,600564) 
+
