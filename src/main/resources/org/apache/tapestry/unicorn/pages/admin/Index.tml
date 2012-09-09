@@ -6,16 +6,32 @@
 	<h2>Administration</h2>
 </div>
 
+<fieldset class="admin-group">
+<legend>Basic Data</legend>
 <ul>
 	<li>Entry Types</li>
 	<li>Source Types</li>
 	<li>Licenses</li>
 	<li><t:pagelink page="admin/versions">Tapestry Versions</t:pagelink></li>
-	<li>Roles</li>
-	<li>Users</li>
 	<li><t:pagelink page="admin/settings">Other Settings</t:pagelink></li>
-	<li><t:actionLink t:id="backupLink">Perform Database Backup</t:actionLink></li>
-	<li><t:pagelink page="admin/diagnostics">Diagnostics</t:pagelink></li>
 </ul>
+</fieldset>
+
+<fieldset class="admin-group">
+<legend>User Management</legend>
+<ul>
+	<li>Users</li>
+	<li>Roles</li>
+</ul>
+</fieldset>
+
+<fieldset class="admin-group">
+<legend>Application Management</legend>
+<ul>
+	<li><t:pagelink page="admin/diagnostics">Diagnostics</t:pagelink></li>
+	<li><t:actionLink t:id="backupLink">Perform Database Backup</t:actionLink></li>
+</ul>
+</fieldset>
+
 
 </html>
