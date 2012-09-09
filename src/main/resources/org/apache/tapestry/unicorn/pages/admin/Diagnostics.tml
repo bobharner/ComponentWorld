@@ -13,7 +13,7 @@
 					<td>${osName} ver ${osVersion} (${osArch})</td>
 				</tr>
 		
-				<tr><th>Session Max Inactive Interval:</th>
+				<tr><th>Session Max Inactive:</th>
 					<td>${maxInactiveInterval} minutes</td>
 				</tr>
 				<tr><th>Production Mode:</th>
