@@ -30,8 +30,8 @@
 		</p>
 
 		<p class="greeting">The ${message:applicationName} database
-			includes all of the built-in Tapestry components, of course.
-			But it also lists every other known Tapestry 5-based
+			includes all of the Tapestry's built-in components, of course.
+			But it also lists every other publically available Tapestry 5-based
 			component, mixin, module and framework out there.
 			Even those recorded in wikis and blogs and tutorials.
 			All tagged and categorized to make it easy to find what
