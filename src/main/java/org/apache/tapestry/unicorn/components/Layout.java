@@ -27,51 +27,38 @@ import org.apache.tapestry5.BindingConstants;
 @Import(stylesheet = {"context:layout/layout.css"})
 public class Layout
 {
+	@Inject
+	private ComponentResources resources;
+
 	/** The page title, for the <title> element and the <h1>element. */
 	@SuppressWarnings("unused")
 	@Property
 	@Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
 	private String title;
 
-	/**
-	 * Optional CSS rules to place into the page head
-	 */
+	/**Optional CSS rules to place into the page head */
+	@SuppressWarnings("unused")
+	@Property
+	@Parameter(defaultPrefix = BindingConstants.LITERAL)
+	private Block style;
+
+	@SuppressWarnings("unused")
+	@Property
+	private String pageName;
+
 	@SuppressWarnings("unused")
 	@Property
 	@Parameter(required = false, defaultPrefix = BindingConstants.LITERAL)
-	private Block style;
-
-	@Inject
-	private ComponentResources resources;
-
-	private String pageName = resources.getPageName();
-
-	@Parameter(required = false, defaultPrefix = BindingConstants.LITERAL)
 	private String section;
+
+	void SetupRender()
+	{
+		pageName = resources.getPageName();
+	}
 
 	public String[] getPageNames()
 	{
 		return new String[] { "Index", "Index", "Contact" };
-	}
-
-	public void setPageName(String pageName)
-	{
-		this.pageName = pageName;
-	}
-
-	public String getPageName()
-	{
-		return pageName;
-	}
-
-	public void setSection(String section)
-	{
-		this.section = section;
-	}
-
-	public String getSection()
-	{
-		return section;
 	}
 
 }

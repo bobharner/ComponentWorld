@@ -20,21 +20,19 @@ import java.util.List;
 
 import org.apache.tapestry.unicorn.entities.TapestryVersion;
 import org.apache.tapestry.unicorn.services.TapestryVersionService;
-import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
-import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
+import org.slf4j.Logger;
 
 /**
  * Administration page for the Versions database table
  *
  */
-public class Versions
+public class AdminVersions
 {
 	@Inject
 	private TapestryVersionService tapestryVersionService;
@@ -66,6 +64,9 @@ public class Versions
 	private List<TapestryVersion> versions;
 
 	private DateFormat dateFormatter;
+
+	@Inject
+    private Logger logger;
 	
 	public List<TapestryVersion> getVersions()
 	{
@@ -79,8 +80,7 @@ public class Versions
 	 * @param version
 	 * @return
 	 */
-	@OnEvent(value = EventConstants.ACTION, component = "itemLink")
-	public Object editSelectedItem(TapestryVersion version)
+	public Object onActionFromItemLink(TapestryVersion version)
 	{
 		if (request.isXHR()) // an AJAX request?
 		{
@@ -90,10 +90,9 @@ public class Versions
 		return this; // graceful degradation: redraw the whole current page
 	}
 	
-	@OnEvent(value = EventConstants.ACTION, component = "addLink")
-	public Object addItem()
+	public Object onActionFromAddLink()
 	{
-		return editSelectedItem(null);
+		return onActionFromItemLink(null);
 	}
 
 	
@@ -104,8 +103,7 @@ public class Versions
 	 * @param version
 	 * @return
 	 */
-	@OnEvent(value = EventConstants.SUCCESS, component = "editForm")
-	public Object saveEditedItem(TapestryVersion version)
+	public Object onSuccessFromEditForm(TapestryVersion version)
 	{
 		if (version == null)
 		{
@@ -122,14 +120,15 @@ public class Versions
 		// Save all changes to the database
 		tapestryVersionService.save(version);
 		alertManager.info("Version " + version.getName() + " saved.");
+		logger.info("Saved version {} ({})", name, dateFormatter.format(selected.getReleased()));
+		System.out.println("Saved version " + name + " (" + dateFormatter.format(selected.getReleased()) + ").");
 		return this; // redraw this page
 	}
 	
 	/**
 	 * Do setup actions prior to the form being rendered.
 	 */
-	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "editForm")
-	void setupFormData()
+	void onPrepareForRenderFromEditForm()
 	{
 		if (selected != null)
 		{
@@ -144,8 +143,7 @@ public class Versions
 	/**
 	 * Perform initializations needed before page renders
 	 */
-	@SetupRender
-	public void init()
+	public void setupRender()
 	{
 		versions = tapestryVersionService.findAll();
 		dateFormatter = DateFormat.getDateInstance();
@@ -159,4 +157,5 @@ public class Versions
 		}
 		return dateFormatter.format(version.getReleased());
 	}
+
 }

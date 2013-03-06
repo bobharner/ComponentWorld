@@ -1,4 +1,4 @@
-body {
+html body {
 	color: #333333;
 	font-family: 'Lucida Grande', verdana, arial, helvetica, sans-serif;
 	background-color: #ffffff;
@@ -13,13 +13,17 @@ html body { /* update HACK: Temporary fix for CONF-15412 */
 	overflow-y: scroll;
 }
 
-h1,h2,h3 {
+body h1, body h2, body h3 {
 	margin: 0;
 	padding: 0;
 	color: #539126;
 }
 
-h2,h3 {
+body h1 {
+	font-size: 26px;
+}
+
+body h2, bodyh3 {
 	font-weight: normal;
 	font-size: 21px;
 	color: #569D2F;
@@ -27,11 +31,11 @@ h2,h3 {
 	padding: 5px 0;
 }
 
-h2 {
+body h2 {
 	font-family: Georgia, serif;
 }
 
-h3 {
+body h3 {
 	font-size: 16px;
 	margin-top: 20px;
 	padding: 0px;
@@ -53,7 +57,7 @@ h1 a,h2 a,h3 a,h4 a {
 	clear: both;
 }
 
-a {
+body a {
 	color: #569D2F;
 	font-weight: normal;
 	text-decoration: underline;
@@ -63,7 +67,8 @@ a img {
 	text-decoration: none;
 }
 
-.nav,.nav ul {
+.topnav { background: #1B181C url(images/top-bg.png}) repeat-x top right; }
+.topnav,.topnav ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -72,7 +77,7 @@ a img {
 	border-bottom: 1px solid #999999;
 }
 
-.nav li {
+.topnav li {
 	display: inline;
 	padding: 0px 5px;
 	margin: 0px;
@@ -81,11 +86,11 @@ a img {
 	line-height: 30px;
 }
 
-.nav ul>li:last-child {
+.topnav ul>li:last-child {
 	border-right: 0px;
 }
 
-.nav a {
+.topnav a {
 	color: #ffffff;
 	text-decoration: none;
 }
@@ -107,6 +112,7 @@ a img {
 	float: left;
 	width: 650px;
 }
+#top { background: #ffffff url(images/bg.png}) repeat-x top right; }
 
 #top .admin {
 	float: right;
@@ -237,7 +243,7 @@ DIV#breadcrumbs A:hover {
 	margin: 0;
 }
 
-#content .navmenu TABLE {
+#content .topnavmenu TABLE {
 	width: auto !important
 }
 
@@ -268,6 +274,18 @@ DIV#breadcrumbs A:hover {
 	float: right;
 	*/	
 }
+.right-side-details P.intro {
+        width: 35em;
+        margin-left: 5em;
+        color: #666;
+        font-size: 110%;
+}
+
+ul.entry-list li.component { background-image: url(images/epl/component.gif); }
+ul.entry-list li.element   { background-image: url(images/epl/element.gif); }
+ul.entry-list li.module    { background-image: url(images/epl/module.gif); }
+ul.entry-list li.framework { background-image: url(images/epl/framework.gif); }
+ul.entry-list li.website   { background-image: url(images/epl/website.gif); }
 
 ul.entry-list {
 	list-style-type: none !important;
@@ -312,13 +330,16 @@ ul.entry-list li.disabled A {
 
 .category-selection input[type=checkbox] {
     margin-left: 0.5em;
+    margin-right: .2em;
     position: relative;
     top: 2px;
+    vertical-align: inherit;
 }
 
 .category-selection label {
 	margin-right: .5em; /*white-space: nowrap;*/
 	float: left;
+	font-size: 13px;
 }
 
 .category-selection .from {
@@ -341,20 +362,25 @@ ul.entry-list li.disabled A {
     position: relative;
     top: -2px;
 }
-.category-selection DIV.t-checklist-row LABEL:hover {
-	background: #eee;
-}
+LABEL:hover { background: #eee; }
 .category-selection INPUT[type=submit] 	{
 	padding: 0;
 }
 .category-selection TD.quick-filter {
 }
 .category-selection TD.alphabet { text-align: center; }
-.category-selection TD.alphabet A { padding: .2em; text-decoration: none; }
+.category-selection TD.alphabet A {
+	padding: 0em 0em 0em .3em;
+	text-decoration: none;
+	border: 1px solid #fff;
+}
 .category-selection TD.alphabet A:hover { text-decoration: underline; background: #eee; }
 .category-selection TABLE.category-menu {
 	border-collapse: collapse;
 	margin: 0;
+}
+.category-selection TABLE.category-menu SELECT, .category-selection TABLE.category-menu INPUT {
+    width: auto;
 }
 DIV.matching-counter {
 	margin-top: 1em;
@@ -369,16 +395,24 @@ TABLE TH {
 
 TABLE.detail-table {
 	text-align: left;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: .5em;
 }
 
 TABLE.detail-table .instruction {
 	color: #666;
-	border-left: 1px solid #9f9;
+	border-left: 3px solid #539126;
 	padding-left: .7em;
 }
 
 TABLE.detail-table TH {
 	padding-right: .5em;
+}
+TABLE.detail-table TD.first-available {
+	text-align: right;
+	font-size: 90%;
+	color: #666666;
 }
 
 .itemheading .greeting {
@@ -402,6 +436,11 @@ DIV.detail-box P { color: black; }
 	padding: 0;
 	margin: 0;
 }
+.detail-box DIV.component  { background-image: url(images/epl/component-large.gif); }
+.detail-box DIV.element    { background-image: url(images/epl/element-large.gif); }
+.detail-box DIV.module     { background-image: url(images/epl/module-large.gif); }
+.detail-box DIV.framework  { background-image: url(images/epl/framework-large.gif); }
+.detail-box DIV.website    { background-image: url(images/epl/website-large.gif); }
 
 .detail-box DIV.entry-type {
 	clear: both;
@@ -497,6 +536,9 @@ TABLE.datatable TD.num,TABLE.datatable TH.num {
 	text-align: right;
 	padding-left: .3em;
 	padding-right: .3em;
+}
+TABLE.datatable TD.detail {
+	color: #666;
 }
 
 /* ******** override Tapestry built-in CSS below ******** */

@@ -56,8 +56,8 @@
 				${version.name}
 			</t:actionlink>
 		</td>
-		<td>${releasedDate}</td>
-		<td>${version.description}</td>
+		<td class="detail">${releasedDate}</td>
+		<td class="detail">${version.description}</td>
 	</tr>
 </tbody>
 </table>

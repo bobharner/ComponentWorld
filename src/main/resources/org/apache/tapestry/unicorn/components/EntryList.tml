@@ -1,14 +1,5 @@
 <t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
 	     xmlns:p="tapestry:parameter">
-	<p style="position: absolute; left: 35em; width: 42em">
-		Tapestry includes more than 60 built-in components and mixins. In addition,
-		there are hundreds of Tapestry-compatible components and modules freely
-		available from others,
-		also listed here. Of course, Tapestry makes it
-		<a href="http://tapestry.apache.org/component-classes.html">trivially easy</a>
-		to create your own custom components, so if you don't see what you need here,
-		just develop them yourself.
-	</p>
 
 <div class="left-side-list">
 
@@ -33,6 +24,15 @@
 
 	<t:keepInView>
 		<t:zone id="details" t:id="details">
+                <p class="intro">
+                        Tapestry includes more than 65 built-in components and mixins. In addition,
+                        there are hundreds of Tapestry-compatible components and modules freely
+                        available from others,
+                        all listed here. Of course, Tapestry makes it
+                        <a href="http://tapestry.apache.org/component-classes.html">trivially easy</a>
+                        to create your own custom components, so if you don't see what you need here,
+                        just develop them yourself.
+                </p>
 			<t:entryDetail t:id="entryDetail" t:entry="selectedEntry" />
 		</t:zone>
 	</t:keepInView>

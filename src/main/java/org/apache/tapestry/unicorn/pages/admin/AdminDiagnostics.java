@@ -27,7 +27,7 @@ import org.apache.tapestry5.services.Session;
  * This page is based on the portion of Tapestry's default ExceptionReport page that handles the session.
  */
 
-public class Diagnostics
+public class AdminDiagnostics
 {
     private final static int MEGABYTES = 1024*1024;  
 

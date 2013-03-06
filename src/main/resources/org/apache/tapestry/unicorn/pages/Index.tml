@@ -1,8 +1,5 @@
 <html t:type="layout" title="Tapestry Component Search"
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
-	<p:style>
-	blahblahblah
-	</p:style>
 	
 	<t:remove>Most of the peripheral page content comes from Layout.tml</t:remove>
 

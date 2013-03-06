@@ -66,7 +66,7 @@
 						</t:if>
 					</td>
 					<th></th>
-					<td style="text-align: right">
+					<td class="first-available" title="Date of first availability">
 						<t:if test="firstAvailable">Since</t:if>
 						${firstAvailable}
 					</td>

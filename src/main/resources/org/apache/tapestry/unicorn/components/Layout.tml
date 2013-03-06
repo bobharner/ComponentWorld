@@ -3,32 +3,18 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 <head>
+<meta charset="UTF-8" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>${message:applicationName} - ${title}</title>
 <style type="text/css">
-	<t:remove>These CSS rules are not in layout.css because they contain
-		properties that Tapestry resolves dynamically.
-	</t:remove>
-    #top { background: #ffffff url(${context:layout/images/bg.png}) repeat-x top right; }
-    .nav { background: #1B181C url(${context:layout/images/top-bg.png}) repeat-x top right; }
-    ul.entry-list li.component { background-image: url(${context:layout/images/epl/component.gif}); }
-    ul.entry-list li.element   { background-image: url(${context:layout/images/epl/element.gif}); }
-    ul.entry-list li.module    { background-image: url(${context:layout/images/epl/module.gif}); }
-    ul.entry-list li.framework { background-image: url(${context:layout/images/epl/framework.gif}); }
-    ul.entry-list li.website   { background-image: url(${context:layout/images/epl/website.gif}); }
-    .detail-box DIV.component  { background-image: url(${context:layout/images/epl/component-large.gif}); }
-    .detail-box DIV.element    { background-image: url(${context:layout/images/epl/element-large.gif}); }
-    .detail-box DIV.module     { background-image: url(${context:layout/images/epl/module-large.gif}); }
-    .detail-box DIV.framework  { background-image: url(${context:layout/images/epl/framework-large.gif}); }
-    .detail-box DIV.website    { background-image: url(${context:layout/images/epl/website-large.gif}); }
-<t:block>${style}</t:block>
+	<t:delegate to="style" />
 </style>
 
 </head>
 <body>
   <div class="wrapper bs">
 
-<div class="nav"><ul class="alternate" type="square">
+<div class="topnav"><ul class="alternate" type="square">
 	<li><A href="${message:TapestryDocUrl}" title="Index">Home</A></li>
 	<li><A href="${message:TapestryDocUrl}getting-started.html" title="Getting Started">Getting Started</A></li>
 	<li><A href="${message:TapestryDocUrl}documentation.html" title="Documentation">Documentation</A></li>

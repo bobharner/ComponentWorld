@@ -18,7 +18,7 @@ import org.apache.tapestry.unicorn.services.DatabaseAdminService;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-public class Index
+public class AdminIndex
 {
 
 	@Inject

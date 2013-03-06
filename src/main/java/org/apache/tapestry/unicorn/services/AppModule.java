@@ -15,7 +15,10 @@
 package org.apache.tapestry.unicorn.services;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.SecureRandom;
 
+import org.apache.tapestry.unicorn.bindings.CycleBindingFactory;
 import org.apache.tapestry.unicorn.encoders.EntryEncoder;
 import org.apache.tapestry.unicorn.encoders.EntryTypeEncoder;
 import org.apache.tapestry.unicorn.encoders.LicenseEncoder;
@@ -26,6 +29,7 @@ import org.apache.tapestry.unicorn.entities.EntryType;
 import org.apache.tapestry.unicorn.entities.License;
 import org.apache.tapestry.unicorn.entities.SourceType;
 import org.apache.tapestry.unicorn.entities.TapestryVersion;
+import org.apache.tapestry.unicorn.entities.User;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
@@ -34,12 +38,16 @@ import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.ioc.services.Coercion;
 import org.apache.tapestry5.ioc.services.CoercionTuple;
+import org.apache.tapestry5.services.BindingFactory;
+import org.apache.tapestry5.services.BindingSource;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.apache.tapestry5.services.ValueEncoderFactory;
 import org.slf4j.Logger;
+//import org.tynamo.security.federatedaccounts.services.DefaultHibernateFederatedAccountServiceImpl;
+//import org.tynamo.security.federatedaccounts.services.FederatedAccountService;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry,
@@ -64,6 +72,7 @@ public class AppModule
 		binder.bind(SourceTypeService.class, SourceTypeServiceImpl.class);
 		binder.bind(LicenseService.class, LicenseServiceImpl.class);
 		binder.bind(DatabaseAdminService.class, DatabaseAdminServiceImpl.class);
+//		binder.bind(FederatedAccountService.class, DefaultHibernateFederatedAccountServiceImpl.class);
     }
     
     /**
@@ -91,7 +100,27 @@ public class AppModule
         // assets. Web browsers will cache assets because of the far future expires
         // header. If existing assets are changed, the version number should also
         // change, to force the browser to download new versions.
-        configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0");
+        configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
+        
+        // Generate a random HMAC key for form signing (not cluster safe).
+        // Normally it would be better to use a fixed password-like string, but
+        // we can't because this file is published as open source software.
+        configuration.add(SymbolConstants.HMAC_PASSPHRASE,
+        		new BigInteger(130, new SecureRandom()).toString(32));
+    }
+    
+    /**
+     * Contribute a BindingFactory for the "Cycle" binding, supporting the
+     * "cycle:" binding prefix.
+     * @param configuration
+     * @param bindingSource
+     */
+    public static void contributeBindingSource(
+            MappedConfiguration<String, BindingFactory> configuration,
+            BindingSource bindingSource
+            )
+    {
+        configuration.add("cycle",new CycleBindingFactory(bindingSource));
     }
     
 
@@ -199,5 +228,12 @@ public class AppModule
 					}
 				}));
     }
+    
+//	public static void contributeFederatedAccountService(MappedConfiguration<String, Object> configuration) {
+//		configuration.add("*", User.class);
+//		configuration.add("facebook.id", "facebookId");
+//		configuration.add("twitter.id", "twitterId");
+//	}
+
 
 }

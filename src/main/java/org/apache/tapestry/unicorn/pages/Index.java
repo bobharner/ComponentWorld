@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tapestry.unicorn.components.EntryList;
-import org.apache.tapestry.unicorn.encoders.SourceTypeEncoder;
 import org.apache.tapestry.unicorn.entities.Entry;
 import org.apache.tapestry.unicorn.entities.EntryType;
 import org.apache.tapestry.unicorn.entities.SourceType;
@@ -28,6 +27,7 @@ import org.apache.tapestry.unicorn.services.SourceTypeService;
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
+import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
@@ -37,6 +37,8 @@ import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.SelectModelFactory;
+import org.apache.tapestry5.services.javascript.JavaScriptSupport;
+import org.slf4j.Logger;
 
 /**
  * Start page of web application. Here we display and manage the high-level
@@ -52,26 +54,21 @@ public class Index
 	@Property
 	private List<SourceType> selectedSourceTypes;
 
-	@SuppressWarnings("unused")
 	@Property
 	private String filterText;
 
 	@PageActivationContext
-	private Entry selectedEntry;
+	private Entry selectedEntry; // entry ID may appear as extra path element
 
-	@SuppressWarnings("unused")
 	@Property
 	private SelectModel entryTypeSelectModel;
 
-	@SuppressWarnings("unused")
 	@Property
 	private SelectModel sourceTypeSelectModel;
 
-	@SuppressWarnings("unused")
 	@Property
 	private Character letter; // used in a loop
 
-	@SuppressWarnings("unused")
 	@Property (write=false)
 	private final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
@@ -86,12 +83,18 @@ public class Index
 	
 	@Inject
 	private Request request;
+	
+	@Inject
+	private Logger logger;
+
+	@Environmental
+	private JavaScriptSupport javaScriptSupport;
 
 	@InjectComponent
 	private EntryList entryList;
 
 	private Character firstLetter;
-
+	
 	/**
 	 * Perform page initializations
 	 */
@@ -99,6 +102,12 @@ public class Index
 	public void init()
 	{
 		filterText = "";
+		if (selectedEntry != null)
+		{
+		    logger.debug("Activation context found: {}", selectedEntry.getName());
+		}
+//		javaScriptSupport.addScript(
+//		        "$(TD.alphabet).observe('click', console.log('clicked on letter'));");
 	}
 	
 	public Entry getSelectedEntry()
@@ -163,7 +172,6 @@ public class Index
 				EntryType.NAME_PLURAL_PROPERTY);
 
 		// populate the list of source types for the source type checklist menu
-		//List<SourceType> sourceTypes = sourceTypeService.findAll();
 		List<SourceType> sourceTypes = sourceTypeService.findAll();
 
 		// create a SelectModel from the list of source types
@@ -192,10 +200,7 @@ public class Index
 			entryList.setEntryType(entryType);
 			return entryList; // return the entryList component
 		}
-		else
-		{
-			return null; // redraw the whole current page
-		}
+		return null; // redraw the whole current page
 	}
 	
 	/**
@@ -228,10 +233,7 @@ public class Index
 			entryList.setSourceTypes(sources);
 			return entryList; // return the entryList component
 		}
-		else
-		{
-			return null; // redraw the whole current page
-		}
+		return null; // redraw the whole current page
 	}
 
 	/**
@@ -249,10 +251,7 @@ public class Index
 		{
 			return entryList; // return the entryList component
 		}
-		else
-		{
-			return null; // redraw the whole current page
-		}
+		return null; // redraw the whole current page
 	}
 
 	public void setSelectedEntry(Entry selectedEntry)

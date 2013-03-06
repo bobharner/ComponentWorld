@@ -29,10 +29,10 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 
 /**
- * Administration page for the SETTINGS database table
+ * Administration page for the "Other Settings" data
  *
  */
-public class Settings
+public class AdminSettings
 {
 	@Inject
 	private SettingsService settingsService;
@@ -57,6 +57,9 @@ public class Settings
 	private String name;
 
 	@Property
+	private Integer id;
+
+	@Property
 	private String value;
 
 	@Property
@@ -70,7 +73,16 @@ public class Settings
 	}
 	
 	/**
-	 * As an event listener, respond to a click on an item to be edited by
+	 * Perform initializations needed before page renders
+	 */
+	@SetupRender
+	public void init()
+	{
+		settings = settingsService.findAll();
+	}
+
+	/**
+	 * As an event listener, respond to a click on the item to be edited by
 	 * displaying the edit form.
 	 * 
 	 * @param setting
@@ -88,6 +100,17 @@ public class Settings
 	}
 	
 	/**
+	 * As an event listener, prepare for form submission by pre-populating the
+	 * item before it receives the submitted form data.
+	 * 
+	 */
+	@OnEvent(value="EventConstants.PREPARE_FOR_SUBMIT", component="editForm")
+	void prepopulateItem()
+	{
+		this.selected = settingsService.findById(id);
+	}
+	
+	/**
 	 * As an event listener, respond to a successful form submission by
 	 * saving the submitted form data.
 	 * 
@@ -95,48 +118,38 @@ public class Settings
 	 * @return
 	 */
 	@OnEvent(value = EventConstants.SUCCESS, component = "editForm")
-	public Object saveEditedItem(Setting setting)
+	public Object saveEditedItem()
 	{
-		if (setting == null)
-		{
-			// create a new, empty entry object
-			setting = settingsService.create();
-		}
+
 		// Copy the submitted form values into the (new or existing) object.
 		// (Inserting the values *after* validation ensures that we don't
 		// pollute our entity set with invalid or abandoned objects.)
-		setting.setName(this.name);
-		setting.setValue(this.value);
-		setting.setDescription(this.description);
+		selected.setName(this.name);
+		selected.setValue(this.value);
+		selected.setDescription(this.description);
 
 		// Save all changes to the database
-		settingsService.save(setting);
-		alertManager.info("Setting " + setting.getName() + " saved.");
+		settingsService.save(selected);
+		alertManager.info("Setting " + selected.getName() + " saved.");
 		return this; // redraw this page
 	}
 	
 	/**
 	 * Do setup actions prior to the form being rendered.
 	 */
-	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "editForm")
-	void setupFormData()
-	{
-		if (selected != null)
-		{
-			// copy to temporary properties (so we don't pollute our entities
-			// with potentially invalid/incomplete data)
-			this.name = selected.getName();
-			this.value = selected.getValue();
-			this.description = selected.getDescription();
-		}
-	}
-	
-	/**
-	 * Perform initializations needed before page renders
-	 */
-	@SetupRender
-	public void init()
-	{
-		settings = settingsService.findAll();
-	}
+//	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "editForm")
+//	void setupFormData()
+//	{
+//		System.out.println("harner 2 here in setupFormData");
+//		if (selected != null)
+//		{
+//			// copy to temporary properties (so we don't pollute our entities
+//			// with potentially invalid/incomplete data)
+//			this.id = selected.getId();
+//			this.name = selected.getName();
+//			this.value = selected.getValue();
+//			this.description = selected.getDescription();
+//		}
+//	}
+
 }

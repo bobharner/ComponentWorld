@@ -78,5 +78,10 @@
 				</p:else>
 			</t:if>
 		</fieldset>
+		
+		Loop1:<br/><t:loop source="1..9">${cycle:odd,even}<br /></t:loop>
+		Single1:<br/>${cycle:odd,even}<br/>
+		Loop2:<br/><t:loop source="1..10">${cycle:odd,even}<br /></t:loop>
+		Single2:<br/> ${cycle:odd,even}<br/>
 
 </html>

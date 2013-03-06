@@ -6,19 +6,19 @@
 <p class="greeting">${message:greeting}</p>
 </div>
 
-<t:form t:id="editForm" context="entry">
+<t:form t:id="editForm" context="entry" class="form-inline">
 	<t:errors/>
 
 	<table class="detail-table">
 		<tr>
-			<th><t:label for="name"/>:</th>
+			<th><t:label for="name"/></th>
 			<td><t:textField t:id="name" validate="required,max=64" size="25"
 					value="name"/>
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="entryTypeMenu"/>:</th>
-			<td colspan="4">
+			<th><t:label for="entryTypeMenu"/></th>
+			<td colspan="2">
 				<t:radioGroup t:id="entryTypeMenu" validate="required"
 						value="type">
 					<t:loop source="entryTypes" value="entryType">
@@ -32,51 +32,52 @@
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="description"/>:</th>
-			<td colspan="3">
+			<th><t:label for="description"/></th>
+			<td>
 				<t:textArea t:id="description" validate="required,max=4096"
-					rows="4" cols="70" value="description"/>
+					rows="4" cols="70" value="description"
+					style="width: 40em"/>
 			</td>
 			<td class="instruction">${descriptionInstructions}</td>
 		</tr>
 		<tr>
-			<th><t:label for="documentationUrl"/>:</th>
-			<td colspan="3">
+			<th><t:label for="documentationUrl"/></th>
+			<td>
 				<input t:type="textField" t:id="documentationUrl" size="91"
 					placeholder="Enter a URL" validate="max=1024"
-					value="documentationUrl" /></td>
+					value="documentationUrl" style="width: 40em"/></td>
 			<td class="instruction" rowspan="2" style="vertical-align: middle">
 				${message:urlInstructions}</td>
 		</tr>
 		<tr>
-			<th><t:label for="demonstrationUrl"/>:</th>
-			<td colspan="3">
-				<t:textField t:id="demonstrationUrl" size="91" 
+			<th><t:label for="demonstrationUrl"/></th>
+			<td>
+				<t:textField t:id="demonstrationUrl" size="91"
 					placeholder="Enter a URL" validate="max=1024"
-					value="demonstrationUrl" /></td>
+					value="demonstrationUrl" style="width: 40em"/></td>
 		</tr>
 		<tr>
-			<th><t:label for="sinceSelection"/>:</th>
-			<td>Tapestry <t:select t:id="sinceSelection" value="since"
+			<th><t:label for="sinceSelection"/></th>
+			<td colspan="2">Tapestry <t:select t:id="sinceSelection" value="since"
 						model="versionSelectModel" /> ${message:andLater}
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="untilSelection"/>:</th>
-			<td>
+			<th><t:label for="untilSelection"/></th>
+			<td colspan="2">
 				Tapestry <t:select t:id="untilSelection" value="until"
 						model="versionSelectModel" /> ${message:andLater}
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="firstAvailable"/>:</th>
+			<th><t:label for="firstAvailable"/></th>
 			<td>
 				<t:datefield t:id="firstAvailable" value="firstAvailable"/>
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="sourceTypeMenu"/>:</th>
-			<td colspan="4">
+			<th><t:label for="sourceTypeMenu"/></th>
+			<td colspan="2">
 				<t:radioGroup t:id="sourceTypeMenu" validate="required"
 						value="source">
 					<t:loop source="sourceTypes" value="sourceType">
@@ -90,16 +91,16 @@
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="parentSelection"/>:</th>
+			<th><t:label for="parentSelection"/></th>
 			<td><t:select t:id="parentSelection" value="parent"
 						model="parentSelectModel" /></td>
 		</tr>
 		<tr>
-			<th><t:label for="licenseSelection"/>:</th>
+			<th><t:label for="licenseSelection"/></th>
 			<td><t:select t:id="licenseSelection" value="license"
 						model="licenseSelectModel" /></td>
 		</tr>
-		<tr><th><t:label for="enabled" />:
+		<tr><th><t:label for="enabled" />
 				<t:checkbox t:id="enabled" style="margin-left: 1em" />
 			</th>
 			<td class="controls">
@@ -108,8 +109,7 @@
 					class="cancel">Cancel</t:pageLink>
 			</td></tr>
 	</table>
-	TODO: for under-privileged users, present a CAPTCHA and save with a status
-	of "disabled". Only authenticated users can mark "enabled".
+
 </t:form>
 
 </html>

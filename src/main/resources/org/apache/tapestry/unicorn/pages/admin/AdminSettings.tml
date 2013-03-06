@@ -22,21 +22,8 @@
 			</a>
 		</div>
 
-		<t:form t:id="editForm">
-			<table>
-			<tr><th>Name</th>
-				<td>${name}</td>
-			</tr>
-			<tr><th><t:label for="value"/></th>
-				<td>
-					<t:textfield t:id="value" value="value" size="60"/></td>
-			</tr>
-			<tr><th>Description</th>
-				<td>${description}</td>
-			</tr>
-			<tr><td></td><td><t:submit value="Save"/></td></tr>
-			</table>
-		</t:form>
+		<t:beanEditForm t:id="editForm" object="selected" include="value"
+			submitlabel="Save" />
 		
 	</t:keepInView>
 </t:zone>

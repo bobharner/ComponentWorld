@@ -29,10 +29,12 @@ import org.apache.tapestry.unicorn.services.LicenseService;
 import org.apache.tapestry.unicorn.services.SourceTypeService;
 import org.apache.tapestry.unicorn.services.TapestryVersionService;
 import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.MarkupWriter;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.alerts.Duration;
 import org.apache.tapestry5.alerts.Severity;
+import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -40,6 +42,7 @@ import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.SelectModelFactory;
@@ -302,7 +305,7 @@ public class EditEntry
 	 * page renders
 	 */
 	@SetupRender
-	void initPage()
+	void initPage(final MarkupWriter writer)
 	{
 		if ((entry == null) || (entry.getId() == null))
 		{
