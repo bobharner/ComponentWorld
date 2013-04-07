@@ -27,6 +27,7 @@ import org.apache.tapestry.unicorn.services.SourceTypeService;
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
+import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -34,6 +35,7 @@ import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.tapestry5.corelib.components.Select;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.SelectModelFactory;
@@ -92,6 +94,9 @@ public class Index
 
 	@InjectComponent
 	private EntryList entryList;
+	
+	@InjectComponent
+	private Select entryType;
 
 	private Character firstLetter;
 	
@@ -108,6 +113,17 @@ public class Index
 		}
 //		javaScriptSupport.addScript(
 //		        "$(TD.alphabet).observe('click', console.log('clicked on letter'));");
+	}
+	
+	@AfterRender
+	public void initJavaScript()
+	{
+	    // bring in the entryFilter module (entryFilter.js)
+	    //TODO: instead of passing in entryType.getClientId(), we should pass
+	    // in a JSON object containing all the ids that need to be specified.
+	    // Alternatively, we could just pass in the common parent and do dom
+	    // traversal within the JavaScript
+	    javaScriptSupport.require("entryFilter").with(entryType.getClientId());
 	}
 	
 	public Entry getSelectedEntry()
@@ -161,7 +177,7 @@ public class Index
 	 * As an event handler, respond to the form's PREPARE_FOR_RENDER event,
 	 * doing setup actions prior to rendering the form.
 	 */
-	@OnEvent(value=EventConstants.PREPARE_FOR_RENDER, component="categorySelection")
+	@OnEvent(value=EventConstants.PREPARE_FOR_RENDER, component="entryFilter")
 	void prepare()
 	{
 		// populate the list of entry types for the entry type drop-down menu
@@ -237,11 +253,11 @@ public class Index
 	}
 
 	/**
-	 * Handle the "Success" event from the CategorySelection form
+	 * Handle the "Success" event from the entryFilter form
 	 * 
 	 * @return the current page (redraw self)
 	 */
-	@OnEvent(value=EventConstants.SUCCESS, component="categorySelection")
+	@OnEvent(value=EventConstants.SUCCESS, component="entryFilter")
 	Object redrawList()
 	{
 		entryList.setEntryType(selectedEntryType);
