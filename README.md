@@ -1,4 +1,3 @@
-
 This is a Tapestry 5 web application intended to make it easier to find
 Tapestry-compatible components, mixins, pages and modules. Its database
 includes entries not only for the components that come with Tapestry, but
@@ -16,20 +15,16 @@ See the screenshots in the [wiki] (https://github.com/bobharner/Tapestry-finder/
 Goals
 =====
 
-In addition to its basic goal of helping people find Tapestry components,
-we also have the following more ambitious goals:
+* Help people find Tapestry-compatible components.
 
-* Serve as an example of how a polished and complete Tapestry 5 application
-should be designed and constructed. In that sense it is probably
-over-engineered, on purpose. We go to some length to minimize the use of the
+* Serve as a good example of how a polished and complete Tapestry 5
+application should be designed and constructed. In that sense it is intentionally
+over-engineered in some areas. We go to some length to minimize the use of the
 HTTP session, for example, despite the fact that the application is unlikely to
 need clustering with session replication.
 
 * Serve as examples of how to integrate other Apache products with Tapestry,
 including Cayenne, Derby and Shiro.
-
-* Allow the owners of the components listed to also be owners of the entries
-in this application, able to change those entries' contents at will. 
 
 Contributions
 =============
