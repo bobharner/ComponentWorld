@@ -15,7 +15,9 @@
 package org.apache.tapestry.unicorn.services;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.cayenne.ObjectContext;
@@ -43,14 +45,32 @@ public class DatabaseAdminServiceImpl implements DatabaseAdminService
 	{
 		DataContext dataContext = DataContext.createDataContext();
 		
-		File backupDir = new File(System.getProperty("java.io.tmpdir"), "dbbackups");
+		// All DB backups go in the "tmp" directory
+		File backupRootDir = new File(System.getProperty("java.io.tmpdir"), "dbbackups");
+		backupRootDir.mkdir();
+		
+		// make a dated directory (like 20130407_1535) for backup
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
+		File datedDir = new File (backupRootDir, dateFormat.format(new Date()));
+		
+		// don't allow more than one backup per minute
+		if (datedDir.exists())
+		{
+            logger.error("Database backup directory {} already exists, aborting backup", datedDir);
+            return false;
+		}
+		if (! datedDir.mkdir())
+		{
+		    logger.error("Error creating database backup directory {}, abording backup", datedDir);
+		    return false;
+		}
 
 		String query = "CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE('%DIR%')".replace(
-				"%DIR%", backupDir.toString());
+				"%DIR%", datedDir.toString());
 
 		SQLTemplate template = new SQLTemplate(Entry.class, query);
 		dataContext.performNonSelectingQuery(template);	
-		logger.info ("Database backed up to " + backupDir);
+		logger.info ("Database backed up to " + datedDir);
 		
 		return true;
 	}
