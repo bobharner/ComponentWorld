@@ -97,3 +97,40 @@ Tue Jan 22 06:30:44 EST 2013:copied log directory from C:\Users\bharner\workspac
 Tue Jan 22 06:30:44 EST 2013:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
 Tue Jan 22 06:30:44 EST 2013:Backup completed, log instant at (20,166138) 
 
+Sun Apr 07 10:48:39 EDT 2013:Backup started for database located at C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.
+Sun Apr 07 10:48:39 EDT 2013:moved old backup copy from C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sun Apr 07 10:48:49 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\seg0 completed. 
+Sun Apr 07 10:48:49 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB\log
+Sun Apr 07 10:48:50 EDT 2013:removed old backup copy at C:\Users\bharner\AppData\Local\Temp\dbbackups\componentSearchDB.OLD
+Sun Apr 07 10:48:50 EDT 2013:Backup completed, log instant at (29,14907) 
+
+Sun Apr 07 11:02:45 EDT 2013:Backup started for database located at C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\2013-04-07-10-53-05\componentSearchDB.
+Sun Apr 07 11:02:55 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\2013-04-07-10-53-05\componentSearchDB\seg0 completed. 
+Sun Apr 07 11:02:55 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\2013-04-07-10-53-05\componentSearchDB\log
+Sun Apr 07 11:02:55 EDT 2013:Backup completed, log instant at (29,287501) 
+
+Sun Apr 07 11:07:41 EDT 2013:Backup started for database located at C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\2013-04-07-10-53-06\componentSearchDB.
+Sun Apr 07 11:07:50 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\2013-04-07-10-53-06\componentSearchDB\seg0 completed. 
+Sun Apr 07 11:07:50 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\2013-04-07-10-53-06\componentSearchDB\log
+Sun Apr 07 11:07:50 EDT 2013:Backup completed, log instant at (29,458887) 
+
+Sun Apr 07 11:12:46 EDT 2013:Backup started for database located at C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1053\componentSearchDB.
+Sun Apr 07 11:12:56 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1053\componentSearchDB\seg0 completed. 
+Sun Apr 07 11:12:56 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1053\componentSearchDB\log
+Sun Apr 07 11:12:56 EDT 2013:Backup completed, log instant at (29,459111) 
+
+Sun Apr 07 11:13:20 EDT 2013:Backup started for database located at C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1054\componentSearchDB.
+Sun Apr 07 11:13:30 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1054\componentSearchDB\seg0 completed. 
+Sun Apr 07 11:13:30 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1054\componentSearchDB\log
+Sun Apr 07 11:13:30 EDT 2013:Backup completed, log instant at (29,459335) 
+
+Sun Apr 07 11:23:01 EDT 2013:Backup started for database located at C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1123\componentSearchDB.
+Sun Apr 07 11:23:10 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1123\componentSearchDB\seg0 completed. 
+Sun Apr 07 11:23:10 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1123\componentSearchDB\log
+Sun Apr 07 11:23:10 EDT 2013:Backup completed, log instant at (29,459559) 
+
+Sun Apr 07 11:26:03 EDT 2013:Backup started for database located at C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1126\componentSearchDB.
+Sun Apr 07 11:26:12 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1126\componentSearchDB\seg0 completed. 
+Sun Apr 07 11:26:12 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130407_1126\componentSearchDB\log
+Sun Apr 07 11:26:12 EDT 2013:Backup completed, log instant at (29,459783) 
+
