@@ -67,7 +67,7 @@ a img {
 	text-decoration: none;
 }
 
-.topnav { background: #1B181C url(images/top-bg.png}) repeat-x top right; }
+.topnav { background: #1B181C url(images/top-bg.png) repeat-x top right; }
 .topnav,.topnav ul {
 	list-style: none;
 	margin: 0;
@@ -112,7 +112,7 @@ a img {
 	float: left;
 	width: 650px;
 }
-#top { background: #ffffff url(images/bg.png}) repeat-x top right; }
+#top { background: #ffffff url(images/bg.png) repeat-x top right; }
 
 #top .admin {
 	float: right;
@@ -324,11 +324,11 @@ ul.entry-list li.disabled A {
 	text-decoration: line-through;
 }
 
-.category-selection {
+.filter-selection {
 	margin: .7em 0 .4em;
 }
 
-.category-selection input[type=checkbox] {
+.filter-selection input[type=checkbox] {
     margin-left: 0.5em;
     margin-right: .2em;
     position: relative;
@@ -336,25 +336,25 @@ ul.entry-list li.disabled A {
     vertical-align: inherit;
 }
 
-.category-selection label {
+.filter-selection label {
 	margin-right: .5em; /*white-space: nowrap;*/
 	float: left;
 	font-size: 13px;
 }
 
-.category-selection .from {
+.filter-selection .from {
 	padding-left: 2em;
 	margin-bottom: .4em;
 }
 
-.category-selection .find {
+.filter-selection .find {
 	float: left;
 }
 
-.category-selection DIV.t-checklist-row {
+.filter-selection DIV.t-checklist-row {
 	display: inline;
 }
-.category-selection DIV.t-checklist-row LABEL {
+.filter-selection DIV.t-checklist-row LABEL {
 	clear: none;
 	display: inline;
 	width: inherit;
@@ -363,23 +363,23 @@ ul.entry-list li.disabled A {
     top: -2px;
 }
 LABEL:hover { background: #eee; }
-.category-selection INPUT[type=submit] 	{
+.filter-selection INPUT[type=submit] 	{
 	padding: 0;
 }
-.category-selection TD.quick-filter {
+.filter-selection TD.quick-filter {
 }
-.category-selection TD.alphabet { text-align: center; }
-.category-selection TD.alphabet A {
+.filter-selection TD.alphabet { text-align: center; }
+.filter-selection TD.alphabet A {
 	padding: 0em 0em 0em .3em;
 	text-decoration: none;
 	border: 1px solid #fff;
 }
-.category-selection TD.alphabet A:hover { text-decoration: underline; background: #eee; }
-.category-selection TABLE.category-menu {
+.filter-selection TD.alphabet A:hover { text-decoration: underline; background: #eee; }
+.filter-selection TABLE.filter-menu {
 	border-collapse: collapse;
 	margin: 0;
 }
-.category-selection TABLE.category-menu SELECT, .category-selection TABLE.category-menu INPUT {
+.filter-selection TABLE.filter-menu SELECT, .filter-selection TABLE.filter-menu INPUT {
     width: auto;
 }
 DIV.matching-counter {

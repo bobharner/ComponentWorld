@@ -22,10 +22,22 @@
 				<tr><th>Application Version:</th>
 					<td>${symbol:tapestry.application-version}</td>
 				</tr>
+				<tr><th>Remote Host:</th>
+					<td>${remoteHost}</td>
+				</tr>
+				<tr><th>Remote Address:</th>
+					<td>${remoteAddr}</td>
+				</tr>
+				<tr><th>Local Port:</th>
+					<td>${localPort}</td>
+				</tr>
+				<tr><th>Remote User:</th>
+					<td>${remoteUser}</td>
+				</tr>
 			</table>
 		</fieldset>
 		
-		<fieldset><legend><h3>JVM Memory Statistics</h3></legend>
+		<fieldset style="float: left"><legend><h3>JVM Memory Statistics</h3></legend>
 	
 			<table class="datatable">
 				<tr><th>Memory Used:</th>
@@ -43,7 +55,7 @@
 			</table>
 		</fieldset>
 		
-		<fieldset><legend><h3>Memory Pool MX Beans</h3></legend>
+		<fieldset style="float: right"><legend><h3>Memory Pool MX Beans</h3></legend>
 			<table class="datatable">
 				<thead>
 						<tr><th>Name</th><th>Type</th>
@@ -78,10 +90,17 @@
 				</p:else>
 			</t:if>
 		</fieldset>
-		
-		Loop1:<br/><t:loop source="1..9">${cycle:odd,even}<br /></t:loop>
-		Single1:<br/>${cycle:odd,even}<br/>
-		Loop2:<br/><t:loop source="1..10">${cycle:odd,even}<br /></t:loop>
-		Single2:<br/> ${cycle:odd,even}<br/>
 
+		<fieldset><legend><h3>HTTP Request Headers</h3></legend>
+			<table class="datatable">
+				<thead>
+					<tr><th>Name</th><th>Value</th></tr>
+				</thead>
+				<t:loop source="headerNames" value="var:headerName">
+					<tr><th>${var:headerName}</th>
+						<td></td>
+					</tr>
+				</t:loop>
+			</table>
+		</fieldset>
 </html>

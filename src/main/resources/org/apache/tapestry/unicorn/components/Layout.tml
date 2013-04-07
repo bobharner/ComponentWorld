@@ -61,7 +61,7 @@
 	    <t:pagelink page="index">${message:applicationShortName}</t:pagelink>
 	</div>
 	<div class="controls">
-		<t:pageLink page="entry/editentry">Add a New Entry&#8230;</t:pageLink>
+		<t:delegate to="tools" />
 	</div>
   </div>
 

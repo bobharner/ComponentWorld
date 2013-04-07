@@ -3,14 +3,32 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.apache.tapestry</groupId>
-	<artifactId>componentSearch</artifactId>
+	<artifactId>componentWorld</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>ComponentWorld</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tapestry-release-version>5.4-alpha-3</tapestry-release-version>
 	</properties>
+
+	<description>A Java web application for helping Tapestry users find Tapestry components.</description>
+
+	<url>http://localhost:8080/</url>
+
+	<inceptionYear>2011</inceptionYear>
+
+	<developers>
+		<developer><name>Bob Harner</name><timezone>US-Eastern</timezone></developer>
+	</developers>
+	<scm>
+		<developerConnection>Apache Tapestry Developers</developerConnection>
+	</scm>
+	<organization>
+		<name>Apache</name>
+		<url>http://www.apache.org</url>
+	</organization>
 
 	<dependencies>
 		<!-- A dependency on either JUnit or TestNG is required, or the surefire 
@@ -70,10 +88,19 @@
 		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-core</artifactId>
-			<version>5.4-alpha-2</version>
+			<version>${tapestry-release-version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-yuicompressor</artifactId>
+			<version>${tapestry-release-version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		-->
 		<!-- <dependency> <groupId>com.googlecode.tapestry5-cayenne</groupId> <artifactId>tapestry5-cayenne-server</artifactId> 
 			<version>0.3</version> <type>jar</type> <scope>compile</scope> </dependency> -->
 		<dependency>
@@ -96,22 +123,6 @@
 		</dependency>
 
 	</dependencies>
-	<description>A Java web application for helping Tapestry users find Tapestry components.</description>
-	<url>http://localhost:8080/</url>
-	<inceptionYear>2011</inceptionYear>
-	<developers>
-		<developer>
-			<name>Bob Harner</name>
-			<timezone>US-Eastern</timezone>
-		</developer>
-	</developers>
-	<scm>
-		<developerConnection>Apache Tapestry Developers</developerConnection>
-	</scm>
-	<organization>
-		<name>Apache</name>
-		<url>http://www.apache.org</url>
-	</organization>
 	<build>
 		<finalName>ComponentWorld</finalName>
 		<plugins>

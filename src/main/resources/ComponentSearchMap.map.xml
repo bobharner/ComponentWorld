@@ -57,6 +57,7 @@
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
 		<db-attribute name="NAME" type="VARCHAR" isMandatory="true" length="64"/>
 		<db-attribute name="RELEASED" type="DATE"/>
+		<db-attribute name="SORTBY" type="INTEGER" isMandatory="true" />
 	</db-entity>
 	<db-entity name="USERS">
 		<db-attribute name="ENABLED" type="BIT" isMandatory="true"/>
@@ -113,6 +114,7 @@
 		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 		<obj-attribute name="released" type="java.util.Date" db-attribute-path="RELEASED"/>
+		<obj-attribute name="sortBy" type="java.lang.Integer" db-attribute-path="SORTBY"/>
 	</obj-entity>
 	<obj-entity name="User" className="org.apache.tapestry.unicorn.entities.User" dbEntityName="USERS">
 		<obj-attribute name="enabled" type="java.lang.Boolean" db-attribute-path="ENABLED"/>
