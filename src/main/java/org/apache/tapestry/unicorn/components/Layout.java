@@ -46,10 +46,18 @@ public class Layout
 	@Property
 	private String pageName;
 
-	@SuppressWarnings("unused")
-	@Property
-	@Parameter(required = false, defaultPrefix = BindingConstants.LITERAL)
-	private String section;
+    @SuppressWarnings("unused")
+    @Property
+    @Parameter(required = false, defaultPrefix = BindingConstants.LITERAL)
+    private String section;
+
+    /**
+     * A block that displays in the upper-right corner of the page
+     */
+    @SuppressWarnings("unused")
+    @Property
+    @Parameter(required = false, defaultPrefix = BindingConstants.PROP)
+    private Block tools;
 
 	void SetupRender()
 	{
