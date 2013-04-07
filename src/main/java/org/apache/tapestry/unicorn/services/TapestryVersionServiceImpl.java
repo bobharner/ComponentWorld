@@ -37,6 +37,12 @@ public class TapestryVersionServiceImpl extends
 
 	private static final long serialVersionUID = -657199702704315580L;
 
+    /**
+     * Create a new TapestryVersion object, bound to the Cayenne object context
+     * associated with the current thread
+     * 
+     * @return
+     */
 	@Override
 	public TapestryVersion create()
 	{

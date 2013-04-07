@@ -21,8 +21,10 @@ import java.util.List;
 import org.apache.tapestry.unicorn.entities.TapestryVersion;
 import org.apache.tapestry.unicorn.services.TapestryVersionService;
 import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
@@ -52,8 +54,8 @@ public class AdminVersions
 	@Property
 	private TapestryVersion selected; // the selected version
 	
-	@Property
-	private String name;
+    @Property
+    private String name;
 
 	@Property
 	private String description;
@@ -67,6 +69,10 @@ public class AdminVersions
 
 	@Inject
     private Logger logger;
+	
+    @Component
+    private Form editForm;
+
 	
 	public List<TapestryVersion> getVersions()
 	{
@@ -90,12 +96,16 @@ public class AdminVersions
 		return this; // graceful degradation: redraw the whole current page
 	}
 	
+	/**
+     * As an event listener, respond to a click on an item to be edited by
+     * displaying the edit form.
+	 * @return
+	 */
 	public Object onActionFromAddLink()
 	{
 		return onActionFromItemLink(null);
 	}
 
-	
 	/**
 	 * As an event listener, respond to a successful form submission by
 	 * saving the submitted form data.
@@ -103,7 +113,7 @@ public class AdminVersions
 	 * @param version
 	 * @return
 	 */
-	public Object onSuccessFromEditForm(TapestryVersion version)
+	public Object onSuccessFromEditForm()
 	{
 		if (version == null)
 		{
@@ -121,7 +131,6 @@ public class AdminVersions
 		tapestryVersionService.save(version);
 		alertManager.info("Version " + version.getName() + " saved.");
 		logger.info("Saved version {} ({})", name, dateFormatter.format(selected.getReleased()));
-		System.out.println("Saved version " + name + " (" + dateFormatter.format(selected.getReleased()) + ").");
 		return this; // redraw this page
 	}
 	
@@ -136,7 +145,7 @@ public class AdminVersions
 			// with potentially invalid/incomplete data)
 			this.name = selected.getName();
 			this.released = selected.getReleased();
-			this.description = selected.getDescription();
+            this.description = selected.getDescription();
 		}
 	}
 	

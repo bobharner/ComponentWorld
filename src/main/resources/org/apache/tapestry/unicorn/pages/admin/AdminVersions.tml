@@ -43,8 +43,6 @@
 			</tr>
 			<tr><td></td><td><t:submit value="Save"/></td></tr>
 			</table>
-			<t:hidden value="sortBy" />
-			Sort order: ${sortBy}
 		</t:form>
 	</t:keepInView>
 </t:zone>

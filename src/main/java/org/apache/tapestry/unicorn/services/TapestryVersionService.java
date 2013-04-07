@@ -25,6 +25,10 @@ import org.apache.tapestry.unicorn.entities.TapestryVersion;
  */
 public interface TapestryVersionService extends GenericDataService<TapestryVersion, Integer> {
 
+    /**
+     * Create a new TapestryVersion object
+     * @return
+     */
 	public TapestryVersion create();
 	/**
 	 * Get a list of all entry types, sorted by name ascending.
