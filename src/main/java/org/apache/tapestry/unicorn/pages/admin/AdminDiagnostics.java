@@ -14,9 +14,12 @@
  */
 package org.apache.tapestry.unicorn.pages.admin;
 
+import java.lang.instrument.Instrumentation;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -34,15 +37,40 @@ public class AdminDiagnostics
     @Property
 	private String attributeName;
     
-    @SuppressWarnings("unused")
 	@Property
     private MemoryPoolMXBean memoryPoolMXBean; // used in a loop
     
 	@Inject
+	@Property
 	private Request request;
+	
+	@Inject
+	private HttpServletRequest httpServletRequest;
 
-	public boolean getHasSession() {
+    private static Instrumentation instrumentation;
+
+    public String getRemoteAddr() {
+        return httpServletRequest.getRemoteAddr();
+    }
+
+    public String getRemoteUser() {
+        return httpServletRequest.getRemoteUser();
+    }
+
+    public String getRemoteHost() {
+	    return request.getRemoteHost();
+	}
+
+    public int getLocalPort() {
+	    return request.getLocalPort();
+	}
+
+    public boolean getHasSession() {
 		return request.getSession(false) != null;
+	}
+    
+	public List<String> getHeaderNames() {
+	    return request.getHeaderNames();
 	}
 	
 	public int getMaxInactiveInterval() {
@@ -86,21 +114,17 @@ public class AdminDiagnostics
 	}
 	
 	public Long getMemoryFree() {
-		Runtime runtime = Runtime.getRuntime();
-		return runtime.freeMemory() / MEGABYTES;
+		return Runtime.getRuntime().freeMemory() / MEGABYTES;
 	}
 	
 	public Long getMemoryTotal() {
-		Runtime runtime = Runtime.getRuntime();
-		
-		return runtime.totalMemory() / MEGABYTES;
+		return Runtime.getRuntime().totalMemory() / MEGABYTES;
 	}
 	public List<MemoryPoolMXBean> getMemoryPoolMXBeans() {
 		return ManagementFactory.getMemoryPoolMXBeans();
 	}
 
 	public Long getMemoryMax() {
-		Runtime runtime = Runtime.getRuntime();
-		return runtime.maxMemory() / MEGABYTES;
+		return Runtime.getRuntime().maxMemory() / MEGABYTES;
 	}
 }
