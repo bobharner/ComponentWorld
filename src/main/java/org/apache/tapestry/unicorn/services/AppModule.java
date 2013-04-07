@@ -35,9 +35,12 @@ import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
+import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.Coercion;
 import org.apache.tapestry5.ioc.services.CoercionTuple;
+import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.BindingFactory;
 import org.apache.tapestry5.services.BindingSource;
 import org.apache.tapestry5.services.Request;
@@ -45,6 +48,8 @@ import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.apache.tapestry5.services.ValueEncoderFactory;
+import org.apache.tapestry5.services.compatibility.Compatibility;
+import org.apache.tapestry5.services.compatibility.Trait;
 import org.slf4j.Logger;
 //import org.tynamo.security.federatedaccounts.services.DefaultHibernateFederatedAccountServiceImpl;
 //import org.tynamo.security.federatedaccounts.services.FederatedAccountService;
@@ -107,6 +112,9 @@ public class AppModule
         // we can't because this file is published as open source software.
         configuration.add(SymbolConstants.HMAC_PASSPHRASE,
         		new BigInteger(130, new SecureRandom()).toString(32));
+        
+        configuration.add(SymbolConstants.JAVASCRIPT_INFRASTRUCTURE_PROVIDER, "jquery");
+
     }
     
     /**
@@ -235,5 +243,17 @@ public class AppModule
 //		configuration.add("twitter.id", "twitterId");
 //	}
 
+//    @Contribute(SymbolProvider.class)
+//    @ApplicationDefaults
+//    public static void switchProviderToJQuery(MappedConfiguration configuration)
+//    {
+//    }
+    
+    @Contribute(Compatibility.class)
+    public static void disableScriptaculous(MappedConfiguration configuration)
+    {
+//        configuration.add(Trait.SCRIPTACULOUS, false);
+//        configuration.add(Trait.INITIALIZERS, false);
+    }
 
 }
