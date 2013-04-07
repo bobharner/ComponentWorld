@@ -29,8 +29,14 @@ public class AdminIndex
 
 	Object onActionFromBackupLink()
 	{
-		databaseAdminService.performBackup();
-		alertManager.info("Backup completed");
+		if (databaseAdminService.performBackup())
+		{
+		    alertManager.success("Backup completed");
+		}
+		else
+        {
+            alertManager.error("Backup was unsuccessful");
+        }
 		return null;
 	}
 }
