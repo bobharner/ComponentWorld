@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tapestry-release-version>5.4-alpha-3</tapestry-release-version>
+		<tapestry-release-version>5.4-alpha-22</tapestry-release-version>
 	</properties>
 
 	<description>A Java web application for helping Tapestry users find Tapestry components.</description>
@@ -167,11 +167,6 @@
 			<url>http://snapshots.repository.codehaus.org</url>
 		</repository>
 		<repository>
-			<id>OpenQA_Release</id>
-			<name>OpenQA Release Repository</name>
-			<url>http://archiva.openqa.org/repository/releases/</url>
-		</repository>
-		<repository>
 			<id>SaiWai</id>
 			<name>SaiWai repo for Tapestry5-Cayenne module</name>
 			<url>http://maven.saiwai-solutions.com/</url>
@@ -179,6 +174,10 @@
 		<repository>
 			<id>apache-staging</id>
 			<url>https://repository.apache.org/content/groups/staging/</url>
+		</repository>
+		<repository>
+		  <id>tapestry-staging</id>
+		  <url>https://repository.apache.org/content/repositories/orgapachetapestry-163/</url>
 		</repository>
 	</repositories>
 
