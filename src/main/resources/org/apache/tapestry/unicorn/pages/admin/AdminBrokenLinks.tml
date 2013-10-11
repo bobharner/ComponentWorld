@@ -1,0 +1,46 @@
+<html t:type="layout" title="Broken Links"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	xmlns:p="tapestry:parameter">
+
+<div class="itemheading">
+	<h2>Broken Links</h2>
+	<p class="greeting">A list of unreachable URLs (broken links)in all the entries.
+	</p>
+</div>
+
+<p><t:actionlink t:id="start">Start Scanning Now</t:actionlink>
+</p>
+<h3>Most Recent Results</h3>
+
+<t:zone t:id="listZone">
+	<table class="table-condensed">
+		<thead>
+		<tr><th>Entry</th><th>Field</th><th>Broken URL</th><th>Status</th><th>Test</th></tr>
+		</thead>
+		<t:loop source="brokenLinks" value="brokenLink">
+			<p:empty><tr><td colspan="4"><i>No broken links found yet.</i></td></tr></p:empty>
+		<tr>
+			<td>
+				<ul class="entry-list">
+					<li class="${brokenLink.entry.entryType.cssClass}">
+						<t:pagelink page="entry/edit" context="brokenLink.entry">${brokenLink.entry.name}</t:pagelink>
+					</li>
+				</ul>
+			</td>
+			<td>${fieldName}</td>
+			<td title="${brokenUrl}">${shortBrokenUrl}</td>
+			<td>
+				<t:if test="brokenLink.status" >
+					${brokenLink.status}
+				</t:if>
+				${brokenLink.message}
+			</td>
+			<td>
+				<a href="${brokenUrl}">Test</a>
+				</td>
+		</tr>
+		</t:loop>
+	</table>
+</t:zone>
+
+</html>

@@ -34,7 +34,6 @@ import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.alerts.Duration;
 import org.apache.tapestry5.alerts.Severity;
-import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -42,7 +41,6 @@ import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.SelectModelFactory;
@@ -94,35 +92,27 @@ public class EditEntry
 	// tell Tapestry to generate onActivate() & onPassivate()
 	private Entry entry;
 
-	@SuppressWarnings("unused")
 	@Property
 	private String pageHeading;
 
-	@SuppressWarnings("unused")
 	@Property
 	private SelectModel parentSelectModel;
 
-	@SuppressWarnings("unused")
 	@Property
 	private SelectModel versionSelectModel;
 
-	@SuppressWarnings("unused")
 	@Property
 	private SelectModel licenseSelectModel;
 
-	@SuppressWarnings("unused")
 	@Property
 	private List<EntryType> entryTypes;
 
-	@SuppressWarnings("unused")
 	@Property
 	private List<SourceType> sourceTypes;
 
-	@SuppressWarnings("unused")
 	@Property
 	private EntryType entryType; // used in a loop
 
-	@SuppressWarnings("unused")
 	@Property
 	private SourceType sourceType; // used in a loop
 
@@ -178,7 +168,8 @@ public class EditEntry
 	/**
 	 * Do setup actions prior to the form being rendered.
 	 */
-	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "editForm")
+//    @OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "editForm")
+    @OnEvent(value = EventConstants.PREPARE, component = "editForm")
 	void setupFormData()
 	{
 		if (entry == null)

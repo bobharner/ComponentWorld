@@ -14,6 +14,10 @@
  */
 package org.apache.tapestry.unicorn.services;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +28,14 @@ import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.Ordering;
 import org.apache.cayenne.query.SelectQuery;
 import org.apache.cayenne.query.SortOrder;
+import org.apache.tapestry.unicorn.entities.BrokenLink;
 import org.apache.tapestry.unicorn.entities.Entry;
 import org.apache.tapestry.unicorn.entities.EntryType;
+import org.apache.tapestry.unicorn.entities.HttpResult;
 import org.apache.tapestry.unicorn.entities.SourceType;
+import org.apache.tapestry5.func.Tuple;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.slf4j.Logger;
 
 /**
  * Service for all {@link Entry} related functionality.
@@ -38,6 +47,9 @@ public class EntryServiceImpl extends
 {
 
 	private static final long serialVersionUID = -657199702704315580L;
+	
+	@Inject
+    private Logger log;
 
 	@Override
 	public Entry create()
@@ -216,5 +228,74 @@ public class EntryServiceImpl extends
 			return truncatedAbbreviation + "...";
 		}
 	}
+
+    @Override
+    public List<BrokenLink> findBrokenLinks()
+    {
+        List<Entry> entries = findAll();
+        final String[] urlProperties = { Entry.DOCUMENTATION_URL_PROPERTY, Entry.DEMONSTRATION_URL_PROPERTY };
+        List<BrokenLink> brokenLinks = new ArrayList<BrokenLink>();
+        
+        log.info("Beginning link check on " + entries.size() + " entries");
+        int counter = 0;
+        for (Entry entry : entries)
+        {
+            counter ++;
+            if (counter > 30) { break; } // harner debug only!
+
+            String checkingNum = "entry " + counter + "/" + entries.size() + ": "; 
+            for (String urlProperty : urlProperties)
+            {
+                String url = (String) entry.readProperty(urlProperty);
+                if (url != null && ! url.trim().equals(""))
+                {
+                    log.debug("Checking " + checkingNum + urlProperty + " from " + entry.getName() + ": " + url);
+                    HttpResult result = checkLink(url);
+                    if (result.getStatus() < 200 || result.getStatus() >= 400)
+                    {
+                        log.info("Broken " + urlProperty + " in " + entry.getName() + ": "
+                                + url + " [" + result.getStatus() + " " + result.getMessage() + "]");
+                        brokenLinks.add(new BrokenLink(entry, urlProperty, result.getStatus(), result.getMessage()));
+                    }
+                }
+            }
+        }
+        return brokenLinks;
+    }
+
+    /**
+     * Validate that the given URL can be reached
+     * 
+     * @param url the URL to check
+     * @return an HttpResult object containing the HTTP status code
+     *         (HttpURLConnection.HTTP_OK (200) is normal) and the
+     *         corresponding status/error message
+     */
+    private HttpResult checkLink(String targetUrl)
+    {
+        HttpURLConnection connection;
+        try
+        {
+            URL url = new URL(targetUrl);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("User-Agent",
+                    "Apache Tapestry Component World Link Checker, bobharner@apache.org");
+
+            // NOTE: we're using HEAD, not GET, for better performance
+            connection.setRequestMethod("HEAD");
+            connection.setInstanceFollowRedirects(true);
+
+            // make the request and get the result 
+            return new HttpResult(connection.getResponseCode(), connection.getResponseMessage());
+        }
+        catch (MalformedURLException e)
+        {
+            return new HttpResult(0, e.getMessage());
+        }
+        catch (IOException e)
+        {
+            return new HttpResult(0, e.getMessage());
+        }
+    }
 
 }

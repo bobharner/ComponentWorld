@@ -68,10 +68,10 @@ public class AdminVersions
 	private DateFormat dateFormatter;
 
 	@Inject
-    private Logger logger;
-	
-    @Component
-    private Form editForm;
+	private Logger logger;
+
+	@Component
+	private Form editForm;
 
 	
 	public List<TapestryVersion> getVersions()
@@ -88,16 +88,16 @@ public class AdminVersions
 	 */
 	public Object onActionFromItemLink(TapestryVersion version)
 	{
+		this.selected = version;
 		if (request.isXHR()) // an AJAX request?
 		{
-			this.selected = version;
 			return editZone.getBody(); // return the zone body to be redrawn
 		}
 		return this; // graceful degradation: redraw the whole current page
 	}
 	
 	/**
-     * As an event listener, respond to a click on an item to be edited by
+     * As an event listener, respond to a click on the "Add Version" link by
      * displaying the edit form.
 	 * @return
 	 */

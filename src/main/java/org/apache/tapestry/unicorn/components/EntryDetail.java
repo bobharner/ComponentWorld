@@ -39,15 +39,12 @@ public class EntryDetail
 	@Property
 	private Entry entry; // the selected entry
 
-	@SuppressWarnings("unused")
 	@Property
 	private String shortDocUrl; // shortened version of entry's doc URL
 
-	@SuppressWarnings("unused")
 	@Property
 	private String shortDemoUrl; // shortened version of entry's demo URL
 
-	@SuppressWarnings("unused")
 	@Property
 	private Entry child; // used in a loop
 

@@ -15,8 +15,10 @@
 package org.apache.tapestry.unicorn.pages.admin;
 
 import org.apache.tapestry.unicorn.services.DatabaseAdminService;
+import org.apache.tapestry.unicorn.services.EntryService;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.slf4j.Logger;
 
 public class AdminIndex
 {
@@ -25,8 +27,18 @@ public class AdminIndex
 	AlertManager alertManager;
 	
 	@Inject
+	Logger log;
+	
+	@Inject
+	EntryService entryService;
+	
+	@Inject
 	DatabaseAdminService databaseAdminService;
 
+	/**
+	 * Perform a database backup
+	 * @return
+	 */
 	Object onActionFromBackupLink()
 	{
 		if (databaseAdminService.performBackup())
@@ -39,4 +51,5 @@ public class AdminIndex
         }
 		return null;
 	}
+
 }

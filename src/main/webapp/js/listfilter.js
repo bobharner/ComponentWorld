@@ -19,7 +19,7 @@ function filterList(itemsSelector, filterText) {
 function filterListWithCounter(itemsSelector, itemsCounter, filterText) {
 
 	// Get list of all list items.
-	var listItems = $$(itemsSelector);
+	var listItems = jQuery(itemsSelector);
 
 	var regex = new RegExp(filterText, "i");
 
@@ -41,12 +41,11 @@ function filterListWithCounter(itemsSelector, itemsCounter, filterText) {
 			// If REGEX doesn't match, hide it.
 			listItem.style.display = 'none';
 		}
-
 	}
 
 	/* insert the count into the element with the given ID */
 	if (itemsCounter != '') {
-		var elem = $(itemsCounter);
+		var elem = jQuery(itemsCounter);
 		if (elem != null) {
 			elem.innerHTML = counter;
 		}

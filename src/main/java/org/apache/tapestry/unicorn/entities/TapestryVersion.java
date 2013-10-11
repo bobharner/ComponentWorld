@@ -34,10 +34,13 @@ public class TapestryVersion extends _TapestryVersion {
 	}
 	
 	/**
-	 * For select menus we display as "name (releasedDate)"
+	 * For select menus we display as "name - releasedDate"
 	 * @return
 	 */
 	public String getMenuLabel() {
+		if (getReleased() == null) {
+			return getName();
+		}
 		return getName() + " - " + DateFormat.getDateInstance().format(getReleased());
 	}
 }

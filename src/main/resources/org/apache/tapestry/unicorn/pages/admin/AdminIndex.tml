@@ -30,6 +30,7 @@
 <ul>
 	<li><t:pagelink page="admin/diagnostics">Diagnostics</t:pagelink></li>
 	<li><t:actionLink t:id="backupLink">Perform Database Backup</t:actionLink></li>
+	<li><t:pagelink page="admin/brokenLinks">Broken Links</t:pagelink></li>
 </ul>
 </fieldset>
 

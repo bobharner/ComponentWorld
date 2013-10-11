@@ -16,6 +16,7 @@ package org.apache.tapestry.unicorn.services;
 
 import java.util.List;
 
+import org.apache.tapestry.unicorn.entities.BrokenLink;
 import org.apache.tapestry.unicorn.entities.Entry;
 import org.apache.tapestry.unicorn.entities.EntryType;
 import org.apache.tapestry.unicorn.entities.SourceType;
@@ -89,5 +90,11 @@ public interface EntryService extends GenericDataService<Entry, Integer> {
 	 * @return the abbreviated description
 	 */
 	public String abbreviateDescription(Entry entry);
-
-}
+	
+	/**
+	 * Test all URLs in all entries and return a list of those that are broken
+	 * (that is, those that fail when an HTTP request is attempted)
+	 * 
+	 * @return the list of broken links
+	 */
+	public List<BrokenLink> findBrokenLinks();}

@@ -11,7 +11,7 @@
 
 <!-- right-size zone containing an editing form -->
 <t:zone t:id="editZone" id="editZone"
-		style="position: absolute; left: 57em">
+		style="position: absolute; left: 57em; display: none">
 	<t:keepInView class="detail-box">
 
 		<div class="controls">
@@ -24,7 +24,7 @@
 
 		<h2>Edit Version ${name}</h2>
 
-		<t:form t:id="editForm" autofocus="false">
+		<t:form t:id="editForm" autofocus="false" class="form-inline">
 			<table>
 			<tr><th><t:label for="name"/></th>
 				<td><t:textfield t:id="name" value="name" size="20"

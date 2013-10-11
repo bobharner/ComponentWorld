@@ -10,7 +10,7 @@ define(["t5/core/dom"], function(t5) {
 			return form.trigger("submit");
 		});
 		// event handler for "source type" radio buttons
-		t5("#checkall").on('change', function(e) {
+		t5("checkall").on('change', function(e) {
 			console.log("found sourceType radio changed");
 			var form = this.findParent("form");
 			return form.trigger("submit");

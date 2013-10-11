@@ -20,7 +20,8 @@ body h1, body h2, body h3 {
 }
 
 body h1 {
-	font-size: 26px;
+	font-size: 24px;
+	font-weight: bold;
 }
 
 body h2, bodyh3 {
@@ -205,15 +206,15 @@ a img {
 	display: none;
 }
 
-#breadcrumbs {
+DIV#breadcrumbs {
 	clear: both;
 	color: black;
 	background-color: #eeeeee;
 	padding: 10px 30px;
-	height: 1.5em;
+	height: 2.5em;
 }
 
-#breadcrumbs a {
+DIV#breadcrumbs a {
 	color: #569D2F;
 	text-decoration: none;
 }
@@ -342,13 +343,21 @@ ul.entry-list li.disabled A {
 	font-size: 13px;
 }
 
-.filter-selection .from {
+.filter-selection .from, {
 	padding-left: 2em;
 	margin-bottom: .4em;
+	font-weight: normal;
+}
+.filter-selection label {
+	font-weight: normal;
+	margin-left: .2em;
 }
 
 .filter-selection .find {
 	float: left;
+}
+.filter-selection .find label {
+	margin-top: 5px;
 }
 
 .filter-selection DIV.t-checklist-row {
@@ -381,6 +390,7 @@ LABEL:hover { background: #eee; }
 }
 .filter-selection TABLE.filter-menu SELECT, .filter-selection TABLE.filter-menu INPUT {
     width: auto;
+    padding: 6px 6px;
 }
 DIV.matching-counter {
 	margin-top: 1em;
@@ -526,6 +536,7 @@ TABLE.datatable {
 
 TABLE.datatable TD,TABLE.datatable TH {
 	border: 1px solid #ddd;
+	padding: 0 .5em;
 }
 
 TABLE.datatable THEAD TH {
@@ -597,7 +608,6 @@ TABLE.frameworks TH {
 	color: #539126;
 }
 FIELDSET.admin-group {
-	width:27%;
 	min-height: 8em;
 	float: left;
 	border-radius: 10px;

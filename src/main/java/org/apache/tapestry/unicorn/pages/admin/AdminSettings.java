@@ -46,7 +46,6 @@ public class AdminSettings
 	@InjectComponent
 	private Zone editZone;
 	
-	@SuppressWarnings("unused")
 	@Property
 	private Setting setting; // used in a list
 	

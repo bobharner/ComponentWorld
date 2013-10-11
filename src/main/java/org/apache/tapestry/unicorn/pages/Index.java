@@ -177,7 +177,8 @@ public class Index
 	 * As an event handler, respond to the form's PREPARE_FOR_RENDER event,
 	 * doing setup actions prior to rendering the form.
 	 */
-	@OnEvent(value=EventConstants.PREPARE_FOR_RENDER, component="entryFilter")
+//    @OnEvent(value=EventConstants.PREPARE_FOR_RENDER, component="entryFilter")
+    @OnEvent(value=EventConstants.PREPARE, component="entryFilter")
 	void prepare()
 	{
 		// populate the list of entry types for the entry type drop-down menu
