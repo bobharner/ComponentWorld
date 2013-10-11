@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Sun Apr 07 11:07:40 EDT 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013d-e507-4253-0000096a7218 
+Tue Oct 08 21:12:49 EDT 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0141-9ac5-c455-000001d30e40 
 on database directory C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB  with class loader ContextLoader@Tapestry Component Finder 
 Loaded from file:/C:/Users/bharner/.m2/repository/org/apache/derby/derby/10.9.1.0/derby-10.9.1.0.jar
-java.vendor=Sun Microsystems Inc.
-java.runtime.version=1.6.0_20-b02
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_04-b22
 user.dir=C:\Users\bharner\workspace42\ComponentWorld
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
