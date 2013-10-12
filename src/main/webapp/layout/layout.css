@@ -618,3 +618,9 @@ FIELDSET.admin-group LEGEND {
 	margin-left: 1em;
 	color: #539126;	
 }
+FORM.form-inline .form-control {
+	width: auto;
+}
+FORM.form-inline SPAN.input-group-btn {
+	width: auto;
+}

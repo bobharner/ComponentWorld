@@ -58,14 +58,16 @@
 		</tr>
 		<tr>
 			<th><t:label for="sinceSelection"/></th>
-			<td colspan="2">Tapestry <t:select t:id="sinceSelection" value="since"
-						model="versionSelectModel" /> ${message:andLater}
+			<td colspan="2">
+					Tapestry <t:select t:id="sinceSelection" value="since"
+					model="versionSelectModel" /> ${message:andLater}
 			</td>
 		</tr>
 		<tr>
 			<th><t:label for="untilSelection"/></th>
 			<td colspan="2">
 				Tapestry <t:select t:id="untilSelection" value="until"
+						style="width: auto"
 						model="versionSelectModel" /> ${message:andLater}
 			</td>
 		</tr>
