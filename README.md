@@ -10,7 +10,7 @@ at https://tapestry.apache.org, and the hope is that it will eventually
 be running under that URL and be seamlessly integrated into the official
 Tapestry documentation.
 
-See the screenshots in the [wiki] (https://github.com/bobharner/Tapestry-finder/wiki)
+See the screenshots in the [wiki] (https://github.com/bobharner/ComponentWorld/wiki)
 
 Goals
 =====
@@ -18,7 +18,7 @@ Goals
 * Help people find Tapestry-compatible components.
 
 * Serve as a good example of how a polished and complete Tapestry 5
-application should be designed and constructed. In that sense it is intentionally
+application should be designed and constructed. In that sense it may be
 over-engineered in some areas. We go to some length to minimize the use of the
 HTTP session, for example, despite the fact that the application is unlikely to
 need clustering with session replication.

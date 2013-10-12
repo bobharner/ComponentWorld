@@ -1,0 +1,84 @@
+<html t:type="layout" title="About This Application"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+	<div class="itemheading">
+		<h2>About This Application</h2>
+
+		<p class="greeting">
+			In the past it was really hard to find good pre-built components for
+			your Tapestry apps. Oh sure, you knew they were out there, somewhere.
+			Internet searches always turned up a random smattering of
+			components&#8212;sometimes just what you were looking for,
+			but often not. And duplicates. Lots of duplicates. How
+			can you know which one is best?</p>
+
+		<p>Because it's so easy to write custom components in
+			Tapestry, lots of people have published their first baby steps as
+			mini-tutorials. The Tapestry Wiki is full of them, and some are very
+			useful as components to paste into your app. But some aren't. How do
+			you filter out the noise?</p>
+
+		<p class="greeting">Some of the best sources for components are blogs.
+			But you don't want to bookmark all of those blog entries just because
+			they, for example, show you how to write a certain mixin that you
+			may need <em>some day</em>. There's got to be a better way.</p>
+
+		<p>
+			Welcome to <b><em>${message:applicationName}</em></b>,
+			a Java web application to help you find pre-built components for your
+			Tapestry development projects.
+		</p>
+
+		<p class="greeting">The ${message:applicationName} database
+			includes all of the Tapestry's built-in components, of course.
+			But it also lists every other publically available Tapestry 5-based
+			component, mixin, module and framework out there.
+			Even those recorded in wikis and blogs and tutorials.
+			All tagged and categorized to make it easy to find what
+			you're looking for.</p>
+	</div>
+	
+	<hr />
+	
+	<div style="float: left; width: 20em; margin-right: 2em">
+	<p>${message:applicationName} is a Tapestry web application based
+	on a stack of high-quality open source libraries, mostly from Apache.</p>
+	<p>The source code for this application is freely available under
+	the Apache 2.0 license and currently hosted at
+	<a href="https://github.com/bobharner/ComponentWorld">GitHub</a>.</p>
+	</div>
+
+	<div style="float: left; margin-top: 1em">
+
+	<table class="frameworks">
+		<tr>
+			<th>Web Framework:</th>
+			<td>Apache Tapestry</td>
+		</tr>
+		<tr>
+			<th>IoC Framework:</th>
+			<td>Apache Tapestry IoC</td>
+		</tr>
+		<tr>
+			<th>O-R Mapping:</th>
+			<td>Apache Cayenne</td>
+		</tr>
+		<tr>
+			<th>Security:</th>
+			<td>(planned) Tynamo Tapestry-security &amp; Apache Shiro</td>
+		</tr>
+		<tr>
+			<th>Database:</th>
+			<td>Apache Derby</td>
+		</tr>
+		<tr>
+			<th>Build Tool:</th>
+			<td>Apache Maven</td>
+		</tr>
+	</table>
+	
+	</div>
+	
+	<div style="clear: both"></div>
+
+</html>

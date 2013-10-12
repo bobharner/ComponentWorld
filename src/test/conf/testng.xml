@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Tapestry Component Finder Application Test Suite" annotations="1.5">
+<suite name="Tapestry Component World Application Test Suite" annotations="1.5">
     <test name="Unit Tests">
         <packages>
-            <package name="org.apache.tapestry.unicorn"/>
+            <package name="org.apache.componentworld"/>
         </packages>
     </test>
 </suite>

@@ -1,8 +1,8 @@
  ----
- Module org.apache.tapestry.unicorn
+ Module org.apache.componentworld
  ----
 
-Component Finder Documentation
+Component World Documentation
 
   This is where you can start to document your module.
 
