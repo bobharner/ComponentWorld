@@ -12,7 +12,7 @@
 
 </head>
 <body>
-  <div class="wrapper bs">
+  <div class="container">
 
 <div class="topnav"><ul class="alternate" type="square">
 	<li><A href="${message:TapestryDocUrl}" title="Index">Home</A></li>
@@ -86,6 +86,7 @@ Apache Tapestry project logo are trademarks of The Apache Software Foundation.
   })();
 </script>
 </div>
+<t:devtool />
 </div>
 </body>
 </html>
