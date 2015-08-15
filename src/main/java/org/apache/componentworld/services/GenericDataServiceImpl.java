@@ -20,7 +20,6 @@ import java.lang.reflect.ParameterizedType;
 import org.apache.cayenne.CayenneDataObject;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.access.DataContext;
-import org.testng.Assert;
 
 /**
  * Abstract class that implements the {@link GenericDataService} interface, using
@@ -54,7 +53,7 @@ public abstract class GenericDataServiceImpl<T extends CayenneDataObject, ID ext
 	@Override
 	public void delete(T entity)
 	{
-		Assert.assertNotNull(entity, "No Entity Specified");
+		if (entity==null) throw new NullPointerException("No Entity Specified");
 
 		ObjectContext context = DataContext.getThreadObjectContext();
 		context.deleteObject(entity);
