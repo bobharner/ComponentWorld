@@ -2,10 +2,7 @@
 	     xmlns:p="tapestry:parameter">
 
 <div class="left-side-list">
-TestOfCached #1: <t:testOfCached />
-TestOfCached #2: <t:testOfCached />
 <t:loop source="1..5">
-TestOfCached in loop: <t:testOfCached /> 
 </t:loop>
 
 	<ul class="entry-list">
