@@ -53,6 +53,8 @@ public abstract class GenericDataServiceImpl<T extends CayenneDataObject, ID ext
 	@Override
 	public void delete(T entity)
 	{
+		if (entity==null) throw new NullPointerException("No Entity Specified");
+
 		ObjectContext context = DataContext.getThreadObjectContext();
 		context.deleteObject(entity);
 		context.commitChanges();
