@@ -192,6 +192,8 @@
 			<id>codehaus.snapshots</id>
 			<url>http://snapshots.repository.codehaus.org</url>
 		</repository>
+		-->
+		<!-- no such dns name? :(
 		<repository>
 			<id>SaiWai</id>
 			<name>SaiWai repo for Tapestry5-Cayenne module</name>
