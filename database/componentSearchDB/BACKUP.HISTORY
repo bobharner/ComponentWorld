@@ -144,3 +144,8 @@ Mon Jun 10 21:37:22 EDT 2013:Backup of data segment to C:\Users\bharner\AppData\
 Mon Jun 10 21:37:22 EDT 2013:copied log directory from C:\Users\bharner\workspace42\ComponentWorld\database\componentSearchDB\log to C:\Users\bharner\AppData\Local\Temp\dbbackups\20130610_2137\componentSearchDB\log
 Mon Jun 10 21:37:22 EDT 2013:Backup completed, log instant at (31,819318) 
 
+Wed Nov 04 20:58:06 EST 2015:Backup started for database located at /home/bharner/git/ComponentWorld/database/componentSearchDB to /tmp/dbbackups/20151104_2058/componentSearchDB.
+Wed Nov 04 20:58:07 EST 2015:Backup of data segment to /tmp/dbbackups/20151104_2058/componentSearchDB/seg0 completed. 
+Wed Nov 04 20:58:07 EST 2015:copied log directory from /home/bharner/git/ComponentWorld/database/componentSearchDB/log to /tmp/dbbackups/20151104_2058/componentSearchDB/log
+Wed Nov 04 20:58:07 EST 2015:Backup completed, log instant at (38,770955) 
+
