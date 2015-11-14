@@ -39,6 +39,7 @@ import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.Secure;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
@@ -51,6 +52,7 @@ import org.slf4j.Logger;
  * existing entry, first call setEntry() to set the entry to be edited.
  * 
  */
+@Secure
 public class EditEntry
 {
 	private EntryType type; // selected entry type

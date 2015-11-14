@@ -22,6 +22,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.Secure;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.Session;
@@ -30,6 +31,7 @@ import org.apache.tapestry5.services.Session;
  * This page is based on the portion of Tapestry's default ExceptionReport page that handles the session.
  */
 
+@Secure
 public class AdminDiagnostics
 {
     private final static int MEGABYTES = 1024*1024;  

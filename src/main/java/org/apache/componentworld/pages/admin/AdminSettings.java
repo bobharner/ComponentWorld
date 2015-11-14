@@ -23,6 +23,7 @@ import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.Secure;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -32,6 +33,7 @@ import org.apache.tapestry5.services.Request;
  * Administration page for the "Other Settings" data
  *
  */
+@Secure
 public class AdminSettings
 {
 	@Inject
@@ -139,7 +141,6 @@ public class AdminSettings
 //	@OnEvent(value = EventConstants.PREPARE_FOR_RENDER, component = "editForm")
 //	void setupFormData()
 //	{
-//		System.out.println("harner 2 here in setupFormData");
 //		if (selected != null)
 //		{
 //			// copy to temporary properties (so we don't pollute our entities

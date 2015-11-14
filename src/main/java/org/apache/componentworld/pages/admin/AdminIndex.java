@@ -17,9 +17,11 @@ package org.apache.componentworld.pages.admin;
 import org.apache.componentworld.services.DatabaseAdminService;
 import org.apache.componentworld.services.EntryService;
 import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.annotations.Secure;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.slf4j.Logger;
 
+@Secure
 public class AdminIndex
 {
 
