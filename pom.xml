@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tapestry-release-version>5.4-alpha-22</tapestry-release-version>
+		<tapestry-release-version>5.4-beta-26</tapestry-release-version>
 	</properties>
 
 	<description>A Java web application for helping Tapestry users find Tapestry components.</description>
@@ -187,7 +187,7 @@
 	</build>
 
 	<repositories>
-		<!-- 
+		<!-- codehaus is no more :(
 		<repository>
 			<id>codehaus.snapshots</id>
 			<url>http://snapshots.repository.codehaus.org</url>
