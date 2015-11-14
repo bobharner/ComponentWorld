@@ -17,7 +17,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="entryTypeMenu"/></th>
+			<th><label>Entry Type</label></th>
 			<td colspan="2">
 				<t:radioGroup t:id="entryTypeMenu" validate="required"
 						value="type">
@@ -78,7 +78,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th><t:label for="sourceTypeMenu"/></th>
+			<th><label>Source Type</label></th>
 			<td colspan="2">
 				<t:radioGroup t:id="sourceTypeMenu" validate="required"
 						value="source">
