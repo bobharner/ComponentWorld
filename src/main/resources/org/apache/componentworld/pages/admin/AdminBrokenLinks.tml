@@ -4,11 +4,11 @@
 
 <div class="itemheading">
 	<h2>Broken Links</h2>
-	<p class="greeting">A list of unreachable URLs (broken links)in all the entries.
+	<p class="greeting">A list of unreachable URLs (broken links) in all the entries.
 	</p>
 </div>
 
-<p><t:actionlink t:id="start">Start Scanning Now</t:actionlink>
+<p><t:actionlink t:id="start" class="btn btn-primary" role="button">Start Scanning Now...</t:actionlink>
 </p>
 <h3>Most Recent Results</h3>
 
