@@ -2,8 +2,6 @@
 	     xmlns:p="tapestry:parameter">
 
 <div class="left-side-list">
-<t:loop source="1..5">
-</t:loop>
 
 	<ul class="entry-list">
 		<t:loop value="entry" source="entryList">
