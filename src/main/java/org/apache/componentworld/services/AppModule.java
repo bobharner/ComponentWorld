@@ -61,16 +61,16 @@ public class AppModule
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
 
-    	binder.bind(TapestryVersionService.class, TapestryVersionServiceImpl.class);
-    	binder.bind(SettingsService.class, SettingsServiceImpl.class);
-    	binder.bind(EntryService.class, EntryServiceImpl.class);
-		binder.bind(UserService.class, UserServiceImpl.class);
-		binder.bind(RoleService.class, RoleServiceImpl.class);
-		binder.bind(EntryTypeService.class, EntryTypeServiceImpl.class);
-		binder.bind(SourceTypeService.class, SourceTypeServiceImpl.class);
-		binder.bind(LicenseService.class, LicenseServiceImpl.class);
-		binder.bind(DatabaseAdminService.class, DatabaseAdminServiceImpl.class);
-//		binder.bind(FederatedAccountService.class, DefaultHibernateFederatedAccountServiceImpl.class);
+        binder.bind(TapestryVersionService.class, TapestryVersionServiceImpl.class);
+        binder.bind(SettingsService.class, SettingsServiceImpl.class);
+        binder.bind(EntryService.class, EntryServiceImpl.class);
+        binder.bind(UserService.class, UserServiceImpl.class);
+        binder.bind(RoleService.class, RoleServiceImpl.class);
+        binder.bind(EntryTypeService.class, EntryTypeServiceImpl.class);
+        binder.bind(SourceTypeService.class, SourceTypeServiceImpl.class);
+        binder.bind(LicenseService.class, LicenseServiceImpl.class);
+        binder.bind(DatabaseAdminService.class, DatabaseAdminServiceImpl.class);
+//      binder.bind(FederatedAccountService.class, DefaultHibernateFederatedAccountServiceImpl.class);
     }
     
     /**
@@ -84,8 +84,8 @@ public class AppModule
         // These contributions override any contributions to FactoryDefaults
         // (with the same key). Here we're restricting the supported locales to
         // just "en" (English). You can extend this list of locales (it's a
-    	// comma separated series of locale names; the first locale name is
-    	// the default when there's no reasonable match).
+        // comma separated series of locale names; the first locale name is
+        // the default when there's no reasonable match).
         
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
 
@@ -104,7 +104,7 @@ public class AppModule
         // Normally it would be better to use a fixed password-like string, but
         // we can't because this file is published as open source software.
         configuration.add(SymbolConstants.HMAC_PASSPHRASE,
-        		new BigInteger(130, new SecureRandom()).toString(32));
+                new BigInteger(130, new SecureRandom()).toString(32));
         
         configuration.add(SymbolConstants.JAVASCRIPT_INFRASTRUCTURE_PROVIDER, "jquery");
 
@@ -134,17 +134,17 @@ public class AppModule
     {
         return new RequestFilter()
         {
-			public boolean service(Request request, Response response,
-					RequestHandler handler) throws IOException
+            public boolean service(Request request, Response response,
+                    RequestHandler handler) throws IOException
             {
                 long startTime = System.currentTimeMillis();
 
                 try
                 {
-					// The responsibility of a filter is to invoke the
-					// corresponding method in the handler. When you chain
-					// multiple filters together, each filter received a handler
-					// that is a bridge to the next filter.
+                    // The responsibility of a filter is to invoke the
+                    // corresponding method in the handler. When you chain
+                    // multiple filters together, each filter received a handler
+                    // that is a bridge to the next filter.
                     
                     return handler.service(request, response);
                 }
@@ -158,17 +158,17 @@ public class AppModule
         };
     }
 
-	/**
-	 * Contribute to the RequestHandler service configuration. This
-	 * is how we extend Tapestry using the timing filter. A common use for this
-	 * kind of filter is transaction management or security. The @Local
-	 * annotation selects the desired service by type, but only from the same
-	 * module. Without @Local, there would be an error due to the other
-	 * service(s) that implement RequestFilter (defined in other modules).
-	 * 
-	 * @param configuration
-	 * @param filter
-	 */
+    /**
+     * Contribute to the RequestHandler service configuration. This
+     * is how we extend Tapestry using the timing filter. A common use for this
+     * kind of filter is transaction management or security. The @Local
+     * annotation selects the desired service by type, but only from the same
+     * module. Without @Local, there would be an error due to the other
+     * service(s) that implement RequestFilter (defined in other modules).
+     * 
+     * @param configuration
+     * @param filter
+     */
     public void contributeRequestHandler(OrderedConfiguration<RequestFilter> configuration,
             @Local
             RequestFilter filter)
@@ -180,20 +180,20 @@ public class AppModule
         configuration.add("Timing", filter);
     }
 
-	/**
-	 * Contribute ValueEncoders for our most important entities so that Tapestry
-	 * will automatically use them every time a ValueEncoder is needed for items
-	 * of these types (e.g. for the Select component and when using
-	 * @PageActivationContext)
-	 */
+    /**
+     * Contribute ValueEncoders for our most important entities so that Tapestry
+     * will automatically use them every time a ValueEncoder is needed for items
+     * of these types (e.g. for the Select component and when using
+     * @PageActivationContext)
+     */
     public static void contributeValueEncoderSource(MappedConfiguration<Class, ValueEncoderFactory> configuration)
-	{
-		configuration.addInstance(Entry.class, EntryEncoder.class);
-		configuration.addInstance(EntryType.class, EntryTypeEncoder.class);
-		configuration.addInstance(SourceType.class, SourceTypeEncoder.class);
-		configuration.addInstance(TapestryVersion.class, TapestryVersionEncoder.class);
-		configuration.addInstance(License.class, LicenseEncoder.class);
-	}
+    {
+        configuration.addInstance(Entry.class, EntryEncoder.class);
+        configuration.addInstance(EntryType.class, EntryTypeEncoder.class);
+        configuration.addInstance(SourceType.class, SourceTypeEncoder.class);
+        configuration.addInstance(TapestryVersion.class, TapestryVersionEncoder.class);
+        configuration.addInstance(License.class, LicenseEncoder.class);
+    }
 
     /**
      * Add type coercions from Character to String and vice-versa. This is
@@ -201,25 +201,25 @@ public class AppModule
      */
     public static void contributeTypeCoercer(Configuration<CoercionTuple> configuration)
     {
-		configuration.add(new CoercionTuple<Character, String>(Character.class,
-				String.class, new Coercion<Character, String>() {
-					public String coerce(Character input) {
-						return input.toString();
-					}
-				}));
-		configuration.add(new CoercionTuple<String, Character>(String.class,
-				Character.class, new Coercion<String, Character>() {
-					public Character coerce(String str) {
-						return Character.valueOf((str.charAt(0)));
-					}
-				}));
+        configuration.add(new CoercionTuple<Character, String>(Character.class,
+                String.class, new Coercion<Character, String>() {
+                    public String coerce(Character input) {
+                        return input.toString();
+                    }
+                }));
+        configuration.add(new CoercionTuple<String, Character>(String.class,
+                Character.class, new Coercion<String, Character>() {
+                    public Character coerce(String str) {
+                        return Character.valueOf((str.charAt(0)));
+                    }
+                }));
     }
     
-//	public static void contributeFederatedAccountService(MappedConfiguration<String, Object> configuration) {
-//		configuration.add("*", User.class);
-//		configuration.add("facebook.id", "facebookId");
-//		configuration.add("twitter.id", "twitterId");
-//	}
+//  public static void contributeFederatedAccountService(MappedConfiguration<String, Object> configuration) {
+//      configuration.add("*", User.class);
+//      configuration.add("facebook.id", "facebookId");
+//      configuration.add("twitter.id", "twitterId");
+//  }
 
 //    @Contribute(SymbolProvider.class)
 //    @ApplicationDefaults
@@ -233,5 +233,19 @@ public class AppModule
 //        configuration.add(Trait.SCRIPTACULOUS, false);
 //        configuration.add(Trait.INITIALIZERS, false);
     }
+
+    /**
+     * 
+     * @param configuration
+     */
+//    @Contribute(WebSecurityManager.class)
+//    public static void addRealms(Configuration<Realm> configuration) {
+//      ExtendedPropertiesRealm realm = new ExtendedPropertiesRealm("classpath:shiro-users.properties");
+//      configuration.add(realm);
+//    }
+//
+//    @Contribute(HttpServletRequestFilter.class) @Security public static void securePaths(...) {
+//        
+//    }
 
 }
