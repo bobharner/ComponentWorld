@@ -3,14 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.apache.tapestry</groupId>
-	<artifactId>componentWorld</artifactId>
+	<artifactId>ComponentWorld</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>ComponentWorld</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tapestry-release-version>5.4-beta-26</tapestry-release-version>
+		<tapestry-release-version>5.4.0</tapestry-release-version>
 	</properties>
 
 	<description>A Java web application for helping Tapestry users find Tapestry components.</description>
@@ -149,7 +149,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>ComponentWorld</finalName>
+		<finalName>components</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
