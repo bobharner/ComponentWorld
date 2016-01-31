@@ -149,3 +149,8 @@ Wed Nov 04 20:58:07 EST 2015:Backup of data segment to /tmp/dbbackups/20151104_2
 Wed Nov 04 20:58:07 EST 2015:copied log directory from /home/bharner/git/ComponentWorld/database/componentSearchDB/log to /tmp/dbbackups/20151104_2058/componentSearchDB/log
 Wed Nov 04 20:58:07 EST 2015:Backup completed, log instant at (38,770955) 
 
+Sat Nov 14 12:45:35 EST 2015:Backup started for database located at /home/bharner/git/ComponentWorld/database/componentSearchDB to /tmp/dbbackups/20151114_1245/componentSearchDB.
+Sat Nov 14 12:45:36 EST 2015:Backup of data segment to /tmp/dbbackups/20151114_1245/componentSearchDB/seg0 completed. 
+Sat Nov 14 12:45:36 EST 2015:copied log directory from /home/bharner/git/ComponentWorld/database/componentSearchDB/log to /tmp/dbbackups/20151114_1245/componentSearchDB/log
+Sat Nov 14 12:45:36 EST 2015:Backup completed, log instant at (40,5053) 
+
