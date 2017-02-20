@@ -87,7 +87,7 @@
 						<div class="${multicolumnClass}">
 							<ul class="entry-list">
 							<t:loop source="children" value="child">
-								<li class="${child.entryType.cssClass}">
+								<li class="${childEntryCssClass}">
 									<t:eventLink zone="^" event="viewEntry"
 									context="child"
 									title="${child.description}">${child.name}

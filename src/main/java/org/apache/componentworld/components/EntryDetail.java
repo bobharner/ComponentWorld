@@ -134,7 +134,20 @@ public class EntryDetail
 		}
 		return "";
 	}
-	
+
+	/**
+	 * @return the CSS class of current child entry (depends on the entry type and
+	 * whether it is enabled)
+	 */
+	public String getChildEntryCssClass()
+	{
+		if(child.getEnabled())
+		{
+			return child.getEntryType().getCssClass();
+		}
+		return child.getEntryType().getCssClass() + " disabled";
+	}
+
 	/**
 	 * As an event handler, respond to a click on a link whose event is named
 	 * "viewEntry".

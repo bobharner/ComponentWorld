@@ -176,6 +176,7 @@ a img {
 
 #content {
 	margin: 0px 30px;
+	padding-top: 1em;
 }
 
 #content p {
@@ -281,11 +282,11 @@ DIV#breadcrumbs A:hover {
         font-size: 110%;
 }
 
-ul.entry-list li.component { background-image: url(images/epl/component.gif); }
-ul.entry-list li.element   { background-image: url(images/epl/element.gif); }
-ul.entry-list li.module    { background-image: url(images/epl/module.gif); }
-ul.entry-list li.framework { background-image: url(images/epl/framework.gif); }
-ul.entry-list li.website   { background-image: url(images/epl/website.gif); }
+ul.entry-list li.component, table.entry-list td.component { background-image: url(images/epl/component.gif); }
+ul.entry-list li.element, table.entry-list td.element    { background-image: url(images/epl/element.gif); }
+ul.entry-list li.module, table.entry-list td.module     { background-image: url(images/epl/module.gif); }
+ul.entry-list li.framework, table.entry-list td.framework  { background-image: url(images/epl/framework.gif); }
+ul.entry-list li.website, table.entry-list td.website    { background-image: url(images/epl/website.gif); }
 
 ul.entry-list {
 	list-style-type: none !important;
@@ -320,7 +321,7 @@ ul.entry-list li SPAN.details {
     margin-left: 0.3em;
 }
 
-ul.entry-list li.disabled A {
+ul.entry-list li.disabled A, ul.entry-list li A.disabled {
 	text-decoration: line-through;
 }
 
