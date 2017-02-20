@@ -50,7 +50,6 @@ public class EntryList
 	@Property
 	private Entry entry; // used in a loop
 
-	@SuppressWarnings("unused")
 	@Property
 	private List<Entry> entryList;
 
@@ -105,7 +104,6 @@ public class EntryList
 	/**
 	 * Initializations needed each time this component is about to be rendered
 	 */
-	@SuppressWarnings("unused")
 	@SetupRender
 	private void init()
 	{
