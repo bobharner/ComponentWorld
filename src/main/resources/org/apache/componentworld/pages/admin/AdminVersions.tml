@@ -1,6 +1,10 @@
 <html t:type="layout" title="Tapestry Versions List"
-	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	xmlns:p="tapestry:parameter">
+		xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+		xmlns:p="tapestry:parameter">
+	<p:pageLinks>
+		<t:pagelink page="admin">Administration</t:pagelink>
+	</p:pageLinks>
+
 <p:tools>
 	<t:actionlink t:id="addLink" zone="editZone">Add a New Version...</t:actionlink>
 </p:tools>
@@ -11,40 +15,42 @@
 
 <!-- right-size zone containing an editing form -->
 <t:zone t:id="editZone" id="editZone"
-		style="position: absolute; left: 57em; display: none">
-	<t:keepInView class="detail-box">
+		style="position: absolute; left: 37em;">
+	<t:if test="showZone">
+		<t:keepInView class="detail-box">
+	
+			<div class="controls">
+				<a href="#" style="margin-left: 2em" class="controls"
+						onClick="getElementById('editZone').innerHTML=''; return false"
+						title="Close this detail box">
+					Close
+				</a>
+			</div>
 
-		<div class="controls">
-			<a href="#" style="margin-left: 2em" class="controls"
-					onClick="getElementById('editZone').innerHTML=''; return false"
-					title="Close this detail box">
-				Close
-			</a>
-		</div>
+			<h2>${editPageHeading}</h2>
 
-		<h2>Edit Version ${name}</h2>
-
-		<t:form t:id="editForm" autofocus="false" class="form-inline">
-			<table>
-			<tr><th><t:label for="name"/></th>
-				<td><t:textfield t:id="name" value="name" size="20"
-						placeholder="Enter version as N.N.N"
-						validate="required,maxLength=64"/>
-				</td>
-			</tr>
-			<tr><th><t:label for="released"/></th>
-				<td><t:datefield t:id="released" value="released"/>
-				</td>
-			</tr>
-			<tr><th><t:label for="description"/></th>
-				<td><t:textarea t:id="description" value="description"
-						rows="2" cols="40"
-						validate="maxLength=256"/></td>
-			</tr>
-			<tr><td></td><td><t:submit value="Save"/></td></tr>
-			</table>
-		</t:form>
-	</t:keepInView>
+			<t:form t:id="editForm" autofocus="false" context="selectedVersion">
+				<t:hidden value="selectedVersion"/>
+				<div class="form-group">
+					<t:label for="name"/>
+					<t:textfield t:id="name" class="form-control" value="selectedVersion?.name" size="20"
+							placeholder="Enter version as N.N.N"
+							validate="required,maxLength=64"/>
+				</div>
+				<div class="form-group">
+					<t:label for="released"/>
+					<t:datefield t:id="released" class="form-control" value="selectedVersion?.released"/>
+				</div>
+				<div class="form-group">
+					<t:label for="description"/>
+					<t:textarea t:id="description" class="form-control" value="selectedVersion?.description"
+							rows="2" cols="40"
+							validate="maxLength=256"/>
+				</div>
+				<t:submit class="btn btn-primary" value="Save"/>
+			</t:form>
+		</t:keepInView>
+	</t:if>
 </t:zone>
 
 <!-- left-side list if items to edit -->

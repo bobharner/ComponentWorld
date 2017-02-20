@@ -442,10 +442,6 @@ DIV.detail-box {
 }
 DIV.detail-box P { color: black; }
 
-.detail-box H2 {
-	padding: 0;
-	margin: 0;
-}
 .detail-box DIV.component  { background-image: url(images/epl/component-large.gif); }
 .detail-box DIV.element    { background-image: url(images/epl/element-large.gif); }
 .detail-box DIV.module     { background-image: url(images/epl/module-large.gif); }

@@ -1,4 +1,4 @@
-/* Copyright 2011 The Apache Software Foundation
+/* Copyright The Apache Software Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
 package org.apache.componentworld.pages.admin;
 
 import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.componentworld.entities.TapestryVersion;
 import org.apache.componentworld.services.TapestryVersionService;
+import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectComponent;
@@ -43,29 +43,28 @@ public class AdminVersions
 
 	@Inject
 	private Request request;
-	
+
 	@Inject
 	private AlertManager alertManager;
+	
+	@Inject
+	private Logger log;
 
 	@InjectComponent
 	private Zone editZone;
-	
-	@Property
-	private TapestryVersion version; // used in a list
-	
-	@Property
-	private TapestryVersion selected; // the selected version
-	
-    @Property
-    private String name;
 
 	@Property
-	private String description;
-	
+	private TapestryVersion version; // used in a list
+
 	@Property
-	private Date released;
-	
+	private TapestryVersion selectedVersion; // the selected (clicked) version
+
+	@Property
+	private Boolean showZone;
+
 	private List<TapestryVersion> versions;
+	
+	private Integer selectedId;
 
 	private DateFormat dateFormatter;
 
@@ -75,32 +74,45 @@ public class AdminVersions
 	@Component
 	private Form editForm;
 
-	
-	public List<TapestryVersion> getVersions()
-	{
-		return versions;
-	}
-	
 	/**
-	 * As an event listener, respond to a click on an item to be edited by
-	 * displaying the edit form.
 	 * 
-	 * @param version
-	 * @return
 	 */
-	public Object onActionFromItemLink(TapestryVersion version)
+	public void onActivate(TapestryVersion selectedVersion) {
+		System.out.println("harner in onActivate with selectedVersion=" + selectedVersion.getId());
+		this.selectedVersion = selectedVersion;
+	}
+
+	/**
+	 * Perform initializations needed before page renders
+	 */
+	public void setupRender()
 	{
-		this.selected = version;
+		System.out.println("harner 2 in setupRender()");
+		showZone = false;
+		versions = tapestryVersionService.findAll();
+	}
+
+	/**
+	 * Respond to a click on an item to be edited by displaying the edit form
+	 * populated by the given item.
+	 * 
+	 * @param selectedVersion
+	 * @return the zone body (or whole page) to display
+	 */
+	public Object onActionFromItemLink(TapestryVersion selectedVersion)
+	{
+		showZone = true;
+		this.selectedVersion = selectedVersion;
 		if (request.isXHR()) // an AJAX request?
 		{
 			return editZone.getBody(); // return the zone body to be redrawn
 		}
 		return this; // graceful degradation: redraw the whole current page
 	}
-	
+
 	/**
-     * As an event listener, respond to a click on the "Add Version" link by
-     * displaying the edit form.
+     * Respond to a click on the "Add Version" link by displaying an empty
+     * edit form.
 	 * @return
 	 */
 	public Object onActionFromAddLink()
@@ -109,64 +121,69 @@ public class AdminVersions
 	}
 
 	/**
-	 * As an event listener, respond to a successful form submission by
-	 * saving the submitted form data.
+	 * Respond to the form's "prepare for submission" event
+	 */
+	void onPrepareForSubmitFromEditForm()
+	{
+//		if (selectedId == null) {
+//			throw new IllegalStateException("SelectedId from submitted form is null");
+//		}
+//		// load selected version from database
+//		selectedVersion = tapestryVersionService.findById(selectedId);
+	}
+
+	/**
+	 * Respond to the form's "success" event by saving submitted form data.
 	 * 
 	 * @param version
 	 * @return
 	 */
 	public Object onSuccessFromEditForm()
 	{
-		if (version == null)
+		if (selectedVersion == null)
 		{
 			// create a new, empty entry object
-			version = tapestryVersionService.create();
+			selectedVersion = tapestryVersionService.create();
 		}
-		// Copy the submitted form values into the (new or existing) object.
-		// (Inserting the values *after* validation ensures that we don't
-		// pollute our entity set with invalid or abandoned objects.)
-		version.setName(this.name);
-		version.setReleased(this.released);
-		version.setDescription(this.description);
 
 		// Save all changes to the database
-		tapestryVersionService.save(version);
-		alertManager.info("Version " + version.getName() + " saved.");
-		logger.info("Saved version {} ({})", name, dateFormatter.format(selected.getReleased()));
+		tapestryVersionService.save(selectedVersion);
+		alertManager.info("Version " + selectedVersion.getName() + " saved.");
+		logger.info("Saved version {} ({})", selectedVersion.getName(), getDateFormatter().format(selectedVersion.getReleased()));
 		return this; // redraw this page
 	}
-	
-	/**
-	 * Do setup actions prior to the form being rendered.
-	 */
-	void onPrepareForRenderFromEditForm()
+
+	public List<TapestryVersion> getVersions()
 	{
-		if (selected != null)
-		{
-			// copy to temporary properties (so we don't pollute our entities
-			// with potentially invalid/incomplete data)
-			this.name = selected.getName();
-			this.released = selected.getReleased();
-            this.description = selected.getDescription();
-		}
+		return versions;
 	}
-	
-	/**
-	 * Perform initializations needed before page renders
-	 */
-	public void setupRender()
-	{
-		versions = tapestryVersionService.findAll();
-		dateFormatter = DateFormat.getDateInstance();
-	}
-	
+
 	public String getReleasedDate()
 	{
 		if (version == null || version.getReleased() == null)
 		{
 			return "";
 		}
-		return dateFormatter.format(version.getReleased());
+		return getDateFormatter().format(version.getReleased());
+	}
+	
+	public String getEditPageHeading()
+	{
+		if (selectedVersion == null)
+		{
+			return "Add a Version";
+		}
+		return "Edit Version " + selectedVersion.getName();
 	}
 
+	/**
+	 * Get the current date formatter, creating one if needed
+	 * @return the date formatter
+	 */
+	private DateFormat getDateFormatter() {
+	    if (dateFormatter == null) {
+	        dateFormatter = DateFormat.getDateInstance();
+	    }
+	    return dateFormatter;
+	}
 }
