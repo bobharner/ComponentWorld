@@ -1,6 +1,9 @@
 <html t:type="layout" title="Broken Links"
-	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	xmlns:p="tapestry:parameter">
+		xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+		xmlns:p="tapestry:parameter">
+	<p:pageLinks>
+		<t:pagelink page="admin">Administration</t:pagelink>
+	</p:pageLinks>
 
 <div class="itemheading">
 	<h2>Broken Links</h2>

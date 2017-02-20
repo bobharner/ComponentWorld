@@ -59,6 +59,9 @@
 	    <A href="${message:TapestryDocUrl}" title="Apache Tapestry">Apache Tapestry</A>
 	    &gt;
 	    <t:pagelink page="index">${message:applicationShortName}</t:pagelink>
+	    <t:if test="pageLinks">
+	        &gt; <t:delegate to="pageLinks" />
+	    </t:if>
 	</div>
 	<div class="controls">
 		<t:delegate to="tools" />

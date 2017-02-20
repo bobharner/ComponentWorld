@@ -1,6 +1,9 @@
 <html t:type="layout" title="Other Settings"
-	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	xmlns:p="tapestry:parameter">
+		xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+		xmlns:p="tapestry:parameter">
+	<p:pageLinks>
+		<t:pagelink page="admin">Administration</t:pagelink>
+	</p:pageLinks>
 
 <div class="itemheading">
 	<h2>Other Settings</h2>
@@ -11,21 +14,23 @@
 
 <!-- right-size zone containing an editing form -->
 <t:zone t:id="editZone" id="editZone"
-	visible="false" style="position: absolute; left: 30em">
-	<t:keepInView class="detail-box">
-
-		<div class="controls">
-			<a href="#" style="margin-left: 2em" class="controls"
-					onClick="getElementById('editZone').innerHTML=''; return false"
-					title="Close this detail box">
-				Close
-			</a>
-		</div>
-
-		<t:beanEditForm t:id="editForm" object="selected" include="value"
-			submitlabel="Save" />
-		
-	</t:keepInView>
+		style="position: absolute; left: 30em">
+	<t:if test="showZone">
+		<t:keepInView class="detail-box">
+	
+			<div class="controls">
+				<a href="#" style="margin-left: 2em" class="controls"
+						onClick="getElementById('editZone').innerHTML=''; return false"
+						title="Close this detail box">
+					Close
+				</a>
+			</div>
+	
+			<t:beanEditForm t:id="editForm" object="selected" include="value"
+				submitlabel="Save" />
+			
+		</t:keepInView>
+	</t:if>
 </t:zone>
 
 <!-- left-side list if items to edit -->
