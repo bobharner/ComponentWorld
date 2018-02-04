@@ -61,16 +61,10 @@ public class EditEntry
 	private SourceType source; // selected source type
 
 	@Property
-	private String name;
+	private String name, description;
 
 	@Property
-	private String description;
-
-	@Property
-	private String documentationUrl;
-
-	@Property
-	private String demonstrationUrl;
+	private String documentationUrl, demonstrationUrl;
 
 	@Property
 	private Entry parent;
@@ -79,10 +73,7 @@ public class EditEntry
 	private License license;
 
 	@Property
-	private TapestryVersion since;
-
-	@Property
-	private TapestryVersion until;
+	private TapestryVersion since, until;
 
 	@Property
 	private Date firstAvailable;
@@ -90,21 +81,14 @@ public class EditEntry
 	@Property
 	private Boolean enabled;
 
-	@PageActivationContext
-	// tell Tapestry to generate onActivate() & onPassivate()
+	@PageActivationContext // tell Tapestry to generate onActivate() & onPassivate()
 	private Entry entry;
 
 	@Property
 	private String pageHeading;
 
 	@Property
-	private SelectModel parentSelectModel;
-
-	@Property
-	private SelectModel versionSelectModel;
-
-	@Property
-	private SelectModel licenseSelectModel;
+	private SelectModel parentSelectModel, versionSelectModel, licenseSelectModel;
 
 	@Property
 	private List<EntryType> entryTypes;
