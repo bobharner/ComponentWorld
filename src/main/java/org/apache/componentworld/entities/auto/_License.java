@@ -27,11 +27,11 @@ public abstract class _License extends CayenneDataObject {
         return (String)readProperty("description");
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         writeProperty("id", id);
     }
-    public Long getId() {
-        return (Long)readProperty("id");
+    public Integer getId() {
+        return (Integer)readProperty("id");
     }
 
     public void setName(String name) {

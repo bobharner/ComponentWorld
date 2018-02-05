@@ -30,6 +30,6 @@ public class License extends _License {
 	 * A no-op (Manually setting the ID is prohibited)
 	 */
 	@Override
-	public void setId(Long id) {
+	public void setId(Integer id) {
 	}
 }

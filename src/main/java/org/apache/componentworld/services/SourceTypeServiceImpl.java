@@ -94,4 +94,11 @@ public class SourceTypeServiceImpl extends
 		return DataContext.getThreadObjectContext().performQuery(query);
 	}
 
+	@Override
+	public SourceType findBuiltInSourceType() {
+
+		Integer id = 1; // FIXME: hard-coding this is too crude!
+		return findById(id);
+	}
+
 }

@@ -33,17 +33,17 @@
 				<t:hidden value="selectedVersion"/>
 				<div class="form-group">
 					<t:label for="name"/>
-					<t:textfield t:id="name" class="form-control" value="selectedVersion?.name" size="20"
+					<t:textfield t:id="name" class="form-control" value="name" size="20"
 							placeholder="Enter version as N.N.N"
 							validate="required,maxLength=64"/>
 				</div>
 				<div class="form-group">
 					<t:label for="released"/>
-					<t:datefield t:id="released" class="form-control" value="selectedVersion?.released"/>
+					<t:datefield t:id="released" class="form-control" value="released"/>
 				</div>
 				<div class="form-group">
 					<t:label for="description"/>
-					<t:textarea t:id="description" class="form-control" value="selectedVersion?.description"
+					<t:textarea t:id="description" class="form-control" value="description"
 							rows="2" cols="40"
 							validate="maxLength=256"/>
 				</div>
@@ -54,7 +54,7 @@
 </t:zone>
 
 <!-- left-side list if items to edit -->
-<table class="datatable">
+<table class="table">
 <thead>
 	<tr><th>Version</th><th>Released</th><th>Description</th></tr>
 </thead>

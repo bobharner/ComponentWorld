@@ -90,10 +90,27 @@ public class EntryTypeServiceImpl extends
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<EntryType> findAll() {
-		
+
 		SelectQuery query = new SelectQuery(EntryType.class);
 		Ordering order = new Ordering(EntryType.SORT_BY_PROPERTY,
 					SortOrder.ASCENDING);
+		query.addOrdering(order);
+
+		// TODO: change to use shared cache
+		// per http://cayenne.apache.org/doc30/caching-lookup-tables.html
+		return DataContext.getThreadObjectContext().performQuery(query);
+	}
+
+	@Override
+	public List<EntryType> findBaseTypes() {
+
+		SelectQuery query = new SelectQuery(EntryType.class);
+		Ordering order = new Ordering(EntryType.SORT_BY_PROPERTY,
+					SortOrder.ASCENDING);
+
+		// only include entry types that are not "containers"
+		query.andQualifier(ExpressionFactory.matchExp(
+				EntryType.IS_CONTAINER_PROPERTY, false));
 		query.addOrdering(order);
 		
 		// TODO: change to use shared cache

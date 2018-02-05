@@ -30,7 +30,7 @@ public class TapestryVersion extends _TapestryVersion {
 	 * A no-op (Manually setting the ID is prohibited)
 	 */
 	@Override
-	public void setId(Long id) {
+	public void setId(Integer id) {
 	}
 	
 	/**

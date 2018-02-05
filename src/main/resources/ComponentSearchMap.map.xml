@@ -86,7 +86,7 @@
 	</obj-entity>
 	<obj-entity name="License" className="org.apache.componentworld.entities.License" dbEntityName="LICENSES">
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION"/>
-		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID"/>
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="ID"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
 	<obj-entity name="Role" className="org.apache.componentworld.entities.Role" dbEntityName="ROLES">

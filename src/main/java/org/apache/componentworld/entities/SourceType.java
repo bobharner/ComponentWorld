@@ -34,6 +34,6 @@ public class SourceType extends _SourceType {
 	 * A no-op (Manually setting the ID is prohibited)
 	 */
 	@Override
-	public void setId(Long id) {
+	public void setId(Integer id) {
 	}
 }

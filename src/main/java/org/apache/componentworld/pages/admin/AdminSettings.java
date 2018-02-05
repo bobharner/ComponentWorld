@@ -28,6 +28,7 @@ import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
+import org.slf4j.Logger;
 
 /**
  * Administration page for the "Other Settings" data
@@ -47,7 +48,10 @@ public class AdminSettings
 
 	@InjectComponent
 	private Zone editZone;
-	
+
+	@Inject
+	Logger log;
+
 	@Property
 	private Setting setting; // used in a list
 	
@@ -56,6 +60,9 @@ public class AdminSettings
 	
 	@Property
 	private String name;
+	
+	@Property
+	private Boolean showZone;
 
 	@Property
 	private Integer id;
@@ -72,13 +79,14 @@ public class AdminSettings
 	{
 		return settings;
 	}
-	
+
 	/**
 	 * Perform initializations needed before page renders
 	 */
 	@SetupRender
 	public void init()
 	{
+		showZone = false;
 		settings = settingsService.findAll();
 	}
 
@@ -92,6 +100,7 @@ public class AdminSettings
 	@OnEvent(value = EventConstants.ACTION, component = "itemLink")
 	public Object editSelectedItem(Integer id)
 	{
+		showZone = true;
 		if (request.isXHR()) // an AJAX request?
 		{
 			this.selected = settingsService.findById(id);
@@ -99,18 +108,18 @@ public class AdminSettings
 		}
 		return this; // graceful degradation: redraw the whole current page
 	}
-	
+
 	/**
-	 * As an event listener, prepare for form submission by pre-populating the
+	 * As an event listener, prepare for form submission by prepopulating the
 	 * item before it receives the submitted form data.
 	 * 
 	 */
-	@OnEvent(value="EventConstants.PREPARE_FOR_SUBMIT", component="editForm")
+	@OnEvent(value=EventConstants.PREPARE_FOR_SUBMIT, component="editForm")
 	void prepopulateItem()
 	{
 		this.selected = settingsService.findById(id);
 	}
-	
+
 	/**
 	 * As an event listener, respond to a successful form submission by
 	 * saving the submitted form data.
@@ -118,10 +127,9 @@ public class AdminSettings
 	 * @param setting
 	 * @return
 	 */
-	@OnEvent(value = EventConstants.SUCCESS, component = "editForm")
+	@OnEvent(value=EventConstants.SUCCESS, component="editForm")
 	public Object saveEditedItem()
 	{
-
 		// Copy the submitted form values into the (new or existing) object.
 		// (Inserting the values *after* validation ensures that we don't
 		// pollute our entity set with invalid or abandoned objects.)
@@ -134,7 +142,7 @@ public class AdminSettings
 		alertManager.info("Setting " + selected.getName() + " saved.");
 		return this; // redraw this page
 	}
-	
+
 	/**
 	 * Do setup actions prior to the form being rendered.
 	 */

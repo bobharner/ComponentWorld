@@ -502,8 +502,11 @@ DIV.controls DIV.popup A {
 }
 
 DIV.message-box {
-	position: relative;
-	top: 0.2em;
+	position: absolute;
+	top: 9.8em;
+}
+DIV.message-box button[data-action=dismiss-all] {
+	display: none;
 }
 DIV.t-alert-controls { display: none !important }
 

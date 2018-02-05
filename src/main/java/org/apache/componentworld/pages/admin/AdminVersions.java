@@ -15,6 +15,7 @@
 package org.apache.componentworld.pages.admin;
 
 import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.componentworld.entities.TapestryVersion;
@@ -61,6 +62,12 @@ public class AdminVersions
 
 	@Property
 	private Boolean showZone;
+	
+	@Property
+	private String name, description;
+	
+	@Property
+	Date released;
 
 	private List<TapestryVersion> versions;
 	
@@ -78,7 +85,6 @@ public class AdminVersions
 	 * 
 	 */
 	public void onActivate(TapestryVersion selectedVersion) {
-		System.out.println("harner in onActivate with selectedVersion=" + selectedVersion.getId());
 		this.selectedVersion = selectedVersion;
 	}
 
@@ -87,7 +93,6 @@ public class AdminVersions
 	 */
 	public void setupRender()
 	{
-		System.out.println("harner 2 in setupRender()");
 		showZone = false;
 		versions = tapestryVersionService.findAll();
 	}
@@ -102,7 +107,10 @@ public class AdminVersions
 	public Object onActionFromItemLink(TapestryVersion selectedVersion)
 	{
 		showZone = true;
-		this.selectedVersion = selectedVersion;
+		name = selectedVersion.getName();
+		description = selectedVersion.getDescription();
+		released = selectedVersion.getReleased();
+
 		if (request.isXHR()) // an AJAX request?
 		{
 			return editZone.getBody(); // return the zone body to be redrawn
@@ -125,11 +133,13 @@ public class AdminVersions
 	 */
 	void onPrepareForSubmitFromEditForm()
 	{
-//		if (selectedId == null) {
-//			throw new IllegalStateException("SelectedId from submitted form is null");
-//		}
-//		// load selected version from database
-//		selectedVersion = tapestryVersionService.findById(selectedId);
+		if (selectedId != null) {
+    		// load selected version from database
+    		selectedVersion = tapestryVersionService.findById(selectedId);
+    		selectedVersion.setName(name);
+    		selectedVersion.setDescription(description);
+    		selectedVersion.setReleased(released);
+        }
 	}
 
 	/**

@@ -64,6 +64,9 @@ public class SettingsServiceImpl extends
 	@Override
 	public Setting findById(Integer id) {
 
+	    if (id == null) {
+	        throw new IllegalArgumentException("Settings ID cannot be null");
+	    }
 		Expression exp = ExpressionFactory.inExp(Setting.ID_PROPERTY, id);
 
 		SelectQuery query = new SelectQuery(Setting.class, exp);

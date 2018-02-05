@@ -41,4 +41,11 @@ public interface EntryTypeService extends GenericDataService<EntryType, Integer>
 	 * @return List of all {@link EntryType}s in the system.
 	 */
 	public List<EntryType> findAll();
+
+	/**
+	 * Get a list of all entry types considered "base" types (e.g. Components
+	 * & Mixins)
+	 * @return the list of EntryTypes
+	 */
+	public List<EntryType> findBaseTypes();
 }

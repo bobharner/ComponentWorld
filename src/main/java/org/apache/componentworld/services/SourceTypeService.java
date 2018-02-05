@@ -41,10 +41,17 @@ public interface SourceTypeService extends GenericDataService<SourceType, Intege
 	 * @return
 	 */
 	public SourceType findById(Integer id);
+
 	/**
 	 * Get a list of all entry types, sorted by name ascending.
 	 *
 	 * @return List of all {@link SourceType}s in the system.
 	 */
 	public List<SourceType> findAll();
+
+	/**
+	 * Find the "built-in" source type (i.e. "Tapestry" itself is the source
+	 * @return the source type (i.e. Tapestry)
+	 */
+	public SourceType findBuiltInSourceType();
 }

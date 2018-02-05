@@ -115,7 +115,7 @@ public class EntryServiceImpl extends
 		if ((sourceTypes != null) && (sourceTypes.size() != 0))
 		{
 			Expression exp = null;
-			ArrayList<Long> idList = new ArrayList<Long>();
+			ArrayList<Integer> idList = new ArrayList<Integer>();
 			// build a list of IDs of desired sourceTypes 
 			for (SourceType sourceType : sourceTypes)
 			{
